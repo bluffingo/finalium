@@ -1,3 +1,8 @@
+/// Functions \\\
+@import "_functions";
+/// Normalize \\\
+@import "_normalize";
+
 // misc stuff
 // bootstrap icons
 $bootstrap-icons-font-dir: "/assets" !default;
@@ -18,26 +23,19 @@ html {
 @import "_clearfix";
 @import "_grid-breakpoints";
 
-@if $theme == "beta" {
-  // headers were all bold
-  h1, h2, h3, h4, h5, h6 {
-    font-weight: bold;
+h1, h2, h3 {
+  @if $theme == "qobo" {
+    font-weight: 450;
+  } @else {
+    font-weight: 400;
   }
-} @else {
-  h1, h2, h3 {
-    @if $theme == "qobo" {
-      font-weight: 450;
-    } @else {
-      font-weight: 400;
-    }
-  }
+}
 
-  h4, h5, h6 {
-    @if $theme == "qobo" {
-      font-weight: 400;
-    } @else {
-      font-weight: 300;
-    }
+h4, h5, h6 {
+  @if $theme == "qobo" {
+    font-weight: 400;
+  } @else {
+    font-weight: 300;
   }
 }
 
@@ -53,7 +51,11 @@ html {
 
 a:link,
 a:visited {
-  color: $primary;
+  @if $theme == "beta" {
+    color: $teal;
+  } @else {
+    color: $primary;
+  }
   text-decoration: none;
   word-break: break-all;
 }
@@ -184,12 +186,8 @@ blockquote {
       }
     }
   } @else if $theme == "beta" {
-    background-image: url("/assets/sb_branding/finalium/rain.jpg");
-    background-size: cover;
-    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35) !important;
-    .button {
-      text-shadow: none;
-    }
+    background-color:#ff9900;
+    background: linear-gradient(to bottom, #ffc578 0%,#fb9d23 100%);
   } @else {
     background: #3e3e3e;
     background: linear-gradient(90deg, rgb(62, 62, 62) 0%, rgb(107, 107, 107) 35%, rgb(155, 155, 155) 100%);
@@ -290,7 +288,6 @@ blockquote {
 #logo-container {
   float: left;
   @if $theme == "beta" {
-    width: 30px;
     height: 30px;
   } @else {
     height: 33px;
@@ -304,11 +301,6 @@ blockquote {
 
 #masthead-below {
   display: none;
-}
-
-.page {
-  width: calc(100% - $sidebarlength);
-  margin-left: auto;
 }
 
 .comment {
@@ -384,19 +376,14 @@ ul.nav {
 #header-main {
   display: flex;
   #masthead-search {
-    // FIXME: this fucks up header links on qobo theme
-    //width: 100%;
+    @if $theme != "qobo" {
+      width: 100%;
+    }
   }
 }
 
 body {
-  @if $theme == "beta" {
-    background: #ebebeb;
-    padding-bottom: 30px;
-    min-width: 1000px;
-  } @else {
-    background: $gray-100;
-  }
+  background: $gray-100;
   color: $text-color;
   font-family: $font;
   font-size: 13px;
@@ -440,12 +427,10 @@ body {
 
 .footer {
   @if $theme == "beta" {
-    min-width: 984px;
     background-color: $gray-150;
     border-bottom: 1px solid $gray-250;
     border-top: 1px solid $gray-250;
-    padding: 7px 8px;
-    text-align: center;
+    padding: 15px 40px;
   } @else {
     background-color: $footer-bg;
     border-bottom: 1px solid $footer-border;
@@ -534,8 +519,6 @@ input[type]:not([type=file]):not([type=submit]):focus {
 
   @if $theme == "qobo" {
     max-width: 100%;
-  } @else if $theme == "beta" {
-    max-width: 970px;
   } @else {
     max-width: 1200px;
   }
@@ -558,11 +541,7 @@ input[type]:not([type=file]):not([type=submit]):focus {
   // search bar button?
   .button {
     margin: 0;
-    @if $theme == "beta" {
-      padding: 0.65em 10px;
-    } @else {
-      padding: 0.65em 0;
-    }
+    padding: 0.65em 0;
   }
 
   #logo-container {
@@ -593,6 +572,7 @@ input[type]:not([type=file]):not([type=submit]):focus {
   overflow: hidden;
 
   @if $theme == "beta" {
+    position: relative;
     padding: 0;
     margin-top: 3px;
   } @else {

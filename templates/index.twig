@@ -30,11 +30,10 @@
             <div class="container sb-welcome">
                 <div class="grid">
                 {% if is_user_logged_in %}
-                    <!-- hardcoded widths, whoops! -chaziz 6/12/2024 -->
-                    <div class="col-md-2" style="width:16.6666666667%;">
+                    <div class="col-md-2">
                         <img class="img-pfp img-fluid" src="{{ profile_picture(user_data.name) }}" alt="{{ user_data.name }}">
                     </div>
-                    <div class="col-md-14" style="width:83.3333333333%;">
+                    <div class="col-md-14">
                         <p class="text-start">
                         </p><h1 style="padding:0;margin:8px 0;">{{ localize('welcome_logged_in_finalium_beta', user_data.title) }}</h1>
                         <h3 style="padding:0;margin:8px 0;">@{{ user_data.name }}</h3>

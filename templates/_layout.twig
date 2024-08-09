@@ -8,7 +8,7 @@
     {% elseif current_theme == 'dark' %}
         {% set logo = '/assets/sb_branding/finalium/logo-wordmark-dark.png' %}
     {% elseif current_theme == 'beta' %}
-        {% set logo = '/assets/sb_branding/finalium/logo-2021.png' %}
+        {% set logo = '/assets/sb_branding/finalium/cheeserox-logo-wordmark.png' %}
     {% elseif current_theme == 'qobo' %}
         {% set logo = '/assets/sb_branding/finalium/qobo-logo-wordmark.png' %}
     {% else %}
@@ -68,10 +68,6 @@
     {% endif %}
     {% block content %}{% endblock %}
 </div>
-{% if current_theme == 'beta' %}
-    {% include "components/beta/_footer.twig" %}
-{% else %}
-    {% include "components/_footer.twig" %}
-{% endif %}
+{% include "components/_footer.twig" %}
 </body>
 </html>
