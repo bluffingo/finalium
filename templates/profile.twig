@@ -1,14 +1,6 @@
 {% extends "_layout.twig" %}
 {% block title %}{{ data.displayname }}{% endblock %}
 
-{% if data.is_fedi %}
-    {% set profile_picture = data.fedi_pfp %}
-    {% set banner_picture = data.fedi_banner %}
-{% else %}
-    {% set profile_picture = profile_picture(data.username) %}
-    {% set banner_picture = profile_banner(data.username) %}
-{% endif %}
-
 {% block head %}
     <meta name="title" content="{{ data.displayname }} - {{ website_branding.name }}">
     <meta name="description"
@@ -40,16 +32,11 @@
     <div class="bg-neutral" style="padding: 15px 10px;">
         <div class="grid">
             <div class="col-md-1">
-                <img class="rounded img-fluid" src="{{ profile_picture }}" alt="{{ data.username }}">
+                <img class="img-pfp img-fluid" src="{{ profile_picture(data.username) }}" alt="{{ data.username }}">
             </div>
             <div class="col-md-13">
                 <h1 style="margin: 0">
                     {{ data.displayname }}
-                    {% if data.is_fedi %}
-                        <img style="width:24px;" src="https://{{ data.instance }}/favicon.png">
-                    {% else %}
-                        <img style="width:24px;" src="{{ website_branding.assets_location }}/logo.png">
-                    {% endif %}
                 </h1>
                 <p>@{{ data.username }}
                     {# hack to prevent twig from outputing the number 1 #}
@@ -103,7 +90,7 @@
             {% if is_user_logged_in %}
                 <div class="grid" id="commentField">
                     <div class="col-md-1">
-                        <img class="rounded img-fluid" alt="{{ user_data.name }}" src="{{ profile_picture(user_data.name) }}">
+                        <img class="img-pfp img-fluid" alt="{{ user_data.name }}" src="{{ profile_picture(user_data.name) }}">
                     </div>
                     <div class="col-md-15">
                         <div>

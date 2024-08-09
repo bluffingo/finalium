@@ -1,8 +1,31 @@
 .container {
-  padding: 0 15px;
   margin-right: auto;
   margin-left: auto;
-  max-width: 1200px;
+
+  @if $theme == "qobo" {
+    transition: max-width ease-out 1s, margin-left ease-out 2s, padding ease-out 1s;
+    // 576px window width and more
+    @include sm {
+      padding: 0 12px;
+    }
+    // 992px window width and more
+    @include lg {
+      margin-right: auto;
+      margin-left: auto;
+      max-width: 1500px;
+    }
+    // i have no idea
+    @include xl {
+      max-width: 1650px;
+      padding: 0 35px;
+    }
+  } @else if $theme == "beta" {
+    max-width: 970px;
+    padding: 0;
+  } @else {
+    padding: 0 15px;
+    max-width: 1200px;
+  }
 }
 
 // the login/register pages need to be centered at every resolution.
@@ -12,5 +35,10 @@
 }
 
 .page-container {
-  min-height: calc(100vh - 255px - 48px);
+  @if $theme == "beta" {
+    min-height: auto;
+  } @else {
+    // no clue what is this actually supposed to be
+    min-height: calc(100vh - 255px - 48px);
+  }
 }

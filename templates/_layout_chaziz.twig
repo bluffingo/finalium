@@ -16,16 +16,12 @@
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="/https://cdn.jsdelivr.net/npm/@tabler/icons@latest/iconfont/tabler-icons.min.css">
     <link rel="stylesheet" href="/assets/css/finalium.css" type="text/css">
-    {% if current_theme == 'dark' %}
-        <link id="darkthm" rel="stylesheet" href="/assets/css/finalium_darkmode.css" type="text/css">
-    {% elseif current_theme == 'nostalgia' %}
-        <link id="nostalgia" rel="stylesheet" href="/assets/css/finalium_nostalgia.css" type="text/css">
-    {% elseif current_theme == 'qobo' %}
-        <link id="nostalgia" rel="stylesheet" href="/assets/css/finalium_qobo.css" type="text/css">
-    {% endif %}
+    <link rel="stylesheet" href="/assets/css/finalium_{{ current_theme }}.css?r={{ get_css_file_date() }}" type="text/css">
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
-    <script src="/assets/common.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+            integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/assets/common_finalium.js?r={{ get_css_file_date() }}"></script>
     <script>
         subscribe_string = 'Follow';
         unsubscribe_string = 'Unfollow';

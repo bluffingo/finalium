@@ -5,8 +5,12 @@
   height: auto;
 }
 
-.rounded {
-  border-radius: 50%;
+.img-pfp {
+  @if $theme == "beta" {
+    border-radius: 10%;
+  } @else {
+    border-radius: 50%;
+  }
 }
 
 .img-center {

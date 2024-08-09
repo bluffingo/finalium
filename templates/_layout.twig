@@ -30,16 +30,7 @@
     <meta name="apple-mobile-web-app-title" content="{{ website_branding.name }}">
     <meta name="application-name" content="{{ website_branding.name }}">
     <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="/assets/css/finalium.css?r={{ get_css_file_date() }}" type="text/css">
-    {% if current_theme == 'dark' %}
-        <link id="darkthm" rel="stylesheet" href="/assets/css/finalium_darkmode.css?r={{ get_css_file_date() }}" type="text/css">
-    {% elseif current_theme == 'nostalgia' %}
-        <link id="nostalgia" rel="stylesheet" href="/assets/css/finalium_nostalgia.css?r={{ get_css_file_date() }}" type="text/css">
-    {% elseif current_theme == 'qobo' %}
-        <link id="nostalgia" rel="stylesheet" href="/assets/css/finalium_qobo.css?r={{ get_css_file_date() }}" type="text/css">
-    {% elseif current_theme == 'beta' %}
-        <link id="nostalgia" rel="stylesheet" href="/assets/css/finalium_beta.css?r={{ get_css_file_date() }}" type="text/css">
-    {% endif %}
+    <link rel="stylesheet" href="/assets/css/finalium_{{ current_theme }}.css?r={{ get_css_file_date() }}" type="text/css">
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
             integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="

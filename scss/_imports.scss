@@ -1,5 +1,853 @@
-/// Site Basics \\\
-@import "_site_basics";
+// misc stuff
+// bootstrap icons
+$bootstrap-icons-font-dir: "/assets" !default;
+@import "../../../../vendor/twbs/bootstrap-icons/font/bootstrap-icons.scss";
+
+@if $theme == "qobo" {
+  @import url('https://rsms.me/inter/inter.css');
+} @else {
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+}
+
+/* SB CSS STARTS HERE ======================================================== */
+
+html {
+  height: 100%;
+}
+
+@import "_clearfix";
+@import "_grid-breakpoints";
+
+@if $theme == "beta" {
+  // headers were all bold
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+  }
+} @else {
+  h1, h2, h3 {
+    @if $theme == "qobo" {
+      font-weight: 450;
+    } @else {
+      font-weight: 400;
+    }
+  }
+
+  h4, h5, h6 {
+    @if $theme == "qobo" {
+      font-weight: 400;
+    } @else {
+      font-weight: 300;
+    }
+  }
+}
+
+.clearfix {
+  @include clearfix;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+a:link,
+a:visited {
+  color: $primary;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+a:hover {
+  text-decoration-line: underline;
+}
+
+p, blockquote, ul li, ol li {
+  line-height: 1.25em;
+}
+
+menu {
+  list-style: none;
+}
+
+ul li, ol li {
+  margin-bottom: 0.6em;
+}
+
+code {
+  color: #e83e3e;
+}
+
+pre {
+  background-color: #ffe8e8;
+  border: 1px solid #eed1d1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 0;
+  overflow-x: auto;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+blockquote {
+  margin: 0 0 0.5em 0;
+  padding-left: 0.8em;
+  border-left: 4px solid $gray-400;
+}
+
+.t_user {
+  color: #0000aa;
+  font-weight: bold;
+}
+
+.dl {
+  border-collapse: collapse;
+
+  td {
+    border: 1px solid black;
+    padding: 7px;
+  }
+}
+
+.noborder {
+  border: 0;
+}
+
+.center {
+  text-align: center;
+}
+
+// Pagination \\
+.pagination {
+  margin-top: 1em;
+  font-size: 14pt;
+  font-weight: bold;
+
+  span {
+    margin-left: 13px;
+    display: inline-block;
+  }
+}
+
+/// Generic text aligns \\\
+
+.left {
+  text-align: left;
+  &:dir(rtl) {
+    text-align: right;
+  }
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+  &:dir(rtl) {
+    text-align: left;
+  }
+}
+
+.float-left {
+  float: left;
+  &:dir(rtl) {
+    float: right;
+  }
+}
+
+.float-right {
+  float: right;
+  &:dir(rtl) {
+    float: left;
+  }
+}
+
+.clear_right {
+  clear: right;
+  &:dir(rtl) {
+    clear: left;
+  }
+}
+
+.main-content {
+  @if $theme == "qobo" {
+    background: rgb(24, 0, 36);
+    background: linear-gradient(90deg, rgba(24, 0, 36, 1) 0%, rgba(100, 9, 121, 1) 35%, rgba(200, 21, 200, 1) 100%);
+
+    .sb-welcome {
+      text-align: center;
+      h1 {
+        font-weight:600;
+        font-size: 2.5em;
+        margin: 8px 0;
+      }
+    }
+  } @else if $theme == "beta" {
+    background-image: url("/assets/sb_branding/finalium/rain.jpg");
+    background-size: cover;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35) !important;
+    .button {
+      text-shadow: none;
+    }
+  } @else {
+    background: #3e3e3e;
+    background: linear-gradient(90deg, rgb(62, 62, 62) 0%, rgb(107, 107, 107) 35%, rgb(155, 155, 155) 100%);
+  }
+
+  color: white;
+  margin: -48px 0 0;
+  padding: 75px 0 20px;
+  display: inline-block;
+  width: 100%;
+  .page-container {
+    min-height: auto;
+    h1, h2, h3, h4, h5, h6, p {
+      padding: 0;
+      margin: 8px 0;
+    }
+    .stats {
+      font-size: 1.5em;
+    }
+  }
+}
+
+.chaziz-body {
+  @if $theme == "qobo" {
+    background: #2B3644 url(/assets/sb_branding/finalium/brisbane.jpg);
+  } @else {
+    background: #2B3644 url(/assets/sb_branding/finalium/droplets.jpg);
+  }
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.chazizPage {
+  .form-signin {
+    padding: 19px 29px 29px;
+    margin: 0 auto 20px;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    @if $theme == "beta" {
+      width: 250px // less wider in the beta
+    } @else {
+      width: 300px;
+    }
+  }
+}
+
+.form-signin {
+  input[type="text"],
+  input[type="password"] {
+    font-size: 16px;
+    height: auto;
+    margin-bottom: 15px;
+    padding: 7px 9px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+.form-long {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.uploader-form {
+  margin-bottom: 0.5em;
+  font-size: 1.05em;
+  padding: 0.33em;
+}
+
+.search-form {
+  margin-bottom: 0.5em;
+  font-size: 1.05em;
+  padding: 0.25em;
+  height: 100%;
+}
+
+.ti {
+  display: inline-block;
+  margin-top: -0.25em;
+  vertical-align: middle;
+}
+
+#commentContents {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.card-cover {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+#logo-container {
+  float: left;
+  @if $theme == "beta" {
+    width: 30px;
+    height: 30px;
+  } @else {
+    height: 33px;
+  }
+  padding: 3px !important;
+}
+
+.masthead-user {
+  float: right;
+}
+
+#masthead-below {
+  display: none;
+}
+
+.page {
+  width: calc(100% - $sidebarlength);
+  margin-left: auto;
+}
+
+.comment {
+  p {
+    width: 100%;
+    margin: 0;
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+#optionsModal, #debugModal {
+  display: none;
+}
+
+.user-action-container {
+  a {
+    text-decoration: none;
+  }
+}
+
+.small-stats {
+  div {
+    display: inline-block;
+    margin-right: 1em;
+  }
+}
+
+.commentPost {
+  margin-bottom: 17.5px;
+  .commentAuthor {
+    .commentDisplayName {
+      color: $gray-600;
+      font-size: .9em;
+    }
+
+    .time {
+      font-size: .9em;
+    }
+  }
+}
+
+#player-container {
+  background-color: black;
+  color: white;
+  width: 100%;
+  margin: 0;
+}
+
+// new navs
+
+ul.nav {
+  margin: 0;
+  padding: 1.25em 0;
+  .title {
+    color: $gray-600;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: bold;
+  }
+  li { padding: 6px 15px;; }
+  li.active { background: $primary; a { color: white; } }
+}
+
+// post-mortem changes
+.watch-creator {
+  display: flex;
+  gap: 8px;
+}
+
+#header-main {
+  display: flex;
+  #masthead-search {
+    // FIXME: this fucks up header links on qobo theme
+    //width: 100%;
+  }
+}
+
+body {
+  @if $theme == "beta" {
+    background: #ebebeb;
+    padding-bottom: 30px;
+    min-width: 1000px;
+  } @else {
+    background: $gray-100;
+  }
+  color: $text-color;
+  font-family: $font;
+  font-size: 13px;
+  margin: auto;
+  width: 100%;
+}
+
+#masthead-container {
+  z-index: 10000;
+  margin: 0;
+  padding: 7px;
+  position: sticky;
+  display: block;
+  top: 0;
+  backdrop-filter: blur(4px);
+
+  @if $theme == "beta" {
+    background-color: #f7f7f7f0;
+    border-bottom: 1px solid lightgrey;
+  } @else {
+    background-color: $masthead-bg;
+    border-bottom: 1px solid $masthead-border;
+  }
+}
+
+@if $theme == "beta" {
+  #masthead-content {
+    padding-left: 15px;
+    padding-right: 20px;
+    overflow: hidden;
+  }
+
+  // this is from late-2021, so don't ask why this seems very shit. it really is shit.
+  #masthead-content #masthead-upload-button-group, .masthead-user {
+    float: right;
+    margin-top: 3px;
+    margin-left: 25px;
+    position: relative;
+  }
+}
+
+.footer {
+  @if $theme == "beta" {
+    min-width: 984px;
+    background-color: $gray-150;
+    border-bottom: 1px solid $gray-250;
+    border-top: 1px solid $gray-250;
+    padding: 7px 8px;
+    text-align: center;
+  } @else {
+    background-color: $footer-bg;
+    border-bottom: 1px solid $footer-border;
+    border-top: 1px solid $footer-border;
+    padding: 2em 3em;
+  }
+  margin-top: 0;
+  overflow: hidden;
+
+  img {
+    width: 135px;
+  }
+}
+
+.profiler {
+  background-color: rgba($gray-100,0.5);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 5px;
+  text-align: center;
+  backdrop-filter: blur(50px);
+}
+
+.settings {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1em;
+
+  .a {
+    text-align: center;
+    width: 250px;
+  }
+
+  td, th {
+    border-bottom: 1px solid $gray-300;
+    padding: 10px 5px;
+  }
+
+  tr th {
+    background-color: $gray-100;
+    font-size: 12pt;
+  }
+
+  tr {
+    &:nth-child(odd)  { background-color: $gray-200; }
+    &:nth-child(even) { background-color: $gray-300; }
+  }
+
+  .fotnot {
+    margin-top: 8px;
+    font-size: 10.5pt;
+  }
+}
+
+textarea,
+input[type]:not([type=file]):not([type=submit]) {
+  @if $theme == "beta" {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  } @else {
+    border: 1px solid $gray-400;
+    background: $form-input;
+    border-radius: 4px;
+    box-shadow: 0 0 1px $gray-400;
+  }
+  transition: border linear 0.3s, box-shadow linear 0.3s;
+}
+
+textarea:focus,
+input[type]:not([type=file]):not([type=submit]):focus {
+  @if $theme == "beta" {
+    border-color: rgba(82, 168, 236, 0.8) !important; // gonna override for some fuckass reason
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+  } @else {
+    border-color: $primary;
+    box-shadow: 0 0 5px $primary;
+  }
+  outline: 0;
+}
+
+#masthead {
+  width: 100%;
+
+  @if $theme == "qobo" {
+    max-width: 100%;
+  } @else if $theme == "beta" {
+    max-width: 970px;
+  } @else {
+    max-width: 1200px;
+  }
+
+  position: relative;
+  margin: auto;
+  height: 33px;
+  font-size: 13px;
+
+  a {
+    padding: 6px 10px;
+    font-size: 13px;
+    @if $theme == "beta" {
+      color: #333;
+    } @else {
+      color: $gray-900;
+    }
+  }
+
+  // search bar button?
+  .button {
+    margin: 0;
+    @if $theme == "beta" {
+      padding: 0.65em 10px;
+    } @else {
+      padding: 0.65em 0;
+    }
+  }
+
+  #logo-container {
+    float: left;
+  }
+
+  #logo {
+    background-size: auto;
+    height: 30px;
+    border: 0;
+  }
+
+  .masthead-button {
+    margin-top: 2px;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  // unused but keep it in case we readd a guide button
+  .guide-button {
+    float: left;
+  }
+}
+
+#masthead-search {
+  overflow: hidden;
+
+  @if $theme == "beta" {
+    padding: 0;
+    margin-top: 3px;
+  } @else {
+    padding: 3px;
+  }
+
+  label {
+    height: 100%;
+    line-height: 30px;
+    padding: 0;
+    border: none;
+    overflow: hidden;
+  }
+
+  #search-btn {
+    @if $theme == "beta" {
+      height: 29px;
+    } @else {
+      height: 31px;
+      border-radius: 0 3px 3px 0;
+    }
+    float: right;
+
+    span {
+      margin: 0 12px;
+    }
+  }
+
+  #masthead-search-terms {
+    border-radius: 0;
+    @if $theme == "beta" {
+      height: 29px;
+    } @else {
+      height: 31px;
+    }
+    overflow: hidden;
+
+    input {
+      display: inline-block;
+      width: 100%;
+      padding: 2px 6px;
+      margin: 0;
+      font-size: 16px;
+      box-sizing: border-box;
+      @if $theme == "beta" {
+        height: 29px;
+      } @else {
+        height: 31px;
+      }
+      border-radius: 3px 0 0 3px;
+      @if $theme != "beta" {
+        border: 1px solid $gray-200;
+        border-right: none;
+        background-color: $form-input;
+        color: $text-color;
+      }
+    }
+  }
+}
+
+.masthead-links-container {
+  float: left;
+  .masthead-links {
+    display: table-cell;
+    vertical-align: middle;
+    height: 33px;
+  }
+}
+
+.subscribe-count {
+  padding: 0 6px;
+  border: 1px solid #ccc;
+  color: $gray-600;
+  font-size: 12px;
+  text-align: center;
+  line-height: 24px;
+  display: inline-block;
+}
+
+/// "Likesaber" for watch page \\\
+.likesaber {
+  width: 200px;
+  height: 3px;
+  background-color: $gray-400;
+  float: right;
+
+  .like {
+    float: left;
+    height: 3px;
+    background-color: $green;
+  }
+}
+
+#About {
+  line-height: 17px;
+
+  p {
+    margin: 0;
+  }
+
+  .description-extra {
+    margin: 10px 0;
+
+    li {
+      clear: both;
+      margin-bottom: 5px;
+      line-height: 1.2;
+    }
+
+    .title {
+      float: left;
+      margin: 0 10px 0 0;
+      width: 80px;
+      text-align: right;
+      font-size: 11px;
+      color: $gray-800;
+      font-weight: bold;
+    }
+
+    .content {
+      color: $gray-600;
+      font-size: 11px;
+    }
+  }
+}
+
+.vid-info {
+  .title {
+    max-height: 2.4em;
+    line-height: 1.2;
+    display: block;
+    margin: 0 0 2px;
+    overflow: hidden;
+
+    @if $theme == "beta" {
+      font-size: 13px;
+
+      a {
+        color: #333;
+      }
+      a:hover {
+        color: #438bc5;
+      }
+    } @else {
+      font-size: 14px;
+
+      a {
+        color: $gray-800;
+      }
+
+      a:hover {
+        color: $primary;
+      }
+    }
+  }
+
+  .stat {
+    @if $theme == "beta" {
+      color: #999;
+    } @else {
+      color: $gray-600;
+    }
+    font-size: 11px;
+    display: block;
+    line-height: 1.4em;
+    height: 1.4em;
+  }
+
+  .stat-larger {
+    @if $theme == "beta" {
+      color: #999;
+    } @else {
+      color: $gray-600;
+    }
+    font-size: 13px;
+    display: block;
+    line-height: 1.4em;
+    height: 1.4em;
+  }
+}
+
+.menu {
+  position: absolute;
+  top: 100%;
+  max-height: 80vh;
+  z-index: 1000;
+  width: 160px;
+  overflow: hidden;
+  right: 0px;
+  text-align: left;
+
+  @if $theme == "beta" {
+    background: #ffffff;
+    padding: 0.25em;
+  } @else {
+    background: $gray-100;
+  }
+
+  ul {
+    li {
+      @if $theme == "beta" {
+        padding: 4px 0;
+      } @else {
+        padding: 6px 0;
+      }
+
+      a {
+        color: $text-color !important;
+        width: 100%;
+        display: block;
+        padding: 0 10px !important;
+      }
+    }
+
+    @if $theme != "beta" {
+      li:hover {
+        background-color: $primary;
+      }
+    }
+  }
+}
+
+.watchNext {
+  h1 {
+    font-size: 19px;
+  }
+
+  .viewcount {
+    @if $theme == "beta" {
+      color: $gray-850;
+    } @else {
+      color: $gray-800;
+    }
+    font-weight: normal;
+    margin-bottom: 4px;
+  }
+
+  .below-likesaber {
+    margin-top: 16px;
+    color: $gray-600;
+  }
+}
+
+.statbox {
+  text-align: center;
+  font-size: 3em;
+  border: 1px solid $gray-200;
+  padding: 0.5em;
+  background-color: $gray-100;
+
+  .stat-title {
+    font-size: 0.5em;
+    font-weight: semibold;
+  }
+}
 
 /// Gradients \\\
 @import "_gradients";

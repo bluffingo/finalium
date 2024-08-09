@@ -32,7 +32,7 @@
                 {% if is_user_logged_in %}
                     <!-- hardcoded widths, whoops! -chaziz 6/12/2024 -->
                     <div class="col-md-2" style="width:16.6666666667%;">
-                        <img class="rounded img-fluid" src="{{ profile_picture(user_data.name) }}" alt="{{ user_data.name }}">
+                        <img class="img-pfp img-fluid" src="{{ profile_picture(user_data.name) }}" alt="{{ user_data.name }}">
                     </div>
                     <div class="col-md-14" style="width:83.3333333333%;">
                         <p class="text-start">

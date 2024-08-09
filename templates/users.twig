@@ -17,7 +17,7 @@
 			{% for user in users.users %}
 				<tr>
 					<td>
-						<img src="{{ profile_picture(user.info.username) }}" width="80" alt="{{ user.info.username }}" class="rounded">
+						<img src="{{ profile_picture(user.info.username) }}" width="80" alt="{{ user.info.username }}" class="img-pfp">
 					</td>
 					<td>{{ user_link(user) }} ({{ user.info.displayname }})
 						{% if user.rank > 1 %}<img src="/assets/icons/shield{% if user_data.darkmode %}_w{%endif%}.svg" height="16">{% endif %}
