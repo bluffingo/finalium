@@ -100,26 +100,53 @@
 
     {% block content %}
     <div class="grid">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card">
                 <div class="card-body-fat">
                     <h3 style="margin-top:0">{{ localize('random_uploads') }}</h3>
                     {% for submission in data.submissions %}
                         {{ submission_box(submission) }}
                     {% else %}
-                        <p>No uploaded videos.</p>
+                        <p>No uploads.</p>
                     {% endfor %}
                 </div>
             </div>
-        </div>
-        <div class="col-md-8">
             <div class="card">
                 <div class="card-body-fat">
                     <h3 style="margin-top:0">{{ localize('recent_uploads') }}</h3>
                     {% for submission in data.submissions_new %}
                         {{ submission_box(submission) }}
                     {% else %}
-                        <p>No uploaded videos.</p>
+                        <p>No uploads.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body-fat">
+                    <h3 style="margin-top:0">{{ localize('site_news') }}</h3>
+                    {% for journal in data.news_recent %}
+                        <h3>
+                            <a href="/read?j={{ journal.id }}">{{ journal.title }}</a>
+                            <br>
+                            <small>{{ journal.published | relative_time }}</small>
+                        </h3>
+                        <p>
+                            {{ journal.contents|u.truncate(250, '...') }}
+                        </p>
+                    {% else %}
+                        <p>No journals.</p>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body-fat">
+                    <h3 style="margin-top:0">{{ localize('recent_tags') }}</h3>
+                    {% for tag in data.tags_recent %}
+                        <a href="/search.php?query={{ tag.name }}">{{ tag.name }}</a>{{ not loop.last ? ',' }}
+                    {% else %}
+                        <p>No tags!</p>
                     {% endfor %}
                 </div>
             </div>
