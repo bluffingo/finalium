@@ -487,7 +487,7 @@ body {
 }
 
 textarea,
-input[type]:not([type=file]):not([type=submit]) {
+input[type]:not([type=file]):not([type=submit]):not([type=range]) {
   @if $theme == "beta" {
     background-color: #ffffff;
     border: 1px solid #cccccc;
@@ -503,7 +503,7 @@ input[type]:not([type=file]):not([type=submit]) {
 }
 
 textarea:focus,
-input[type]:not([type=file]):not([type=submit]):focus {
+input[type]:not([type=file]):not([type=submit]):not([type=range]):focus {
   @if $theme == "beta" {
     border-color: rgba(82, 168, 236, 0.8) !important; // gonna override for some fuckass reason
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
