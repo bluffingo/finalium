@@ -2,6 +2,10 @@
   border-bottom: 1px solid #ccc;
   padding: 10px;
   border-radius: 3px;
+  &.full-screen {
+    border-radius: 0;
+    text-align: center;
+  }
 }
 
 @each $state, $value in $theme-colors {

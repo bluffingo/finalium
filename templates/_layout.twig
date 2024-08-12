@@ -48,6 +48,12 @@
     </style>
 </head>
 <body>
+{% if show_warning_banner %}
+    <div class="header_message header-danger full-screen">
+        Due to unknown circumstances with the provider of the squareBracket.pw and FulpTube.rocks domains, please use our
+        site through the squareBracket.me domain.
+    </div>
+{% endif %}
 {% if current_theme == 'nostalgia' %}
     {% include "components/nostalgia/_header.twig" %}
 {% elseif current_theme == 'beta' %}
