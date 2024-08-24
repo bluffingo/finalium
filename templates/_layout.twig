@@ -1,10 +1,6 @@
 {% if is_chaziz_sb %}
     {% if is_fulptube %}
-        {% if current_theme == 'dark' %}
-            {% set logo = '/assets/sb_branding/fulp/logo-wordmark-dark.png' %}
-        {% else %}
-            {% set logo = '/assets/sb_branding/fulp/logo-wordmark.png' %}
-        {% endif %}
+        {% set logo = '/assets/sb_branding/fulp/logo.png' %}
     {% elseif current_theme == 'dark' %}
         {% set logo = '/assets/sb_branding/finalium/logo-wordmark-dark.png' %}
     {% elseif current_theme == 'beta' %}
@@ -70,7 +66,7 @@
         {{ remove_notification() }}
     {% endif %}
     {% if user_ban_data %}
-        <div class="header_message header-danger">You have been banned for the following reason: {{ user_ban_data.reason }}</div>
+        <div class="header_message header-danger">You have been banned from {{ website_branding.name }}.</div>
     {% endif %}
     {% block content %}{% endblock %}
 </div>

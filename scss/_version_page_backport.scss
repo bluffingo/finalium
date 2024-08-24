@@ -1,0 +1,29 @@
+// backported from finalium 2/biscuit
+
+.container.version {
+  .grid {
+    gap: 20px;
+    align-items: center;
+  }
+}
+
+.img-version {
+  @include sm {
+    max-width: 300px;
+  }
+  @include md {
+    max-width: 100%;
+  }
+}
+
+.col-version {
+  @include sm {
+    text-align: center;
+    border-bottom: 1px solid $gray-200;
+    padding: 30px;
+  }
+  @include md {
+    border-bottom: none;
+    padding: 0;
+  }
+}

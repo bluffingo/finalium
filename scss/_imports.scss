@@ -853,5 +853,6 @@ input[type]:not([type=file]):not([type=submit]):not([type=range]):focus {
 /// Tabs \\\
 @import "_tabs";
 
-/// Comments (Backported from Biscuit/F2) \\\
+/// Backports from Biscuit/F2 \\\
 @import "_comments";
+@import "_version_page_backport";
