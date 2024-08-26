@@ -140,16 +140,6 @@
                     {% endfor %}
                 </div>
             </div>
-            <div class="card">
-                <div class="card-body-fat">
-                    <h3 style="margin-top:0">{{ localize('recent_tags') }}</h3>
-                    {% for tag in data.tags_recent %}
-                        <a href="/search.php?query={{ tag.name }}">{{ tag.name }}</a>{{ not loop.last ? ',' }}
-                    {% else %}
-                        <p>No tags!</p>
-                    {% endfor %}
-                </div>
-            </div>
         </div>
     </div>
 </div>
