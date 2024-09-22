@@ -41,8 +41,6 @@ $footer-border: #E8E8E8; //gray-250
 
 $light: #f8f9fa;
 $dark: #343a40;
-$teal-color: $teal;
-$orange-color: $orange;
 
 $primary: $blue;
 $secondary: $gray-100;
@@ -53,8 +51,6 @@ $danger: $red;
 $gray-dark: $gray-800;
 $neutral: $gray-100;
 $teal-color: $teal;
-$aqua-color: $aqua;
-$orange-color: $orange;
 
 $theme-colors: (
         "primary": $primary,
@@ -66,9 +62,6 @@ $theme-colors: (
         "neutral": $neutral,
         "light": $gray-100,
         "dark": $gray-dark,
-        "blue-green": $teal-color,
-        "aqua": $aqua-color,
-        "carrot": $orange-color,
 );
 
 $font: "Roboto", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;

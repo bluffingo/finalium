@@ -4,13 +4,13 @@
     "id": "finalium",
     "name": "Finalium 1/sbNext",
     "author": "OpenSB developers",
-    "description": "The classic squareBracket user experience, originally known as sbNext.",
+    "description": "The classic SquareBracket user experience, originally known as sbNext.",
     "site": "squarebracket",
     "themes": [
       {
         "id": "default",
         "name": "Default",
-        "description": "The default 2022-2023 squareBracket user experience.",
+        "description": "The default 2022-2023 SquareBracket user experience.",
         "author": "OpenSB developers"
       },
       {
