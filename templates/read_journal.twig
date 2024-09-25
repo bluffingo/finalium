@@ -1,26 +1,6 @@
 {% extends "_layout.twig" %}
 
-{% set banner_picture = profile_banner(data.author.info.username) %}
-
-{% set title = data.title %}
-
-{% set opengraph_description = data.contents|u.truncate(125, '...') %}
-
-{% set opengraph_type = "article" %}
-{% set opengraph_published = data.published | date("c") %}
-{% set opengraph_author = domain ~ "user/" ~ data.author.info.username %}
-{% set metadata_author = data.author.info.username %}
-{% set opengraph_section = "SquareBracket post" %}
-
-{% block scripts %}
-	{{ include('submission_rating_script.twig') }}
-
-	<script>
-		user_id = '{{ data.author.id }}';
-		comment_type = 'journal';
-		comment_id = '{{ data.int_id }}';
-	</script>
-{% endblock %}
+{% block title %}{{ data.title }}{% endblock %}
 
 {% block content %}
 	<div class="card">
@@ -31,7 +11,7 @@
 		</div>
 	</div>
 	<div class="header_message header-primary">
-		Commenting is only supported on Finalium 2/Biscuit.
+		Commenting is only supported on Biscuit and Charla.
 	</div>
 	<div class="card">
 		<div class="card-body-fat">
