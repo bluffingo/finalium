@@ -3,6 +3,11 @@
         <div class="grid" style="margin-bottom: 17.5px;">
             <div class="col-md-10">
                 <div id="header-main">
+                    {% if current_theme != 'qobo' %}
+                    <div class="button button-neutral-invis masthead-button guide-button" id="guide-toggle">
+                        {{ icon("list", 20) }}
+                    </div>
+                    {% endif %}
                     <a href="/" id="logo-container"><img id="logo" src="{{ logo }}" alt="{{ website_branding.name }}"></a>
                     {% if isMaintenance != true %}
                         {% if current_theme == 'qobo' %}

@@ -64,16 +64,8 @@ a:hover {
   text-decoration-line: underline;
 }
 
-p, blockquote, ul li, ol li {
-  line-height: 1.25em;
-}
-
 menu {
   list-style: none;
-}
-
-ul li, ol li {
-  margin-bottom: 0.6em;
 }
 
 code {
@@ -301,6 +293,60 @@ blockquote {
 
 #masthead-below {
   display: none;
+}
+
+.guide-channels-list {
+  clear: both;
+  max-height: 247px;
+  padding: 0 0 3px;
+  overflow: hidden;
+
+  .guide-channel {
+    position: relative;
+    height: 26px;
+    line-height: 26px;
+  }
+}
+
+.guide-item {
+  white-space: nowrap;
+  line-height: 24px;
+  display: flex;
+  height: 26px;
+  justify-content: flex-start;
+  align-items: center;
+
+  .thumb {
+    margin-right: 5px;
+    margin-left: 4px;
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+  }
+}
+
+.guide-item:hover {
+  background: #444;
+  background-image: none;
+  color: #fff;
+}
+
+#guide {
+  position: fixed;
+  left: 0;
+  top: 47px;
+  bottom: 0;
+  width: 17.5em;
+  background: $gray-100;
+  padding: 1em;
+  z-index:9999999999;
+  display: none;
+  overflow-y: scroll;
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none
+  }
 }
 
 .comment {
@@ -564,7 +610,6 @@ input[type]:not([type=file]):not([type=submit]):not([type=range]):focus {
     vertical-align: middle;
   }
 
-  // unused but keep it in case we readd a guide button
   .guide-button {
     float: left;
   }
@@ -579,6 +624,7 @@ input[type]:not([type=file]):not([type=submit]):not([type=range]):focus {
     margin-top: 3px;
   } @else {
     padding: 3px;
+    flex: 1;
   }
 
   label {

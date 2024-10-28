@@ -1,11 +1,15 @@
 <div id="masthead-container">
     <div id="masthead">
+        <div class="button button-neutral-invis masthead-button guide-button" id="guide-toggle">
+            {{ icon("list", 20) }}
+        </div>
         <a href="/" id="logo-container"><img id="logo" src="{{ logo }}"></a>
         <div id="{% if is_user_logged_in %}masthead-loggedin{% else %}masthead-signin{% endif %}" class="masthead-user">
             {% if is_user_logged_in %}
                 <div style="display: flex;justify-content: center;align-items: center;gap: 5px;">
                     {{ user_data.title }}
-                    <div {% if user_notice_data > 0 %}class="bg-danger text-light"{% else %}class="bg-neutral{% endif %}" style="padding:6px 8px;display: inline-block;">{{ user_notice_data }}</div>
+                    <div class="{% if user_notice_data > 0 %}bg-danger text-light{% else %}bg-neutral{% endif %}"
+                         style="padding:6px 8px;display: inline-block;">{{ user_notice_data }}</div>
                     <img class="img-pfp" style="width:32px;margin-top: -2px;" src="{{ profile_picture(user_data.name) }}"  alt="{{ user_data.title }}">
                     <div class="menu" id="masthead-below">
                         <ul style="padding:0">

@@ -54,9 +54,24 @@
         site through the SquareBracket.me domain.
     </div>
 {% endif %}
-{% if current_theme == 'nostalgia' %}
-    {% include "components/nostalgia/_header.twig" %}
-{% elseif current_theme == 'beta' %}
+{% if current_theme != 'qobo' %}
+<div id="guide">
+    <h3>Guide</h3>
+    {% if is_user_logged_in %}
+        {% for link in sidebar_following_users() %}
+            <ul>
+                <li class="guide-channel">
+                    <a href="/user/{{ link.username }}" class="guide-item">
+                        <img class="thumb" src="{{ profile_picture(link.username) }}">
+                        {{ link.username }}
+                    </a>
+                </li>
+            </ul>
+        {% endfor %}
+    {% endif %}
+</div>
+{% endif %}
+{% if current_theme == 'beta' %}
     {% include "components/beta/_header.twig" %}
 {% else %}
     {% include "components/_header.twig" %}
