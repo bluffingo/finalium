@@ -23,6 +23,12 @@ html {
 @import "_clearfix";
 @import "_grid-breakpoints";
 
+.bi {
+  display: inline-block;
+  margin-top: -0.2em;
+  vertical-align: middle;
+}
+
 h1, h2, h3 {
   @if $theme == "qobo" {
     font-weight: 450;
