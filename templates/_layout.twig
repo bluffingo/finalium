@@ -90,5 +90,10 @@
     {% block content %}{% endblock %}
 </div>
 {% include "components/_footer.twig" %}
+{% if is_debug %}
+    <div class="profiler">
+        {{ profiler_stats() }}
+    </div>
+{% endif %}
 </body>
 </html>
