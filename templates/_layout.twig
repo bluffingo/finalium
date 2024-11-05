@@ -52,8 +52,7 @@
 <body>
 {% if show_warning_banner %}
     <div class="header_message header-danger full-screen">
-        Due to unknown circumstances with the provider of the SquareBracket.pw and FulpTube.rocks domains, please use our
-        site through the SquareBracket.me domain.
+        {{ warning_banner_text }}
     </div>
 {% endif %}
 {% if current_theme != 'qobo' %}
