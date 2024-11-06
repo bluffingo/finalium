@@ -21,13 +21,13 @@
       },
       {
         "id": "beta",
-        "name": "cheeseRox",
+        "name": "Beta",
         "description": "Emulates the January 2022 version of Finalium.",
         "author": "OpenSB developers"
       },
       {
-        "id": "qobo",
-        "name": "Qobo",
+        "id": "spring2023",
+        "name": "Spring 2023",
         "description": "Emulates the April-June 2023 version of Finalium.",
         "author": "OpenSB developers"
       }

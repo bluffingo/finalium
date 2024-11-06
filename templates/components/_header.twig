@@ -3,14 +3,14 @@
         <div class="grid" style="margin-bottom: 17.5px;">
             <div class="col-md-10">
                 <div id="header-main">
-                    {% if current_theme != 'qobo' %}
+                    {% if current_theme != 'spring2023' %}
                     <div class="button button-neutral-invis masthead-button guide-button" id="guide-toggle">
                         {{ icon("list", 20) }}
                     </div>
                     {% endif %}
                     <a href="/" id="logo-container"><img id="logo" src="{{ logo }}" alt="{{ website_branding.name }}"></a>
                     {% if isMaintenance != true %}
-                        {% if current_theme == 'qobo' %}
+                        {% if current_theme == 'spring2023' %}
                         <div class="masthead-links-container">
                             <div class="masthead-links">
                                 {% for link in header_main_links() %}
@@ -20,7 +20,7 @@
                         </div>
                         {% endif %}
                         <form id="masthead-search" action="/search">
-                            {% if current_theme == 'qobo' %}
+                            {% if current_theme == 'spring2023' %}
                             <button id="search-btn" class="button button-secondary">
                                 <span>{{ icon("search", 16) }}</span>
                             </button>

@@ -8,7 +8,7 @@
 $bootstrap-icons-font-dir: "/assets" !default;
 @import "../../../../vendor/twbs/bootstrap-icons/font/bootstrap-icons.scss";
 
-@if $theme == "qobo" {
+@if $theme == "spring" {
   @import url('https://rsms.me/inter/inter.css');
 } @else {
   @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
@@ -30,7 +30,7 @@ html {
 }
 
 h1, h2, h3 {
-  @if $theme == "qobo" {
+  @if $theme == "spring" {
     font-weight: 450;
   } @else {
     font-weight: 400;
@@ -38,7 +38,7 @@ h1, h2, h3 {
 }
 
 h4, h5, h6 {
-  @if $theme == "qobo" {
+  @if $theme == "spring" {
     font-weight: 400;
   } @else {
     font-weight: 300;
@@ -178,9 +178,9 @@ blockquote {
 }
 
 .main-content {
-  @if $theme == "qobo" {
-    background: rgb(24, 0, 36);
-    background: linear-gradient(90deg, rgba(24, 0, 36, 1) 0%, rgba(100, 9, 121, 1) 35%, rgba(200, 21, 200, 1) 100%);
+  @if $theme == "spring" {
+    background: #3e3e3e;
+    background: linear-gradient(90deg, rgb(62, 62, 62) 0%, rgb(107, 107, 107) 35%, rgb(155, 155, 155) 100%);
 
     .sb-welcome {
       text-align: center;
@@ -216,7 +216,7 @@ blockquote {
 }
 
 .chaziz-body {
-  @if $theme == "qobo" {
+  @if $theme == "spring" {
     background: #2B3644 url(/assets/sb_branding/finalium/brisbane.jpg);
   } @else {
     background: #2B3644 url(/assets/sb_branding/finalium/droplets.jpg);
@@ -437,7 +437,7 @@ ul.nav {
 #header-main {
   display: flex;
   #masthead-search {
-    @if $theme != "qobo" {
+    @if $theme != "spring" {
       width: 100%;
     }
   }
@@ -578,7 +578,7 @@ input[type]:not([type=file]):not([type=submit]):not([type=range]):focus {
 #masthead {
   width: 100%;
 
-  @if $theme == "qobo" {
+  @if $theme == "spring" {
     max-width: 100%;
   } @else {
     max-width: 1200px;
