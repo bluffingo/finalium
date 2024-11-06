@@ -216,11 +216,7 @@ blockquote {
 }
 
 .chaziz-body {
-  @if $theme == "spring" {
-    background: #2B3644 url(/assets/sb_branding/finalium/brisbane.jpg);
-  } @else {
-    background: #2B3644 url(/assets/sb_branding/finalium/droplets.jpg);
-  }
+  background: #2B3644 url(/assets/sb_branding/finalium/droplets.jpg);
   background-size: cover;
   display: flex;
   align-items: center;
