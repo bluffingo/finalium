@@ -50,7 +50,7 @@
 <body>
 {% if show_warning_banner %}
     <div class="header_message header-danger full-screen">
-        {{ warning_banner_text }}
+        {{ warning_banner_text | raw }}
     </div>
 {% endif %}
 {% if current_theme != 'spring2023' %}
