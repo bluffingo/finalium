@@ -10,7 +10,7 @@
 <div class="grid" style="margin-bottom: 5px;">
     <div class="{{ thumbnail_col }}">
         <a href="/watch?v={{ data.id }}">
-            <img class="img-fluid" src="{{ thumbnail(data.id, data.type, data.bools.custom_thumbnail) }}" alt="{{ data.title }}">
+            <img class="img-fluid" src="{{ thumbnail(data.id, data.type, data.flags.custom_thumbnail) }}" alt="{{ data.title }}">
         </a>
     </div>
     <div class="{{ info_col }} vid-info">
