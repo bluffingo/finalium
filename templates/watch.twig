@@ -2,7 +2,7 @@
 {% block head %}
    <meta name="description" content="{{ submission.description|length > 250 ? submission.description|slice(0, 250) ~ '...' : submission.description }}">
    <meta property="og:description" content="{{ submission.description|length > 250 ? submission.description|slice(0, 250) ~ '...' : submission.description }}">
-   <meta property="og:image" content="{{ domain }}{{ thumbnail(submission.id, submission.type, submission.bools.custom_thumbnail) }}">
+   <meta property="og:image" content="{{ domain }}{{ thumbnail(submission.id, submission.type, submission.flags.custom_thumbnail) }}">
    <meta property="og:url" content="{{ page_url }}">
    <script>
       submission_id = '{{ submission.id }}';
