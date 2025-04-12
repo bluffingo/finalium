@@ -4,18 +4,14 @@
     <meta charset="utf-8">
     <title>{% block title %}{% endblock %} - {{ website_branding.name }}</title>
     {% block head %}{% endblock %}
-    <link rel="manifest" href="/assets/icons/site.webmanifest">
-    <link rel="shortcut icon" href="/assets/icons/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
-    <link rel="mask-icon" href="/assets/icons/safari-pinned-tab.svg" color="#1b93ff">
+    <link rel="manifest" href="{{ website_branding.assets_location }}/icons/site.webmanifest">
+    <link rel="shortcut icon" href="{{ website_branding.assets_location }}/icons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ website_branding.assets_location }}/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ website_branding.assets_location }}/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ website_branding.assets_location }}/icons/favicon-16x16.png">
     <meta name="apple-mobile-web-app-title" content="{{ website_branding.name }}">
     <meta name="application-name" content="{{ website_branding.name }}">
-    <meta name="msapplication-TileColor" content="#1d3fc4">
     <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="/https://cdn.jsdelivr.net/npm/@tabler/icons@latest/iconfont/tabler-icons.min.css">
-    <link rel="stylesheet" href="/assets/css/finalium.css" type="text/css">
     <link rel="stylesheet" href="/assets/css/finalium_{{ current_theme }}.css?r={{ get_css_file_date() }}" type="text/css">
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
@@ -25,14 +21,20 @@
     <script>
         subscribe_string = 'Follow';
         unsubscribe_string = 'Unfollow';
+        opensb_version = '{{ opensb_version }}';
     </script>
+    <script src="/assets/common_shared.js?r={{ get_css_file_date() }}"></script>
     <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 </head>
-<body class="chaziz-body">
+<body class="login-body">
 {% block precontent %}{% endblock %}
-<div class="container page-container chaziz-container">
+<div class="container page-container login-container">
+    {% if session.notif_message %}
+        <div class="header_message header-danger" role="alert">{{ session.notif_message }}</div>
+        <br>
+        {{ remove_notification() }}
+    {% endif %}
     {% block content %}{% endblock %}
-</div>
 </div>
 {% block custom_footer %}
 {% endblock %}

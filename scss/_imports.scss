@@ -215,7 +215,7 @@ blockquote {
   }
 }
 
-.chaziz-body {
+.login-body {
   background: #2B3644 url(/assets/sb_branding/finalium/droplets.jpg);
   background-size: cover;
   display: flex;
@@ -223,12 +223,18 @@ blockquote {
   height: 100%;
 }
 
-.chazizPage {
-  .form-signin {
+.loginPage {
+  .form-login {
     padding: 19px 29px 29px;
-    margin: 0 auto 20px;
-    background-color: #fff;
-    border: 1px solid #e5e5e5;
+    @if $theme == "beta" {
+      margin: 0 auto 20px;
+    } @else {
+      margin: 0 auto 10px;
+    }
+
+    background-color: $card-bg;
+    border: 1px solid $gray-300; /* not exactly #e5e5e5 but i dont care */
+
     border-radius: 5px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
     @if $theme == "beta" {
@@ -237,9 +243,14 @@ blockquote {
       width: 300px;
     }
   }
+
+  .login-footer {
+    text-align: center;
+    color: white;
+  }
 }
 
-.form-signin {
+.form-login {
   input[type="text"],
   input[type="password"] {
     font-size: 16px;
