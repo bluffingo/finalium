@@ -19,7 +19,7 @@
 			<tr>
 			<tr>
 				<td class="a">Email address</td>
-				<td class="b">{{ user_data.name }}</td>
+				<td class="b">{{ user_data.email }}</td>
 			</tr>
 			<tr>
 				<td class="a">Password</td>
@@ -46,7 +46,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="a">Profile banner (on Biscuit frontend)</td>
+				<td class="a">Profile banner</td>
 				<td class="b">
 					<input class="form-control" type="file" name="profileBanner" id="profileBanner">
 				</td>
@@ -67,6 +67,52 @@
 				<td class="b"><input name="customcolor" type="color"
 									 value="{{ user_data.customcolor | default('523bb8') }}"></td>
 			</tr>
+			<tr>
+				<td class="a">Enable profile customization</td>
+				<td class="b">
+					<input type="checkbox" name="enable_customization" id="enable_customization" value="true"
+						   {% if user_data.enable_customization %}checked{% endif %}>
+					<label for="enable_customization"> Enable profile customization</label><br>
+				</td>
+			</tr>
+			<tr>
+				<td class="a">Font</td>
+				<td class="b">
+					(todo)
+				</td>
+			</tr>
+			<tr>
+				<td class="a">Title color</td>
+				<td class="b"><input name="title_color" type="color" value="{{ profile_color_data.title_color | default('#333333') }}"></td>
+			</tr>
+			<tr>
+				<td class="a">Link color</td>
+				<td class="b"><input name="link_color" type="color" value="{{ profile_color_data.link_color | default('#0033cc') }}"></td>
+			</tr>
+			<tr>
+				<td class="a">Box border color</td>
+				<td class="b"><input name="basic_box_border_color" type="color" value="{{ profile_color_data.basic_box_border_color | default('#666666') }}"></td>
+			</tr>
+			<tr>
+				<td class="a">Box background</td>
+				<td class="b"><input name="basic_box_background_color" type="color" value="{{ profile_color_data.basic_box_background_color | default('#FFFFFF') }}"></td>
+			</tr>
+			<tr>
+				<td class="a">Box text color</td>
+				<td class="b"><input name="basic_box_text_color" type="color" value="{{ profile_color_data.basic_box_text_color | default('#000000') }}"></td>
+			</tr>
+			<tr>
+				<td class="a">Highlight border</td>
+				<td class="b"><input name="highlight_box_border_color" type="color" value="{{ profile_color_data.highlight_box_border_color | default('#666666') }}"></td>
+			</tr>
+			<tr>
+				<td class="a">Highlight background</td>
+				<td class="b"><input name="highlight_box_background_color" type="color" value="{{ profile_color_data.highlight_box_background_color | default('#E6E6E6') }}"></td>
+			</tr>
+			<tr>
+				<td class="a">Highlight text</td>
+				<td class="b"><input name="highlight_box_text_color" type="color" value="{{ profile_color_data.highlight_box_text_color | default('#000000') }}"></td>
+			</tr>
 		</table>
 
 		<table class="settings">
@@ -75,12 +121,28 @@
 				<th>Option</th>
 				<th>Value</th>
 			</tr>
-			<tr>
-				<td class="a">Sensitive content</td>
-				<td class="b">
-					<input type="checkbox" name="rating" id="rating" value="true" {% if user_data.comfortable_rating == "mature" %}checked{% endif %}>
-					<label for="rating"> Enable sensitive content</label><br>
-				</td>
+			{% if not is_chaziz_sb %}
+				<tr>
+				<td class="a">Adult content</td>
+					{% if isUserOver18 %}
+						<td class="b">
+							<input type="checkbox" name="rating" id="rating" value="true"
+								   {% if user_data.comfortable_rating == "mature" %}checked{% endif %}>
+							<label for="rating"> Enable adult content</label><br>
+
+							<input type="checkbox" name="block_under_18" id="block_under_18" value="true"
+								   {% if user_data.block_under_18 %}checked{% endif %}>
+							<label for="block_under_18"> Block profile/upload access from people under 18</label>
+						</td>
+					{% else %}
+						<td class="b">
+							Based on your account's birthdate, access to mature-rated content is restricted.
+							If you entered an incorrect birthdate, please contact {{ website_branding.name }}
+							administration.
+						</td>
+					{% endif %}
+				</tr>
+			{% endif %}
 			<tr>
 				<td class="a">Blacklisted tags</td>
 				<td class="b">
