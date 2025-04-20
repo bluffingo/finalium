@@ -1,0 +1,141 @@
+<div class="channel-header-bg">
+</div>
+<div class="grid" style="background-color:{{ data.customization.basic_box_border_color }};height: 100px;">
+    <div class="col-md-1" style="height:inherit;display: table;">
+        <div style="display: table-cell;vertical-align: middle;">
+            <img class="img-fluid rounded" src="{{ profile_picture(userpagedata.name) }}" title="{{ userpagedata.name }}" alt="{{ userpagedata.name }}">
+        </div>
+    </div>
+    <div class="col-md-9" style="color:{{ data.customization.title_color }};height:inherit;">
+        <h1>
+            {{ data.displayname }}
+            {% if data.is_staff %}{{ icon("shield", 20) }}{% endif %}
+        </h1>
+        <p>@{{ data.username }}
+            {# hack to prevent twig from outputing the number 1 #}
+            {% if data.followers != 1 %}
+                {% set pluralSubscribers = "s" %}
+            {% endif %}
+            {% if data.views != 1 %}
+                {% set pluralViews = "s" %}
+            {% endif %}
+            &bull; {{ data.followers ?? "no" }} follower{{ pluralSubscribers }}
+            &bull; {{ data.views ?? "no" }} view{{ pluralViews }}
+        </p>
+    </div>
+    <div class="col-md-2 text-right" style="height:inherit;display: table;">
+        <div style="display: table-cell;vertical-align: middle;text-align:right;">
+            {% if userpagedata.id != userdata.id %}
+                <button id="subscribe-watch" class="button button-{% if subscribed %}secondary{% else %}primary{% endif %} button-small" type="button" {% if not log %}disabled{% endif %}>{% if subscribed %}Unfollow{% else %}Follow{% endif %}</button>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<div class="grid" style="background-color:{{ data.customization.highlight_box_background_color }};border: 1px solid {{ data.customization.basic_box_border_color }}">
+    <div class="screwPaddingLeft col-md-4" style="color:{{ data.customization.basic_box_text_color }};">
+        <div class="card-profiles">
+            <h3 style="text-align:center;color:{{ data.customization.title_color }};background-color:{{data.customization.basic_box_border_color }};margin:0;padding:5px;">
+                About {{ userpagedata.name }}
+            </h3>
+            <div class="card" style="border-color: {{data.customization.basic_box_border_color }};background-color:{{data.customization.basic_box_background_color }};">
+                <div class="card-body">
+                    {{ data.about | markdown }}
+                    <hr>
+                    <table style="width:100%">
+                        <thead>
+                        <tr>
+                            <td class="left">Last connected</td>
+                            <td class="right">{{ data.connected | relative_time }}</td>
+                        </tr>
+                        <tr>
+                            <td class="left">Registered</td>
+                            <td class="right">{{ data.joined | date('Y-m-d H:i:s') }}</td>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <div class="card" style="border-color: {{data.customization.basic_box_border_color }};background-color:{{data.customization.basic_box_background_color }};">
+                <h3>Journals</h3>
+                {% for journal in data.journals %}
+                    {% include "components/journal.twig" %}
+                {% else %}
+                    <p>There are currently no journals by {{ data.displayname }}</p>
+                {% endfor %}
+            </div>
+            {% if data.id == user_data.id %}
+                <div class="card" style="border-color: {{data.customization.basic_box_border_color }};background-color:{{data.customization.basic_box_background_color }};">
+                    <div class="user-action-container">
+                        <a href="/settings">
+                            <div class="user-action">{{ icon("gear", 24) }} Edit my settings</div>
+                        </a>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+
+    </div>
+    <div class="screwPaddingRight col-md-12" style="color:{{ data.customization.basic_box_text_color }};">
+        {#
+        <div class="card-profiles">
+            <h3 style="text-align:center;color:{{ data.customization.title_color }};background-color:{{data.customization.basic_box_border_color }};margin:0;padding:5px;">
+                Featured
+            </h3>
+            <div class="card" style="border-color: {{data.customization.basic_box_border_color }};background-color:{{data.customization.basic_box_background_color }};">
+                <div class="card-body">
+                    <div class="col-md-6">
+                        {{ include('/components/player.twig') }}
+                    </div>
+                    <div class="col-md-6">
+                        <h2><a href="watch.php?v={{ video.video_id }}">{{ video.title }}</a></h2>
+                        <p style="margin:0;">From: <a href="/user.php?name={{ video.u_name }}" title="{{ video.u_name }}">{{ video.u_name }}</a></p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        #}
+        <div class="card-profiles">
+            <h3 style="text-align:center;color:{{ data.customization.title_color }};background-color:{{data.customization.basic_box_border_color }};margin:0;padding:5px;">
+                Uploads
+            </h3>
+            <div class="card" style="border-color: {{data.customization.basic_box_border_color }};background-color:{{data.customization.basic_box_background_color }};">
+                <div class="card-body">
+                    {% for submission in data.submissions %}
+                        {{ submission_box(submission) }}
+                    {% else %}
+                        <p>There are currently no uploads by {{ data.displayname }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="card-profiles">
+            <h3 style="text-align:center;color:{{ data.customization.title_color }};background-color:{{data.customization.basic_box_border_color }};margin:0;padding:5px;">
+                Comments
+            </h3>
+            <div class="card" style="border-color: {{data.customization.basic_box_border_color }};background-color:{{data.customization.basic_box_background_color }};">
+                {% if is_user_logged_in %}
+                    <div class="grid" id="commentField">
+                        <div class="col-md-1">
+                            <img class="img-pfp img-fluid" alt="{{ user_data.name }}" src="{{ profile_picture(user_data.name) }}">
+                        </div>
+                        <div class="col-md-15">
+                            <div>
+				<textarea class="form-control" id="commentContents" style="overflow:hidden;resize:vertical" rows="3"
+                          placeholder="Enter comment here."></textarea>
+                            </div>
+                            <div class="right">
+                                <button id="post-user" class="button button-primary"
+                                        style="margin-bottom:0;">Comment</button>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+                <div id="comment"></div>
+                {% for comment in comments %}
+                    {{ comment(comment) }}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

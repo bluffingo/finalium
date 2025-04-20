@@ -18,21 +18,25 @@
 {% endblock %}
 
 {% block customcss %}
-    .jumbotron.profile-banner {
-    background-image: url('{{ banner_picture }}');
+    .channel-header-bg {
+    background: url('banner_picture'), linear-gradient(#888, #444) !important;
+    background-position: center !important;
+    height: 225px;
     }
 
     {% if data.customization %}
+    .container a:not(.userlink) {
+    color: {{ data.customization.link_color }} !important;
+    }
+    {% endif %}
+
+    {% if data.customization and current_theme != "beta" %}
         body {
         background: {{ data.customization.background_color }};
         }
 
         .container {
         font-family: {{ data.customization.font | raw }};
-        }
-
-        .container a:not(.userlink) {
-        color: {{ data.customization.link_color }} !important;
         }
 
         /* Titles */
@@ -44,7 +48,7 @@
         .highlight-box {
         background: {{ data.customization.highlight_box_background_color }};
         border: 1px solid {{ data.customization.basic_box_border_color }};
-        color: {{ data.customization.highlight_box_text_color }};å
+        color: {{ data.customization.highlight_box_text_color }};
         }
 
         /* Basic box */
@@ -57,88 +61,9 @@
 {% endblock %}
 
 {% block content %}
-    <div class="card card-body highlight-box" style="padding: 15px 10px;">
-        <div class="grid">
-            <div class="col-md-1">
-                <img class="img-pfp img-fluid" src="{{ profile_picture(data.username) }}" alt="{{ data.username }}">
-            </div>
-            <div class="col-md-13">
-                <h1 style="margin: 0">
-                    {{ data.displayname }}
-                    {% if data.is_staff %}{{ icon("shield", 20) }}{% endif %}
-                </h1>
-                <p>@{{ data.username }}
-                    {# hack to prevent twig from outputing the number 1 #}
-                    {% if data.followers != 1 %}
-                        {% set pluralSubscribers = "s" %}
-                    {% endif %}
-                    {% if data.views != 1 %}
-                        {% set pluralViews = "s" %}
-                    {% endif %}
-                    &bull; {{ data.followers ?? "no" }} follower{{ pluralSubscribers }}
-                    &bull; {{ data.views ?? "no" }} view{{ pluralViews }}
-                </p>
-            </div>
-            <div class="col-md-2 right">
-                {% if data.id != user_data.id %}
-                    <button id="subscribe" class="button button-{% if data.following %}secondary{% else %}primary{% endif %}"
-                            type="button"
-                            {% if not is_user_logged_in %}disabled{% endif %}>{% if data.following %}Unfollow{% else %}Follow{% endif %}</button>
-                {% endif %}
-            </div>
-        </div>
-    </div>
-    <div class="grid">
-        <div class="col-md-4">
-            <div class="card card-body basic-box">
-                <h3>About {{ data.displayname }}</h3>
-                {{ data.about | markdown }}
-                <p><strong>Joined</strong>: {{ data.joined | date('Y-m-d H:i:s') }}</p>
-                <p><strong>Last login</strong>: {{ data.connected | relative_time }}</p>
-            </div>
-            <div class="card card-body basic-box">
-                <h3>Journals</h3>
-                {% for journal in data.journals %}
-                    {% include "components/journal.twig" %}
-                {% else %}
-                    <p>There are currently no journals by {{ data.displayname }}</p>
-                {% endfor %}
-            </div>
-        </div>
-        <div class="col-md-12">
-            <div class="card card-body basic-box">
-                <h3>Uploads</h3>
-                {% for submission in data.submissions %}
-                    {{ submission_box(submission) }}
-                {% else %}
-                    <p>There are currently no uploads by {{ data.displayname }}</p>
-                {% endfor %}
-            </div>
-            <div class="card card-body basic-box">
-                <h3>Comments</h3>
-                {% if is_user_logged_in %}
-                    <div class="grid" id="commentField">
-                        <div class="col-md-1">
-                            <img class="img-pfp img-fluid" alt="{{ user_data.name }}" src="{{ profile_picture(user_data.name) }}">
-                        </div>
-                        <div class="col-md-15">
-                            <div>
-				<textarea class="form-control" id="commentContents" style="overflow:hidden;resize:vertical" rows="3"
-                          placeholder="Enter comment here."></textarea>
-                            </div>
-                            <div class="right">
-                                <button id="post-user" class="button button-primary"
-                                        style="margin-bottom:0;">Comment</button>
-                            </div>
-                        </div>
-                    </div>
-                {% endif %}
-                <div id="comment"></div>
-                {% for comment in comments %}
-                    {{ comment(comment) }}
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-    </div>
+    {% if current_theme == "beta" and data.customization %}
+        {{ include('/subpages/_profile_beta.twig') }}
+    {% else %}
+        {{ include('/subpages/_profile.twig') }}
+    {% endif %}
 {% endblock %}
