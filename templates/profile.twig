@@ -37,6 +37,7 @@
             <div class="col-md-13">
                 <h1 style="margin: 0">
                     {{ data.displayname }}
+                    {% if data.is_staff %}{{ icon("shield", 20) }}{% endif %}
                 </h1>
                 <p>@{{ data.username }}
                     {# hack to prevent twig from outputing the number 1 #}

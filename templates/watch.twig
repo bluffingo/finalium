@@ -29,7 +29,14 @@
                            <img src="{{ profile_picture(submission.author.info.username) }}" class="img-pfp" style="width:48px;">
                         </div>
                         <div>
-                           <a href="/user.php?name={{ submission.author.info.username }}" style="color:{{ submission.author.info.customcolor }}"><b style="height: 20px;display: inline-block;">{{ submission.author.info.username }}</b></a> {# • {{ allVideos }} videos#}
+                           <a href="/user.php?name={{ submission.author.info.username }}"
+                              style="color:{{ submission.author.info.color }}">
+                              <b style="height: 20px;display: inline-block;">
+                                 {{ submission.author.info.username }}
+                              </b>
+                           </a>
+                           {% if submission.author.info.powerlevel > 1 %}{{ icon("shield", 16) }}{% endif %}
+                           {# • {{ allVideos }} videos#}
                            <br>
                            {% if submission.is_owner %}
                               <a class="button button-secondary button-small">Settings</a>
@@ -73,8 +80,11 @@
                   <div class="col-md-8 right">
                      <div class="tab">
                         <button class="tablinks active" onclick="openTab(event, 'About')" id="defaultOpen">About</button>
+                        <button class="tablinks" onclick="openTab(event, 'Tags')">{{ icon("tags-fill", 12) }}</button>
                         <button class="tablinks" onclick="openTab(event, 'Stats')">{{ icon("bar-chart-fill", 12) }}</button>
+                        {% if options.enable_incomplete_features %}
                         <button class="tablinks" onclick="openTab(event, 'Flag')">{{ icon("flag-fill", 12) }}</button>
+                        {% endif %}
                      </div>
                   </div>
                </div>
@@ -90,8 +100,16 @@
                   {% if submission.description | trim is not empty %}
                      {{ submission.description | markdown_user_written }}
                   {% else %}
-                     <p>This submission has no description.</p>
+                     <p>This upload has no description.</p>
                   {% endif %}
+               </div>
+               <div id="Tags" class="tabcontent" style="display: none;">
+                  <h2>Tags</h2>
+                  {% for tag in submission.tags %}
+                     <a href="/search?query={{ tag.name }}">{{ tag.name }}</a>{{ not loop.last ? ',' }}
+                  {% else %}
+                     No tags.
+                  {% endfor %}
                </div>
                <div id="Stats" class="tabcontent" style="display: none;">
                   <h2>Stats</h2>
@@ -107,14 +125,16 @@
                      </li>
                   </ul>
                </div>
+               {% if options.enable_incomplete_features %}
                <div id="Flag" class="tabcontent" style="display: none;">
-                  <h2>Flag submission</h2>
+                  <h2>Flag upload</h2>
                   This isn't currently implemented.
                </div>
+               {% endif %}
             </div>
             <div class="card">
                <div class="card-body-fat">
-                  <h3>Comments ({{ comCount }})</h3>
+                  <h3>Comments ({{ submission.interactions.comments }})</h3>
                   {% if is_user_logged_in %}
                      <div>
                         <div>
