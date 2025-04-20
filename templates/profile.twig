@@ -16,20 +16,48 @@
         user_id = '{{ data.id }}';
     </script>
 {% endblock %}
-{% block content %}
-    {% if userbandata != true %}
-        {% if data.id == user_data.id and not forceuser %}
-            <div class="bg-neutral" style="padding:1px 15px;">
-                <p class="center"><a href="/settings">Edit my settings</a>
-                    &bull; <a href="/user?id={{ id }}&forceuser">View user page as viewer</a>
-                    {% if data.powerlevel > 2 %}
-                    &bull; <a href="/admin">Admin panel</a>
-                    {% endif %}
-                </p>
-            </div>
-        {% endif %}
+
+{% block customcss %}
+    .jumbotron.profile-banner {
+    background-image: url('{{ banner_picture }}');
+    }
+
+    {% if data.customization %}
+        body {
+        background: {{ data.customization.background_color }};
+        }
+
+        .container {
+        font-family: {{ data.customization.font | raw }};
+        }
+
+        .container a:not(.userlink) {
+        color: {{ data.customization.link_color }} !important;
+        }
+
+        /* Titles */
+        h1, h2, h3, h4, h5, h6 {
+        color: {{ data.customization.title_color }};
+        }
+
+        /* Highlight box */
+        .highlight-box {
+        background: {{ data.customization.highlight_box_background_color }};
+        border: 1px solid {{ data.customization.basic_box_border_color }};
+        color: {{ data.customization.highlight_box_text_color }};å
+        }
+
+        /* Basic box */
+        .basic-box {
+        background: {{ data.customization.basic_box_background_color }};
+        border: 1px solid {{ data.customization.basic_box_border_color }};
+        color: {{ data.customization.basic_box_text_color }};
+        }
     {% endif %}
-    <div class="bg-neutral" style="padding: 15px 10px;">
+{% endblock %}
+
+{% block content %}
+    <div class="card card-body highlight-box" style="padding: 15px 10px;">
         <div class="grid">
             <div class="col-md-1">
                 <img class="img-pfp img-fluid" src="{{ profile_picture(data.username) }}" alt="{{ data.username }}">
@@ -59,58 +87,58 @@
                 {% endif %}
             </div>
         </div>
-        <div class="grid">
+    </div>
+    <div class="grid">
         <div class="col-md-4">
-            {% if markread %}
-                <div class="header_message header-primary">Marked all notifications as read.</div>
-            {% elseif edited %}
-                <div class="header_message header-primary">Settings successfully saved!</div>
-            {% endif %}
-            <h2></h2>
-            <div class="user_about">
+            <div class="card card-body basic-box">
                 <h3>About {{ data.displayname }}</h3>
                 {{ data.about | markdown }}
-                <p><strong>Registered on</strong>: {{ data.joined | date('Y-m-d H:i:s') }}</p>
-                <p><strong>Last logged in</strong>: {{ data.connected | relative_time }}</p>
+                <p><strong>Joined</strong>: {{ data.joined | date('Y-m-d H:i:s') }}</p>
+                <p><strong>Last login</strong>: {{ data.connected | relative_time }}</p>
+            </div>
+            <div class="card card-body basic-box">
+                <h3>Journals</h3>
+                {% for journal in data.journals %}
+                    {% include "components/journal.twig" %}
+                {% else %}
+                    <p>There are currently no journals by {{ data.displayname }}</p>
+                {% endfor %}
             </div>
         </div>
         <div class="col-md-12">
-            {% for submission in data.submissions %}
-                {{ submission_box(submission) }}
-            {% else %}
-                <p>There are currently no uploads by {{ data.displayname }}</p>
-            {% endfor %}
-            {% if user_data.id == id %}
-                {% set forceuser = "&forceuser" %}
-            {% else %}
-                {% set forceuser = "" %}
-            {% endif %}
-            {% set le_url = 'user?id=' ~ id ~ '&page=%s' ~ forceuser %}
-            {{ pagination(level_count, items_per_page, le_url, page) }}
-            <div class="card card-body-fat">
-            {% if is_user_logged_in %}
-                <div class="grid" id="commentField">
-                    <div class="col-md-1">
-                        <img class="img-pfp img-fluid" alt="{{ user_data.name }}" src="{{ profile_picture(user_data.name) }}">
-                    </div>
-                    <div class="col-md-15">
-                        <div>
+            <div class="card card-body basic-box">
+                <h3>Uploads</h3>
+                {% for submission in data.submissions %}
+                    {{ submission_box(submission) }}
+                {% else %}
+                    <p>There are currently no uploads by {{ data.displayname }}</p>
+                {% endfor %}
+            </div>
+            <div class="card card-body basic-box">
+                <h3>Comments</h3>
+                {% if is_user_logged_in %}
+                    <div class="grid" id="commentField">
+                        <div class="col-md-1">
+                            <img class="img-pfp img-fluid" alt="{{ user_data.name }}" src="{{ profile_picture(user_data.name) }}">
+                        </div>
+                        <div class="col-md-15">
+                            <div>
 				<textarea class="form-control" id="commentContents" style="overflow:hidden;resize:vertical" rows="3"
                           placeholder="Enter comment here."></textarea>
-                        </div>
-                        <div class="right">
-                            <button id="post-user" class="button button-primary"
-                                    style="margin-bottom:0;">Comment</button>
+                            </div>
+                            <div class="right">
+                                <button id="post-user" class="button button-primary"
+                                        style="margin-bottom:0;">Comment</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            {% endif %}
-            <div id="comment"></div>
-            {% for comment in comments %}
-                {{ comment(comment) }}
-            {% endfor %}
+                {% endif %}
+                <div id="comment"></div>
+                {% for comment in comments %}
+                    {{ comment(comment) }}
+                {% endfor %}
             </div>
         </div>
     </div>
-</div>
+    </div>
 {% endblock %}

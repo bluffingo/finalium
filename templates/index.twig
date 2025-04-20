@@ -127,14 +127,7 @@
                 <div class="card-body-fat">
                     <h3 style="margin-top:0">{{ localize('site_news') }}</h3>
                     {% for journal in data.news_recent %}
-                        <h3>
-                            <a href="/read?j={{ journal.id }}">{{ journal.title }}</a>
-                            <br>
-                            <small>{{ journal.published | relative_time }}</small>
-                        </h3>
-                        <p>
-                            {{ journal.contents|u.truncate(250, '...') }}
-                        </p>
+                        {% include "components/journal.twig" %}
                     {% else %}
                         <p>No journals.</p>
                     {% endfor %}

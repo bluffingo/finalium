@@ -1,0 +1,8 @@
+<h3>
+    <a href="/read?j={{ journal.id }}">{{ journal.title }}</a>
+    <br>
+    <small>{{ journal.published | relative_time }}</small>
+</h3>
+<p>
+    {{ journal.contents|u.truncate(250, '...') }}
+</p>
