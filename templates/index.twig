@@ -38,7 +38,7 @@
                                     <h3 style="padding:0;margin:8px 0;">@{{ user_data.name }}</h3>
                                     <p style="padding:0;margin:8px 0;">{{ data.totals.followers ?? "no" }} follower{{ pluralSubscribers }}
                                         • {{ data.totals.views ?? "no" }} view{{ pluralViews }}</p>
-                                    <a class="button button-neutral button-large" href="/my_submissions">Manage my content {{ icon('caret-right-fill', 12) }}</a>
+                                    <a class="button button-secondary button-large" href="/my_submissions">Manage my content {{ icon('caret-right-fill', 12) }}</a>
                                 </div>
                             {% else %}
                                 <div class="col-10">
@@ -52,9 +52,9 @@
                                     </h3>
                                 </div>
                                 <div class="col-6">
-                                    <a class="button button-neutral button-large"
+                                    <a class="button button-secondary button-large"
                                        href="/register">Get started {{ icon('caret-right-fill', 16) }}</a><br><br>
-                                    <big>Already have an account? <a class="button button-neutral"
+                                    <big>Already have an account? <a class="button button-secondary"
                                                                      href="/login">Sign in</a></big>
                                 </div>
                             {% endif %}
@@ -66,7 +66,7 @@
                             <div class="col-10">
                                 <h1>{{ localize('welcome_logged_out', website_branding.name) }}</h1>
                                 <h3>@{{ user_data.name }}</h3>
-                                <a class="button button-neutral button-large"
+                                <a class="button button-secondary button-large"
                                    href="/my_submissions">Manage {{ icon('caret-right-fill', 12) }}</a>
                             </div>
                             <div class="col-6 right stats">
@@ -85,9 +85,9 @@
                                 </h3>
                             </div>
                             <div class="col-6">
-                                <a class="button button-neutral button-large"
+                                <a class="button button-secondary button-large"
                                    href="/register">Get started {{ icon('caret-right-fill', 16) }}</a><br><br>
-                                <big>Already have an account? <a class="button button-neutral"
+                                <big>Already have an account? <a class="button button-secondary"
                                                                  href="/login">Sign in</a></big>
                             </div>
                         {% endif %}

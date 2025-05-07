@@ -35,13 +35,18 @@ $gray-700: #999999;
 $gray-800: #aaaaaa;
 $gray-900: #cccccc;
 
+$card-bg: $gray-100;
+
 $masthead-bg: #383838f0;
 $masthead-border: #606060;
 
 $footer-bg: #111111;
 $footer-border: #333333;
 
-$card-bg: $gray-100;
+$guide-bg: #111111;
+$guide-border: #333333;
+
+$body-bg: #121212;
 
 $primary: $blue;
 $secondary: $gray-100;
@@ -50,7 +55,6 @@ $info: $cyan;
 $warning: $yellow;
 $danger: $red;
 $gray-dark: $gray-800;
-$neutral: $gray-100;
 
 $text-color: #FFF;
 
@@ -61,7 +65,6 @@ $theme-colors: (
         "info": $info,
         "warning": $warning,
         "danger": $danger,
-        "neutral": $neutral,
         "light": $gray-100,
         "dark": $gray-dark,
 );

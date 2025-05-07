@@ -19,8 +19,7 @@ $danger: $red;
 
 $form-input: #fff;
 
-$card-bg: #fff;
-
+// todo: clean this up, its fucking stupid.
 $gray-100: #F8F8F8;
 $gray-200: #EEEEEE;
 $gray-300: #E2E2E2;
@@ -33,14 +32,24 @@ $gray-900: #242424;
 
 $text-color: #000;
 
+$card-bg: #fff;
+$card-border: $gray-200; //#eeeeee
+
 $masthead-bg: #fffffff0;
 $masthead-border: lightgrey;
 
 $footer-bg: #F1F1F1; //gray-150
 $footer-border: #E8E8E8; //gray-250
 
-$light: #f8f9fa;
-$dark: #343a40;
+$guide-bg: #F1F1F1; //gray-150
+$guide-border: #E8E8E8; //gray-250
+
+$body-bg: $gray-100;
+
+$likesaber-gray: $gray-400;
+
+$light: #f8f8f8;
+$dark: #333333;
 
 $primary: $blue;
 $secondary: $gray-100;
@@ -49,7 +58,6 @@ $info: $cyan;
 $warning: $yellow;
 $danger: $red;
 $gray-dark: $gray-800;
-$neutral: $gray-100;
 
 $theme-colors: (
         "primary": $primary,
@@ -58,7 +66,6 @@ $theme-colors: (
         "info": $info,
         "warning": $warning,
         "danger": $danger,
-        "neutral": $neutral,
         "light": $gray-100,
         "dark": $gray-dark,
 );

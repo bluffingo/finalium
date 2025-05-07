@@ -1,10 +1,14 @@
 <div id="masthead-container">
     <div id="masthead">
         <div id="header-main">
-            <div class="button button-neutral-invis masthead-button guide-button" id="guide-toggle">
-                {{ icon("list", 20) }}
+            <div id="logo-container">
+                <div class="button button-secondary-invis masthead-button guide-button" id="guide-toggle">
+                    {{ icon("list", 20) }}
+                </div>
+                <a href="/">
+                    <img id="logo" src="{{ logo }}" alt="{{ website_branding.name }}">
+                </a>
             </div>
-            <a href="/" id="logo-container"><img id="logo" src="{{ logo }}" alt="{{ website_branding.name }}"></a>
             <form id="masthead-search" action="/search">
                 <button id="search-btn" class="button button-secondary">
                     <span>{{ icon("search", 14) }}</span>
@@ -14,15 +18,15 @@
                 </div>
             </form>
         </div>
-        <div id="header-user" style="text-align: right;">
+        <div id="header-user">
             {% if is_user_logged_in %}
                 <a href="/upload">
-                    <div class="button button-neutral-invis masthead-button tooltip" title="Upload">{{ icon("upload", 20) }}</div>
+                    <div class="button button-secondary-invis masthead-button tooltip" title="Upload">{{ icon("upload", 20) }}</div>
                 </a>
             {% endif %}
-            <div style="margin:0;{% if is_user_logged_in %}width:1.75rem{% endif %}"
-                 id="{% if is_user_logged_in %}masthead-loggedin{% else %}masthead-signin{% endif %}" class="masthead-user">
-                {% if is_user_logged_in %}
+            {% if is_user_logged_in %}
+                <div style="margin:0;{% if is_user_logged_in %}width:1.75rem{% endif %}"
+                     id="{% if is_user_logged_in %}masthead-loggedin{% else %}masthead-signin{% endif %}" class="masthead-user">
                     <div style="margin-top: 4px;">
                         <img class="img-pfp img-fluid" src="{{ profile_picture(user_data.name) }}" alt="{{ user_data.name }}">
                         <div class="menu" id="masthead-below">
@@ -33,13 +37,11 @@
                             </ul>
                         </div>
                     </div>
-                {% else %}
-                    <div style="display: flex;justify-content: center;align-items: center;gap: 5px;margin-top: 2px;">
-                        <a href="/login">Login</a>
-                        <a href="/register">Register</a>
-                    </div>
-                {% endif %}
-            </div>
+                </div>
+            {% else %}
+                <a href="/login">Login</a>
+                <a href="/register">Register</a>
+            {% endif %}
         </div>
     </div>
 </div>

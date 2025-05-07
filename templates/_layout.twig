@@ -56,21 +56,25 @@
     </div>
 {% endif %}
 {% if current_theme != 'spring2023' %}
-<div id="guide">
-    <h3>Guide</h3>
-    {% if is_user_logged_in %}
-        {% for link in sidebar_following_users() %}
-            <ul>
+    <div id="guide">
+        <ul>
+            {% for link in header_main_links() %}
                 <li class="guide-channel">
-                    <a href="/user/{{ link.username }}" class="guide-item">
-                        <img class="thumb" src="{{ profile_picture(link.username) }}">
-                        {{ link.username }}
-                    </a>
+                    <a href="{{ link.url }}" class="guide-item">{{ link.name }}</a>
                 </li>
-            </ul>
-        {% endfor %}
-    {% endif %}
-</div>
+            {% endfor %}
+            {% if is_user_logged_in %}
+                {% for link in sidebar_following_users() %}
+                    <li class="guide-channel">
+                        <a href="/user/{{ link.username }}" class="guide-item">
+                            <img class="thumb img-pfp" src="{{ profile_picture(link.username) }}">
+                            {{ link.username }}
+                        </a>
+                    </li>
+                {% endfor %}
+            {% endif %}
+        </ul>
+    </div>
 {% endif %}
 {% if current_theme == 'beta' %}
     {% include "components/beta/_header.twig" %}

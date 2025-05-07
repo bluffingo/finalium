@@ -16,9 +16,14 @@ $bootstrap-icons-font-dir: "/assets" !default;
   @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 }
 
+$header-height: 48px;
 $masthead-search-bar-height: 31px;
+$guide-width: 17.5em;
+
 @if $theme == "hitchhiker" {
-  $masthead-search-bar-height: 27px;
+  $header-height: 50px;
+  $masthead-search-bar-height: 31px;
+  $guide-width: 230px;
 }
 
 /* SB CSS STARTS HERE ======================================================== */
@@ -304,16 +309,6 @@ blockquote {
   background-size: cover;
 }
 
-#logo-container {
-  float: left;
-  @if $theme == "hitchhiker" {
-    height: 30px;
-  } @else {
-    height: 33px;
-  }
-  padding: 3px !important;
-}
-
 .comment {
   p {
     width: 100%;
@@ -386,13 +381,19 @@ ul.nav {
 }
 
 body {
-  background: $gray-100;
+  background: $body-bg;
   color: $text-color;
   font-family: $font;
-  font-size: 13px;
   margin: auto;
   width: 100%;
-  line-height: 1.4;
+
+  @if $theme == "hitchhiker" {
+    font-size: 12px;
+    line-height: normal;
+  } @else {
+    font-size: 13px;
+    line-height: 1.4;
+  }
 }
 
 // move this
@@ -492,15 +493,15 @@ input[type]:not([type=file]):not([type=submit]):not([type=range]):focus {
 
 /// "Likesaber" for watch page \\\
 .likesaber {
-  width: 200px;
-  height: 3px;
-  background-color: $gray-400;
+  width: 160px;
+  height: 2px;
+  background-color: $likesaber-gray;
   float: right;
 
   .like {
     float: left;
-    height: 3px;
-    background-color: $green;
+    height: 2px;
+    background-color: $primary;
   }
 }
 

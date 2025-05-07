@@ -8,13 +8,13 @@ $theme: "hitchhiker";
 // override variables
 
 $threshold: 65%;
-$red: #993300;
+$red: #cc181e;
 $white: #FCFCFC;
 $black: #000;
 $yellow: #ffbf00;
 $cyan: #1778b8;
 $blue: #167ac6;
-$green: #559900;
+$green: #61ad15;
 
 
 $primary: $blue;
@@ -38,8 +38,12 @@ $gray-700: #4F4F4F;
 $gray-800: #393939;
 $gray-850: #333333;
 $gray-900: #242424;
-$light: #f8f9fa;
-$dark: #343a40;
+
+$light: #f8f9fa; // todo: #666
+$dark: #343a40; // todo: #ccc
+
+$card-bg: #fff;
+$card-border: #e2e2e2;
 
 $masthead-bg: #ffffff;
 $masthead-border: #e8e8e8;
@@ -47,14 +51,20 @@ $masthead-border: #e8e8e8;
 $footer-bg: #ffffff;
 $footer-border: #e8e8e8;
 
+$guide-bg: #ffffff;
+$guide-border: #e8e8e8;
+
+$body-bg: #f1f1f1;
+
+$likesaber-gray: #cccccc;
+
 $primary:       $blue;
-$secondary:     $gray-100;
+$secondary:     #f8f8f8;
 $success:       $green;
 $info:          $cyan;
 $warning:       $yellow;
 $danger:        $red;
 $gray-dark: 	$gray-800;
-$neutral:         $gray-100;
 
 $theme-colors: (
         "primary":    $primary,
@@ -63,7 +73,6 @@ $theme-colors: (
         "info":       $info,
         "warning":    $warning,
         "danger":     $danger,
-        "neutral":      $neutral,
         "light":      $gray-100,
         "dark":      $gray-dark,
 );
