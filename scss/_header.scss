@@ -63,10 +63,25 @@
 #header-main {
   display: flex;
   #masthead-search {
-    @if $theme != "spring" {
-      width: 100%;
+    // TODO: finetune this
+    @include responsive('tiny') {
+      width: 200px;
+    }
+    @include responsive('small') {
+      width: 300px;
+    }
+    @include responsive('medium') {
+      width: 560px;
+    }
+    @include responsive('large') {
+      width: 600px;
     }
   }
+}
+
+#header-user {
+  display: flex;
+  margin-left: auto;
 }
 
 #masthead-container {
@@ -101,6 +116,9 @@
 }
 
 #masthead {
+  display: flex;
+  align-items: center;
+
   width: 100%;
 
   @if $theme == "spring" {
