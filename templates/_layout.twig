@@ -51,7 +51,7 @@
 </head>
 <body>
 {% if show_warning_banner %}
-    <div class="header_message header-danger full-screen">
+    <div class="banner banner-danger full-screen">
         {{ warning_banner_text | raw }}
     </div>
 {% endif %}
@@ -80,13 +80,13 @@
 {% block precontent %}{% endblock %}
 <div class="container page-container">
     {% if session.notif_message %}
-        <div class="header_message header-{{ session.notif_color }}">
+        <div class="banner banner-{{ session.notif_color }}">
         {{ session.notif_message }}
         </div>
         {{ remove_notification() }}
     {% endif %}
     {% if user_ban_data %}
-        <div class="header_message header-danger">You have been banned from {{ website_branding.name }}.</div>
+        <div class="banner banner-danger">You have been banned from {{ website_branding.name }}.</div>
     {% endif %}
     {% block content %}{% endblock %}
 </div>
