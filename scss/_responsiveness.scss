@@ -12,7 +12,6 @@
 @mixin maxwidths() {
   width: 100%;
   max-width: 100%;
-  padding: 0 1rem;
 
   @if $theme == "hitchhiker" {
     @include responsive('tiny') {
@@ -36,6 +35,8 @@
       max-width: 1280px;
     }
   } @else {
+    padding: 0 1rem;
+
     @include responsive('tiny') {
       max-width: 100%;
       min-width: 270px;

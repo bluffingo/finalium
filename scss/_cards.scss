@@ -2,6 +2,10 @@
   border: 1px solid $card-border;
   margin-bottom: 0.75em;
   background-color: $card-bg;
+
+  @if $theme == "hitchhiker" {
+    box-shadow: 0 1px 2px rgba(0,0,0,.1)
+  }
 }
 
 .card-header {
@@ -15,17 +19,16 @@
 }
 
 .card-body {
-  padding: 0.5em;
+  @if $theme == "hitchhiker" {
+    padding: 15px;
+  } @else {
+    padding: 1em;
+  }
 }
 
 .card-body.collapsed {
   padding: 0;
 }
-
-.card-body-fat {
-  padding: 1em;
-}
-
 .card-profiles {
   padding: 0.35em 0.5em 0;
 }

@@ -1,0 +1,33 @@
+.viewcount {
+  @if $theme == "hitchhiker" {
+    color: $gray-850;
+    margin-bottom: 2px;
+  } @else {
+    color: $gray-800;
+    margin-bottom: 4px;
+  }
+  font-weight: normal;
+}
+
+.below-likesaber {
+  margin-top: 16px;
+  color: $gray-600;
+}
+
+.watch-creator {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.watch-user-header {
+  padding: 10px 0 0 0;
+}
+
+hr.watch-info-divider {
+  margin: 0 0 10px 0;
+}
+
+.watch-view-info {
+  align-self: end;
+}

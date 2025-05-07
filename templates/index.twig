@@ -52,7 +52,7 @@
         <div class="grid">
             <div class="col-10">
                 <div class="card">
-                    <div class="card-body-fat">
+                    <div class="card-body">
                         <h3 style="margin-top:0">{{ localize('random_uploads') }}</h3>
                         {% for submission in data.submissions %}
                             {{ submission_box(submission) }}
@@ -62,7 +62,7 @@
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card-body-fat">
+                    <div class="card-body">
                         <h3 style="margin-top:0">{{ localize('recent_uploads') }}</h3>
                         {% for submission in data.submissions_new %}
                             {{ submission_box(submission) }}
@@ -74,7 +74,7 @@
             </div>
             <div class="col-6">
                 <div class="card">
-                    <div class="card-body-fat">
+                    <div class="card-body">
                         <h3 style="margin-top:0">{{ localize('site_news') }}</h3>
                         {% for journal in data.news_recent %}
                             {% include "components/journal.twig" %}
@@ -85,7 +85,7 @@
                 </div>
                 {% if is_chaziz_sb %}
                     <div class="card">
-                        <div class="card-body-fat">
+                        <div class="card-body">
                             <h3 style="margin-top:0">Discord</h3>
                             <iframe src="https://discord.com/widget?id=1303274117432213556&theme=dark" width="100%" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
                         </div>

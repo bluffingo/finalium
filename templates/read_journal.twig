@@ -4,7 +4,7 @@
 
 {% block content %}
 	<div class="card">
-		<div class="card-body-fat">
+		<div class="card-body">
 			<h1>{{ data.title }}</h1>
 			<p>By {{ user_link(data.author) }}, {{ data.published | relative_time }}</p>
 			{{ data.contents | markdown_user_journal }}
@@ -14,7 +14,7 @@
 		Commenting is only supported on Biscuit and Charla.
 	</div>
 	<div class="card">
-		<div class="card-body-fat">
+		<div class="card-body">
 			<div id="comments">
 				<div id="new-comments-here"></div>
 				{% for comment in data.comments %}

@@ -51,36 +51,30 @@
 </head>
 <body>
 {% if show_warning_banner %}
-    <div class="banner banner-danger full-screen">
+    <div class="banner {% if current_theme == 'hitchhiker' %}banner-primary{% else %}banner-danger{% endif %} full-screen">
         {{ warning_banner_text | raw }}
     </div>
 {% endif %}
-{% if current_theme != 'spring2023' %}
-    <div id="guide">
-        <ul>
-            {% for link in header_main_links() %}
+<div id="guide">
+    <ul>
+        {% for link in header_main_links() %}
+            <li class="guide-channel">
+                <a href="{{ link.url }}" class="guide-item">{{ link.name }}</a>
+            </li>
+        {% endfor %}
+        {% if is_user_logged_in %}
+            {% for link in sidebar_following_users() %}
                 <li class="guide-channel">
-                    <a href="{{ link.url }}" class="guide-item">{{ link.name }}</a>
+                    <a href="/user/{{ link.username }}" class="guide-item">
+                        <img class="thumb img-pfp" src="{{ profile_picture(link.username) }}">
+                        {{ link.username }}
+                    </a>
                 </li>
             {% endfor %}
-            {% if is_user_logged_in %}
-                {% for link in sidebar_following_users() %}
-                    <li class="guide-channel">
-                        <a href="/user/{{ link.username }}" class="guide-item">
-                            <img class="thumb img-pfp" src="{{ profile_picture(link.username) }}">
-                            {{ link.username }}
-                        </a>
-                    </li>
-                {% endfor %}
-            {% endif %}
-        </ul>
-    </div>
-{% endif %}
-{% if current_theme == 'beta' %}
-    {% include "components/beta/_header.twig" %}
-{% else %}
-    {% include "components/_header.twig" %}
-{% endif %}
+        {% endif %}
+    </ul>
+</div>
+{% include "components/_header.twig" %}
 {% block precontent %}{% endblock %}
 <div class="container page-container">
     {% if session.notif_message %}

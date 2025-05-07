@@ -12,17 +12,20 @@
 {% block title %}{{ submission.title }}{% endblock %}
 {% block content %}
    <div class="watchNext">
-      {% if submission.is_owner %}
-         <div class="bg-dark text-light card card-body" style="border-bottom:none;border-color:black;">
-            <a class="button button-dark" href="/edit.php?v={{submission.video_id}}">Edit</a>
-         </div>
-      {% endif %}
       <div class="grid">
          <div class="col-10">
-            {{ submission_view(submission) }}
-            <div class="card card-body-fat" style="margin:0;border-bottom:none;padding-bottom:0;">
+            <div>
+               {{ submission_view(submission) }}
+               {% if submission.is_owner %}
+                  <div class="bg-dark text-light card card-body" style="border-bottom:none;border-color:black;">
+                     <a class="button button-dark" href="/edit.php?v={{submission.video_id}}">Edit</a>
+                  </div>
+               {% endif %}
+            </div>
+            <br>
+            <div class="card card-body" style="margin:0;border-bottom:none;padding-bottom:0;">
                <h1>{{ submission.title }}</h1>
-               <div class="grid">
+               <div class="grid watch-user-header">
                   <div class="col-8">
                      <div class="watch-creator">
                         <div>
@@ -48,49 +51,40 @@
                         <br>
                      </div>
                   </div>
-                  <div class="col-8 right">
-                     <h1 class="viewcount">{{ submission.interactions.views }}</h1>
+                  <div class="col-8 right watch-view-info">
+                     <h1 class="viewcount">{{ submission.interactions.views }} views</h1>
                      <div class="likesaber">
                         <div class="like" style="width:{{ submission.interactions.legacy.ratio }}%"></div>
                      </div>
-                     <div class="below-likesaber">
-                        {{ icon("hand-thumbs-up-fill", 12) }} {{ submission.interactions.legacy.likes }}
-                        {{ icon("hand-thumbs-down-fill", 12) }} {{ submission.interactions.legacy.dislikes }}
-                     </div>
                   </div>
+               </div>
+               <hr class="watch-info-divider">
+               <div class="watch-action-buttons right">
+                  <button href="/#" id="{% if is_user_logged_in %}like{% else %}action_unlogged{% endif %}"
+                          class="button button-like button-secondary-invis {% if submission.interactions.legacy.current_rating == "like" %}button-toggled{% endif %}">
+                     {{ icon("hand-thumbs-up-fill", 20) }}
+                     {{ submission.interactions.legacy.likes }}
+                  </button>
+                  <button href="/#" id="{% if is_user_logged_in %}dislike{% else %}action_unlogged{% endif %}"
+                          class="button button-dislike button-secondary-invis {% if submission.interactions.legacy.current_rating == "dislike" %}button-toggled{% endif %} tooltip" title="Dislike">
+                     {{ icon("hand-thumbs-down-fill", 20) }}
+                     {{ submission.interactions.legacy.dislikes }}
+                  </button>
                </div>
                <div class="grid" style="margin-top:5px;">
                   <div class="col-8">
                      <div style="margin-top:-9px;">
-                        <button href="/#" id="{% if is_user_logged_in %}like{% else %}action_unlogged{% endif %}"
-                                class="button button-like button-secondary-invis {% if submission.interactions.legacy.current_rating == "like" %}button-toggled{% endif %}">
-                           {{ icon("hand-thumbs-up-fill", 20) }}
-                           Like
-                        </button>
-                        <button href="/#" id="{% if is_user_logged_in %}dislike{% else %}action_unlogged{% endif %}"
-                                class="button button-dislike button-secondary-invis {% if submission.interactions.legacy.current_rating == "dislike" %}button-toggled{% endif %} tooltip" title="Dislike">
-                           {{ icon("hand-thumbs-down-fill", 20) }}
-                        </button>
                         {# <button href="/#" id="{% if is_user_logged_in %}favorite{% else %}action_unlogged{% endif %}"
                                 class="button {% if isFavorited %}button-warning{% else %}button-secondary-invis{% endif %} tooltip" title="Favorite">
                            {{ icon("star-fill", 20) }}
                         </button> #}
                      </div>
                   </div>
-                  <div class="col-8 right">
-                     <div class="tab">
-                        <button class="tablinks active" onclick="openTab(event, 'About')" id="defaultOpen">About</button>
-                        <button class="tablinks" onclick="openTab(event, 'Tags')">{{ icon("tags-fill", 12) }}</button>
-                        <button class="tablinks" onclick="openTab(event, 'Stats')">{{ icon("bar-chart-fill", 12) }}</button>
-                        {% if options.enable_incomplete_features %}
-                        <button class="tablinks" onclick="openTab(event, 'Flag')">{{ icon("flag-fill", 12) }}</button>
-                        {% endif %}
-                     </div>
-                  </div>
                </div>
             </div>
-            <div class="card card-body-fat">
-               <div id="About" class="tabcontent" style="display: block;">
+            <br>
+            <div class="card card-body">
+               <div id="About">
                   <p><b>Uploaded on {{ submission.published | date('M j, Y') }}</b></p>
                   {% if submission.published_originally and submission.original_site %}
                      <div class="watch-box-author-info-small">First uploaded on {{ submission.original_site }} on {{ submission.published_originally | date('M j, Y') }}</div>
@@ -103,37 +97,9 @@
                      <p>This upload has no description.</p>
                   {% endif %}
                </div>
-               <div id="Tags" class="tabcontent" style="display: none;">
-                  <h2>Tags</h2>
-                  {% for tag in submission.tags %}
-                     <a href="/search?query={{ tag.name }}">{{ tag.name }}</a>{{ not loop.last ? ',' }}
-                  {% else %}
-                     No tags.
-                  {% endfor %}
-               </div>
-               <div id="Stats" class="tabcontent" style="display: none;">
-                  <h2>Stats</h2>
-                  <ul style="padding:0">
-                     <li>
-                        Total favorites: {{ submission.interactions.favorites }}
-                     </li>
-                     <li>
-                        Rating ratio (Biscuit stars): {{ submission.interactions.ratings.average * 20 }}%
-                     </li>
-                     <li>
-                        Rating ratio (Likes/Dislikes): {{ submission.interactions.legacy.ratio }}%
-                     </li>
-                  </ul>
-               </div>
-               {% if options.enable_incomplete_features %}
-               <div id="Flag" class="tabcontent" style="display: none;">
-                  <h2>Flag upload</h2>
-                  This isn't currently implemented.
-               </div>
-               {% endif %}
             </div>
             <div class="card">
-               <div class="card-body-fat">
+               <div class="card-body">
                   <h3>Comments ({{ submission.interactions.comments }})</h3>
                   {% if is_user_logged_in %}
                      <div>

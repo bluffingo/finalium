@@ -1,18 +1,33 @@
 .banner {
-  border-bottom: 1px solid #ccc;
-  padding: 10px;
-  border-radius: 3px;
+  padding: 0.5em 1em;
+
+  @if $theme == "hitchhiker" {
+    font-size: 13px;
+    font-weight: 500;
+  } @else {
+    border-radius: 3px;
+  }
+
   &.full-screen {
-    border-radius: 0;
-    text-align: center;
+    @if $theme == "hitchhiker" {
+      //height: 35px;
+      padding: 9.5px;
+    } @else {
+      border-radius: 0;
+      text-align: center;
+    }
   }
 }
 
 @each $state, $value in $theme-colors {
   .banner-#{$state} {
-    border: 1px solid darken($value, 3.5%);
-    background-color: lighten($value, 1.5%);
-    @include gradient-y($start-color: lighten($value, 1.5%), $end-color: darken($value, 1.5%));
+    @if $theme == "hitchhiker" {
+      background-color: $value;
+    } @else {
+      border: 1px solid darken($value, 3.5%);
+      background-color: lighten($value, 1.5%);
+      @include gradient-y($start-color: lighten($value, 1.5%), $end-color: darken($value, 1.5%));
+    }
     color: contrast-color($value, $dark, $light) !important;
   }
 }

@@ -37,20 +37,43 @@ html {
   vertical-align: middle;
 }
 
-h1, h2, h3 {
-  @if $theme == "spring" {
-    font-weight: 450;
-  } @else {
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+
+@if $theme == "hitchhiker" {
+  h1, h2 {
+    font-weight:normal
+  }
+
+  h3, h4, h5, h6 {
+    font-weight:500
+  }
+} @else {
+  h1, h2, h3 {
     font-weight: 400;
+  }
+
+  h4, h5, h6 {
+    font-weight: 300;
   }
 }
 
-h4, h5, h6 {
-  @if $theme == "spring" {
-    font-weight: 400;
-  } @else {
-    font-weight: 300;
-  }
+h1 {
+  font-size:20px
+}
+
+h2 {
+  font-size:16px
+}
+
+h3, h4 {
+  font-size:13px
+}
+
+h5, h6 {
+  font-size:10px
 }
 
 hr {
@@ -88,10 +111,11 @@ menu {
 }
 
 code {
-  color: #e83e3e;
+  color: #a33a3a;
 }
 
 pre {
+  color: #a33a3a;
   background-color: #ffe8e8;
   border: 1px solid #eed1d1;
   border-radius: 5px;
@@ -184,25 +208,8 @@ blockquote {
 }
 
 .main-content {
-  @if $theme == "spring" {
-    background: rgb(0,26,36);
-    background: linear-gradient(90deg, rgba(0,26,36,1) 0%, rgba(9,79,121,1) 35%, rgba(21,105,129,1) 100%);
-
-    .sb-welcome {
-      text-align: center;
-      h1 {
-        font-weight:600;
-        font-size: 2.5em;
-        margin: 8px 0;
-      }
-    }
-  } @else if $theme == "hitchhiker" {
-    background-color:#ff9900;
-    background: linear-gradient(to bottom, #ffc578 0%,#fb9d23 100%);
-  } @else {
-    background: #3e3e3e;
-    background: linear-gradient(90deg, rgb(62, 62, 62) 0%, rgb(107, 107, 107) 35%, rgb(155, 155, 155) 100%);
-  }
+  background: #3e3e3e;
+  background: linear-gradient(90deg, rgb(62, 62, 62) 0%, rgb(107, 107, 107) 35%, rgb(155, 155, 155) 100%);
 
   color: white;
   margin: -48px 0 0;
@@ -365,13 +372,8 @@ ul.nav {
     font-size: 11px;
     font-weight: bold;
   }
-  li { padding: 6px 15px;; }
+  li { padding: 6px 15px; }
   li.active { background: $primary; a { color: white; } }
-}
-
-.watch-creator {
-  display: flex;
-  gap: 8px;
 }
 
 body {
@@ -668,27 +670,6 @@ input[type]:not([type=file]):not([type=submit]):not([type=range]):focus {
   }
 }
 
-.watchNext {
-  h1 {
-    font-size: 19px;
-  }
-
-  .viewcount {
-    @if $theme == "hitchhiker" {
-      color: $gray-850;
-    } @else {
-      color: $gray-800;
-    }
-    font-weight: normal;
-    margin-bottom: 4px;
-  }
-
-  .below-likesaber {
-    margin-top: 16px;
-    color: $gray-600;
-  }
-}
-
 .statbox {
   text-align: center;
   font-size: 3em;
@@ -731,7 +712,11 @@ input[type]:not([type=file]):not([type=submit]):not([type=range]):focus {
 @import "_text";
 /// Tabs \\\
 @import "_tabs";
-
+/// Header \\\
 @import "_header";
+/// Comments \\\
 @import "_comments";
+/// Version page \\\
 @import "_version_page_backport";
+/// Watch page \\\
+@import "_watch_page";
