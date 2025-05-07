@@ -3,7 +3,7 @@
   margin-left: auto;
 
   // in the early-2022 version of finalium, apparently this code was a thing?
-  // https://github.com/bluffingo/OpenSB/blob/beta-2.0.8r1/assets/scss/_containers.scss
+  // https://github.com/bluffingo/OpenSB/blob/hitchhiker-2.0.8r1/assets/scss/_containers.scss
   // it was however made unused by the page-container class, which hardcoded the max-width to 1200px.
   // was this some kind of bug that wasnt fixed until late-2022/early-2023 (which is what the spring theme emulates)?
   // no clue. the old 2022 homepage design (seen on
@@ -40,7 +40,7 @@
 }
 
 .page-container {
-  @if $theme == "beta" {
+  @if $theme == "hitchhiker" {
     max-width: 1200px;
     padding: 0;
   } @else {

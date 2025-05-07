@@ -3,35 +3,18 @@
         <div class="grid" style="margin-bottom: 17.5px;">
             <div class="col-md-10">
                 <div id="header-main">
-                    {% if current_theme != 'spring2023' %}
                     <div class="button button-neutral-invis masthead-button guide-button" id="guide-toggle">
                         {{ icon("list", 20) }}
                     </div>
-                    {% endif %}
                     <a href="/" id="logo-container"><img id="logo" src="{{ logo }}" alt="{{ website_branding.name }}"></a>
-                    {% if isMaintenance != true %}
-                        {% if current_theme == 'spring2023' %}
-                        <div class="masthead-links-container">
-                            <div class="masthead-links">
-                                {% for link in header_main_links() %}
-                                    <a href="{{ link.url }}">{{ link.name }}</a>
-                                {% endfor %}
-                            </div>
+                    <form id="masthead-search" action="/search">
+                        <button id="search-btn" class="button button-secondary">
+                            <span>{{ icon("search", 14) }}</span>
+                        </button>
+                        <div id="masthead-search-terms">
+                            <label><input type="text" name="query" placeholder="Search..."></label>
                         </div>
-                        {% endif %}
-                        <form id="masthead-search" action="/search">
-                            {% if current_theme == 'spring2023' %}
-                            <button id="search-btn" class="button button-secondary">
-                                <span>{{ icon("search", 16) }}</span>
-                            </button>
-                            <div id="masthead-search-terms">
-                                <label><input type="text" name="query" placeholder="Search..."></label>
-                            </div>
-                            {% else %}
-                                <input type="text" class="form-control form-long uploader-form" name="query">
-                            {% endif %}
-                        </form>
-                    {% endif %}
+                    </form>
                 </div>
             </div>
             <div class="col-md-6" style="text-align: right;">
@@ -42,24 +25,22 @@
                 {% endif %}
                 <div style="margin:0;{% if is_user_logged_in %}width:1.75rem{% endif %}"
                      id="{% if is_user_logged_in %}masthead-loggedin{% else %}masthead-signin{% endif %}" class="masthead-user">
-                    {% if isMaintenance != true %}
-                        {% if is_user_logged_in %}
-                            <div style="margin-top: 4px;">
-                                <img class="img-pfp img-fluid" src="{{ profile_picture(user_data.name) }}" alt="{{ user_data.name }}">
-                                <div class="menu" id="masthead-below">
-                                    <ul style="padding:0">
-                                        {% for link in header_user_links() %}
+                    {% if is_user_logged_in %}
+                        <div style="margin-top: 4px;">
+                            <img class="img-pfp img-fluid" src="{{ profile_picture(user_data.name) }}" alt="{{ user_data.name }}">
+                            <div class="menu" id="masthead-below">
+                                <ul style="padding:0">
+                                    {% for link in header_user_links() %}
                                         <li><a class="menulink" href="{{ link.url }}">{{ link.name }}</a></li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
+                                    {% endfor %}
+                                </ul>
                             </div>
-                        {% else %}
-                            <div style="display: flex;justify-content: center;align-items: center;gap: 5px;margin-top: 2px;">
-                                <a href="/login">Login</a>
-								<a href="/register">Register</a>
-                            </div>
-                        {% endif %}
+                        </div>
+                    {% else %}
+                        <div style="display: flex;justify-content: center;align-items: center;gap: 5px;margin-top: 2px;">
+                            <a href="/login">Login</a>
+                            <a href="/register">Register</a>
+                        </div>
                     {% endif %}
                 </div>
             </div>

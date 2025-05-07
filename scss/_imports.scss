@@ -14,6 +14,12 @@ $bootstrap-icons-font-dir: "/assets" !default;
   @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 }
 
+
+$masthead-search-bar-height: 31px;
+@if $theme == "hitchhiker" {
+  $masthead-search-bar-height: 27px;
+}
+
 /* SB CSS STARTS HERE ======================================================== */
 
 html {
@@ -64,7 +70,7 @@ hr {
 
 a:link,
 a:visited {
-  @if $theme == "beta" {
+  @if $theme == "hitchhiker" {
     color: $teal;
   } @else {
     color: $primary;
@@ -190,7 +196,7 @@ blockquote {
         margin: 8px 0;
       }
     }
-  } @else if $theme == "beta" {
+  } @else if $theme == "hitchhiker" {
     background-color:#ff9900;
     background: linear-gradient(to bottom, #ffc578 0%,#fb9d23 100%);
   } @else {
@@ -226,7 +232,7 @@ blockquote {
 .loginPage {
   .form-login {
     padding: 19px 29px 29px;
-    @if $theme == "beta" {
+    @if $theme == "hitchhiker" {
       margin: 0 auto 20px;
     } @else {
       margin: 0 auto 10px;
@@ -237,8 +243,8 @@ blockquote {
 
     border-radius: 5px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-    @if $theme == "beta" {
-      width: 250px // less wider in the beta
+    @if $theme == "hitchhiker" {
+      width: 250px // less wider in the hitchhiker
     } @else {
       width: 300px;
     }
@@ -299,7 +305,7 @@ blockquote {
 
 #logo-container {
   float: left;
-  @if $theme == "beta" {
+  @if $theme == "hitchhiker" {
     height: 30px;
   } @else {
     height: 33px;
@@ -466,18 +472,15 @@ body {
   position: sticky;
   display: block;
   top: 0;
-  backdrop-filter: blur(4px);
+  background-color: $masthead-bg;
+  border-bottom: 1px solid $masthead-border;
 
-  @if $theme == "beta" {
-    background-color: #f7f7f7f0;
-    border-bottom: 1px solid lightgrey;
-  } @else {
-    background-color: $masthead-bg;
-    border-bottom: 1px solid $masthead-border;
+  @if $theme != "hitchhiker" {
+    backdrop-filter: blur(4px);
   }
 }
 
-@if $theme == "beta" {
+@if $theme == "hitchhiker" {
   #masthead-content {
     padding-left: 15px;
     padding-right: 20px;
@@ -494,17 +497,11 @@ body {
 }
 
 .footer {
-  @if $theme == "beta" {
-    background-color: $gray-150;
-    border-bottom: 1px solid $gray-250;
-    border-top: 1px solid $gray-250;
-    padding: 15px 40px;
-  } @else {
-    background-color: $footer-bg;
-    border-bottom: 1px solid $footer-border;
-    border-top: 1px solid $footer-border;
-    padding: 2em 3em;
-  }
+  background-color: $footer-bg;
+  border-bottom: 1px solid $footer-border;
+  border-top: 1px solid $footer-border;
+  padding: 2em 3em;
+
   margin-top: 0;
   overflow: hidden;
 
@@ -556,7 +553,7 @@ body {
 
 textarea,
 input[type]:not([type=file]):not([type=submit]):not([type=range]) {
-  @if $theme == "beta" {
+  @if $theme == "hitchhiker" {
     background-color: #ffffff;
     border: 1px solid #cccccc;
     border-radius: 5px;
@@ -572,7 +569,7 @@ input[type]:not([type=file]):not([type=submit]):not([type=range]) {
 
 textarea:focus,
 input[type]:not([type=file]):not([type=submit]):not([type=range]):focus {
-  @if $theme == "beta" {
+  @if $theme == "hitchhiker" {
     border-color: rgba(82, 168, 236, 0.8) !important; // gonna override for some fuckass reason
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
   } @else {
@@ -599,7 +596,7 @@ input[type]:not([type=file]):not([type=submit]):not([type=range]):focus {
   a {
     padding: 6px 10px;
     font-size: 13px;
-    @if $theme == "beta" {
+    @if $theme == "hitchhiker" {
       color: #333;
     } @else {
       color: $gray-900;
@@ -638,7 +635,7 @@ input[type]:not([type=file]):not([type=submit]):not([type=range]):focus {
 #masthead-search {
   overflow: hidden;
 
-  @if $theme == "beta" {
+  @if $theme == "hitchhiker" {
     position: relative;
     padding: 0;
     margin-top: 3px;
@@ -656,12 +653,8 @@ input[type]:not([type=file]):not([type=submit]):not([type=range]):focus {
   }
 
   #search-btn {
-    @if $theme == "beta" {
-      height: 29px;
-    } @else {
-      height: 31px;
-      border-radius: 0 3px 3px 0;
-    }
+    height: $masthead-search-bar-height;
+    border-radius: 0 3px 3px 0;
     float: right;
 
     span {
@@ -671,11 +664,8 @@ input[type]:not([type=file]):not([type=submit]):not([type=range]):focus {
 
   #masthead-search-terms {
     border-radius: 0;
-    @if $theme == "beta" {
-      height: 29px;
-    } @else {
-      height: 31px;
-    }
+    height: $masthead-search-bar-height;
+
     overflow: hidden;
 
     input {
@@ -685,13 +675,10 @@ input[type]:not([type=file]):not([type=submit]):not([type=range]):focus {
       margin: 0;
       font-size: 16px;
       box-sizing: border-box;
-      @if $theme == "beta" {
-        height: 29px;
-      } @else {
-        height: 31px;
-      }
+      height: $masthead-search-bar-height;
+
       border-radius: 3px 0 0 3px;
-      @if $theme != "beta" {
+      @if $theme != "hitchhiker" {
         border: 1px solid $gray-200;
         border-right: none;
         background-color: $form-input;
@@ -775,7 +762,7 @@ input[type]:not([type=file]):not([type=submit]):not([type=range]):focus {
     margin: 0 0 2px;
     overflow: hidden;
 
-    @if $theme == "beta" {
+    @if $theme == "hitchhiker" {
       font-size: 13px;
 
       a {
@@ -798,7 +785,7 @@ input[type]:not([type=file]):not([type=submit]):not([type=range]):focus {
   }
 
   .stat {
-    @if $theme == "beta" {
+    @if $theme == "hitchhiker" {
       color: #999;
     } @else {
       color: $gray-600;
@@ -810,7 +797,7 @@ input[type]:not([type=file]):not([type=submit]):not([type=range]):focus {
   }
 
   .stat-larger {
-    @if $theme == "beta" {
+    @if $theme == "hitchhiker" {
       color: #999;
     } @else {
       color: $gray-600;
@@ -832,7 +819,7 @@ input[type]:not([type=file]):not([type=submit]):not([type=range]):focus {
   right: 0px;
   text-align: left;
 
-  @if $theme == "beta" {
+  @if $theme == "hitchhiker" {
     background: #ffffff;
     padding: 0.25em;
   } @else {
@@ -841,7 +828,7 @@ input[type]:not([type=file]):not([type=submit]):not([type=range]):focus {
 
   ul {
     li {
-      @if $theme == "beta" {
+      @if $theme == "hitchhiker" {
         padding: 4px 0;
       } @else {
         padding: 6px 0;
@@ -855,7 +842,7 @@ input[type]:not([type=file]):not([type=submit]):not([type=range]):focus {
       }
     }
 
-    @if $theme != "beta" {
+    @if $theme != "hitchhiker" {
       li:hover {
         background-color: $primary;
       }
@@ -869,7 +856,7 @@ input[type]:not([type=file]):not([type=submit]):not([type=range]):focus {
   }
 
   .viewcount {
-    @if $theme == "beta" {
+    @if $theme == "hitchhiker" {
       color: $gray-850;
     } @else {
       color: $gray-800;

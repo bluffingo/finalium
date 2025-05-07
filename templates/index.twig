@@ -12,138 +12,135 @@
 {% endif %}
 
 	{% block precontent %}
-{% if current_theme != 'nostalgia' %}
-<div class="indexNext">
-    <div class="main-content">
-        {% if current_theme == 'spring2023' %}
-            <div class="container sb-welcome">
-                {% if is_user_logged_in %}
-                    <h1>{{ localize('welcome_logged_in_finalium', website_branding.name, user_data.title) }}</h1>
-                    <p>{{ data.totals.followers ?? "no" }} follower{{ pluralSubscribers }} - {{ data.totals.views ?? "no" }} view{{ pluralViews }}</p>
-                {% else %}
-                    <h1>{{ localize('welcome_logged_out', website_branding.name) }}</h1>
-                    <a class="button button-primary button-large" href="/register.php">Get started</a>
-                    <a class="button button-secondary button-large" href="/login.php">Login</a>
-                {% endif %}
-            </div>
-        {% elseif current_theme == 'beta' %}
-            <div class="container sb-welcome">
-                <div class="grid">
-                {% if is_user_logged_in %}
-                    <div class="col-md-2">
-                        <img class="img-pfp img-fluid" src="{{ profile_picture(user_data.name) }}" alt="{{ user_data.name }}">
-                    </div>
-                    <div class="col-md-14">
-                        <p class="text-start">
-                        </p><h1 style="padding:0;margin:8px 0;">{{ localize('welcome_logged_in_finalium_beta', user_data.title) }}</h1>
-                        <h3 style="padding:0;margin:8px 0;">@{{ user_data.name }}</h3>
-                        <p style="padding:0;margin:8px 0;">{{ data.totals.followers ?? "no" }} follower{{ pluralSubscribers }}
-                            • {{ data.totals.views ?? "no" }} view{{ pluralViews }}</p>
-                        <a class="button button-neutral button-large" href="/my_submissions">Manage my content {{ icon('caret-right-fill', 12) }}</a>
-                    </div>
-                {% else %}
-                    <div class="col-md-10">
-                        <h1>{{ localize('welcome_logged_out', website_branding.name) }}</h1>
-                        <h3 style="padding:0;margin:0;">
-                            {% if is_chaziz_sb %}
-                                Your content, your narration, your niche on the web.
-                            {% else %}
-                                Insert slogan.
-                            {% endif %}
-                        </h3>
-                    </div>
-                    <div class="col-md-6">
-                        <a class="button button-neutral button-large"
-                           href="/register">Get started {{ icon('caret-right-fill', 16) }}</a><br><br>
-                        <big>Already have an account? <a class="button button-neutral"
-                                                         href="/login">Sign in</a></big>
-                    </div>
-                {% endif %}
-                </div>
-            </div>
-        {% else %}
-        <div class="container page-container sb-welcome grid">
-            {% if is_user_logged_in %}
-                <div class="col-md-10">
-                    <h1>{{ localize('welcome_logged_out', website_branding.name) }}</h1>
-                    <h3>@{{ user_data.name }}</h3>
-                    <a class="button button-neutral button-large"
-                       href="/my_submissions">Manage {{ icon('caret-right-fill', 12) }}</a>
-                </div>
-                <div class="col-md-6 right stats">
-                    <p>{{ data.totals.followers ?? "no" }} follower{{ pluralSubscribers }}
-                        <br>{{ data.totals.views ?? "no" }} view{{ pluralViews }}</p>
-                </div>
-            {% else %}
-                <div class="col-md-10">
-                    <h1>Welcome to {{ website_branding.name }}</h1>
-                    <h3 style="padding:0;margin:0;">
-                        {% if is_chaziz_sb %}
-                            Your content, your narration, your niche on the web.
+        {% if current_theme != 'hitchhiker' %}
+            <div class="main-content">
+                {% if current_theme == 'spring2023' %}
+                    <div class="container sb-welcome">
+                        {% if is_user_logged_in %}
+                            <h1>{{ localize('welcome_logged_in_finalium', website_branding.name, user_data.title) }}</h1>
+                            <p>{{ data.totals.followers ?? "no" }} follower{{ pluralSubscribers }} - {{ data.totals.views ?? "no" }} view{{ pluralViews }}</p>
                         {% else %}
-                            Insert slogan.
+                            <h1>{{ localize('welcome_logged_out', website_branding.name) }}</h1>
+                            <a class="button button-primary button-large" href="/register">Get started</a>
+                            <a class="button button-secondary button-large" href="/login">Login</a>
                         {% endif %}
-                    </h3>
-                </div>
-                <div class="col-md-6">
-                    <a class="button button-neutral button-large"
-                       href="/register">Get started {{ icon('caret-right-fill', 16) }}</a><br><br>
-                    <big>Already have an account? <a class="button button-neutral"
+                    </div>
+                {% elseif current_theme == 'beta' %}
+                    <div class="container sb-welcome">
+                        <div class="grid">
+                            {% if is_user_logged_in %}
+                                <div class="col-md-2">
+                                    <img class="img-pfp img-fluid" src="{{ profile_picture(user_data.name) }}" alt="{{ user_data.name }}">
+                                </div>
+                                <div class="col-md-14">
+                                    <p class="text-start">
+                                    </p><h1 style="padding:0;margin:8px 0;">{{ localize('welcome_logged_in_finalium_beta', user_data.title) }}</h1>
+                                    <h3 style="padding:0;margin:8px 0;">@{{ user_data.name }}</h3>
+                                    <p style="padding:0;margin:8px 0;">{{ data.totals.followers ?? "no" }} follower{{ pluralSubscribers }}
+                                        • {{ data.totals.views ?? "no" }} view{{ pluralViews }}</p>
+                                    <a class="button button-neutral button-large" href="/my_submissions">Manage my content {{ icon('caret-right-fill', 12) }}</a>
+                                </div>
+                            {% else %}
+                                <div class="col-md-10">
+                                    <h1>{{ localize('welcome_logged_out', website_branding.name) }}</h1>
+                                    <h3 style="padding:0;margin:0;">
+                                        {% if is_chaziz_sb %}
+                                            Your content, your narration, your niche on the web.
+                                        {% else %}
+                                            Insert slogan.
+                                        {% endif %}
+                                    </h3>
+                                </div>
+                                <div class="col-md-6">
+                                    <a class="button button-neutral button-large"
+                                       href="/register">Get started {{ icon('caret-right-fill', 16) }}</a><br><br>
+                                    <big>Already have an account? <a class="button button-neutral"
+                                                                     href="/login">Sign in</a></big>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="container page-container sb-welcome grid">
+                        {% if is_user_logged_in %}
+                            <div class="col-md-10">
+                                <h1>{{ localize('welcome_logged_out', website_branding.name) }}</h1>
+                                <h3>@{{ user_data.name }}</h3>
+                                <a class="button button-neutral button-large"
+                                   href="/my_submissions">Manage {{ icon('caret-right-fill', 12) }}</a>
+                            </div>
+                            <div class="col-md-6 right stats">
+                                <p>{{ data.totals.followers ?? "no" }} follower{{ pluralSubscribers }}
+                                    <br>{{ data.totals.views ?? "no" }} view{{ pluralViews }}</p>
+                            </div>
+                        {% else %}
+                            <div class="col-md-10">
+                                <h1>Welcome to {{ website_branding.name }}</h1>
+                                <h3 style="padding:0;margin:0;">
+                                    {% if is_chaziz_sb %}
+                                        Your content, your narration, your niche on the web.
+                                    {% else %}
+                                        Insert slogan.
+                                    {% endif %}
+                                </h3>
+                            </div>
+                            <div class="col-md-6">
+                                <a class="button button-neutral button-large"
+                                   href="/register">Get started {{ icon('caret-right-fill', 16) }}</a><br><br>
+                                <big>Already have an account? <a class="button button-neutral"
                                                                  href="/login">Sign in</a></big>
-                </div>
-            {% endif %}
-        </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            </div>
         {% endif %}
-    </div>
-    {% endif %}
     {% endblock %}
 
     {% block content %}
-    <div class="grid">
-        <div class="col-md-10">
-            <div class="card">
-                <div class="card-body-fat">
-                    <h3 style="margin-top:0">{{ localize('random_uploads') }}</h3>
-                    {% for submission in data.submissions %}
-                        {{ submission_box(submission) }}
-                    {% else %}
-                        <p>No uploads.</p>
-                    {% endfor %}
+        <div class="grid">
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="card-body-fat">
+                        <h3 style="margin-top:0">{{ localize('random_uploads') }}</h3>
+                        {% for submission in data.submissions %}
+                            {{ submission_box(submission) }}
+                        {% else %}
+                            <p>No uploads.</p>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body-fat">
+                        <h3 style="margin-top:0">{{ localize('recent_uploads') }}</h3>
+                        {% for submission in data.submissions_new %}
+                            {{ submission_box(submission) }}
+                        {% else %}
+                            <p>No uploads.</p>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
-            <div class="card">
-                <div class="card-body-fat">
-                    <h3 style="margin-top:0">{{ localize('recent_uploads') }}</h3>
-                    {% for submission in data.submissions_new %}
-                        {{ submission_box(submission) }}
-                    {% else %}
-                        <p>No uploads.</p>
-                    {% endfor %}
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body-fat">
+                        <h3 style="margin-top:0">{{ localize('site_news') }}</h3>
+                        {% for journal in data.news_recent %}
+                            {% include "components/journal.twig" %}
+                        {% else %}
+                            <p>No news.</p>
+                        {% endfor %}
+                    </div>
                 </div>
+                {% if is_chaziz_sb %}
+                    <div class="card">
+                        <div class="card-body-fat">
+                            <h3 style="margin-top:0">Discord</h3>
+                            <iframe src="https://discord.com/widget?id=1303274117432213556&theme=dark" width="100%" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+                        </div>
+                    </div>
+                {% endif %}
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body-fat">
-                    <h3 style="margin-top:0">{{ localize('site_news') }}</h3>
-                    {% for journal in data.news_recent %}
-                        {% include "components/journal.twig" %}
-                    {% else %}
-                        <p>No news.</p>
-                    {% endfor %}
-                </div>
-            </div>
-            {% if is_chaziz_sb %}
-            <div class="card">
-                <div class="card-body-fat">
-                    <h3 style="margin-top:0">Discord</h3>
-                    <iframe src="https://discord.com/widget?id=1303274117432213556&theme=dark" width="100%" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
-                </div>
-            </div>
-            {% endif %}
-        </div>
-    </div>
-</div>
-    </div>
-<br><br>
-{% endblock %}
+        <br><br>
+    {% endblock %}

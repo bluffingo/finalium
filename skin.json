@@ -2,7 +2,7 @@
   "metadata":
   {
     "id": "finalium",
-    "name": "Finalium 1/sbNext",
+    "name": "Finalium 1.1",
     "author": "OpenSB developers",
     "description": "The classic SquareBracket user experience, originally known as sbNext.",
     "site": "squarebracket",
@@ -20,15 +20,9 @@
         "author": "OpenSB developers"
       },
       {
-        "id": "beta",
-        "name": "Beta",
-        "description": "Emulates the January 2022 version of Finalium.",
-        "author": "OpenSB developers"
-      },
-      {
-        "id": "spring2023",
-        "name": "Spring 2023",
-        "description": "Emulates the April-June 2023 version of Finalium.",
+        "id": "hitchhiker",
+        "name": "Hitchhiker",
+        "description": "",
         "author": "OpenSB developers"
       }
     ]
