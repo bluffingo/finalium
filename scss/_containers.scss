@@ -1,36 +1,6 @@
 .container {
   margin-right: auto;
   margin-left: auto;
-
-  // in the early-2022 version of finalium, apparently this code was a thing?
-  // https://github.com/bluffingo/OpenSB/blob/hitchhiker-2.0.8r1/assets/scss/_containers.scss
-  // it was however made unused by the page-container class, which hardcoded the max-width to 1200px.
-  // was this some kind of bug that wasnt fixed until late-2022/early-2023 (which is what the spring theme emulates)?
-  // no clue. the old 2022 homepage design (seen on
-  // https://web.archive.org/web/20220319225401/https://sb.billyisreal.com/) kinda fucks out on wider displays,
-  // so this might be why. -chaziz 8/9/2024
-
-  @if $theme == "spring" {
-    transition: max-width ease-out 1s, margin-left ease-out 2s, padding ease-out 1s;
-    // 576px window width and more
-    @include responsive('tiny') {
-      padding: 0 12px;
-    }
-    // 992px window width and more
-    @include lg {
-      margin-right: auto;
-      margin-left: auto;
-      max-width: 1500px;
-    }
-    // i have no idea
-    @include xl {
-      max-width: 1650px;
-      padding: 0 35px;
-    }
-  } @else {
-    padding: 0 15px;
-    max-width: 1200px;
-  }
 }
 
 // the login/register pages need to be centered at every resolution.
@@ -40,11 +10,5 @@
 }
 
 .page-container {
-  @if $theme == "hitchhiker" {
-    max-width: 1200px;
-    padding: 0;
-  } @else {
-    // no clue what is this actually supposed to be
-    min-height: calc(100vh - 255px - 48px);
-  }
+  @include maxwidths();
 }

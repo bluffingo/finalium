@@ -120,7 +120,7 @@
   @if $theme == "hitchhiker" {
     max-width: 100%;
   } @else {
-    max-width: 1200px;
+    @include maxwidths();
   }
 
   position: relative;

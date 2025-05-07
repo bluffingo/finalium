@@ -10,29 +10,62 @@
 }
 
 @mixin maxwidths() {
-  // Default styles
   width: 100%;
   max-width: 100%;
-  padding: 0 1rem; // Add some padding to avoid content touching the edges
+  padding: 0 1rem;
 
-  // Breakpoints for min-width and max-width to ensure the content doesn't get too narrow or too wide
-  @include responsive('tiny') {
-    max-width: 100%; // Allowing it to use the full available width
-    min-width: 250px; // Preventing it from being too skinny
-  }
+  @if $theme == "hitchhiker" {
+    @include responsive('tiny') {
+      max-width: 100%;
+      min-width: 250px;
+    }
 
-  @include responsive('small') {
-    max-width: 90%; // Using percentage for smoother scaling
-    min-width: 400px;
-  }
+    @include responsive('small') {
+      max-width: 90%;
+      min-width: 426px;
+    }
 
-  @include responsive('medium') {
-    max-width: 80%;
-    min-width: 600px;
-  }
+    @include responsive('medium') {
+      max-width: 1066px;
+      min-width: 1003px;
+    }
 
-  @include responsive('large') {
-    max-width: 75%;
-    min-width: 1000px;
+    @include responsive('large') {
+      //max-width: 75%;
+      //min-width: 1000px;
+      max-width: 1280px;
+    }
+  } @else {
+    @include responsive('tiny') {
+      max-width: 100%;
+      min-width: 270px;
+      padding: 0 1rem;
+    }
+
+    @include responsive('small') {
+      max-width: 95%;
+      min-width: 420px;
+      padding: 0 1rem;
+    }
+
+    @include responsive('medium') {
+      max-width: 90%;
+      min-width: 640px;
+      padding: 0;
+    }
+
+    @include responsive('large') {
+      max-width: 87.5%;
+      min-width: 1200px;
+      padding: 0;
+    }
+
+    /*
+    @include responsive('huge') {
+      max-width: 82.5%;
+      min-width: 1500px;
+      padding: 0;
+    }
+    */
   }
 }

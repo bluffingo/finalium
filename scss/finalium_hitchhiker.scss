@@ -77,5 +77,20 @@ $theme-colors: (
         "dark":      $gray-dark,
 );
 
+$breakpoints: (
+        "tiny": (
+                300px,
+        ),
+        "small": (
+                425px,
+        ),
+        "medium": (
+                656px,
+        ),
+        "large": (
+                1294px,
+        ),
+);
+
 /// Imports \\\
 @import "_imports";

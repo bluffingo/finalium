@@ -66,9 +66,9 @@ input[type=file]::file-selector-button {
 
 .button-large {
   @if $theme == "hitchhiker" {
-    padding:10px 14px;
-    border-radius:5px;
-    font-size:14px
+    height:32px;
+    padding:0 15px;
+    font-size:13px
   } @else {
     border-radius: 7px;
     padding: 8px 12px;
@@ -77,10 +77,15 @@ input[type=file]::file-selector-button {
 }
 
 .button-small {
-  border-radius: 2px;
-  padding: 5px 13px;
-  height: 26px;
-  font-size: 11px;
+  @if $theme == "hitchhiker" {
+    padding: 0 8px;
+    height: 24px;
+  } @else {
+    border-radius: 2px;
+    padding: 5px 13px;
+    height: 26px;
+    font-size: 11px;
+  }
 }
 
 @each $state, $value in $theme-colors {
