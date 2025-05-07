@@ -2,22 +2,23 @@
     <div class="footer">
         <div class="footer-main">
             <img src="/assets/opensb_logo.png" alt="OpenSB">
-            <a class="button button-secondary options-button" role="button" href="/theme">Options</a>
             {% if is_debug %}
-                <a class="button button-danger debug-button tooltip" title="Spicy!" role="button">Debug</a>
+                <a class="button button-danger debug-button tooltip" title="Spicy!" role="button">{{ localize('debug') }}</a>
             {% endif %}
         </div>
         <hr>
         <div class="footer-links">
             <div class="footer-links-primary">
-                <a href="/help">Help</a>
-                <a href="/guidelines">Community Guidelines</a>
-                <a href="/tos">Terms of Service</a>
-                <a href="/privacy">Privacy Policy</a>
+                <a href="/theme">{{ localize('change_theme') }}</a>
+                <a href="/help">{{ localize('help') }}</a>
+                <a href="/guidelines">{{ localize('community_guidelines') }}</a>
+                <a href="/tos">{{ localize('terms_of_service') }}</a>
+                <a href="/privacy">{{ localize('privacy_policy') }}</a>
+                <a href="/staff">{{ localize('staff') }}</a>
             </div>
             <div class="footer-links-secondary">
                 <a href="/version">Running OpenSB {{ opensb_version }}</a>
-                <span>© 2021-{{ 'now' | date('Y') }} OpenSB contributors</span>
+                <span>{{ localize('footer_copyright', '2021-' ~ ('now' | date('Y'))) }}</span>
             </div>
         </div>
         {% if is_debug %}

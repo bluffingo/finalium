@@ -3,6 +3,15 @@ $button-padding: 6px 11px;
   $button-padding: 0 10px;
 }
 
+@if $theme == "hitchhiker" {
+  a.button::after {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+  }
+}
+
 .button {
   color: white;
   padding: $button-padding;
@@ -14,16 +23,15 @@ $button-padding: 6px 11px;
     border-radius: 2px;
     height: 28px;
     font-weight: 500;
-  } @else {
-    border-radius: 5px;
-    margin: 2px 0;
-  }
+    font-size: 11px;
 
-  @if $theme == "hitchhiker" {
     &:focus {
       outline: 1px solid #767676;
       box-shadow: 0 0 0 2px rgba(27, 127, 204, 0.4);
     }
+  } @else {
+    border-radius: 5px;
+    margin: 2px 0;
   }
 
   // what the fuck is this???
@@ -93,7 +101,7 @@ input[type=file]::file-selector-button {
     @if $theme == "hitchhiker" {
       background: $value;
       @if $state == "secondary" {
-        border: 1px solid darken($value, 5%);
+        border: 1px solid darken($value, 15%);
       } @else {
         border: 1px solid $value;
       }

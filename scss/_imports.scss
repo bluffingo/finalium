@@ -70,19 +70,17 @@ hr {
   box-sizing: border-box;
 }
 
-a:link,
-a:visited {
-  @if $theme == "hitchhiker" {
-    color: $teal;
-  } @else {
-    color: $primary;
-  }
+a {
+  color: $primary;
   text-decoration: none;
-  word-break: break-all;
-}
 
-a:hover {
-  text-decoration-line: underline;
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:focus {
+    outline: 1px dotted;
+  }
 }
 
 menu {
