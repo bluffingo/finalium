@@ -1,12 +1,12 @@
 <div class="channel-header-bg">
 </div>
 <div class="grid" style="background-color:{{ data.customization.basic_box_border_color }};height: 100px;">
-    <div class="col-md-1" style="height:inherit;display: table;">
+    <div class="col-1" style="height:inherit;display: table;">
         <div style="display: table-cell;vertical-align: middle;">
             <img class="img-fluid rounded" src="{{ profile_picture(userpagedata.name) }}" title="{{ userpagedata.name }}" alt="{{ userpagedata.name }}">
         </div>
     </div>
-    <div class="col-md-9" style="color:{{ data.customization.title_color }};height:inherit;">
+    <div class="col-9" style="color:{{ data.customization.title_color }};height:inherit;">
         <h1>
             {{ data.displayname }}
             {% if data.is_staff %}{{ icon("shield", 20) }}{% endif %}
@@ -23,7 +23,7 @@
             &bull; {{ data.views ?? "no" }} view{{ pluralViews }}
         </p>
     </div>
-    <div class="col-md-2 text-right" style="height:inherit;display: table;">
+    <div class="col-2 text-right" style="height:inherit;display: table;">
         <div style="display: table-cell;vertical-align: middle;text-align:right;">
             {% if userpagedata.id != userdata.id %}
                 <button id="subscribe-watch" class="button button-{% if subscribed %}secondary{% else %}primary{% endif %} button-small" type="button" {% if not log %}disabled{% endif %}>{% if subscribed %}Unfollow{% else %}Follow{% endif %}</button>
@@ -32,7 +32,7 @@
     </div>
 </div>
 <div class="grid" style="background-color:{{ data.customization.highlight_box_background_color }};border: 1px solid {{ data.customization.basic_box_border_color }}">
-    <div class="screwPaddingLeft col-md-4" style="color:{{ data.customization.basic_box_text_color }};">
+    <div class="screwPaddingLeft col-4" style="color:{{ data.customization.basic_box_text_color }};">
         <div class="card-profiles">
             <h3 style="text-align:center;color:{{ data.customization.title_color }};background-color:{{data.customization.basic_box_border_color }};margin:0;padding:5px;">
                 About {{ userpagedata.name }}
@@ -75,7 +75,7 @@
         </div>
 
     </div>
-    <div class="screwPaddingRight col-md-12" style="color:{{ data.customization.basic_box_text_color }};">
+    <div class="screwPaddingRight col-12" style="color:{{ data.customization.basic_box_text_color }};">
         {#
         <div class="card-profiles">
             <h3 style="text-align:center;color:{{ data.customization.title_color }};background-color:{{data.customization.basic_box_border_color }};margin:0;padding:5px;">
@@ -83,10 +83,10 @@
             </h3>
             <div class="card" style="border-color: {{data.customization.basic_box_border_color }};background-color:{{data.customization.basic_box_background_color }};">
                 <div class="card-body">
-                    <div class="col-md-6">
+                    <div class="col-6">
                         {{ include('/components/player.twig') }}
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-6">
                         <h2><a href="watch.php?v={{ video.video_id }}">{{ video.title }}</a></h2>
                         <p style="margin:0;">From: <a href="/user.php?name={{ video.u_name }}" title="{{ video.u_name }}">{{ video.u_name }}</a></p>
                     </div>
@@ -116,10 +116,10 @@
             <div class="card" style="border-color: {{data.customization.basic_box_border_color }};background-color:{{data.customization.basic_box_background_color }};">
                 {% if is_user_logged_in %}
                     <div class="grid" id="commentField">
-                        <div class="col-md-1">
+                        <div class="col-1">
                             <img class="img-pfp img-fluid" alt="{{ user_data.name }}" src="{{ profile_picture(user_data.name) }}">
                         </div>
-                        <div class="col-md-15">
+                        <div class="col-15">
                             <div>
 				<textarea class="form-control" id="commentContents" style="overflow:hidden;resize:vertical" rows="3"
                           placeholder="Enter comment here."></textarea>

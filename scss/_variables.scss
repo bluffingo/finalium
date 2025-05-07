@@ -63,6 +63,24 @@ $theme-colors: (
         "dark": $gray-dark,
 );
 
+// https://medium.com/@jainbhavukspeaks/leveraging-scss-mixins-to-create-responsive-layouts-the-easy-way-5bbe4080cb15
+
+$breakpoints: (
+        "tiny": (
+                300px,
+        ),
+        "small": (
+                500px,
+        ),
+        "medium": (
+                950px,
+        ),
+        "large": (
+                1250px,
+        ),
+);
+//
+
 $font: "Roboto", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 $mastheadwidth: 1200px;

@@ -8,21 +8,21 @@
 }
 
 .img-version {
-  @include sm {
+  @include responsive('tiny') {
     max-width: 300px;
   }
-  @include md {
+  @include responsive('medium') {
     max-width: 100%;
   }
 }
 
 .col-version {
-  @include sm {
+  @include responsive('tiny') {
     text-align: center;
     border-bottom: 1px solid $gray-200;
     padding: 30px;
   }
-  @include md {
+  @include responsive('medium') {
     border-bottom: none;
     padding: 0;
   }

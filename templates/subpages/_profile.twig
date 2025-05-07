@@ -1,9 +1,9 @@
 <div class="card card-body highlight-box" style="padding: 15px 10px;">
     <div class="grid">
-        <div class="col-md-1">
+        <div class="col-1">
             <img class="img-pfp img-fluid" src="{{ profile_picture(data.username) }}" alt="{{ data.username }}">
         </div>
-        <div class="col-md-13">
+        <div class="col-13">
             <h1 style="margin: 0">
                 {{ data.displayname }}
                 {% if data.is_staff %}{{ icon("shield", 20) }}{% endif %}
@@ -20,7 +20,7 @@
                 &bull; {{ data.views ?? "no" }} view{{ pluralViews }}
             </p>
         </div>
-        <div class="col-md-2 right">
+        <div class="col-2 right">
             {% if data.id != user_data.id %}
                 <button id="subscribe" class="button button-{% if data.following %}secondary{% else %}primary{% endif %}"
                         type="button"
@@ -30,7 +30,7 @@
     </div>
 </div>
 <div class="grid">
-    <div class="col-md-4">
+    <div class="col-4">
         <div class="card card-body basic-box">
             <h3>About {{ data.displayname }}</h3>
             {{ data.about | markdown }}
@@ -46,7 +46,7 @@
             {% endfor %}
         </div>
     </div>
-    <div class="col-md-12">
+    <div class="col-12">
         <div class="card card-body basic-box">
             <h3>Uploads</h3>
             {% for submission in data.submissions %}
@@ -59,10 +59,10 @@
             <h3>Comments</h3>
             {% if is_user_logged_in %}
                 <div class="grid" id="commentField">
-                    <div class="col-md-1">
+                    <div class="col-1">
                         <img class="img-pfp img-fluid" alt="{{ user_data.name }}" src="{{ profile_picture(user_data.name) }}">
                     </div>
-                    <div class="col-md-15">
+                    <div class="col-15">
                         <div>
 				<textarea class="form-control" id="commentContents" style="overflow:hidden;resize:vertical" rows="3"
                           placeholder="Enter comment here."></textarea>

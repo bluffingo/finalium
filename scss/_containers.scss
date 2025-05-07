@@ -13,7 +13,7 @@
   @if $theme == "spring" {
     transition: max-width ease-out 1s, margin-left ease-out 2s, padding ease-out 1s;
     // 576px window width and more
-    @include sm {
+    @include responsive('tiny') {
       padding: 0 12px;
     }
     // 992px window width and more

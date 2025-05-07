@@ -4,7 +4,7 @@
     <div class="grid">
         {% for user in users|batch(16) %}
             {% for cell in user %}
-                <div class="col-md-1">
+                <div class="col-1">
                     <a href="/user?name={{ cell.name }}"><img src="{{ profile_picture(cell.name) }}" alt="{{ cell.name }}" class="img-fluid img-pfp" alt="{{ cell.name }}"></a>
                     <h4 style="margin: 0;text-align:center;display:block;"><a
                                 href="/user?name={{ cell.name }}">{{ cell.name }}</a></h4>
