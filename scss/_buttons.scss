@@ -19,9 +19,11 @@ $button-padding: 6px 11px;
     margin: 2px 0;
   }
 
-  &:focus {
-    outline: 1px solid #767676;
-    box-shadow: 0 0 0 2px rgba(27,127,204,0.4);
+  @if $theme == "hitchhiker" {
+    &:focus {
+      outline: 1px solid #767676;
+      box-shadow: 0 0 0 2px rgba(27, 127, 204, 0.4);
+    }
   }
 
   // what the fuck is this???
@@ -96,7 +98,7 @@ input[type=file]::file-selector-button {
       border: 1px solid darken($value, 7.5%);
     }
 
-	color: contrast-color($value, $dark, $light) !important;
+	color: contrast-color($value, $dark, $light);
   }
 
   .button-#{$state}:hover {
@@ -114,7 +116,7 @@ input[type=file]::file-selector-button {
       border: 1px solid darken($value, 1%);
     }
 
-	color: contrast-color($value, $dark, $light) !important;
+	color: contrast-color($value, $dark, $light);
   }
 
   .button-#{$state}:active {
@@ -137,14 +139,14 @@ input[type=file]::file-selector-button {
       @include gradient-y($start-color: lighten($value, 10.5%), $end-color: lighten($value, 5.5%));
     }
 
-	color: contrast-color($value, $dark, $light) !important;
+	color: contrast-color($value, $dark, $light);
   }
 
   .button-#{$state}-invis {
 	border: 1px solid #0000;
 	background: none;
 	box-shadow: none;
-	color: contrast-color($value, $dark, $light) !important;
+	color: contrast-color($value, $dark, $light);
   }
 
   .button-#{$state}-invis:hover {
@@ -155,7 +157,7 @@ input[type=file]::file-selector-button {
       border: 1px solid darken($value, 1%);
     }
 
-	color: contrast-color($value, $dark, $light) !important;
+	color: contrast-color($value, $dark, $light);
   }
 
   .button-#{$state}-invis:active {
@@ -166,6 +168,21 @@ input[type=file]::file-selector-button {
       border: 1px solid darken($value, 10%);
     }
 
-	color: contrast-color($value, $dark, $light) !important;
+	color: contrast-color($value, $dark, $light);
+  }
+}
+
+// watch page
+.button-like {
+  color: $gray-600;
+  &.button-toggled {
+    color: $primary;
+  }
+}
+
+.button-dislike {
+  color: $gray-600;
+  &.button-toggled {
+    color: $dark;
   }
 }

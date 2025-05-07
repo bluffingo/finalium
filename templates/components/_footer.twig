@@ -1,27 +1,31 @@
 <footer>
     <div class="footer">
-        <img src="/assets/opensb_logo.png" alt="OpenSB">
-        <p><strong>© OpenSB contributors</strong> · 2021-{{ 'now' | date('Y') }}
-            | <strong><a href="/help">Help</a></strong>
-            | <strong><a href="/guidelines">Community Guidelines</a></strong>
-            | <strong><a href="/tos">Terms of Service</a></strong>
-            | <strong><a href="/privacy">Privacy Policy</a></strong>
-        </p>
-        <h5><a href="/version">Running OpenSB {{ opensb_version }}</a></h5>
-        {% if isMaintenance != true %}
+        <div class="footer-main">
+            <img src="/assets/opensb_logo.png" alt="OpenSB">
             <a class="button button-secondary button-small options-button" role="button" href="/theme">Options</a>
             {% if is_debug %}
                 <a class="button button-danger button-small debug-button tooltip" title="Spicy!" role="button">Debug</a>
             {% endif %}
-            <div id="optionsModal" class="bg-secondary" style="padding:0.3em;">
+        </div>
+        <hr>
+        <div class="footer-links">
+            <div class="footer-links-primary">
+                <a href="/help">Help</a>
+                <a href="/guidelines">Community Guidelines</a>
+                <a href="/tos">Terms of Service</a>
+                <a href="/privacy">Privacy Policy</a>
             </div>
-            {% if is_debug %}
-                <div id="debugModal" class="bg-secondary" style="padding:0.3em;">
-                    <h3>Debug info</h3>
-                    <div class="banner banner-danger">It is risky to screenshot this due to security reasons, so please don't.</div>
-                    <div><pre>{{ dump() }}</pre></div>
-                </div>
-            {% endif %}
+            <div class="footer-links-secondary">
+                <a href="/version">Running OpenSB {{ opensb_version }}</a>
+                <span>© 2021-{{ 'now' | date('Y') }} OpenSB contributors</span>
+            </div>
+        </div>
+        {% if is_debug %}
+            <div id="debugModal" class="bg-secondary" style="padding:0.3em;">
+                <h3>Debug info</h3>
+                <div class="banner banner-danger">It is risky to screenshot this due to security reasons, so please don't.</div>
+                <div><pre>{{ dump() }}</pre></div>
+            </div>
         {% endif %}
     </div>
 </footer>
