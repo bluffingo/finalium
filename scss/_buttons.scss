@@ -3,22 +3,16 @@ $button-padding: 6px 11px;
   $button-padding: 0 10px;
 }
 
-@if $theme == "hitchhiker" {
-  a.button::after {
-    content: '';
-    display: inline-block;
-    vertical-align: middle;
-    height: 100%;
-  }
-}
-
 .button {
   color: white;
   padding: $button-padding;
-  display: inline-block;
   cursor: pointer;
 
   @if $theme == "hitchhiker" {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
     box-shadow: 0 1px 0 rgba(0,0,0,0.05);
     border-radius: 2px;
     height: 28px;
@@ -30,6 +24,7 @@ $button-padding: 6px 11px;
       box-shadow: 0 0 0 2px rgba(27, 127, 204, 0.4);
     }
   } @else {
+    display: inline-block;
     border-radius: 5px;
     margin: 2px 0;
   }
@@ -182,20 +177,5 @@ input[type=file]::file-selector-button {
     }
 
 	color: contrast-color($value, $dark, $light);
-  }
-}
-
-// watch page
-.button-like {
-  color: $gray-600;
-  &.button-toggled {
-    color: $primary;
-  }
-}
-
-.button-dislike {
-  color: $gray-600;
-  &.button-toggled {
-    color: $dark;
   }
 }

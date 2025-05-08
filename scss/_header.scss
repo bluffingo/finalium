@@ -114,6 +114,7 @@
 
   #logo-container {
     display: flex;
+    align-items: center;
 
     @if $theme == "hitchhiker" {
       width: 200px;
@@ -133,15 +134,29 @@
     border: 0;
   }
 
+  // kinda hacky
   .masthead-button {
-    width: 32px;
-    height: 32px;
-    padding: 8px;
-    text-align: center;
-  }
+    @if $theme == "hitchhiker" {
+      width: 30px;
+      height: 30px;
+    } @else {
+      width: 32px;
+      height: 32px;
+    }
 
-  .guide-button {
-    float: left;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@if $theme == "hitchhiker" {
+  /* this sucks */
+  #guide-toggle {
+    width: 38px !important;
+    height: 30px !important;
+    margin-left: -7px;
   }
 }
 

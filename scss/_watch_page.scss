@@ -20,12 +20,42 @@
   margin-bottom: 10px;
 }
 
-.watch-user-header {
-  padding: 10px 0 0 0;
-}
+.watch-header {
+  padding-bottom: 0;
 
-hr.watch-info-divider {
-  margin: 0 0 10px 0;
+  .watch-user-header {
+    padding: 10px 0 0 0;
+  }
+
+  hr.watch-info-divider {
+    margin: 0 0 10px 0;
+  }
+
+  .watch-action-buttons {
+    display: flex;
+
+    .watch-secondary-actions {
+      flex: 1;
+    }
+
+    .button {
+      padding: 0 5px;
+      color: $gray-600;
+    }
+
+    // this should be in _buttons.scss but i dont wanna fuck with !important
+    .button-like {
+      &.button-toggled {
+        color: $primary;
+      }
+    }
+
+    .button-dislike {
+      &.button-toggled {
+        color: $dark;
+      }
+    }
+  }
 }
 
 .watch-view-info {
