@@ -4,6 +4,6 @@
 
 {% block content %}
 	<div class="card card-body">
-		{{ source('markdown/' ~ file) | markdown_unsafe }}
+		{{ source('markdown/' ~ file) | markdown_info_page }}
 	</div>
 {% endblock %}
