@@ -10,12 +10,21 @@
 
   &.full-screen {
     @if $theme == "hitchhiker" {
-      //height: 35px;
-      padding: 9.5px;
+      z-index: 10000;
+      position: sticky;
+      top: 0;
+      height: $fullscreen-banner-height;
+      display: flex;
+      align-items: center;
+      //padding: 9.5px;
     } @else {
       border-radius: 0;
       text-align: center;
     }
+  }
+
+  .banner-icon {
+    margin-right: 13px;
   }
 }
 

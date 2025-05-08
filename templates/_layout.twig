@@ -48,10 +48,19 @@
 <body>
 {% if show_warning_banner %}
     <div class="banner {% if current_theme == 'hitchhiker' %}banner-primary{% else %}banner-danger{% endif %} full-screen">
-        {{ warning_banner_text | raw }}
+        {% if current_theme == 'hitchhiker' %}
+            <div class="banner-icon">
+                {{ icon("asterisk", 16) }}
+            </div>
+            <div>
+                {{ warning_banner_text | raw }}
+            </div>
+        {% else %}
+            {{ warning_banner_text | raw }}
+        {% endif %}
     </div>
 {% endif %}
-<div id="guide">
+<div id="guide" class="{% if show_warning_banner %}with-fullscreen-banner{% endif %}">
     <ul>
         {% for link in header_main_links() %}
             <li class="guide-channel">

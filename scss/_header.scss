@@ -58,6 +58,12 @@
     margin: 0;
     list-style-type: none
   }
+
+  @if $theme == "hitchhiker" {
+    &.with-fullscreen-banner {
+      top: $header-height + $fullscreen-banner-height;
+    }
+  }
 }
 
 #header-main {
@@ -92,6 +98,10 @@
   @if $theme == "hitchhiker" {
     padding-left: 30px;
     padding-right: 30px;
+
+    &.with-fullscreen-banner {
+      top: 35px;
+    }
   }
 }
 
