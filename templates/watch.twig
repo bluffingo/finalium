@@ -17,7 +17,7 @@
             {{ submission_view(submission) }}
             {% if submission.is_owner %}
                <div class="bg-dark text-light card card-body" style="border-bottom:none;border-color:black;">
-                  <a class="button button-dark" href="/edit.php?v={{submission.video_id}}">Edit</a>
+                  <a class="button button-dark" href="/edit.php?v={{ submission.id }}">Edit</a>
                </div>
             {% endif %}
          </div>

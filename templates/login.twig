@@ -3,24 +3,26 @@
     {% block title %}Login{% endblock %}
 
     {% block content %}
-        <div class="loginPage">
-            <form method="post" name="loginForm" id="loginForm" action="login" class="form-login">
+        {% if current_theme == 'hitchhiker' %}
+            <a href="/">
+                <img id="logo" src="{{ logo }}" alt="{{ website_branding.name }}">
+            </a>
+            <h1>{{ localize('login') }}</h1>
+        {% endif %}
+        <form method="post" name="loginForm" id="loginForm" action="login" class="card card-body">
+            {% if current_theme == 'hitchhiker' %}
+                <img src="/assets/profiledef.svg" class="pfp">
+            {% else %}
                 <h2 class="form-login-heading">{{ localize('login') }}</h2>
-                <input type="text" name="username" class="input-block-level" placeholder="Username">
-                <input type="password" name="password" class="input-block-level" placeholder="Password">
-                <br>
-                <input class="button button-large button-primary" type="submit" value="Login"
-                       name="loginsubmit">
-                <br>
-                {% if current_theme != "beta" %}
-                <p>Don't have an account? <a href="/register">{{ localize('register') }}</a>
-                {% endif %}
-            </form>
-            {% if current_theme != "beta" %}
-                <div class="login-footer">
-                    {{ localize('footer_copyright', '2021-' ~ ('now' | date('Y'))) }}
-                </div>
             {% endif %}
+            <input type="text" name="username" class="input-block-level" placeholder="Username">
+            <input type="password" name="password" class="input-block-level" placeholder="Password">
+            <input class="button button-large button-primary" type="submit" value="Login"
+                   name="loginsubmit">
+            <p>Don't have an account? <a href="/register">{{ localize('register') }}</a>
+        </form>
+        <div class="login-footer">
+            {{ localize('footer_copyright', '2021-' ~ ('now' | date('Y'))) }}
         </div>
     {% endblock %}
 {% endembed %}

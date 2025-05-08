@@ -1,7 +1,12 @@
+// kinda fucked
 @each $state, $value in $theme-colors {
   .bg-#{$state} {
-    background-color: lighten($value, 4.5%);
-    @include gradient-y($start-color: lighten($value, 5%), $end-color: $value);
+    @if $theme == "hitchhiker" {
+      background: $value;
+    } @else {
+      background-color: lighten($value, 4.5%);
+      @include gradient-y($start-color: lighten($value, 5%), $end-color: $value);
+    }
   }
 }
 

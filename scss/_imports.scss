@@ -228,53 +228,6 @@ blockquote {
   }
 }
 
-.login-body {
-  background: #2B3644 url(/assets/sb_branding/finalium/droplets.jpg);
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  height: 100%;
-}
-
-.loginPage {
-  .form-login {
-    padding: 19px 29px 29px;
-    @if $theme == "hitchhiker" {
-      margin: 0 auto 20px;
-    } @else {
-      margin: 0 auto 10px;
-    }
-
-    background-color: $card-bg;
-    border: 1px solid $gray-300; /* not exactly #e5e5e5 but i dont care */
-
-    border-radius: 5px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-    @if $theme == "hitchhiker" {
-      width: 250px // less wider in the hitchhiker
-    } @else {
-      width: 300px;
-    }
-  }
-
-  .login-footer {
-    text-align: center;
-    color: white;
-  }
-}
-
-.form-login {
-  input[type="text"],
-  input[type="password"] {
-    font-size: 16px;
-    height: auto;
-    margin-bottom: 15px;
-    padding: 7px 9px;
-    width: 100%;
-    box-sizing: border-box;
-  }
-}
-
 .form-long {
   width: 100%;
   box-sizing: border-box;
@@ -490,7 +443,6 @@ input[type]:not([type=file]):not([type=submit]):not([type=range]) {
   @if $theme == "hitchhiker" {
     background-color: #ffffff;
     border: 1px solid #cccccc;
-    border-radius: 5px;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   } @else {
     border: 1px solid $gray-400;
@@ -503,10 +455,7 @@ input[type]:not([type=file]):not([type=submit]):not([type=range]) {
 
 textarea:focus,
 input[type]:not([type=file]):not([type=submit]):not([type=range]):focus {
-  @if $theme == "hitchhiker" {
-    border-color: rgba(82, 168, 236, 0.8) !important; // gonna override for some fuckass reason
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
-  } @else {
+  @if $theme != "hitchhiker" {
     border-color: $primary;
     box-shadow: 0 0 5px $primary;
   }
@@ -717,6 +666,8 @@ input[type]:not([type=file]):not([type=submit]):not([type=range]):focus {
 /// Comments \\\
 @import "_comments";
 /// Version page \\\
-@import "_version_page_backport";
+@import "_version_page";
 /// Watch page \\\
 @import "_watch_page";
+/// Login page \\\
+@import "_login_page";
