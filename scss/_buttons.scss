@@ -3,6 +3,10 @@ $button-padding: 6px 11px;
   $button-padding: 0 10px;
 }
 
+a.button {
+  text-decoration: none;
+}
+
 .button {
   color: white;
   padding: $button-padding;

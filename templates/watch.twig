@@ -9,11 +9,22 @@
       user_id = '{{ submission.author.id }}';
    </script>
 {% endblock %}
+
+{% if current_theme == 'hitchhiker' %}
+   {% set grid = 'watch-grid' %}
+   {% set col_left = 'col-left' %}
+   {% set col_right = 'col-right' %}
+{% else %}
+   {% set grid = 'grid' %}
+   {% set col_left = 'col-10' %}
+   {% set col_right = 'col-6' %}
+{% endif %}
+
 {% block title %}{{ submission.title }}{% endblock %}
 {% block content %}
-   <div class="grid">
-      <div class="col-10">
-         <div>
+   <div class="{{ grid }}">
+      <div class="{{ col_left }}">
+         <div class="card">
             {{ submission_view(submission) }}
             {% if submission.is_owner %}
                <div class="bg-dark text-light card card-body" style="border-bottom:none;border-color:black;">
@@ -50,7 +61,7 @@
                   </div>
                </div>
                <div class="col-8 right watch-view-info">
-                  <h1 class="viewcount">{{ submission.interactions.views }} views</h1>
+                  <div class="watch-view-count">{{ submission.interactions.views }} views</div>
                   <div class="likesaber">
                      <div class="like" style="width:{{ submission.interactions.legacy.ratio }}%"></div>
                   </div>
@@ -94,8 +105,10 @@
             </div>
          </div>
          <div class="card card-body">
-            <div id="About">
-               <p><b>Uploaded on {{ submission.published | date('M j, Y') }}</b></p>
+            <div class="watch-description">
+               <div class="watch-uploader-info">
+                  <strong>Uploaded on {{ submission.published | date('M j, Y') }}</strong>
+               </div>
                {% if submission.published_originally and submission.original_site %}
                   <div class="watch-box-author-info-small">First uploaded on {{ submission.original_site }} on {{ submission.published_originally | date('M j, Y') }}</div>
                {% elseif submission.original_site %}
@@ -129,9 +142,9 @@
             </div>
          </div>
       </div>
-      <div class="col-6">
+      <div class="{{ col_right }}">
          <div class="card">
-            <div class="card-body">
+            <div class="card-body card-body-watch-sidebar">
                {% if submission.recommended %}
                   {% for submission in submission.recommended %}
                      {{ submission_box(submission) }}
@@ -147,7 +160,7 @@
                {% endif %}
                <div class="center">
                   <div class="button button-secondary" onclick="showMoreVideos()" id="fromUser">
-                     {{ localize('more') }}
+                     Show more
                   </div>
                </div>
                <div class="collapsed" id="fromUserVideoList">

@@ -1,4 +1,5 @@
-.viewcount {
+// originally .viewcount
+.watch-view-count {
   @if $theme == "hitchhiker" {
     color: $gray-850;
     margin-bottom: 2px;
@@ -6,7 +7,11 @@
     color: $gray-800;
     margin-bottom: 4px;
   }
-  font-weight: normal;
+
+  font-size: 19px;
+  line-height: 24px;
+  max-height: 24px;
+  margin-bottom: 2px;
 }
 
 .below-likesaber {
@@ -21,6 +26,10 @@
 }
 
 .watch-header {
+  h1 {
+    font-size: 24px;
+  }
+
   padding-bottom: 0;
 
   .watch-user-header {
@@ -60,4 +69,83 @@
 
 .watch-view-info {
   align-self: end;
+}
+
+.subscribe-count {
+  padding: 0 6px;
+  border: 1px solid #ccc;
+  color: $gray-600;
+  font-size: 12px;
+  text-align: center;
+  @if $theme == "hitchhiker" {
+    line-height: 22px;
+  } @else {
+    line-height: 24px;
+  }
+  display: inline-block;
+}
+
+/// "Likesaber" for watch page \\\
+.likesaber {
+  width: 160px;
+  height: 2px;
+  background-color: $likesaber-gray;
+  float: right;
+
+  .like {
+    float: left;
+    height: 2px;
+    background-color: $primary;
+  }
+}
+
+// formerly #About
+.watch-description {
+  color: #333;
+  line-height: 17px;
+
+  p {
+    &:first-of-type {
+      margin-top: 0;
+    }
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  a {
+    color: inherit;
+  }
+
+  &:hover {
+    a {
+      color: $primary;
+    }
+  }
+
+  .description-extra {
+    margin: 10px 0;
+
+    li {
+      clear: both;
+      margin-bottom: 5px;
+      line-height: 1.2;
+    }
+
+    .title {
+      float: left;
+      margin: 0 10px 0 0;
+      width: 80px;
+      text-align: right;
+      font-size: 11px;
+      color: $gray-800;
+      font-weight: bold;
+    }
+
+    .content {
+      color: $gray-600;
+      font-size: 11px;
+    }
+  }
 }

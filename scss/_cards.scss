@@ -40,6 +40,13 @@
   border-radius: 4px;
 }
 
+// watch sidebar
+.card-body-watch-sidebar {
+  @if $theme == "hitchhiker" {
+    padding-left: 5px;
+  }
+}
+
 // markdown-based pages
 .card-body-article {
   padding: 0 20px 20px 20px;

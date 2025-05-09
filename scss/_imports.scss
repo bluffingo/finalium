@@ -43,6 +43,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @if $theme == "hitchhiker" {
+  strong, b {
+    font-weight: 500;
+  }
+
   h1, h2 {
     font-weight:normal
   }
@@ -314,21 +318,6 @@ blockquote {
   margin: 0;
 }
 
-// new navs
-
-ul.nav {
-  margin: 0;
-  padding: 1.25em 0;
-  .title {
-    color: $gray-600;
-    text-transform: uppercase;
-    font-size: 11px;
-    font-weight: bold;
-  }
-  li { padding: 6px 15px; }
-  li.active { background: $primary; a { color: white; } }
-}
-
 body {
   background: $body-bg;
   color: $text-color;
@@ -336,11 +325,13 @@ body {
   margin: auto;
   width: 100%;
 
+  font-size: 13px;
+
   @if $theme == "hitchhiker" {
-    font-size: 12px;
+    // in the actual hitchhiker css its initially defined as 12px but then gets redefined as 13px.
+    //font-size: 12px;
     line-height: normal;
   } @else {
-    font-size: 13px;
     line-height: 1.4;
   }
 }
@@ -462,122 +453,6 @@ input[type]:not([type=file]):not([type=submit]):not([type=range]):focus {
   outline: 0;
 }
 
-.subscribe-count {
-  padding: 0 6px;
-  border: 1px solid #ccc;
-  color: $gray-600;
-  font-size: 12px;
-  text-align: center;
-  @if $theme == "hitchhiker" {
-    line-height: 22px;
-  } @else {
-    line-height: 24px;
-  }
-  display: inline-block;
-}
-
-/// "Likesaber" for watch page \\\
-.likesaber {
-  width: 160px;
-  height: 2px;
-  background-color: $likesaber-gray;
-  float: right;
-
-  .like {
-    float: left;
-    height: 2px;
-    background-color: $primary;
-  }
-}
-
-#About {
-  line-height: 17px;
-
-  p {
-    margin: 0;
-  }
-
-  .description-extra {
-    margin: 10px 0;
-
-    li {
-      clear: both;
-      margin-bottom: 5px;
-      line-height: 1.2;
-    }
-
-    .title {
-      float: left;
-      margin: 0 10px 0 0;
-      width: 80px;
-      text-align: right;
-      font-size: 11px;
-      color: $gray-800;
-      font-weight: bold;
-    }
-
-    .content {
-      color: $gray-600;
-      font-size: 11px;
-    }
-  }
-}
-
-.vid-info {
-  .title {
-    max-height: 2.4em;
-    line-height: 1.2;
-    display: block;
-    margin: 0 0 2px;
-    overflow: hidden;
-
-    @if $theme == "hitchhiker" {
-      font-size: 13px;
-
-      a {
-        color: #333;
-      }
-      a:hover {
-        color: #438bc5;
-      }
-    } @else {
-      font-size: 14px;
-
-      a {
-        color: $gray-800;
-      }
-
-      a:hover {
-        color: $primary;
-      }
-    }
-  }
-
-  .stat {
-    @if $theme == "hitchhiker" {
-      color: #999;
-    } @else {
-      color: $gray-600;
-    }
-    font-size: 11px;
-    display: block;
-    line-height: 1.4em;
-    height: 1.4em;
-  }
-
-  .stat-larger {
-    @if $theme == "hitchhiker" {
-      color: #999;
-    } @else {
-      color: $gray-600;
-    }
-    font-size: 13px;
-    display: block;
-    line-height: 1.4em;
-    height: 1.4em;
-  }
-}
-
 .menu {
   position: absolute;
   top: 100%;
@@ -652,9 +527,8 @@ input[type]:not([type=file]):not([type=submit]):not([type=range]):focus {
 @import "_cards";
 /// Buttons \\\
 @import "_buttons";
-
-// Navs have been removed 4/25/2023 -chaziz
-
+/// Navs \\\
+@import "_navs";
 /// Banners \\\
 @import "_banners";
 /// Text \\\
@@ -669,5 +543,7 @@ input[type]:not([type=file]):not([type=submit]):not([type=range]):focus {
 @import "_version_page";
 /// Watch page \\\
 @import "_watch_page";
+/// Upload lists \\\
+@import "_upload_list";
 /// Login page \\\
 @import "_login_page";

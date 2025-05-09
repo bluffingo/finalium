@@ -1,25 +1,12 @@
-{# thumbnails were a lot bigger in beta. this may slow down templating but... whatever? #}
-{% if current_theme == 'beta' %}
-    {% set thumbnail_col = 'col-6' %}
-    {% set info_col = 'col-10' %}
-{% else %}
-    {% set thumbnail_col = 'col-4' %}
-    {% set info_col = 'col-12' %}
-{% endif %}
-
-<div class="grid" style="margin-bottom: 5px;">
-    <div class="{{ thumbnail_col }}">
+<div class="upload-list-item">
+    <div class="thumbnail">
         <a href="/watch?v={{ data.id }}">
-            <img class="img-fluid" src="{{ thumbnail(data.id, data.type, data.flags.custom_thumbnail) }}" alt="{{ data.title }}">
+            <img src="{{ thumbnail(data.id, data.type, data.flags.custom_thumbnail) }}" alt="{{ data.title }}">
         </a>
     </div>
-    <div class="{{ info_col }} vid-info">
+    <div class="content-wrapper">
         <h3 class="title"><a href="/watch?v={{ data.id }}">{{ data.title }}</a></h3>
-        {% if current_theme == 'beta' %}
-            <span class="stat">by {{ user_link(data.author) }}</span>
-            <span class="stat">{{ data.views }} views</span>
-        {% else %}
-        <span class="stat">by {{ user_link(data.author) }} &bull; {{ data.views }} views</span>
-        {% endif %}
+        <span class="stat">{{ user_link(data.author) }}</span>
+        <span class="stat">{{ data.views }} views</span>
     </div>
 </div>

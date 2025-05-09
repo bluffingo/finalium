@@ -1,7 +1,10 @@
 // from https://gist.github.com/wiegertschouten/443f7e061d1fc656b229ac4b5b0faece
 
 $columns: 16; // 12;
-$gap: 10px;
+$gap: 1em;
+@if $theme == "hitchhiker" {
+  $gap: 10px;
+}
 
 @mixin create-selectors($breakpoint: null) {
   $infix: if($breakpoint == null, '', '-#{$breakpoint}');
@@ -45,5 +48,27 @@ $gap: 10px;
 @each $breakpoint, $width in $breakpoints {
   @media (min-width: $width) {
     @include create-selectors($breakpoint);
+  }
+}
+
+// and now this is getting stupid
+.watch-grid {
+  display: flex;
+  gap: $gap;
+
+  .col-left {
+    @include responsive('medium') {
+      min-width: 640px;
+      width: 640px;
+    }
+    @include responsive('large') {
+      min-width: 854px;
+      width: 854px;
+    }
+  }
+
+  .col-right {
+    min-width: 416px;
+    width: 416px;
   }
 }
