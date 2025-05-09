@@ -122,6 +122,14 @@
   height: $header-height;
   font-size: 13px;
 
+  @if $theme == "hitchhiker" {
+    &:hover {
+      .masthead-button {
+        color: #666666;
+      }
+    }
+  }
+
   #logo-container {
     display: flex;
     align-items: center;
@@ -149,6 +157,7 @@
     @if $theme == "hitchhiker" {
       width: 30px;
       height: 30px;
+      color: #B8B8B8;
     } @else {
       width: 32px;
       height: 32px;
@@ -195,6 +204,14 @@
   #search-btn {
     height: $masthead-search-bar-height;
     border-radius: 0 3px 3px 0;
+
+    @if $theme == "hitchhiker" {
+      color: #a0a0a0;
+
+      &:hover, &:focus {
+        color: #666666;
+      }
+    }
 
     span {
       margin: 0 12px;

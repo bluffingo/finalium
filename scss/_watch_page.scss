@@ -118,7 +118,7 @@
     color: inherit;
   }
 
-  &:hover {
+  &:hover, &:focus {
     a {
       color: $primary;
     }

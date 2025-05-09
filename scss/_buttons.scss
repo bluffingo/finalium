@@ -32,19 +32,6 @@ a.button {
     border-radius: 5px;
     margin: 2px 0;
   }
-
-  // what the fuck is this???
-  &:hover {
-	background-color: #dddddd;
-  }
-
-  &.sel {
-	background-color: #ccccff;
-
-	&:hover {
-	  background-color: #bbbbee;
-	}
-  }
 }
 
 // uploader "file selection" button, implemented in the hackiest way possible.
@@ -163,7 +150,7 @@ input[type=file]::file-selector-button {
 
   .button-#{$state}-invis:hover {
     @if $theme == "hitchhiker" {
-      @include gradient-y($start-color: lighten($value, 5%), $end-color: $value);
+      //@include gradient-y($start-color: lighten($value, 5%), $end-color: $value);
     } @else {
       @include gradient-y($start-color: lighten($value, 8.5%), $end-color: lighten($value, 1.5%));
       border: 1px solid darken($value, 1%);
@@ -174,7 +161,7 @@ input[type=file]::file-selector-button {
 
   .button-#{$state}-invis:active {
     @if $theme == "hitchhiker" {
-      @include gradient-y($start-color: darken($value, 7%), $end-color: darken($value, 17%));
+      //@include gradient-y($start-color: darken($value, 7%), $end-color: darken($value, 17%));
     } @else {
       @include gradient-y($start-color: lighten($value, 10.5%), $end-color: lighten($value, 5.5%));
       border: 1px solid darken($value, 10%);

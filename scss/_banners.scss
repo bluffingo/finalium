@@ -1,10 +1,11 @@
 .banner {
-  padding: 0.5em 1em;
 
   @if $theme == "hitchhiker" {
+    padding: 9.5px 1em;
     font-size: 13px;
     font-weight: 500;
   } @else {
+    padding: 0.5em 1em;
     border-radius: 3px;
   }
 
