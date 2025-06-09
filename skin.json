@@ -2,27 +2,27 @@
   "metadata":
   {
     "id": "finalium",
-    "name": "Finalium 1.1",
+    "name": "Finalium",
     "author": "OpenSB developers",
-    "description": "The classic SquareBracket user experience, originally known as sbNext.",
+    "description": "The classic SquareBracket look.",
     "site": "squarebracket",
     "themes": [
       {
         "id": "default",
         "name": "Default",
-        "description": "The classic 2022-2023 SquareBracket user experience.",
+        "description": "The classic SquareBracket look.",
         "author": "OpenSB developers"
       },
       {
         "id": "dark",
         "name": "Dark",
-        "description": "A dark theme for Finalium. May be unmaintained.",
+        "description": "The classic SquareBracket look, now dark!",
         "author": "OpenSB developers"
       },
       {
         "id": "hitchhiker",
         "name": "FulpTube",
-        "description": "",
+        "description": "Work in progress!",
         "author": "OpenSB developers"
       }
     ]
