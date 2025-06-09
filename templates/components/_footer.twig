@@ -9,12 +9,9 @@
         <hr>
         <div class="footer-links">
             <div class="footer-links-primary">
-                <a href="/theme">{{ localize('change_theme') }}</a>
-                <a href="/help">{{ localize('help') }}</a>
-                <a href="/guidelines">{{ localize('community_guidelines') }}</a>
-                <a href="/tos">{{ localize('terms_of_service') }}</a>
-                <a href="/privacy">{{ localize('privacy_policy') }}</a>
-                <a href="/staff">{{ localize('staff') }}</a>
+                {% for link in footer_links() %}
+                    <a href="{{ link.url }}">{{ link.name }}</a>
+                {% endfor %}
             </div>
             <div class="footer-links-secondary">
                 <a href="/version">Running OpenSB {{ opensb_version }}</a>
