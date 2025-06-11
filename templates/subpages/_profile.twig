@@ -35,7 +35,7 @@
             <h3>About {{ data.displayname }}</h3>
             {{ data.about | markdown }}
             <p><strong>Joined</strong>: {{ data.joined | date('Y-m-d H:i:s') }}</p>
-            <p><strong>Last login</strong>: {{ data.connected | relative_time }}</p>
+            <p><strong>Last seen</strong>: {{ data.connected | relative_time }}</p>
         </div>
         <div class="card card-body basic-box">
             <h3>Journals</h3>
