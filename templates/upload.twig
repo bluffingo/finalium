@@ -11,9 +11,16 @@
                         Make sure you have read the <a href="/guidelines">guidelines</a> first. Failure to comply
                         with the guidelines will result in your upload being taken down.
                     </p>
-                    <p style="font-weight:550;">
-                        Reminder: Do not reupload content that you have not made.
-                    </p>
+                    {% if current_theme == 'hitchhiker' %}
+                        <p style="color:red;font-weight:700;font-size:50px;">
+                            Do not upload any content that does not belong to you.
+                            If you attempt to reupload anything, you WILL be banned.
+                        </p>
+                    {% else %}
+                        <p style="font-weight:550;">
+                            Reminder: Do not reupload content that you have not made.
+                        </p>
+                    {% endif %}
                     <h4 style="margin-bottom: 0.5em;">Title</h4>
                     <input type="text" class="form-control form-long uploader-form" id="title" name="title" required>
                     <br>
