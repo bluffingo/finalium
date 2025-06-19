@@ -30,7 +30,7 @@
     }
     {% endif %}
 
-    {% if data.customization and current_theme != "beta" %}
+    {% if data.customization and current_theme != "hitchhiker" %}
         body {
         background: {{ data.customization.background_color }};
         }
@@ -61,9 +61,9 @@
 {% endblock %}
 
 {% block content %}
-    {% if current_theme == "beta" and data.customization %}
-        {{ include('/subpages/_profile_beta.twig') }}
+    {% if current_theme == "hitchhiker" %}
+        {{ include('/profile_hitchhiker.twig') }}
     {% else %}
-        {{ include('/subpages/_profile.twig') }}
+        {{ include('/profile_finalium.twig') }}
     {% endif %}
 {% endblock %}

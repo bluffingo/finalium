@@ -1,0 +1,44 @@
+{% extends "_layout.twig" %}
+
+{% set title = "Staff" %}
+
+	{% block content %}
+        <div class="card card-body">
+            {% if staff|filter(user => user.level == '4') is not empty %}
+                <h2>Owners</h2>
+                <ul>
+                    {% for user in staff|filter(user => user.level == '4') %}
+                        <li>
+                            {{ user_link(user) }}
+                        </li>
+                    {% endfor %}
+                </ul>
+                {% if staff|filter(user => user.level == '3') is not empty %}
+                    <hr>
+                {% endif %}
+            {% endif %}
+            {% if staff|filter(user => user.level == '3') is not empty %}
+                <h2>Administrators</h2>
+                <ul>
+                    {% for user in staff|filter(user => user.level == '3') %}
+                        <li>
+                            {{ user_link(user) }}
+                        </li>
+                    {% endfor %}
+                </ul>
+                {% if staff|filter(user => user.level == '2') is not empty %}
+                    <hr>
+                {% endif %}
+            {% endif %}
+            {% if staff|filter(user => user.level == '3') is not empty %}
+                <h2>Moderators</h2>
+                <ul>
+                    {% for user in staff|filter(user => user.level == '2') %}
+                        <li>
+                            {{ user_link(user) }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    {% endblock %}

@@ -1,0 +1,87 @@
+{% extends "_layout.twig" %}
+{% block title %}Home{% endblock %}
+
+{# hack to prevent twig from outputing the number 1 #}
+{% if is_user_logged_in %}
+    {% if data.totals.followers != 1 %}
+        {% set pluralSubscribers = "s" %}
+    {% endif %}
+    {% if data.totals.views != 1 %}
+        {% set pluralViews = "s" %}
+    {% endif %}
+{% endif %}
+
+{% block precontent %}
+    <div class="main-content">
+        <div class="container page-container sb-welcome grid">
+            {% if is_user_logged_in %}
+                <div class="col-10">
+                    <h1>{{ localize('welcome_logged_in', user_data.title) }}</h1>
+                    <h3>@{{ user_data.name }}</h3>
+                    <a class="button button-secondary button-large"
+                       href="/my_submissions">Manage {{ icon('caret-right-fill', 12) }}</a>
+                </div>
+                <div class="col-6 right stats">
+                    <p>{{ user_stat_data.followers ?? "no" }} follower{{ pluralSubscribers }}
+                        <br>{{ user_stat_data.views ?? "no" }} view{{ pluralViews }}</p>
+                </div>
+            {% else %}
+                <div class="col-10">
+                    <h1>{{ localize('welcome_logged_out', website_branding.name) }}</h1>
+                    <h3 style="padding:0;margin:0;">
+                        {% if is_chaziz_sb %}
+                            Your content, your narration, your niche on the web.
+                        {% else %}
+                            Insert slogan.
+                        {% endif %}
+                    </h3>
+                </div>
+                <div class="col-6">
+                    <a class="button button-secondary"
+                       href="/register">Get started {{ icon('caret-right-fill', 16) }}</a><br>
+                    Already have an account? <a class="button button-secondary button-small" href="/login">{{ localize('login') }}</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="grid">
+        <div class="col-10">
+            <div class="card">
+                <div class="card-body">
+                    <h3>{{ localize('random_uploads') }}</h3>
+                    {% for submission in data.submissions %}
+                        {{ submission_box(submission) }}
+                    {% else %}
+                        <p>No uploads.</p>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h3>{{ localize('recent_uploads') }}</h3>
+                    {% for submission in data.submissions_new %}
+                        {{ submission_box(submission) }}
+                    {% else %}
+                        <p>No uploads.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3>{{ localize('site_news') }}</h3>
+                    {% for journal in data.news_recent %}
+                        {% include "components/journal.twig" %}
+                    {% else %}
+                        <p>No news.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br>
+{% endblock %}
