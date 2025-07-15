@@ -1,5 +1,8 @@
+{#
 {% if current_theme == 'hitchhiker' %}
     {{ include('/index_hitchhiker.twig') }}
 {% else %}
     {{ include('/index_finalium.twig') }}
 {% endif %}
+#}
+{{ include('/index_finalium.twig') }}

@@ -19,43 +19,41 @@
 
 {% block customcss %}
     .channel-header-bg {
-    background: url('banner_picture'), linear-gradient(#888, #444) !important;
-    background-position: center !important;
-    height: 225px;
+        background: url('{{ profile_banner(data.username) }}'), #333;
+        background-position: center;
+        height: 210px;
     }
-
-    {% if data.customization %}
-    .container a:not(.userlink) {
-    color: {{ data.customization.link_color }} !important;
-    }
-    {% endif %}
 
     {% if data.customization and current_theme != "hitchhiker" %}
         body {
-        background: {{ data.customization.background_color }};
+            background: {{ data.customization.background_color }};
         }
 
         .container {
-        font-family: {{ data.customization.font | raw }};
+            font-family: {{ data.customization.font | raw }};
+        }
+
+        .container a:not(.userlink) {
+            color: {{ data.customization.link_color }} !important;
         }
 
         /* Titles */
         h1, h2, h3, h4, h5, h6 {
-        color: {{ data.customization.title_color }};
+          color: {{ data.customization.title_color }};
         }
 
         /* Highlight box */
         .highlight-box {
-        background: {{ data.customization.highlight_box_background_color }};
-        border: 1px solid {{ data.customization.basic_box_border_color }};
-        color: {{ data.customization.highlight_box_text_color }};
+            background: {{ data.customization.highlight_box_background_color }};
+            border: 1px solid {{ data.customization.basic_box_border_color }};
+            color: {{ data.customization.highlight_box_text_color }};
         }
 
         /* Basic box */
         .basic-box {
-        background: {{ data.customization.basic_box_background_color }};
-        border: 1px solid {{ data.customization.basic_box_border_color }};
-        color: {{ data.customization.basic_box_text_color }};
+            background: {{ data.customization.basic_box_background_color }};
+            border: 1px solid {{ data.customization.basic_box_border_color }};
+            color: {{ data.customization.basic_box_text_color }};
         }
     {% endif %}
 {% endblock %}

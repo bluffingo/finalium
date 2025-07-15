@@ -1,8 +1,19 @@
 {% block content %}
+    <div class="channel-header-bg">
+        <img class="rounded img-pfp-profiles" src="{{ profile_picture(userpagedata.name) }}"  alt="{{ userpagedata.name }}">
+    </div>
     <div class="card">
         <div class="card-body">
             <h1>{{ data.displayname }}</h1>
-            <p>To be determined</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            {% for submission in data.submissions %}
+                {{ submission_box(submission) }}
+            {% else %}
+                <p>There are currently no uploads by {{ data.displayname }}</p>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}

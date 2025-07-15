@@ -51,16 +51,6 @@
         <div class="col-10">
             <div class="card">
                 <div class="card-body">
-                    <h3>{{ localize('random_uploads') }}</h3>
-                    {% for submission in data.submissions %}
-                        {{ submission_box(submission) }}
-                    {% else %}
-                        <p>No uploads.</p>
-                    {% endfor %}
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
                     <h3>{{ localize('recent_uploads') }}</h3>
                     {% for submission in data.submissions_new %}
                         {{ submission_box(submission) }}
@@ -69,8 +59,28 @@
                     {% endfor %}
                 </div>
             </div>
+            <div class="card">
+                <div class="card-body">
+                    <h3>{{ localize('random_uploads') }}</h3>
+                    {% for submission in data.submissions %}
+                        {{ submission_box(submission) }}
+                    {% else %}
+                        <p>No uploads.</p>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
         <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3>{{ localize('featured_uploads') }}</h3>
+                    {% for submission in data.submissions_featured %}
+                        {{ submission_box(submission) }}
+                    {% else %}
+                        <p>No featured uploads.</p>
+                    {% endfor %}
+                </div>
+            </div>
             <div class="card">
                 <div class="card-body">
                     <h3>{{ localize('site_news') }}</h3>
