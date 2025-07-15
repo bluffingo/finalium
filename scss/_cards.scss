@@ -1,76 +1,81 @@
 .card {
-  margin-bottom: 0.75em;
-  background: $card-bg;
+    margin-bottom: 0.75em;
+    background: $card-bg;
 
-  @if $theme == "hitchhiker" {
-    box-shadow: 0 1px 2px rgba(0,0,0,.1)
-  } @else {
-    border: 1px solid $card-border;
-  }
+    @if $theme =="hitchhiker" {
+        box-shadow: 0 1px 2px rgba(0, 0, 0, .1)
+    }
+
+    @else {
+        border: 1px solid $card-border;
+    }
 }
 
 .card-header {
-  padding: 0.5em;
-  border-bottom: 1px solid $gray-200;
-  background: $gray-100;
+    padding: 0.5em;
+    border-bottom: 1px solid $gray-200;
+    background: $gray-100;
 }
 
 .card-header h5 {
-  margin: 0;
+    margin: 0;
 }
 
 .card-body {
-  @if $theme == "hitchhiker" {
-    padding: 15px;
-  } @else {
-    padding: 1em;
-  }
+    @if $theme =="hitchhiker" {
+        padding: 15px;
+    }
+
+    @else {
+        padding: 1em;
+    }
 }
 
 .card-body.collapsed {
-  padding: 0;
+    padding: 0;
 }
+
 .card-profiles {
-  padding: 0.35em 0.5em 0;
+    padding: 0.35em 0.5em 0;
 }
 
 .card h3 em {
-  padding: 0.25em;
-  background: #eddbff;
-  border-radius: 4px;
+    padding: 0.25em;
+    background: #eddbff;
+    border-radius: 4px;
 }
 
 // watch sidebar
 .card-body-watch-sidebar {
-  @if $theme == "hitchhiker" {
-    //padding-left: 5px;
-    padding-left: 10px;
-  }
+    @if $theme =="hitchhiker" {
+        //padding-left: 5px;
+        padding-left: 10px;
+    }
 }
 
 // markdown-based pages
 .card-body-article {
-  padding: 0 20px 20px 20px;
+    padding: 0 20px 20px 20px;
 
-  font-size: 13px;
-  line-height: 1.5;
+    font-size: 13px;
+    line-height: 1.5;
 
-  p {
-    margin-bottom: 12px;
-  }
+    p {
+        margin-bottom: 12px;
+    }
 
-  ul {
-    padding: 0;
-  }
+    ul {
+        padding: 0;
+    }
 
-  li {
-    margin: 6px 0 6px 36px;
-  }
+    li {
+        margin: 6px 0 6px 36px;
+    }
 
-  h1 {
-    padding: 10px 20px;
-    margin: 0 -20px; // Ugly Hack !
+    h1 {
+        padding: 10px 20px;
+        margin: 0 -20px; // Ugly Hack !
 
-    border-bottom: 1px solid $gray-200;
-  }
+        border-bottom: 1px solid $gray-200;
+    }
 }

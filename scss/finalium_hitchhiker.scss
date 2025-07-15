@@ -60,38 +60,34 @@ $body-bg: #f1f1f1;
 
 $likesaber-gray: #cccccc;
 
-$primary:       $blue;
-$secondary:     #f8f8f8;
-$success:       $green;
-$info:          $cyan;
-$warning:       $yellow;
-$danger:        $red;
-$gray-dark: 	$gray-800;
+$primary: $blue;
+$secondary: #f8f8f8;
+$success: $green;
+$info: $cyan;
+$warning: $yellow;
+$danger: $red;
+$gray-dark: $gray-800;
 
 $theme-colors: (
-        "primary":    $primary,
-        "secondary":  $secondary,
-        "success":    $success,
-        "info":       $info,
-        "warning":    $warning,
-        "danger":     $danger,
-        "light":      $gray-100,
-        "dark":      $gray-dark,
+    "primary": $primary,
+    "secondary": $secondary,
+    "success": $success,
+    "info": $info,
+    "warning": $warning,
+    "danger": $danger,
+    "light": $gray-100,
+    "dark": $gray-dark,
 );
 
 $breakpoints: (
-        "tiny": (
-                300px,
-        ),
-        "small": (
-                425px,
-        ),
-        "medium": (
-                656px,
-        ),
-        "large": (
-                1294px,
-        ),
+    "tiny": (300px,
+    ),
+    "small": (425px,
+    ),
+    "medium": (656px,
+    ),
+    "large": (1294px,
+    ),
 );
 
 /// Imports \\\

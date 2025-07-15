@@ -1,46 +1,61 @@
 /// forum specific styling uwu \\\
 
 table.c1 {
-  border: $gray-500 1px solid;
-  border-spacing: 0;
-  border-collapse: collapse;
-  width: 100%;
-
-  margin-top: 1em;
-  margin-bottom: 1em;
-
-  tr.h, tr.c {
-    text-align: left;
-
-    @if $theme == "hitchhiker" {
-      font-weight: 500;
-    }
-
-    th {
-      padding: 5px;
-      border: $gray-500 1px solid;
-    }
-  }
-
-  tr.h { background: $gray-200; }
-
-  tr.h td, tr.c td {
-    border-left: 0;
-    border-right: 0;
-  }
-
-  td {
-    //border: $grid 1px solid;
     border: $gray-500 1px solid;
-    padding: 5px;
-  }
+    border-spacing: 0;
+    border-collapse: collapse;
+    width: 100%;
 
-  td.nb {
-    padding: 1px;
-    border: 0px none;
-  }
+    margin-top: 1em;
+    margin-bottom: 1em;
 
-  tr.n1, td.n1 { background: #f5f5f5; }
-  tr.n2, td.n2 { background: #ebebeb; }
-  tr.n3, td.n3 { background: #d4d4d4; }
+    tr.h,
+    tr.c {
+        text-align: left;
+
+        @if $theme =="hitchhiker" {
+            font-weight: 500;
+        }
+
+        th {
+            padding: 5px;
+            border: $gray-500 1px solid;
+        }
+    }
+
+    tr.h {
+        background: $gray-200;
+    }
+
+    tr.h td,
+    tr.c td {
+        border-left: 0;
+        border-right: 0;
+    }
+
+    td {
+        //border: $grid 1px solid;
+        border: $gray-500 1px solid;
+        padding: 5px;
+    }
+
+    td.nb {
+        padding: 1px;
+        border: 0px none;
+    }
+
+    tr.n1,
+    td.n1 {
+        background: #f5f5f5;
+    }
+
+    tr.n2,
+    td.n2 {
+        background: #ebebeb;
+    }
+
+    tr.n3,
+    td.n3 {
+        background: #d4d4d4;
+    }
 }

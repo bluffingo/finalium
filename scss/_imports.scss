@@ -6,511 +6,575 @@
 @import "_normalize";
 
 // misc stuff
-@if $theme == "spring" {
-  @import url('https://rsms.me/inter/inter.css');
-} @else {
-  @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@if $theme =="spring" {
+    @import url('https://rsms.me/inter/inter.css');
+}
+
+@else {
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 }
 
 $header-height: 48px;
 $masthead-search-bar-height: 31px;
 $guide-width: 17.5em;
 
-@if $theme == "hitchhiker" {
-  $header-height: 50px;
-  $masthead-search-bar-height: 31px;
-  $guide-width: 230px;
+@if $theme =="hitchhiker" {
+    $header-height: 50px;
+    $masthead-search-bar-height: 31px;
+    $guide-width: 230px;
 }
 
 /* SB CSS STARTS HERE ======================================================== */
 
 html {
-  height: 100%;
+    height: 100%;
 }
 
 @import "_clearfix";
 @import "_grid_system";
 
 .bi {
-  display: inline-block;
-  margin-top: -0.2em;
-  vertical-align: middle;
+    display: inline-block;
+    margin-top: -0.2em;
+    vertical-align: middle;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  margin: 0;
-  padding: 0;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
 }
 
-@if $theme == "hitchhiker" {
-  strong, b {
-    font-weight: 500;
-  }
+@if $theme =="hitchhiker" {
 
-  h1, h2 {
-    font-weight:normal
-  }
+    strong,
+    b {
+        font-weight: 500;
+    }
 
-  h3, h4, h5, h6 {
-    font-weight:500
-  }
-} @else {
-  h1, h2, h3 {
-    font-weight: 400;
-  }
+    h1,
+    h2 {
+        font-weight: normal
+    }
 
-  h4, h5, h6 {
-    font-weight: 300;
-  }
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-weight: 500
+    }
+}
+
+@else {
+
+    h1,
+    h2,
+    h3 {
+        font-weight: 400;
+    }
+
+    h4,
+    h5,
+    h6 {
+        font-weight: 300;
+    }
 }
 
 h1 {
-  font-size:20px
+    font-size: 20px
 }
 
 h2 {
-  font-size:16px
+    font-size: 16px
 }
 
-h3, h4 {
-  font-size:13px
+h3,
+h4 {
+    font-size: 13px
 }
 
-h5, h6 {
-  font-size:10px
+h5,
+h6 {
+    font-size: 10px
 }
 
 hr {
-  border: 0;
-  border-bottom: 1px solid $gray-200;
-  height: 0;
-  margin: 10px 0;
+    border: 0;
+    border-bottom: 1px solid $gray-200;
+    height: 0;
+    margin: 10px 0;
 }
 
 .clearfix {
-  @include clearfix;
+    @include clearfix;
 }
 
 *,
 *:before,
 *:after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 a {
-  color: $primary;
-  text-decoration: none;
+    color: $primary;
+    text-decoration: none;
 
-  &:hover, &:focus {
-    text-decoration: underline;
-  }
+    &:hover,
+    &:focus {
+        text-decoration: underline;
+    }
 
-  &:focus {
-    outline: 1px dotted;
-  }
+    &:focus {
+        outline: 1px dotted;
+    }
 }
 
 menu {
-  list-style: none;
+    list-style: none;
 }
 
 code {
-  color: #a33a3a;
+    color: #a33a3a;
 }
 
 pre {
-  color: #a33a3a;
-  background-color: #ffe8e8;
-  border: 1px solid #eed1d1;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 0;
-  overflow-x: auto;
-  line-height: 1.5;
-  white-space: pre-wrap;
+    color: #a33a3a;
+    background-color: #ffe8e8;
+    border: 1px solid #eed1d1;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 0;
+    overflow-x: auto;
+    line-height: 1.5;
+    white-space: pre-wrap;
 }
 
 blockquote {
-  margin: 0 0 0.5em 0;
-  padding-left: 0.8em;
-  border-left: 4px solid $gray-400;
+    margin: 0 0 0.5em 0;
+    padding-left: 0.8em;
+    border-left: 4px solid $gray-400;
 }
 
 .t_user {
-  color: #0000aa;
-  font-weight: bold;
+    color: #0000aa;
+    font-weight: bold;
 }
 
 .dl {
-  border-collapse: collapse;
+    border-collapse: collapse;
 
-  td {
-    border: 1px solid black;
-    padding: 7px;
-  }
+    td {
+        border: 1px solid black;
+        padding: 7px;
+    }
 }
 
 .noborder {
-  border: 0;
+    border: 0;
 }
 
 .center {
-  text-align: center;
+    text-align: center;
 }
 
 // Pagination \\
 .pagination {
-  margin-top: 1em;
-  font-size: 14pt;
-  font-weight: bold;
+    margin-top: 1em;
+    font-size: 14pt;
+    font-weight: bold;
 
-  span {
-    margin-left: 13px;
-    display: inline-block;
-  }
+    span {
+        margin-left: 13px;
+        display: inline-block;
+    }
 }
 
 /// Generic text aligns \\\
 
 .left {
-  text-align: left;
-  &:dir(rtl) {
-    text-align: right;
-  }
+    text-align: left;
+
+    &:dir(rtl) {
+        text-align: right;
+    }
 }
 
 .center {
-  text-align: center;
+    text-align: center;
 }
 
 .right {
-  text-align: right;
-  &:dir(rtl) {
-    text-align: left;
-  }
+    text-align: right;
+
+    &:dir(rtl) {
+        text-align: left;
+    }
 }
 
 .float-left {
-  float: left;
-  &:dir(rtl) {
-    float: right;
-  }
+    float: left;
+
+    &:dir(rtl) {
+        float: right;
+    }
 }
 
 .float-right {
-  float: right;
-  &:dir(rtl) {
-    float: left;
-  }
+    float: right;
+
+    &:dir(rtl) {
+        float: left;
+    }
 }
 
 .clear_right {
-  clear: right;
-  &:dir(rtl) {
-    clear: left;
-  }
+    clear: right;
+
+    &:dir(rtl) {
+        clear: left;
+    }
 }
 
 .main-content {
-  background: #3e3e3e;
-  background: linear-gradient(90deg, rgb(62, 62, 62) 0%, rgb(107, 107, 107) 35%, rgb(155, 155, 155) 100%);
+    background: #3e3e3e;
+    background: linear-gradient(90deg, rgb(62, 62, 62) 0%, rgb(107, 107, 107) 35%, rgb(155, 155, 155) 100%);
 
-  color: white;
-  margin: -48px 0 0;
-  padding: 75px 0 20px;
-  display: inline-block;
-  width: 100%;
-  .page-container {
-    min-height: auto;
-    h1, h2, h3, h4, h5, h6, p {
-      padding: 0;
-      margin: 8px 0;
+    color: white;
+    margin: -48px 0 0;
+    padding: 75px 0 20px;
+    display: inline-block;
+    width: 100%;
+
+    .page-container {
+        min-height: auto;
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p {
+            padding: 0;
+            margin: 8px 0;
+        }
+
+        .stats {
+            font-size: 1.5em;
+        }
     }
-    .stats {
-      font-size: 1.5em;
-    }
-  }
 }
 
 .form-long {
-  width: 100%;
-  box-sizing: border-box;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .uploader-form {
-  margin-bottom: 0.5em;
-  font-size: 1.05em;
-  padding: 0.33em;
+    margin-bottom: 0.5em;
+    font-size: 1.05em;
+    padding: 0.33em;
 }
 
 .search-form {
-  margin-bottom: 0.5em;
-  font-size: 1.05em;
-  padding: 0.25em;
-  height: 100%;
+    margin-bottom: 0.5em;
+    font-size: 1.05em;
+    padding: 0.25em;
+    height: 100%;
 }
 
 .ti {
-  display: inline-block;
-  margin-top: -0.25em;
-  vertical-align: middle;
+    display: inline-block;
+    margin-top: -0.25em;
+    vertical-align: middle;
 }
 
 #commentContents {
-  width: 100%;
-  box-sizing: border-box;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .card-cover {
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
 }
 
 .comment {
-  p {
-    width: 100%;
-    margin: 0;
-  }
+    p {
+        width: 100%;
+        margin: 0;
+    }
 
-  /*
+    /*
   img {
     width: 100%;
   }
   */
 }
 
-#optionsModal, #debugModal {
-  display: none;
+#optionsModal,
+#debugModal {
+    display: none;
 }
 
 .user-action-container {
-  a {
-    text-decoration: none;
-  }
+    a {
+        text-decoration: none;
+    }
 }
 
 .small-stats {
-  div {
-    display: inline-block;
-    margin-right: 1em;
-  }
+    div {
+        display: inline-block;
+        margin-right: 1em;
+    }
 }
 
 .commentPost {
-  margin-bottom: 17.5px;
-  .commentAuthor {
-    .commentDisplayName {
-      color: $gray-600;
-      font-size: .9em;
-    }
+    margin-bottom: 17.5px;
 
-    .time {
-      font-size: .9em;
+    .commentAuthor {
+        .commentDisplayName {
+            color: $gray-600;
+            font-size: .9em;
+        }
+
+        .time {
+            font-size: .9em;
+        }
     }
-  }
 }
 
 #player-container {
-  background-color: black;
-  color: white;
-  width: 100%;
-  margin: 0;
+    background-color: black;
+    color: white;
+    width: 100%;
+    margin: 0;
 }
 
 body {
-  background: $body-bg;
-  color: $text-color;
-  font-family: $font;
-  margin: auto;
-  width: 100%;
+    background: $body-bg;
+    color: $text-color;
+    font-family: $font;
+    margin: auto;
+    width: 100%;
 
-  font-size: 13px;
+    font-size: 13px;
 
-  @if $theme == "hitchhiker" {
-    // in the actual hitchhiker css its initially defined as 12px but then gets redefined as 13px.
-    //font-size: 12px;
-    line-height: normal;
-  } @else {
-    line-height: 1.4;
-  }
+    @if $theme =="hitchhiker" {
+        // in the actual hitchhiker css its initially defined as 12px but then gets redefined as 13px.
+        //font-size: 12px;
+        line-height: normal;
+    }
+
+    @else {
+        line-height: 1.4;
+    }
 }
 
 // move this
 .footer {
-  background-color: $footer-bg;
-  border-bottom: 1px solid $footer-border;
-  border-top: 1px solid $footer-border;
-  padding: 2em 3em;
+    background-color: $footer-bg;
+    border-bottom: 1px solid $footer-border;
+    border-top: 1px solid $footer-border;
+    padding: 2em 3em;
 
-  margin-top: 0;
-  overflow: hidden;
+    margin-top: 0;
+    overflow: hidden;
 
-  img {
-    width: 135px;
-  }
-
-  hr {
-    border-color: $footer-border;
-  }
-
-  .footer-main {
-    display: flex;
-    align-items: center;
-    gap: 1em;
-  }
-
-  .footer-links {
-    padding: 1em 0.5em;
-    .footer-links-primary, .footer-links-secondary {
-      display: flex;
-      gap: 1em;
+    img {
+        width: 135px;
     }
 
-    .footer-links-primary a, .footer-links-secondary a {
-      font-weight: 500;
+    hr {
+        border-color: $footer-border;
     }
 
-    .footer-links-primary {
-      margin-bottom: 0.5em;
-      a, span {
-        color: #333;
-      }
+    .footer-main {
+        display: flex;
+        align-items: center;
+        gap: 1em;
     }
 
-    .footer-links-secondary {
-      a, span {
-        color: #666;
-        font-size: 11px;
-      }
+    .footer-links {
+        padding: 1em 0.5em;
+
+        .footer-links-primary,
+        .footer-links-secondary {
+            display: flex;
+            gap: 1em;
+        }
+
+        .footer-links-primary a,
+        .footer-links-secondary a {
+            font-weight: 500;
+        }
+
+        .footer-links-primary {
+            margin-bottom: 0.5em;
+
+            a,
+            span {
+                color: #333;
+            }
+        }
+
+        .footer-links-secondary {
+
+            a,
+            span {
+                color: #666;
+                font-size: 11px;
+            }
+        }
     }
-  }
 }
 
 .profiler {
-  background-color: rgba($gray-100,0.5);
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  padding: 5px;
-  text-align: center;
-  backdrop-filter: blur(50px);
+    background-color: rgba($gray-100, 0.5);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+    backdrop-filter: blur(50px);
 }
+
 //
 
 .settings {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 1em;
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1em;
 
-  .a {
-    text-align: center;
-    width: 250px;
-  }
+    .a {
+        text-align: center;
+        width: 250px;
+    }
 
-  td, th {
-    border-bottom: 1px solid $gray-300;
-    padding: 10px 5px;
-  }
+    td,
+    th {
+        border-bottom: 1px solid $gray-300;
+        padding: 10px 5px;
+    }
 
-  tr th {
-    background-color: $gray-100;
-    font-size: 12pt;
-  }
+    tr th {
+        background-color: $gray-100;
+        font-size: 12pt;
+    }
 
-  tr {
-    &:nth-child(odd)  { background-color: $gray-200; }
-    &:nth-child(even) { background-color: $gray-300; }
-  }
+    tr {
+        &:nth-child(odd) {
+            background-color: $gray-200;
+        }
 
-  .fotnot {
-    margin-top: 8px;
-    font-size: 10.5pt;
-  }
+        &:nth-child(even) {
+            background-color: $gray-300;
+        }
+    }
+
+    .fotnot {
+        margin-top: 8px;
+        font-size: 10.5pt;
+    }
 }
 
 textarea,
 input[type]:not([type=file]):not([type=submit]):not([type=range]) {
-  @if $theme == "hitchhiker" {
-    background-color: #ffffff;
-    border: 1px solid #cccccc;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  } @else {
-    border: 1px solid $gray-400;
-    background: $form-input;
-    border-radius: 4px;
-    box-shadow: 0 0 1px $gray-400;
-  }
-  transition: border linear 0.3s, box-shadow linear 0.3s;
+    @if $theme =="hitchhiker" {
+        background-color: #ffffff;
+        border: 1px solid #cccccc;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    }
+
+    @else {
+        border: 1px solid $gray-400;
+        background: $form-input;
+        border-radius: 4px;
+        box-shadow: 0 0 1px $gray-400;
+    }
+
+    transition: border linear 0.3s,
+    box-shadow linear 0.3s;
 }
 
 textarea:focus,
 input[type]:not([type=file]):not([type=submit]):not([type=range]):focus {
-  @if $theme != "hitchhiker" {
-    border-color: $primary;
-    box-shadow: 0 0 5px $primary;
-  }
-  outline: 0;
+    @if $theme !="hitchhiker" {
+        border-color: $primary;
+        box-shadow: 0 0 5px $primary;
+    }
+
+    outline: 0;
 }
 
 .menu {
-  position: absolute;
-  top: 100%;
-  max-height: 80vh;
-  z-index: 1000;
-  width: 160px;
-  overflow: hidden;
-  right: 0px;
-  text-align: left;
+    position: absolute;
+    top: 100%;
+    max-height: 80vh;
+    z-index: 1000;
+    width: 160px;
+    overflow: hidden;
+    right: 0px;
+    text-align: left;
 
-  @if $theme == "hitchhiker" {
-    background: #ffffff;
-    padding: 0.25em;
-  } @else {
-    background: $gray-100;
-  }
-
-  ul {
-    li {
-      @if $theme == "hitchhiker" {
-        padding: 4px 0;
-      } @else {
-        padding: 6px 0;
-      }
-
-      a {
-        color: $text-color !important;
-        width: 100%;
-        display: block;
-        padding: 0 10px !important;
-      }
+    @if $theme =="hitchhiker" {
+        background: #ffffff;
+        padding: 0.25em;
     }
 
-    @if $theme != "hitchhiker" {
-      li:hover {
-        background-color: $primary;
-      }
+    @else {
+        background: $gray-100;
     }
-  }
+
+    ul {
+        li {
+            @if $theme =="hitchhiker" {
+                padding: 4px 0;
+            }
+
+            @else {
+                padding: 6px 0;
+            }
+
+            a {
+                color: $text-color !important;
+                width: 100%;
+                display: block;
+                padding: 0 10px !important;
+            }
+        }
+
+        @if $theme !="hitchhiker" {
+            li:hover {
+                background-color: $primary;
+            }
+        }
+    }
 }
 
 .statbox {
-  text-align: center;
-  font-size: 3em;
-  border: 1px solid $gray-200;
-  padding: 0.5em;
-  background-color: $gray-100;
+    text-align: center;
+    font-size: 3em;
+    border: 1px solid $gray-200;
+    padding: 0.5em;
+    background-color: $gray-100;
 
-  .stat-title {
-    font-size: 0.5em;
-    font-weight: semibold;
-  }
+    .stat-title {
+        font-size: 0.5em;
+        font-weight: semibold;
+    }
 }
 
 .emoji {
-  display: inline;
-  width: 24px;
-  vertical-align: middle;
+    display: inline;
+    width: 24px;
+    vertical-align: middle;
 }
 
 /// Gradients \\\

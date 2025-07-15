@@ -1,72 +1,74 @@
 @function min-width-for($size) {
-  $width: map-get($breakpoints, $size);
-  @return '(min-width: #{$width})';
+    $width: map-get($breakpoints, $size);
+    @return '(min-width: #{$width})';
 }
 
 @mixin responsive($size) {
-  @media #{min-width-for($size)} {
-    @content;
-  }
+    @media #{min-width-for($size)} {
+        @content;
+    }
 }
 
 @mixin maxwidths() {
-  width: 100%;
-  max-width: 100%;
+    width: 100%;
+    max-width: 100%;
 
-  @if $theme == "hitchhiker" {
-    @include responsive('tiny') {
-      max-width: 100%;
-      min-width: 250px;
+    @if $theme =="hitchhiker" {
+        @include responsive('tiny') {
+            max-width: 100%;
+            min-width: 250px;
+        }
+
+        @include responsive('small') {
+            max-width: 90%;
+            min-width: 426px;
+        }
+
+        @include responsive('medium') {
+            max-width: 1066px;
+            min-width: 1003px;
+        }
+
+        @include responsive('large') {
+            //max-width: 75%;
+            //min-width: 1000px;
+            max-width: 1280px;
+        }
     }
 
-    @include responsive('small') {
-      max-width: 90%;
-      min-width: 426px;
-    }
+    @else {
+        padding: 0 1rem;
 
-    @include responsive('medium') {
-      max-width: 1066px;
-      min-width: 1003px;
-    }
+        @include responsive('tiny') {
+            max-width: 100%;
+            min-width: 270px;
+            padding: 0 1rem;
+        }
 
-    @include responsive('large') {
-      //max-width: 75%;
-      //min-width: 1000px;
-      max-width: 1280px;
-    }
-  } @else {
-    padding: 0 1rem;
+        @include responsive('small') {
+            max-width: 95%;
+            min-width: 420px;
+            padding: 0 1rem;
+        }
 
-    @include responsive('tiny') {
-      max-width: 100%;
-      min-width: 270px;
-      padding: 0 1rem;
-    }
+        @include responsive('medium') {
+            max-width: 90%;
+            min-width: 640px;
+            padding: 0;
+        }
 
-    @include responsive('small') {
-      max-width: 95%;
-      min-width: 420px;
-      padding: 0 1rem;
-    }
+        @include responsive('large') {
+            max-width: 87.5%;
+            min-width: 1200px;
+            padding: 0;
+        }
 
-    @include responsive('medium') {
-      max-width: 90%;
-      min-width: 640px;
-      padding: 0;
-    }
-
-    @include responsive('large') {
-      max-width: 87.5%;
-      min-width: 1200px;
-      padding: 0;
-    }
-
-    /*
+        /*
     @include responsive('huge') {
       max-width: 82.5%;
       min-width: 1500px;
       padding: 0;
     }
     */
-  }
+    }
 }

@@ -2,73 +2,80 @@
 
 $columns: 16; // 12;
 $gap: 1em;
-@if $theme == "hitchhiker" {
-  $gap: 10px;
+
+@if $theme =="hitchhiker" {
+    $gap: 10px;
 }
 
 @mixin create-selectors($breakpoint: null) {
-  $infix: if($breakpoint == null, '', '-#{$breakpoint}');
+    $infix: if($breakpoint ==null, '', '-#{$breakpoint}');
 
-  @for $i from 1 through $columns {
-    .col#{$infix}-#{$i} {
-      grid-column-end: span $i;
+    @for $i from 1 through $columns {
+        .col#{$infix}-#{$i} {
+            grid-column-end: span $i;
+        }
+
+        .col-offset#{$infix}-#{$i} {
+            grid-column-start: $i + 1;
+        }
+
+        .row#{$infix}-#{$i} {
+            grid-row-end: span $i;
+        }
+
+        .row-offset#{$infix}-#{$i} {
+            grid-row-start: $i + 1;
+        }
     }
-    .col-offset#{$infix}-#{$i} {
-      grid-column-start: $i + 1;
-    }
-    .row#{$infix}-#{$i} {
-      grid-row-end: span $i;
-    }
-    .row-offset#{$infix}-#{$i} {
-      grid-row-start: $i + 1;
-    }
-  }
 }
 
 .grid {
-  @include responsive('small') {
-    display: block;
-  }
-  @include responsive('medium') {
-    display: grid;
-    grid-template-columns: repeat($columns, 1fr);
-    grid-gap: $gap;
-    gap: $gap;
-  }
-  @include responsive('large') {
-    display: grid;
-    grid-template-columns: repeat($columns, 1fr);
-    grid-gap: $gap;
-    gap: $gap;
-  }
+    @include responsive('small') {
+        display: block;
+    }
+
+    @include responsive('medium') {
+        display: grid;
+        grid-template-columns: repeat($columns, 1fr);
+        grid-gap: $gap;
+        gap: $gap;
+    }
+
+    @include responsive('large') {
+        display: grid;
+        grid-template-columns: repeat($columns, 1fr);
+        grid-gap: $gap;
+        gap: $gap;
+    }
 }
 
 @include create-selectors;
 
 @each $breakpoint, $width in $breakpoints {
-  @media (min-width: $width) {
-    @include create-selectors($breakpoint);
-  }
+    @media (min-width: $width) {
+        @include create-selectors($breakpoint);
+    }
 }
 
 // and now this is getting stupid
 .watch-grid {
-  display: flex;
-  gap: $gap;
+    display: flex;
+    gap: $gap;
 
-  .col-left {
-    @include responsive('medium') {
-      min-width: 640px;
-      width: 640px;
-    }
-    @include responsive('large') {
-      min-width: 854px;
-      width: 854px;
-    }
-  }
+    .col-left {
+        @include responsive('medium') {
+            min-width: 640px;
+            width: 640px;
+        }
 
-  .col-right {
-    min-width: 416px;
-    width: 416px;
-  }
+        @include responsive('large') {
+            min-width: 854px;
+            width: 854px;
+        }
+    }
+
+    .col-right {
+        min-width: 416px;
+        width: 416px;
+    }
 }

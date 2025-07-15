@@ -1,151 +1,158 @@
 // originally .viewcount
 .watch-view-count {
-  @if $theme == "hitchhiker" {
-    color: $gray-850;
-    margin-bottom: 2px;
-  } @else {
-    color: $gray-800;
-    margin-bottom: 4px;
-  }
+    @if $theme =="hitchhiker" {
+        color: $gray-850;
+        margin-bottom: 2px;
+    }
 
-  font-size: 19px;
-  line-height: 24px;
-  max-height: 24px;
-  margin-bottom: 2px;
+    @else {
+        color: $gray-800;
+        margin-bottom: 4px;
+    }
+
+    font-size: 19px;
+    line-height: 24px;
+    max-height: 24px;
+    margin-bottom: 2px;
 }
 
 .below-likesaber {
-  margin-top: 16px;
-  color: $gray-600;
+    margin-top: 16px;
+    color: $gray-600;
 }
 
 .watch-creator {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 10px;
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
 }
 
 .watch-header {
-  h1 {
-    font-size: 24px;
-  }
-
-  padding-bottom: 0;
-
-  .watch-user-header {
-    padding: 10px 0 0 0;
-  }
-
-  hr.watch-info-divider {
-    margin: 0 0 10px 0;
-  }
-
-  .watch-action-buttons {
-    display: flex;
-
-    .watch-secondary-actions {
-      flex: 1;
+    h1 {
+        font-size: 24px;
     }
 
-    .button {
-      padding: 0 5px;
-      color: $gray-600;
+    padding-bottom: 0;
+
+    .watch-user-header {
+        padding: 10px 0 0 0;
     }
 
-    // this should be in _buttons.scss but i dont wanna fuck with !important
-    .button-like {
-      &.button-toggled {
-        color: $primary;
-      }
+    hr.watch-info-divider {
+        margin: 0 0 10px 0;
     }
 
-    .button-dislike {
-      &.button-toggled {
-        color: $dark;
-      }
+    .watch-action-buttons {
+        display: flex;
+
+        .watch-secondary-actions {
+            flex: 1;
+        }
+
+        .button {
+            padding: 0 5px;
+            color: $gray-600;
+        }
+
+        // this should be in _buttons.scss but i dont wanna fuck with !important
+        .button-like {
+            &.button-toggled {
+                color: $primary;
+            }
+        }
+
+        .button-dislike {
+            &.button-toggled {
+                color: $dark;
+            }
+        }
     }
-  }
 }
 
 .watch-view-info {
-  align-self: end;
+    align-self: end;
 }
 
 .subscribe-count {
-  padding: 0 6px;
-  border: 1px solid #ccc;
-  color: $gray-600;
-  font-size: 12px;
-  text-align: center;
-  @if $theme == "hitchhiker" {
-    line-height: 22px;
-  } @else {
-    line-height: 24px;
-  }
-  display: inline-block;
+    padding: 0 6px;
+    border: 1px solid #ccc;
+    color: $gray-600;
+    font-size: 12px;
+    text-align: center;
+
+    @if $theme =="hitchhiker" {
+        line-height: 22px;
+    }
+
+    @else {
+        line-height: 24px;
+    }
+
+    display: inline-block;
 }
 
 /// "Likesaber" for watch page \\\
 .likesaber {
-  width: 160px;
-  height: 2px;
-  background-color: $likesaber-gray;
-  float: right;
-
-  .like {
-    float: left;
+    width: 160px;
     height: 2px;
-    background-color: $primary;
-  }
+    background-color: $likesaber-gray;
+    float: right;
+
+    .like {
+        float: left;
+        height: 2px;
+        background-color: $primary;
+    }
 }
 
 // formerly #About
 .watch-description {
-  color: #333;
-  line-height: 17px;
+    color: #333;
+    line-height: 17px;
 
-  p {
-    &:first-of-type {
-      margin-top: 0;
+    p {
+        &:first-of-type {
+            margin-top: 0;
+        }
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
     }
 
-    &:last-of-type {
-      margin-bottom: 0;
-    }
-  }
-
-  a {
-    color: inherit;
-  }
-
-  &:hover, &:focus {
     a {
-      color: $primary;
-    }
-  }
-
-  .description-extra {
-    margin: 10px 0;
-
-    li {
-      clear: both;
-      margin-bottom: 5px;
-      line-height: 1.2;
+        color: inherit;
     }
 
-    .title {
-      float: left;
-      margin: 0 10px 0 0;
-      width: 80px;
-      text-align: right;
-      font-size: 11px;
-      color: $gray-800;
-      font-weight: bold;
+    &:hover,
+    &:focus {
+        a {
+            color: $primary;
+        }
     }
 
-    .content {
-      color: $gray-600;
-      font-size: 11px;
+    .description-extra {
+        margin: 10px 0;
+
+        li {
+            clear: both;
+            margin-bottom: 5px;
+            line-height: 1.2;
+        }
+
+        .title {
+            float: left;
+            margin: 0 10px 0 0;
+            width: 80px;
+            text-align: right;
+            font-size: 11px;
+            color: $gray-800;
+            font-weight: bold;
+        }
+
+        .content {
+            color: $gray-600;
+            font-size: 11px;
+        }
     }
-  }
 }

@@ -1,17 +1,17 @@
 .img-fluid {
-  // loosely based on bootstrap 5's img-fluid thing
-  width: 100%;
-  height: auto;
+    // loosely based on bootstrap 5's img-fluid thing
+    width: 100%;
+    height: auto;
 }
 
 .img-pfp {
-  @if $theme != "hitchhiker" {
-    border-radius: 50%;
-  }
+    @if $theme !="hitchhiker" {
+        border-radius: 50%;
+    }
 }
 
 .img-center {
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }

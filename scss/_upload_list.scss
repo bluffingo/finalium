@@ -1,65 +1,71 @@
 .upload-list-item {
-  //gap: 13px;
-  gap: 8px;
-  display: flex;
-  margin-bottom: 15px;
+    //gap: 13px;
+    gap: 8px;
+    display: flex;
+    margin-bottom: 15px;
 
-  .thumbnail {
-    width: 120px;
-    @if $theme == "hitchhiker" {
-      height: 68px;
-      margin-left: 5px;
-    }
+    .thumbnail {
+        width: 120px;
 
-    img {
-      width: 120px;
-      @if $theme == "hitchhiker" {
-        height: 68px;
-        object-fit: contain;
-        background: black;
-      }
-    }
-  }
-
-  // originally known as .vid-info
-  .content-wrapper {
-    .title {
-      max-height: 2.4em;
-      line-height: 1.2;
-      display: block;
-      overflow: hidden;
-      margin-bottom: 2px;
-
-      font-size: 13px;
-      font-weight: 500;
-
-      a {
-        color: #333;
-        &:hover {
-          color: $primary;
+        @if $theme =="hitchhiker" {
+            height: 68px;
+            margin-left: 5px;
         }
-      }
+
+        img {
+            width: 120px;
+
+            @if $theme =="hitchhiker" {
+                height: 68px;
+                object-fit: contain;
+                background: black;
+            }
+        }
     }
 
-    .stat {
-      color: #767676;
-      font-size: 11px;
-      display: block;
-      line-height: 1.4em;
-      height: 1.4em;
-    }
+    // originally known as .vid-info
+    .content-wrapper {
+        .title {
+            max-height: 2.4em;
+            line-height: 1.2;
+            display: block;
+            overflow: hidden;
+            margin-bottom: 2px;
 
-    // unused?
-    .stat-larger {
-      @if $theme == "hitchhiker" {
-        color: #999;
-      } @else {
-        color: $gray-600;
-      }
-      font-size: 13px;
-      display: block;
-      line-height: 1.4em;
-      height: 1.4em;
+            font-size: 13px;
+            font-weight: 500;
+
+            a {
+                color: #333;
+
+                &:hover {
+                    color: $primary;
+                }
+            }
+        }
+
+        .stat {
+            color: #767676;
+            font-size: 11px;
+            display: block;
+            line-height: 1.4em;
+            height: 1.4em;
+        }
+
+        // unused?
+        .stat-larger {
+            @if $theme =="hitchhiker" {
+                color: #999;
+            }
+
+            @else {
+                color: $gray-600;
+            }
+
+            font-size: 13px;
+            display: block;
+            line-height: 1.4em;
+            height: 1.4em;
+        }
     }
-  }
 }

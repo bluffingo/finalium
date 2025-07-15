@@ -1,75 +1,80 @@
 .login-body {
-  @if $theme != "hitchhiker" {
-    background: #2B3644 url(/assets/sb_branding/finalium/droplets.jpg);
-    background-size: cover;
-  } @else {
-    text-align: center;
-  }
+    @if $theme !="hitchhiker" {
+        background: #2B3644 url(/assets/sb_branding/finalium/droplets.jpg);
+        background-size: cover;
+    }
 
-  display: flex;
-  align-items: center;
-  height: 100%;
+    @else {
+        text-align: center;
+    }
 
-  #logo {
-    height: 38px;
-    margin-bottom: 20px;
-  }
-
-  .button {
-    width: 100%;
-  }
-
-  .login-container {
     display: flex;
-    flex-direction: column;
-    gap: 1em;
-  }
+    align-items: center;
+    height: 100%;
 
-  .pfp {
-    border-radius: 50%;
-    width: 96px;
-    height: 96px;
-  }
-
-  h1 {
-    font-weight: 300;
-    margin-bottom: 15px;
-  }
-
-  .login-footer {
-    text-align: center;
-    @if $theme != "hitchhiker" {
-      color: white;
+    #logo {
+        height: 38px;
+        margin-bottom: 20px;
     }
-  }
 
-  input[type="text"],
-  input[type="password"] {
-    font-size: 16px;
-    height: auto;
-    padding: 7px 9px;
-    width: 100%;
-    box-sizing: border-box;
-
-    @if $theme != "hitchhiker" {
-      margin-bottom: 15px;
+    .button {
+        width: 100%;
     }
-  }
 
-  .card-body {
-    margin: auto;
-
-    @if $theme == "hitchhiker" {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-
-      width: 354px;
-      padding: 40px;
-    } @else {
-      width: 300px;
-      padding: 19px 29px 29px;
+    .login-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
     }
-  }
+
+    .pfp {
+        border-radius: 50%;
+        width: 96px;
+        height: 96px;
+    }
+
+    h1 {
+        font-weight: 300;
+        margin-bottom: 15px;
+    }
+
+    .login-footer {
+        text-align: center;
+
+        @if $theme !="hitchhiker" {
+            color: white;
+        }
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        font-size: 16px;
+        height: auto;
+        padding: 7px 9px;
+        width: 100%;
+        box-sizing: border-box;
+
+        @if $theme !="hitchhiker" {
+            margin-bottom: 15px;
+        }
+    }
+
+    .card-body {
+        margin: auto;
+
+        @if $theme =="hitchhiker" {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+
+            width: 354px;
+            padding: 40px;
+        }
+
+        @else {
+            width: 300px;
+            padding: 19px 29px 29px;
+        }
+    }
 }
