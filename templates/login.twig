@@ -22,7 +22,7 @@
             <p>Don't have an account? <a href="/register">{{ localize('register') }}</a>
         </form>
         <div class="login-footer">
-            {{ localize('footer_copyright', '2021-' ~ ('now' | date('Y'))) }}
+            {{ localize('footer_copyright', ('now' | date('Y'))) }}
         </div>
     {% endblock %}
 {% endembed %}
