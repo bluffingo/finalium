@@ -11,6 +11,7 @@
                 <small>Null comment</small>
             {% endif %}
 
+            {# Fucked !
             {% if data.id and is_user_logged_in %}
                 <a class="reply-button" data-comment-id="{{ data.id }}">{{ localize('reply') }}</a>
                 <div class="reply-form" id="reply-form-{{ data.id }}" style="display: none;">
@@ -18,6 +19,7 @@
                     <button class="button button-secondary submit-reply-button" data-comment-id="{{ data.id }}">{{ localize('reply') }}</button>
                 </div>
             {% endif %}
+            #}
 
             <div class="replies" id="replies-{{ data.id }}">
                 {% for reply in data.replies %}

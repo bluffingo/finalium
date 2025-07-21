@@ -84,12 +84,12 @@
                   <button href="/#" id="{% if is_user_logged_in %}like{% else %}action_unlogged{% endif %}"
                           class="button button-like button-secondary-invis {% if submission.interactions.legacy.current_rating == "like" %}button-toggled{% endif %}">
                      {{ icon("hand-thumbs-up-fill", 20) }}
-                     {{ submission.interactions.legacy.likes }}
+                     <span id="like-count">{{ submission.interactions.legacy.likes }}</span>
                   </button>
                   <button href="/#" id="{% if is_user_logged_in %}dislike{% else %}action_unlogged{% endif %}"
                           class="button button-dislike button-secondary-invis {% if submission.interactions.legacy.current_rating == "dislike" %}button-toggled{% endif %} tooltip" title="Dislike">
                      {{ icon("hand-thumbs-down-fill", 20) }}
-                     {{ submission.interactions.legacy.dislikes }}
+                     <span id="dislike-count">{{ submission.interactions.legacy.dislikes }}</span>
                   </button>
                </div>
             </div>
