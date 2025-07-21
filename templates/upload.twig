@@ -12,7 +12,7 @@
                         with the guidelines will result in your upload being taken down.
                     </p>
                     {% if current_theme == 'hitchhiker' %}
-                        <p style="color:red;font-weight:700;font-size:50px;">
+                        <p style="color:red;font-weight:700;font-size:24px;">
                             Do not upload any copyrighted content that does not belong to you.
                             If you attempt to reupload anything, you WILL be banned.
                         </p>
@@ -33,9 +33,7 @@
                     <input type="text" class="form-control form-long uploader-form" name="tags" required>
                     <h2 style="margin-bottom: 0.5em;">Select file</h2>
                     <p>File limit: {{ limit }}</p>
-                    <input class="form-control" type="file" name="fileToUpload" id="fileToUpload"
-                           onchange="$('#title').val($('#fileToUpload').val().split('\\').pop().split('/').pop())"
-                           required>
+                    <input class="form-control" type="file" name="fileToUpload" id="fileToUpload" required>
                     <br>
                     <div class="right">
                         <input class="button button-primary" type="submit" id="upload" name="upload"

@@ -574,8 +574,8 @@ input[type]:not([type=file]):not([type=submit]):not([type=range]):focus {
 @import "_gradients";
 /// Backgrounds \\\
 @import "_backgrounds";
-/// Forums \\\
-@import "_style_forums";
+/// Tables \\\
+@import "_tables";
 /// Containers \\\
 @import "_containers";
 /// Images \\\
@@ -607,3 +607,5 @@ input[type]:not([type=file]):not([type=submit]):not([type=range]):focus {
 @import "_upload_list";
 /// Login page \\\
 @import "_login_page";
+/// Members page \\\
+@import "_members_page";

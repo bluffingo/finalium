@@ -30,7 +30,7 @@
                     <hr>
                 {% endif %}
             {% endif %}
-            {% if staff|filter(user => user.level == '3') is not empty %}
+            {% if staff|filter(user => user.level == '2') is not empty %}
                 <h2>Moderators</h2>
                 <ul>
                     {% for user in staff|filter(user => user.level == '2') %}

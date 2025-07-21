@@ -6,27 +6,26 @@
 		{% set total_pages = (users.count / items_per_page) | round(0, 'ceil') %}
 		{% set current_page = page %}
 
-		<h1>Members</h1>
-		<table class="settings">
-			<tr>
-				<th style="width:80px">Profile picture</th>
-				<th>Username</th>
-				<th style="width:80px">Uploads</th>
-				<th style="width:80px">Journals</th>
-			</tr>
-			{% for user in users.users %}
-				<tr>
-					<td>
-						<img src="{{ profile_picture(user.info.username) }}" width="80" alt="{{ user.info.username }}" class="img-pfp">
-					</td>
-					<td>{{ user_link(user) }} ({{ user.info.displayname }})
-						{% if user.rank > 1 %}<img src="/assets/icons/shield{% if user_data.darkmode %}_w{%endif%}.svg" height="16">{% endif %}
-						{% if user.rank > 3 %}<img src="/assets/icons/root{% if user_data.darkmode %}_w{%endif%}.svg" height="16">{% endif %}</td>
-					<td class="center">{{ user.submissions }}</td>
-					<td class="center">{{ user.journals }}</td>
-				</tr>
-			{% endfor %}
-		</table>
+
+		<div class="card card-body">
+			<h1>Members</h1>
+			<div class="members-list">
+				{% for user in users.users %}
+					<div class="members-list-member">
+						<img src="{{ profile_picture(user.info.username) }}" alt="{{ user.info.username }}" class="img-pfp">
+						<div class="members-list-entry-info">
+							<div class="members-list-entry-top">
+								<div class="members-list-entry-username">{{ user_link(user) }} ({{ user.info.displayname }})</div>
+								<div class="members-list-entry-follower">{{ user.followers }} followers</div>
+							</div>
+							<div class="members-list-entry-description">
+							 {{ user.about }}
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
 		{% set le_url = 'users?page=%s' %}
 
 		{{ pagination(users.count, items_per_page, le_url, current_page) }}
