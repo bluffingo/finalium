@@ -2,6 +2,12 @@
 
 {% block title %}{{ data.title }}{% endblock %}
 
+{% block head %}
+    <script>
+        journal_id = '{{ data.int_id }}';
+    </script>
+{% endblock %}
+
 {% block content %}
 	<div class="card">
 		<div class="card-body">
@@ -10,13 +16,21 @@
 			{{ data.contents | markdown_user_written(true) }}
 		</div>
 	</div>
-	<div class="banner banner-primary">
-		Commenting is only supported on Trinium and Biscuit
-	</div>
 	<div class="card">
 		<div class="card-body">
 			<div id="comments">
-				<div id="new-comments-here"></div>
+                {% if is_user_logged_in %}
+                    <div>
+                        <div>
+                        <textarea class="form-control" id="commentContents" style="overflow:hidden;resize:none" rows="3"
+                                placeholder="{{ localize('write_comment') }}"></textarea>
+                        </div>
+                        <div class="right">
+                        <button id="post-journal" class="button button-primary" style="margin-bottom:0;">{{ localize('post') }}</button>
+                        </div>
+                    </div>
+                {% endif %}
+                <div id="comment"></div>
 				{% for comment in data.comments %}
 					{{ comment(comment) }}
 				{% endfor %}

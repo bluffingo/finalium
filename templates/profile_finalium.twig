@@ -58,24 +58,18 @@
         <div class="card card-body basic-box">
             <h3>Comments</h3>
             {% if is_user_logged_in %}
-                <div class="grid" id="commentField">
-                    <div class="col-1">
-                        <img class="img-pfp img-fluid" alt="{{ user_data.name }}" src="{{ profile_picture(user_data.name) }}">
+                <div>
+                    <div>
+                    <textarea class="form-control" id="commentContents" style="overflow:hidden;resize:none" rows="3"
+                            placeholder="{{ localize('write_comment') }}"></textarea>
                     </div>
-                    <div class="col-15">
-                        <div>
-				<textarea class="form-control" id="commentContents" style="overflow:hidden;resize:vertical" rows="3"
-                          placeholder="Enter comment here."></textarea>
-                        </div>
-                        <div class="right">
-                            <button id="post-user" class="button button-primary"
-                                    style="margin-bottom:0;">Comment</button>
-                        </div>
+                    <div class="right">
+                    <button id="post-user" class="button button-primary" style="margin-bottom:0;">{{ localize('post') }}</button>
                     </div>
                 </div>
             {% endif %}
             <div id="comment"></div>
-            {% for comment in comments %}
+            {% for comment in data.comments %}
                 {{ comment(comment) }}
             {% endfor %}
         </div>
