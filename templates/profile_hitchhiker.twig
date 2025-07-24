@@ -1,6 +1,8 @@
 {% block content %}
     <div class="channel-header-bg">
-        <img class="rounded img-pfp-profiles" src="{{ profile_picture(userpagedata.name) }}"  alt="{{ userpagedata.name }}">
+        <img class="channel-header-profile-picture" 
+             src="{{ profile_picture(data.username) }}"  
+             alt="{{ data.username }}">
     </div>
     <div class="card">
         <div class="card-body">

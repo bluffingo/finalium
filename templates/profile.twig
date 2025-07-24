@@ -19,8 +19,7 @@
 
 {% block customcss %}
     .channel-header-bg {
-        background: url('{{ profile_banner(data.username) }}'), #333;
-        background-position: center;
+        background: url('{{ profile_banner(data.username) }}') center no-repeat, #333;
         height: 210px;
     }
 

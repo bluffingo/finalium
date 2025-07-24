@@ -11,7 +11,7 @@ $header-height: 48px;
 $masthead-search-bar-height: 31px;
 $guide-width: 17.5em;
 
-@if $theme == "hitchhiker" {
+@if $theme =="hitchhiker" {
     $header-height: 50px;
     $masthead-search-bar-height: 31px;
     $guide-width: 230px;
@@ -609,3 +609,5 @@ input[type]:not([type=file]):not([type=submit]):not([type=range]):focus {
 @import "_login_page";
 /// Members page \\\
 @import "_members_page";
+/// Profile page \\\
+@import "_profile";
