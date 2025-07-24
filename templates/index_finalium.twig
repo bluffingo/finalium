@@ -16,28 +16,26 @@
         <div class="main-content">
             <div class="container page-container sb-welcome grid">
                 {% if is_user_logged_in %}
-                    <div class="col-10">
+                    <div class="col-8">
                         <h1>{{ localize('welcome_logged_in', user_data.title) }}</h1>
                         <h3>@{{ user_data.name }}</h3>
-                        <a class="button button-secondary button-large"
+                        <a class="button button-secondary button-big"
                         href="/my_submissions">Manage {{ icon('caret-right-fill', 12) }}</a>
                     </div>
-                    <div class="col-6 right stats">
+                    <div class="col-4 right stats">
                         <p>{{ user_stat_data.followers ?? "no" }} follower{{ pluralSubscribers }}
                             <br>{{ user_stat_data.views ?? "no" }} view{{ pluralViews }}</p>
                     </div>
                 {% else %}
-                    <div class="col-10">
+                    <div class="col-8">
                         <h1>{{ localize('welcome_logged_out', website_branding.name) }}</h1>
                         <h3 style="padding:0;margin:0;">
                             {% if is_chaziz_sb %}
                                 Your content, your narration, your niche on the web.
-                            {% else %}
-                                Insert slogan.
                             {% endif %}
                         </h3>
                     </div>
-                    <div class="col-6">
+                    <div class="col-4">
                         <a class="button button-secondary"
                         href="/register">Get started {{ icon('caret-right-fill', 16) }}</a><br>
                         Already have an account? <a class="button button-secondary button-small" href="/login">{{ localize('login') }}</a>
@@ -50,7 +48,7 @@
 
 {% block content %}
     <div class="grid">
-        <div class="col-10">
+        <div class="col-8">
             <div class="card">
                 <div class="card-body">
                     <h3>{{ localize('recent_uploads') }}</h3>
@@ -72,7 +70,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-4">
             <div class="card">
                 <div class="card-body">
                     <h3>{{ localize('featured_uploads') }}</h3>

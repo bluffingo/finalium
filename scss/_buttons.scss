@@ -62,7 +62,7 @@ input[type=file]::file-selector-button {
     border-radius: 5px;
 }
 
-.button-large {
+.button-big {
     @if $theme =="hitchhiker" {
         height: 32px;
         padding: 0 15px;

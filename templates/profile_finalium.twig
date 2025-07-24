@@ -1,9 +1,10 @@
 <div class="card card-body highlight-box" style="padding: 15px 10px;">
     <div class="grid">
+    {# todo: make this not use columns because thats just fucking stupid #}
         <div class="col-1">
             <img class="img-pfp img-fluid" src="{{ profile_picture(data.username) }}" alt="{{ data.username }}">
         </div>
-        <div class="col-13">
+        <div class="col-10">
             <h1 style="margin: 0">
                 {{ data.displayname }}
                 {% if data.is_staff %}{{ icon("shield", 20) }}{% endif %}
@@ -20,7 +21,7 @@
                 &bull; {{ data.views ?? "no" }} view{{ pluralViews }}
             </p>
         </div>
-        <div class="col-2 right">
+        <div class="col-1 right">
             {% if data.id != user_data.id %}
                 <button id="subscribe" class="button button-{% if data.following %}secondary{% else %}primary{% endif %}"
                         type="button"
@@ -46,7 +47,7 @@
             {% endfor %}
         </div>
     </div>
-    <div class="col-12">
+    <div class="col-8">
         <div class="card card-body basic-box">
             <h3>Uploads</h3>
             {% for submission in data.submissions %}

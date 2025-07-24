@@ -1,0 +1,139 @@
+{% extends "_layout.twig" %}
+
+{% block title %}Finalium!{% endblock %}
+
+{% set button_color_types = color_types %}
+
+{% block content %}
+    <div class="section">
+        {% for color in color_types %}
+            <div class="banner banner-{{ color }}">
+                <i class="{{ notification_icon(color) }} notification-icon"></i>
+                <span class="notification-text">
+                This is a {{ color }} banner. You may go back to the homepage <a href="/">here</a>.
+                </span>
+            </div>
+        {% endfor %}
+    </div>
+    <hr>
+    <div class="grid">
+        <div class="col-8">
+            <div class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Text</h2>
+                </div>
+                {% for color in color_types %}
+                    <div class="text-{{ color }}">{{ color }} text!</div>
+                {% endfor %}
+            </div>
+            <div class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Date formats</h2>
+                    <ul>
+                        <li>full/full: {{ date() | localize_date('full', 'full') }}</li>
+                        <li>full/long: {{ date() | localize_date('full', 'long') }}</li>
+                        <li>full/medium: {{ date() | localize_date('full', 'medium') }}</li>
+                        <li>full/short: {{ date() | localize_date('full', 'short') }}</li>
+                        <li>full/none: {{ date() | localize_date('full', 'none') }}</li>
+
+                        <li>long/full: {{ date() | localize_date('long', 'full') }}</li>
+                        <li>long/long: {{ date() | localize_date('long', 'long') }}</li>
+                        <li>long/medium: {{ date() | localize_date('long', 'medium') }}</li>
+                        <li>long/short: {{ date() | localize_date('long', 'short') }}</li>
+                        <li>long/none: {{ date() | localize_date('long', 'none') }}</li>
+
+                        <li>medium/full: {{ date() | localize_date('medium', 'full') }}</li>
+                        <li>medium/long: {{ date() | localize_date('medium', 'long') }}</li>
+                        <li>medium/medium: {{ date() | localize_date('medium', 'medium') }}</li>
+                        <li>medium/short: {{ date() | localize_date('medium', 'short') }}</li>
+                        <li>medium/none: {{ date() | localize_date('medium', 'none') }}</li>
+
+                        <li>short/full: {{ date() | localize_date('short', 'full') }}</li>
+                        <li>short/long: {{ date() | localize_date('short', 'long') }}</li>
+                        <li>short/medium: {{ date() | localize_date('short', 'medium') }}</li>
+                        <li>short/short: {{ date() | localize_date('short', 'short') }}</li>
+                        <li>short/none: {{ date() | localize_date('short', 'none') }}</li>
+
+                        <li>none/full: {{ date() | localize_date('none', 'full') }}</li>
+                        <li>none/long: {{ date() | localize_date('none', 'long') }}</li>
+                        <li>none/medium: {{ date() | localize_date('none', 'medium') }}</li>
+                        <li>none/short: {{ date() | localize_date('none', 'short') }}</li>
+                        <li>none/none: {{ date() | localize_date('none', 'none') }}</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Buttons</h2>
+                </div>
+                {% for color in button_color_types %}
+                    <div class="button button-{{ color }} button-small">small {{ color }} button!</div>
+                {% endfor %}
+                <br>
+                {% for color in button_color_types %}
+                    <div class="button button-{{ color }}">{{ color }} button!</div>
+                {% endfor %}
+                <br>
+                {% for color in button_color_types %}
+                    <div class="button button-{{ color }} button-big">big {{ color }} button!</div>
+                {% endfor %}
+            </div>
+            <hr>
+            <div class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Menus</h2>
+                </div>
+                <div class="menu-container">
+                    <div class="menu-button button button-secondary" data-menu-id="test-menu">
+                        Toggle menu
+                        <div class="menu-caret-container">
+                            <i class="biscuit-icon caret-closed menu-caret"></i>
+                        </div>
+                    </div>
+                    <div class="menu" id="test-menu">
+                        <div class="menu-item-button">
+                            <span>A menu item button.</span>
+                        </div>
+                        <div class="menu-item-button">
+                            <span>A menu item button with a very long name.</span>
+                        </div>
+                        <hr>
+                        <div class="menu-item-button">
+                            <div class="menu-item-profile-picture profile-picture">
+                                <img src="/assets/profiledef.svg" class="pfp" alt="Profile picture">
+                            </div>
+                            <span>User</span>
+                        </div>
+                        <div class="menu-item-button">
+                            <div class="menu-item-profile-picture profile-picture">
+                                <img src="/assets/profiledef.svg" class="pfp" alt="Profile picture">
+                            </div>
+                            <span>UserUserUserUserUserUserUserUserUserUserUserUserUserUserUserUserUserUserUserUserUserUser</span>
+                        </div>
+                        <div class="menu-item-button small">A small menu item button.</div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Tables</h2>
+                </div>
+                <table class="c1">
+                    <tr class="h">
+                        <th>Header</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            Normal row
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-8">
+            to be determined
+        </div>
+    </div>
+{% endblock %}

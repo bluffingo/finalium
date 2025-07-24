@@ -16,8 +16,8 @@
    {% set col_right = 'col-right' %}
 {% else %}
    {% set grid = 'grid' %}
-   {% set col_left = 'col-10' %}
-   {% set col_right = 'col-6' %}
+   {% set col_left = 'col-8' %}
+   {% set col_right = 'col-4' %}
 {% endif %}
 
 {% block title %}{{ submission.title }}{% endblock %}
@@ -35,7 +35,7 @@
          <div class="card card-body watch-header">
             <h1>{{ submission.title }}</h1>
             <div class="grid watch-user-header">
-               <div class="col-8">
+               <div class="col-6">
                   <div class="watch-creator">
                      <div>
                         <img src="{{ profile_picture(submission.author.info.username) }}" class="img-pfp" style="width:48px;">
@@ -60,7 +60,7 @@
                      <br>
                   </div>
                </div>
-               <div class="col-8 right watch-view-info">
+               <div class="col-6 right watch-view-info">
                   <div class="watch-view-count">{{ submission.interactions.views }} views</div>
                   <div class="likesaber">
                      <div class="like" style="width:{{ submission.interactions.legacy.ratio }}%"></div>
