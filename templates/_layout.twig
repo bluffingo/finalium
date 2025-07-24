@@ -5,11 +5,11 @@
         {% set logo = '/assets/sb_branding/finalium/logo-wordmark.png' %}
     {% endif %}
 {% else %}
-    {% if current_theme == "dark" %}
-        {% set logo = website_branding.assets_location ~ '/logo-wordmark-dark.png' %}
-    {% else %}
-        {% set logo = website_branding.assets_location ~ '/logo-wordmark.png' %}
-    {% endif %}
+    {% set logo_suffix = current_theme == "dark" ? '-dark' : '' %}
+    {% set logo_extension = website_branding.is_vector ? '.svg' : '.png' %}
+    {% set logo_type = website_branding.use_wordmark ? 'logo-wordmark' : 'logo' %}
+
+    {% set logo = website_branding.assets_location ~ '/' ~ logo_type ~ logo_suffix ~ logo_extension %}
 {% endif %}
 
 <!DOCTYPE html>
