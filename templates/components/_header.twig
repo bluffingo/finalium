@@ -33,8 +33,8 @@
                 {% endif %}
             {% endif %}
             {% if is_user_logged_in %}
-                <div style="margin:0;{% if is_user_logged_in %}width:1.75rem{% endif %}"
-                     id="{% if is_user_logged_in %}masthead-loggedin{% else %}masthead-signin{% endif %}" class="masthead-user">
+            {#
+                <div style="margin:0;width:1.75rem;" id="masthead-loggedin" class="masthead-user">
                     <div style="margin-top: 4px;">
                         <img class="img-pfp img-fluid" src="{{ profile_picture(user_data.name) }}" alt="{{ user_data.name }}">
                         <div class="menu" id="masthead-below">
@@ -44,6 +44,17 @@
                                 {% endfor %}
                             </ul>
                         </div>
+                    </div>
+                </div>
+            #}
+                <div id="masthead-loggedin" class="masthead-user">
+                    <div class="menu-button user-menu-button" data-menu-id="user-menu">
+                        <img class="img-pfp img-fluid" src="{{ profile_picture(user_data.name) }}" alt="{{ user_data.name }}">
+                    </div>
+                    <div class="menu" id="user-menu">
+                        {% for link in header_user_links() %}
+                            <a class="menu-item-button" href="{{ link.url }}">{{ link.name }}</a>
+                        {% endfor %}
                     </div>
                 </div>
             {% else %}

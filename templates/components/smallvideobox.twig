@@ -1,14 +1,24 @@
+{% if data.views != 1 %}
+    {% set pluralViews = "s" %}
+{% endif %}
 <div class="upload-list-item">
     <div class="thumbnail">
         <a href="/watch?v={{ data.id }}">
             <img src="{{ thumbnail(data.id, data.type, data.flags.custom_thumbnail) }}" alt="{{ data.title }}">
+            {% if data.type == 0 %}
+                <div class="thumbnail-badge-container">
+                    <div class="thumbnail-badge">
+                        {{ convert_time(data.length) }}
+                    </div>
+                </div>
+            {% endif %}
         </a>
     </div>
     <div class="content-wrapper">
         <h3 class="title"><a href="/watch?v={{ data.id }}">{{ data.title }}</a></h3>
         <span class="stat">{{ user_link(data.author) }}</span>
         <span class="stat">
-            {{ data.views }} views
+            {{ data.views }} view{{ pluralViews }}
             {% if date(data.published) > date('-1 week') %}
             <div class="badge">New</div>
             {% endif %}

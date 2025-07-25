@@ -11,16 +11,6 @@
     }
 }
 
-.card-header {
-    padding: 0.5em;
-    border-bottom: 1px solid $gray-200;
-    background: $gray-100;
-}
-
-.card-header h5 {
-    margin: 0;
-}
-
 .card-body {
     @if $theme =="hitchhiker" {
         padding: 15px;
@@ -29,20 +19,26 @@
     @else {
         padding: 1em;
     }
-}
 
-.card-body.collapsed {
-    padding: 0;
+    @if $theme =="hitchhiker" {
+
+        h3.card-title,
+        h4.card-title {
+            margin: 0 5px 10px;
+        }
+    }
+
+    @else {
+
+        h3,
+        h4 {
+            margin: 0 0 10px;
+        }
+    }
 }
 
 .card-profiles {
     padding: 0.35em 0.5em 0;
-}
-
-.card h3 em {
-    padding: 0.25em;
-    background: #eddbff;
-    border-radius: 4px;
 }
 
 // watch sidebar
@@ -76,6 +72,6 @@
         padding: 10px 20px;
         margin: 0 -20px; // Ugly Hack !
 
-        border-bottom: 1px solid $gray-200;
+        border-bottom: 1px solid $border;
     }
 }

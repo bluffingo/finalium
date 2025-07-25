@@ -1,8 +1,14 @@
-<h3>
-    <a href="/read?j={{ journal.id }}">{{ journal.title }}</a>
-    <br>
-    <small>{{ journal.published | relative_time }}</small>
-</h3>
-<p>
-    {{ journal.contents|u.truncate(250, '...') }}
-</p>
+<div class="journal">
+    <div class="journal-title">
+        <a href="/read?j={{ journal.id }}">{{ journal.title }}</a>
+        <br>
+        {% if data.username != journal.author.info.username %}
+            {{ user_link(journal.author) }}
+            <br>
+        {% endif %}
+        <small>{{ journal.published | relative_time }}</small>
+    </div>
+    <div class="journal-contents">
+        {{ journal.contents|u.truncate(250, '...') }}
+    </div>
+</div>

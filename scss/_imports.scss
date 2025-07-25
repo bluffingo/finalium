@@ -23,7 +23,6 @@ html {
     height: 100%;
 }
 
-@import "_clearfix";
 @import "_grid_system";
 
 .bi {
@@ -97,13 +96,9 @@ h6 {
 
 hr {
     border: 0;
-    border-bottom: 1px solid $gray-200;
+    border-bottom: 1px solid $border;
     height: 0;
     margin: 10px 0;
-}
-
-.clearfix {
-    @include clearfix;
 }
 
 *,
@@ -149,7 +144,7 @@ pre {
 blockquote {
     margin: 0 0 0.5em 0;
     padding-left: 0.8em;
-    border-left: 4px solid $gray-400;
+    border-left: 4px solid $border;
 }
 
 .t_user {
@@ -328,21 +323,6 @@ blockquote {
     }
 }
 
-.commentPost {
-    margin-bottom: 17.5px;
-
-    .commentAuthor {
-        .commentDisplayName {
-            color: $gray-600;
-            font-size: .9em;
-        }
-
-        .time {
-            font-size: .9em;
-        }
-    }
-}
-
 #player-container {
     background-color: black;
     color: white;
@@ -425,55 +405,12 @@ body {
                 font-size: 11px;
             }
         }
-    }
-}
 
-.profiler {
-    background-color: rgba($gray-100, 0.5);
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    padding: 5px;
-    text-align: center;
-    backdrop-filter: blur(50px);
-}
-
-//
-
-.settings {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 1em;
-
-    .a {
-        text-align: center;
-        width: 250px;
-    }
-
-    td,
-    th {
-        border-bottom: 1px solid $gray-300;
-        padding: 10px 5px;
-    }
-
-    tr th {
-        background-color: $gray-100;
-        font-size: 12pt;
-    }
-
-    tr {
-        &:nth-child(odd) {
-            background-color: $gray-200;
+        .footer-profiler {
+            margin-top: 0.5em;
+            color: #666;
+            font-size: 11px;
         }
-
-        &:nth-child(even) {
-            background-color: $gray-300;
-        }
-    }
-
-    .fotnot {
-        margin-top: 8px;
-        font-size: 10.5pt;
     }
 }
 
@@ -486,10 +423,10 @@ input[type]:not([type=file]):not([type=submit]):not([type=range]) {
     }
 
     @else {
-        border: 1px solid $gray-400;
+        border: 1px solid $form-input-border;
         background: $form-input;
         border-radius: 4px;
-        box-shadow: 0 0 1px $gray-400;
+        box-shadow: 0 0 1px $form-input-border;
     }
 
     transition: border linear 0.3s,
@@ -506,68 +443,18 @@ input[type]:not([type=file]):not([type=submit]):not([type=range]):focus {
     outline: 0;
 }
 
-.menu {
-    position: absolute;
-    top: 100%;
-    max-height: 80vh;
-    z-index: 1000;
-    width: 160px;
-    overflow: hidden;
-    right: 0px;
-    text-align: left;
-
-    @if $theme =="hitchhiker" {
-        background: #ffffff;
-        padding: 0.25em;
-    }
-
-    @else {
-        background: $gray-100;
-    }
-
-    ul {
-        li {
-            @if $theme =="hitchhiker" {
-                padding: 4px 0;
-            }
-
-            @else {
-                padding: 6px 0;
-            }
-
-            a {
-                color: $text-color !important;
-                width: 100%;
-                display: block;
-                padding: 0 10px !important;
-            }
-        }
-
-        @if $theme !="hitchhiker" {
-            li:hover {
-                background-color: $primary;
-            }
-        }
-    }
-}
-
-.statbox {
-    text-align: center;
-    font-size: 3em;
-    border: 1px solid $gray-200;
-    padding: 0.5em;
-    background-color: $gray-100;
-
-    .stat-title {
-        font-size: 0.5em;
-        font-weight: semibold;
-    }
-}
-
 .emoji {
     display: inline;
     width: 24px;
     vertical-align: middle;
+}
+
+.journal {
+    margin-bottom: 1em;
+
+    @if $theme =="hitchhiker" {
+        margin-left: 5px;
+    }
 }
 
 /// Gradients \\\
@@ -598,6 +485,8 @@ input[type]:not([type=file]):not([type=submit]):not([type=range]):focus {
 @import "_comments";
 /// Badges \\\
 @import "_badges";
+/// Menus \\\
+@import "_menus";
 
 /// Version page \\\
 @import "_version_page";

@@ -1,5 +1,13 @@
+$masthead-user-pfp: 32px;
+
+@if $theme =="hitchhiker" {
+    $masthead-user-pfp: 27px;
+}
+
 .masthead-user {
-    float: right;
+    width: $masthead-user-pfp;
+    height: $masthead-user-pfp;
+    direction: rtl;
 }
 
 #masthead-below {
@@ -272,7 +280,7 @@
             border-radius: 3px 0 0 3px;
 
             @if $theme !="hitchhiker" {
-                border: 1px solid $gray-200;
+                border: 1px solid $form-input-border;
                 background-color: $form-input;
                 color: $text-color;
             }

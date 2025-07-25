@@ -18,7 +18,7 @@
 .col-version {
     @include responsive('tiny') {
         text-align: center;
-        border-bottom: 1px solid $gray-200;
+        border-bottom: 1px solid $border;
         padding: 30px;
     }
 

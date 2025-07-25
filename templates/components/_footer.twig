@@ -17,6 +17,11 @@
                 <a href="/version">Running OpenSB {{ opensb_version }}</a>
                 <span>{{ localize('footer_copyright', ('now' | date('Y'))) }}</span>
             </div>
+            {% if is_debug %}
+                <div class="footer-profiler">
+                    {{ profiler_stats() }}
+                </div>
+            {% endif %}
         </div>
         {% if is_debug %}
             {% set profiler = db_profiler_info() %}

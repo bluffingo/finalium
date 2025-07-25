@@ -27,8 +27,8 @@
          <div class="card">
             {{ submission_view(submission) }}
             {% if submission.is_owner %}
-               <div class="bg-dark text-light card card-body" style="border-bottom:none;border-color:black;">
-                  <a class="button button-dark" href="/edit.php?v={{ submission.id }}">Edit</a>
+               <div class="card card-body" style="border-bottom:none;border-color:black;">
+                  <a class="button button-secondary" href="/edit.php?v={{ submission.id }}">Edit</a>
                </div>
             {% endif %}
          </div>
@@ -61,7 +61,10 @@
                   </div>
                </div>
                <div class="col-6 right watch-view-info">
-                  <div class="watch-view-count">{{ submission.interactions.views }} views</div>
+                    {% if submission.interactions.views != 1 %}
+                        {% set pluralViews = "s" %}
+                    {% endif %}
+                  <div class="watch-view-count">{{ submission.interactions.views }} view{{ pluralViews }}</div>
                   <div class="likesaber">
                      <div class="like" style="width:{{ submission.interactions.legacy.ratio }}%"></div>
                   </div>

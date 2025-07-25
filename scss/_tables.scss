@@ -1,5 +1,7 @@
+@use "sass:color";
+
 table.c1 {
-    border: $gray-500 1px solid;
+    border: $border 1px solid;
     border-spacing: 0;
     border-collapse: collapse;
     width: 100%;
@@ -17,12 +19,12 @@ table.c1 {
 
         th {
             padding: 5px;
-            border: $gray-500 1px solid;
+            border: $border 1px solid;
         }
     }
 
     tr.h {
-        background: $gray-200;
+        background-color: color.adjust($border, $lightness: 7.5%);
     }
 
     tr.h td,
@@ -33,10 +35,11 @@ table.c1 {
 
     td {
         //border: $grid 1px solid;
-        border: $gray-500 1px solid;
+        border: $border 1px solid;
         padding: 5px;
     }
 
+    /*
     td.nb {
         padding: 1px;
         border: 0px none;
@@ -56,4 +59,5 @@ table.c1 {
     td.n3 {
         background: #d4d4d4;
     }
+    */
 }
