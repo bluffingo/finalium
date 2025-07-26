@@ -1,5 +1,6 @@
 $masthead-user-pfp: 32px;
 
+
 @if $theme =="hitchhiker" {
     $masthead-user-pfp: 27px;
 }
@@ -207,7 +208,7 @@ $masthead-user-pfp: 32px;
     @if $theme =="hitchhiker" {
         position: relative;
         padding: 0;
-        margin-top: 3px;
+        margin-bottom: 1px;
     }
 
     @else {
@@ -224,19 +225,21 @@ $masthead-user-pfp: 32px;
 
     #search-btn {
         height: $masthead-search-bar-height;
-        border-radius: 0 3px 3px 0;
 
         @if $theme =="hitchhiker" {
+            padding: 0;
             color: #a0a0a0;
 
             &:hover,
             &:focus {
                 color: #666666;
             }
-        }
 
-        span {
-            margin: 0 12px;
+            span {
+                margin: 0 25px;
+            }
+        } @else {
+            border-radius: 0 3px 3px 0;
         }
     }
 
@@ -264,7 +267,7 @@ $masthead-user-pfp: 32px;
         }
 
         @include responsive('large') {
-            width: 600px;
+            width: 583px;
         }
 
         input {
@@ -277,12 +280,12 @@ $masthead-user-pfp: 32px;
             height: $masthead-search-bar-height;
 
             border-right: none;
-            border-radius: 3px 0 0 3px;
 
             @if $theme !="hitchhiker" {
                 border: 1px solid $form-input-border;
                 background-color: $form-input;
                 color: $text-color;
+                border-radius: 3px 0 0 3px;
             }
         }
     }
