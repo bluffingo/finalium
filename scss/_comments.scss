@@ -1,25 +1,46 @@
-// backporting biscuit/finalium 2 comments into finalium 1 because i hate the way i wrote comments
-// on finalium 1 back then
+.comments-header {
+    color: $header-text-color;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 17px;
+}
+
+#commentContents {
+    margin-bottom: 10px;
+    padding: 5px 10px;
+}
 
 .comment {
-    padding-top: 7px;
-    padding-bottom: 7px;
+    padding-bottom: 30px;
     display: flex;
+    gap: 10px;
 
     &:last-child {
         border-bottom: none;
     }
 
-    //img.pfp {
     .img-pfp {
-        width: 50px;
-        height: 50px;
+        width: 48px;
+        height: 48px;
     }
 
     .comment-body {
-        //width: 775px;
         width: 100%;
-        margin-left: 10px;
+
+        .comment-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+
+            .comment-author {
+                font-weight: 500;
+            }
+
+            .comment-timestamp {
+                color: $comment-timestamp;
+                font-size: 11px;
+            }
+        }
 
         .comment-contents {
             margin-top: 6px;

@@ -53,6 +53,12 @@ $masthead-user-pfp: 32px;
     }
 }
 
+.user-menu-button {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
 #guide {
     position: fixed;
     left: 0;

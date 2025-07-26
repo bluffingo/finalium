@@ -26,14 +26,14 @@
 {% block content %}
 <div class="{{ grid }}">
     <div class="{{ col_left }}">
-        <div class="card">
+        <div class="upload-container">
             {{ submission_view(submission) }}
-            {% if submission.is_owner %}
-            <div class="card card-body" style="border-bottom:none;border-color:black;">
+        </div>
+        {% if submission.is_owner %}
+            <div class="card card-body">
                 <a class="button button-secondary" href="/edit.php?v={{ submission.id }}">Edit</a>
             </div>
-            {% endif %}
-        </div>
+        {% endif %}
         <div class="card card-body watch-header">
             <h1>{{ submission.title }}</h1>
             <div class="grid watch-user-header">

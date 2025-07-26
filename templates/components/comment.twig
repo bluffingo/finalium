@@ -1,8 +1,13 @@
 <div class="comment" id="comment-{{ data.id }}">
     <img src="{{ profile_picture(data.author.info.username) }}" class="img-pfp" alt="{{ data.author.info.username }}">
     <div class="comment-body">
-        <div class="comment-author">
-            {{ user_link(data.author) }} • <small title="{{ data.posted | date('F j, Y') }}">{{ data.posted | relative_time }}</small>
+        <div class="comment-header">
+            <div class="comment-author">
+                {{ user_link(data.author) }}
+            </div>
+            <div class="comment-timestamp" title="{{ data.posted | date('F j, Y') }}">
+                {{ data.posted | relative_time }}
+            </div>
         </div>
         <div class="comment-contents">
             {% if data.post | trim is not empty %}
