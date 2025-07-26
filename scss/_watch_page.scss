@@ -1,3 +1,15 @@
+@mixin button-opacity() {
+    opacity: 50%;
+
+    &:hover {
+        opacity: 60%;
+    }
+
+    &:active {
+        opacity: 80%;
+    }
+}
+
 // originally .viewcount
 .watch-view-count {
     color: $light-text-color;
@@ -18,8 +30,42 @@
 
 .watch-creator {
     display: flex;
-    gap: 8px;
-    margin-bottom: 10px;
+    gap: 10px;
+    margin-bottom: 6px;
+
+    .watch-creator-info {
+        display: flex;
+        gap: 8px;
+        flex-direction: column;
+
+        .watch-creator-userlink {
+            @if $theme =="hitchhiker" {
+                .userlink {
+                    color: $description-text-color;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+}
+
+#watch-not-available {
+    padding: 35px;
+    text-align: center;
+    color: $light-text-color;
+    position: relative;
+}
+
+.watch-panel-close-button {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+
+    width: 30px;
+    height: 30px;
+    padding: 0 10px;
+
+    @include button-opacity();
 }
 
 .watch-header {
@@ -27,35 +73,36 @@
         font-size: 24px;
     }
 
-    padding-bottom: 0;
+    padding-bottom: 5px;
+    min-height: 150px;
 
     .watch-user-header {
         padding: 10px 0 0 0;
     }
 
     hr.watch-info-divider {
-        margin: 0 0 10px 0;
+        margin: 0 0 5px 0;
     }
 
     .watch-action-buttons {
         display: flex;
 
+        .watch-sentiment-actions {
+            display: flex;
+            .button {
+                padding-right: 0;
+            }
+        }
+
         .watch-secondary-actions {
             flex: 1;
+            display: flex;
+            position: relative;
+            left: -10px;
         }
 
         .button {
-            padding: 0 5px;
-            //color: $gray-600;
-            opacity: 50%;
-
-            &:hover {
-                opacity: 60%;
-            }
-
-            &:active {
-                opacity: 80%;
-            }
+            @include button-opacity();
         }
 
         // this should be in _buttons.scss but i dont wanna fuck with !important

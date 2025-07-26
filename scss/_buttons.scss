@@ -8,6 +8,15 @@ a.button {
     text-decoration: none;
 }
 
+button {
+    border: 0;
+    background: transparent;
+}
+
+button, input[type="button"], input[type="reset"], input[type="submit"] {
+    cursor: pointer;
+}
+
 .button {
     color: white;
     padding: $button-padding;

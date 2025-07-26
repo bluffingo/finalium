@@ -42,22 +42,18 @@
                     <div>
                         <img src="{{ profile_picture(submission.author.info.username) }}" class="img-pfp" style="width:48px;">
                     </div>
-                    <div>
-                        <a href="/user.php?name={{ submission.author.info.username }}"
-                        style="color:{{ submission.author.info.color }}">
-                        <b style="height: 20px;display: inline-block;">
-                            {{ submission.author.info.username }}
-                        </b>
-                        </a>
-                        {% if submission.author.info.powerlevel > 1 %}{{ icon("shield", 16) }}{% endif %}
-                        {# • {{ allVideos }} videos#}
-                        <br>
-                        {% if submission.is_owner %}
-                        <a class="button button-secondary button-small">Settings</a>
-                        {% else %}
-                        <button id="subscribe-watch" class="button button-{% if submission.author.following %}secondary{% else %}primary{% endif %} button-small" type="button" {% if not is_user_logged_in or user_data.id == submission.author.id %}disabled{% endif %}>{% if submission.author.following %}Unfollow{% else %}Follow{% endif %}</button>
-                        <div class="subscribe-count">{{ submission.author.followers }}</div>
-                        {% endif %}
+                    <div class="watch-creator-info">
+                        <div class="watch-creator-userlink">
+                            {{ user_link(submission.author) }}
+                        </div>
+                        <div>
+                            {% if submission.is_owner %}
+                            <a class="button button-secondary button-small">Settings</a>
+                            {% else %}
+                            <button id="subscribe-watch" class="button button-{% if submission.author.following %}secondary{% else %}primary{% endif %} button-small" type="button" {% if not is_user_logged_in or user_data.id == submission.author.id %}disabled{% endif %}>{% if submission.author.following %}Unfollow{% else %}Follow{% endif %}</button>
+                            <div class="subscribe-count">{{ submission.author.followers }}</div>
+                            {% endif %}
+                        </div>
                     </div>
                     <br>
                 </div>
@@ -75,15 +71,25 @@
             <hr class="watch-info-divider">
             <div class="watch-action-buttons">
             <div class="watch-secondary-actions">
-                <button class="button button-secondary-invis">
+                <button class="button button-secondary-invis" onclick="toggleNotAvailable()">
                     {{ icon("plus-lg", 20) }} Add to
                 </button>
-                <button class="button button-secondary-invis">
+                <button class="button button-secondary-invis" onclick="toggleNotAvailable()">
                     {{ icon("share-fill", 20) }} Share
                 </button>
-                <button class="button button-secondary-invis">
-                    {{ icon("three-dots", 20) }} More
-                </button>
+                <div class="menu-container">
+                    <button class="menu-button button button-secondary-invis" data-menu-id="watch-more-menu">
+                        {{ icon("three-dots", 20) }} More
+                    </button>
+                    <div class="menu" id="watch-more-menu">
+                        <div class="menu-item-button" onclick="toggleNotAvailable()">
+                            {{ icon("flag-fill", 16) }} <span>Report</span>
+                        </div>
+                        <div class="menu-item-button" onclick="toggleNotAvailable()">
+                            {{ icon("bar-chart-fill", 16) }} <span>Statistics</span>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="watch-sentiment-actions">
                 <button href="/#" id="{% if is_user_logged_in %}like{% else %}action_unlogged{% endif %}"
@@ -108,6 +114,10 @@
                 </div>
             </div>
             </div>
+        </div>
+        <div class="card card-body" id="watch-not-available" style="display:none;">
+            <button class="watch-panel-close-button" id="watch-not-available-close">{{ icon("x-lg", 10) }}</button>
+            <div>This feature is not available right now. Please try again later.</div>
         </div>
         <div class="card card-body">
             <div class="watch-description">

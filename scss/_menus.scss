@@ -1,11 +1,13 @@
-$content-box-background-color: #FFF;
-$content-box-border-color: #E0E0E0;
 $menu-item-padding: 0.4rem 0.8rem;
 $header-link-color: black;
 $header-link-hover: rgba($header-link-color, 0.05);
 $header-link-active: rgba($header-link-color, 0.1);
 $header-link-inactive-opacity: 0.75;
 $header-link-active-opacity: 1; // includes hover
+
+@if $theme =="hitchhiker" {
+    $menu-item-padding: 0 15px;
+}
 
 .menu {
     display: none;
@@ -15,6 +17,7 @@ $header-link-active-opacity: 1; // includes hover
     @if $theme =="hitchhiker" {
         padding: 10px 0;
         box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+        border: $form-input-border;
     }
 
     @else {
@@ -24,7 +27,6 @@ $header-link-active-opacity: 1; // includes hover
 
     min-width: 100px;
     z-index: 1999;
-    width: 12rem;
     font-weight: normal;
 
     // hardcode text alignment and direction to left for header menus
@@ -32,7 +34,7 @@ $header-link-active-opacity: 1; // includes hover
     direction: ltr;
 
     hr {
-        border-color: $content-box-border-color;
+        border-color: $border;
         margin: 0;
     }
 
@@ -43,7 +45,11 @@ $header-link-active-opacity: 1; // includes hover
         text-align: left;
         padding: $menu-item-padding;
         color: rgba($text-color, $header-link-inactive-opacity);
-        gap: 5px;
+        gap: 10px;
+
+        @if $theme =="hitchhiker" {
+            height: 26px;
+        }
 
         span {
             overflow: hidden;
