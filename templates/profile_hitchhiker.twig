@@ -4,14 +4,18 @@
              src="{{ profile_picture(data.username) }}"  
              alt="{{ data.username }}">
     </div>
-    <div class="card">
+    <div class="card channel-header">
         <div class="card-body">
-            <h1>{{ data.displayname }}</h1>
-            <a class="button button-secondary" href="/user/{{ data.displayname }}">Home</a>
-            <a class="button button-secondary" href="/user/{{ data.displayname }}/uploads">Uploads</a>
-            <a class="button button-secondary" href="/user/{{ data.displayname }}/journals">Journals</a>
-            <a class="button button-secondary" href="/user/{{ data.displayname }}/comments">Discussion</a>
-            <a class="button button-secondary" href="/user/{{ data.displayname }}/about">About</a>
+            <div class="channel-header-primary">
+                <h1>{{ data.displayname }}</h1>
+            </div>
+            <div class="channel-header-secondary">
+                <a class="tab" href="/user/{{ data.displayname }}">Home</a>
+                <a class="tab" href="/user/{{ data.displayname }}/uploads">Uploads</a>
+                <a class="tab" href="/user/{{ data.displayname }}/journals">Journals</a>
+                <a class="tab" href="/user/{{ data.displayname }}/comments">Discussion</a>
+                <a class="tab" href="/user/{{ data.displayname }}/about">About</a>
+            </div>
         </div>
     </div>
     <div class="card">

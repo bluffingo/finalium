@@ -1,7 +1,26 @@
-@if $theme =="hitchhiker" {
-    .channel-header-profile-picture {
-        margin-left: 15px;
-        width: 100px;
-        height: 100px;
+.channel-header-profile-picture {
+    margin-left: 15px;
+    width: 100px;
+    height: 100px;
+}
+
+// slightly ugly but i dont care
+.card.channel-header {
+    .card-body {
+        padding-bottom: 0;
+
+        h1 {
+            color: $description-text-color;
+            font-weight: 500;
+        }
     }
+}
+
+.channel-header-primary {
+    margin-bottom: 10px;
+}
+
+.channel-header-secondary {
+    display: flex;
+    gap: 20px;
 }
