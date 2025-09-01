@@ -22,45 +22,35 @@
         background: url('{{ profile_banner(data.username) }}') center no-repeat, #333;
         height: 210px;
     }
-
-    {% if data.customization and current_theme != "hitchhiker" %}
-        body {
-            background: {{ data.customization.background_color }};
-        }
-
-        .container {
-            font-family: {{ data.customization.font | raw }};
-        }
-
-        .container a:not(.userlink) {
-            color: {{ data.customization.link_color }} !important;
-        }
-
-        /* Titles */
-        h1, h2, h3, h4, h5, h6 {
-          color: {{ data.customization.title_color }};
-        }
-
-        /* Highlight box */
-        .highlight-box {
-            background: {{ data.customization.highlight_box_background_color }};
-            border: 1px solid {{ data.customization.basic_box_border_color }};
-            color: {{ data.customization.highlight_box_text_color }};
-        }
-
-        /* Basic box */
-        .basic-box {
-            background: {{ data.customization.basic_box_background_color }};
-            border: 1px solid {{ data.customization.basic_box_border_color }};
-            color: {{ data.customization.basic_box_text_color }};
-        }
-    {% endif %}
 {% endblock %}
 
 {% block content %}
-    {% if current_theme == "hitchhiker" %}
-        {{ include('/profile_hitchhiker.twig') }}
-    {% else %}
-        {{ include('/profile_finalium.twig') }}
-    {% endif %}
+    <div class="channel-header-bg">
+        <img class="channel-header-profile-picture" 
+             src="{{ profile_picture(data.username) }}"  
+             alt="{{ data.username }}">
+    </div>
+    <div class="card channel-header">
+        <div class="card-body">
+            <div class="channel-header-primary">
+                <h1>{{ data.displayname }}</h1>
+            </div>
+            <div class="channel-header-secondary">
+                <a class="tab" href="/user/{{ data.displayname }}">Home</a>
+                <a class="tab" href="/user/{{ data.displayname }}/uploads">Uploads</a>
+                <a class="tab" href="/user/{{ data.displayname }}/journals">Journals</a>
+                <a class="tab" href="/user/{{ data.displayname }}/comments">Discussion</a>
+                <a class="tab" href="/user/{{ data.displayname }}/about">About</a>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            {% for submission in data.submissions %}
+                {{ submission_box(submission) }}
+            {% else %}
+                <p>There are currently no uploads by {{ data.displayname }}</p>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}
