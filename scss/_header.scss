@@ -89,6 +89,10 @@ $masthead-user-pfp: 32px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @if $theme !="hitchhiker" {
+        gap: 1em;
+    }
 }
 
 #header-user {
@@ -153,7 +157,6 @@ $masthead-user-pfp: 32px;
 
     #logo-container {
         display: flex;
-        align-items: center;
 
         @if $theme =="hitchhiker" {
             width: 200px;
@@ -170,7 +173,6 @@ $masthead-user-pfp: 32px;
     }
 
     #logo {
-        background-size: auto;
         height: 30px;
         border: 0;
     }
@@ -244,7 +246,9 @@ $masthead-user-pfp: 32px;
             span {
                 margin: 0 25px;
             }
-        } @else {
+        }
+
+        @else {
             border-radius: 0 3px 3px 0;
         }
     }
