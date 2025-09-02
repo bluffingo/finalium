@@ -1,0 +1,57 @@
+{% extends "_layout.twig" %}
+
+{% block head %}
+    <meta name="title" content="{{ data.displayname }} - {{ website_branding.name }}">
+    <meta name="description"
+          content="{{ data.about|length > 250 ? data.about|slice(0, 250) ~ '...' : data.about }}">
+    <meta name="theme-color" content="{{ data.customcolor }}">
+    <meta property="og:site_name" content="{{ website_branding.name }}"/>
+    <meta property="og:title" content="{{ data.displayname }} - {{ website_branding.name }}">
+    <meta property="og:description"
+          content="{{ data.about|length > 250 ? data.about|slice(0, 250) ~ '...' : data.about }}">
+    <meta property="og:image" content="{{ profile_picture(user_data.name) }}">
+    <meta property="og:url" content="{{ page_url }}">
+    <script>
+        user_id = '{{ data.id }}';
+    </script>
+{% endblock %}
+
+{% block customcss %}
+    .channel-header-bg {
+        background: url('{{ profile_banner(data.username) }}') center no-repeat, #333;
+        height: 210px;
+    }
+{% endblock %}
+
+{% block content %}
+    <div class="channel-header-bg">
+        <img class="channel-header-profile-picture" 
+             src="{{ profile_picture(data.username) }}"  
+             alt="{{ data.username }}">
+    </div>
+    <div class="card channel-header">
+        <div class="card-body">
+            <div class="channel-header-primary">
+                {% if data.displayname|lower == data.username|lower %}
+                    <div class="channel-header-name">
+                        <h1>{{ data.displayname }}</h1>
+                    </div>
+                {% else %}
+                    <div class="channel-header-name">
+                        <h1>{{ data.displayname }}</h1>
+                        <div class="channel-header-handle">@{{ data.username }}</div>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="channel-header-secondary">
+                <a class="tab selected" href="/user/{{ data.username }}">Home</a>
+                <a class="tab" href="/user/{{ data.username }}/uploads">Uploads</a>
+                <a class="tab" href="/user/{{ data.username }}/journals">Journals</a>
+                <a class="tab" href="/user/{{ data.username }}/comments">Discussion</a>
+                <a class="tab" href="/user/{{ data.username }}/about">About</a>
+            </div>
+        </div>
+    </div>
+    {% block profile_content %}
+    {% endblock %}
+{% endblock %}
