@@ -33,10 +33,19 @@
     <div class="card channel-header">
         <div class="card-body">
             <div class="channel-header-primary">
-                <h1>{{ data.displayname }}</h1>
+                {% if data.displayname|lower == data.username|lower %}
+                    <div class="channel-header-name">
+                        <h1>{{ data.displayname }}</h1>
+                    </div>
+                {% else %}
+                    <div class="channel-header-name">
+                        <h1>{{ data.displayname }}</h1>
+                        <div class="channel-header-handle">@{{ data.username }}</div>
+                    </div>
+                {% endif %}
             </div>
             <div class="channel-header-secondary">
-                <a class="tab" href="/user/{{ data.displayname }}">Home</a>
+                <a class="tab selected" href="/user/{{ data.displayname }}">Home</a>
                 <a class="tab" href="/user/{{ data.displayname }}/uploads">Uploads</a>
                 <a class="tab" href="/user/{{ data.displayname }}/journals">Journals</a>
                 <a class="tab" href="/user/{{ data.displayname }}/comments">Discussion</a>

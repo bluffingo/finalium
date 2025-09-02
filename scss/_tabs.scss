@@ -1,5 +1,17 @@
 .tab {
-    height: 29px;
+    color: $light-text-color;
+
+    padding: 0 3px;
+    height: 32px; // on yt this was defined as 29px but this doesnt work here
     line-height: 29px;
-    border-bottom: 3px solid $nav-selected;
+
+    &.selected,
+    &:hover {
+        border-bottom: 3px solid $nav-selected;
+    }
+
+    &.selected {
+        color: $description-text-color;
+        font-weight: 500;
+    }
 }
