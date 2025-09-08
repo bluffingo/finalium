@@ -1,0 +1,20 @@
+{% extends "_layout_profile.twig" %}
+{% block title %}{{ data.displayname }}{% endblock %}
+
+{% block profile_content %}
+    <div class="card">
+        <div class="card-body">
+            <p>{{ data.followers }} followers • {{ data.views }} views</p>
+            <p>Joined {{ data.joined | format_date('medium', 'none') }}</p>
+            <h2>Description</h2>
+            {% if data.about | trim is not empty %}
+                <div>
+                    {{ data.about | markdown_user_written }}
+                </div>
+            {% endif %}
+            <hr>
+            <h2>Details</h2>
+            <p>the</p>
+        </div>
+    </div>
+{% endblock %}

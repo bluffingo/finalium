@@ -23,6 +23,8 @@
     }
 {% endblock %}
 
+{% set show_related_channels = true %}
+
 {% block content %}
     <div class="channel-header-bg">
         <img class="channel-header-profile-picture img-pfp" 
@@ -52,6 +54,26 @@
             </div>
         </div>
     </div>
-    {% block profile_content %}
-    {% endblock %}
+    {% if not show_related_channels %}
+        {% block profile_content %}
+        {% endblock %}
+    {% else %}
+        <div class="profile-page-grid">
+            <div class="content">
+                {{ block('profile_content') }}
+            </div>
+            <div class="profile-channels-list">
+                <div class="card">
+                    <div class="card-body">
+                        Featured channels
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        Custom channels
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}

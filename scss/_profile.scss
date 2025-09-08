@@ -46,3 +46,23 @@
     display: flex;
     gap: 20px;
 }
+
+/* duplicate of .sidebar-page-grid from trinium */
+.profile-page-grid {
+    @include responsive('small') {
+        display: block;
+    }
+
+    @include responsive('medium') {
+        display: flex;
+        gap: $gap;
+
+        .content {
+            flex-grow: 1;
+        }
+    }
+}
+
+.profile-channels-list {
+    width: 196px;
+}
