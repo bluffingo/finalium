@@ -66,3 +66,20 @@
 .profile-channels-list {
     width: 196px;
 }
+
+.profile-about-container {
+    @if $theme =="hitchhiker" {
+        line-height: 18px;
+    }
+
+    color: $header-text-color;
+
+    .about-stats {
+        margin-bottom: 30px;
+    }
+
+    .about-header {
+        font-size: unset;
+        font-weight: 500;
+    }
+}
