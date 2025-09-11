@@ -10,6 +10,8 @@
     {% set le_url = 'user/' ~ data.username ~ '/uploads?type=' ~ type ~ '&page=%s' %}
 {% endif %}
 
+{% set selected_tab = "uploads" %}
+
 {% block profile_content %}
     <div class="card">
         <div class="card-body">
