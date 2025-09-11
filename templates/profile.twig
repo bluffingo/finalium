@@ -6,9 +6,26 @@
 {% block profile_content %}
     <div class="card">
         <div class="card-body">
-            <div>Featured upload</div>
-            <hr>
-            <p>Content goes here.</p>
+            {% if data.featured_submission %}
+                <div class="profile-featured-upload">
+                    <div class="upload-container">
+                        <img src="{{ thumbnail(data.id, data.type, data.flags.custom_thumbnail) }}" alt="{{ data.title }}">
+                    </div>
+                    <div class="upload-info">
+                        <div class="content-wrapper">
+                            <h3 class="title">
+                            <a href="/watch?v={{ data.featured_submission.id }}">{{ data.featured_submission.title }}</a>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            {% endif %}
+            {% for submission in data.submissions %}
+                {{ submission_box(submission) }}
+            {% else %}
+                <p>There are currently no uploads by {{ data.displayname }}</p>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}

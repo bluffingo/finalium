@@ -83,3 +83,17 @@
         font-weight: 500;
     }
 }
+
+.profile-featured-upload {
+    display: flex;
+    gap: 12px;
+
+    .upload-container {
+        width: 60%;
+        max-width: 520px;
+
+        img {
+            width: 100%;
+        }
+    }
+}
