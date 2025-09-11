@@ -89,6 +89,7 @@
 
         .watch-sentiment-actions {
             display: flex;
+
             .button {
                 padding-right: 0;
             }
@@ -129,7 +130,8 @@
 .subscribe-count {
     padding: 0 6px;
     border: 1px solid #ccc;
-    color: red;
+    background: #fafafa;
+    color: #737373;
     font-size: 12px;
     text-align: center;
 
