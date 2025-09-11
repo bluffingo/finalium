@@ -1,0 +1,26 @@
+{% extends "_layout_profile.twig" %}
+{% block title %}{{ data.displayname }}{% endblock %}
+
+{% set selected_tab = "about" %}
+
+{% block profile_content %}
+    <div class="card">
+        <div class="card-body profile-about-container">
+            <div class="about-stats">
+                <div><strong>{{ data.followers }}</strong> followers • <strong>{{ data.views }}</strong> views</div>
+                <div>Joined {{ data.joined | format_date('medium', 'none') }}</div>
+            </div>
+            <h2 class="about-header">Description</h2>
+            {% if data.about | trim is not empty %}
+                <div>
+                    {{ data.about | markdown_user_written }}
+                </div>
+            {% endif %}
+            {#
+            <hr>
+            <h2>Details</h2>
+            <p>the</p>
+            #}
+        </div>
+    </div>
+{% endblock %}

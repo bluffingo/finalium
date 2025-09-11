@@ -1,0 +1,26 @@
+{% extends "_layout_profile.twig" %}
+{% block title %}{{ data.displayname }}{% endblock %}
+
+{% set selected_tab = "comments" %}
+
+{% block profile_content %}
+    <div class="card">
+        <div class="card-body">
+            {% if is_user_logged_in %}
+                <div>
+                    <div>
+                    <textarea class="form-control" id="commentContents" style="overflow:hidden;resize:none" rows="3"
+                            placeholder="{{ localize('write_comment') }}"></textarea>
+                    </div>
+                    <div class="right">
+                    <button id="post-user" class="button button-primary" style="margin-bottom:0;">{{ localize('post') }}</button>
+                    </div>
+                </div>
+            {% endif %}
+            <div id="comment"></div>
+            {% for comment in data.comments %}
+                {{ comment(comment) }}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,7 +1,99 @@
-@if $theme =="hitchhiker" {
-    .channel-header-profile-picture {
-        margin-left: 15px;
-        width: 100px;
-        height: 100px;
+.channel-header-profile-picture {
+    margin-left: 15px;
+    width: 100px;
+    height: 100px;
+
+    @if $theme =="hitchhiker" {
+        box-shadow: 0 1px 1px rgba(0, 0, 0, .4);
+    }
+
+    @else {
+        margin-top: 15px;
+    }
+}
+
+// slightly ugly but i dont care
+.card.channel-header {
+    .card-body {
+        padding-bottom: 0;
+
+        h1 {
+            color: $description-text-color;
+            font-weight: 500;
+        }
+    }
+}
+
+.channel-header-primary {
+    @if $theme =="hitchhiker" {
+        height: 33px;
+    }
+
+    margin-bottom: 10px;
+
+    .channel-header-name {
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+
+        .channel-header-handle {
+            color: $light-text-color;
+        }
+    }
+}
+
+.channel-header-secondary {
+    display: flex;
+    gap: 20px;
+}
+
+/* duplicate of .sidebar-page-grid from trinium */
+.profile-page-grid {
+    @include responsive('small') {
+        display: block;
+    }
+
+    @include responsive('medium') {
+        display: flex;
+        gap: $gap;
+
+        .content {
+            flex-grow: 1;
+        }
+    }
+}
+
+.profile-channels-list {
+    width: 196px;
+}
+
+.profile-about-container {
+    @if $theme =="hitchhiker" {
+        line-height: 18px;
+    }
+
+    color: $header-text-color;
+
+    .about-stats {
+        margin-bottom: 30px;
+    }
+
+    .about-header {
+        font-size: unset;
+        font-weight: 500;
+    }
+}
+
+.profile-featured-upload {
+    display: flex;
+    gap: 12px;
+
+    .upload-container {
+        width: 60%;
+        max-width: 520px;
+
+        img {
+            width: 100%;
+        }
     }
 }

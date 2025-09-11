@@ -1,0 +1,23 @@
+{% extends "_layout_profile.twig" %}
+{% block title %}{{ data.displayname }}{% endblock %}
+
+{% set selected_tab = "journals" %}
+
+{% set total_pages = (count / items_per_page) | round(0, 'ceil') %}
+{% set current_page = page %}
+
+{% block profile_content %}
+    <div class="card">
+        <div class="card-body">
+            {% for journal in journals %}
+                {% include "components/journal.twig" %}
+            {% else %}
+                <p>No journals.</p>
+            {% endfor %}
+        </div>
+
+        {% set le_url = '/journals/' ~ user ~ '?page=%s' %}
+
+        {{ pagination(count, items_per_page, le_url, current_page) }}
+    </div>
+{% endblock %}

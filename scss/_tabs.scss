@@ -1,1 +1,17 @@
-// this stylesheet intentionally left blank.
+.tab {
+    color: $light-text-color;
+
+    padding: 0 3px;
+    height: 32px; // on yt this was defined as 29px but this doesnt work here
+    line-height: 29px;
+
+    &.selected,
+    &:hover {
+        border-bottom: 3px solid $nav-selected;
+    }
+
+    &.selected {
+        color: $description-text-color;
+        font-weight: 500;
+    }
+}

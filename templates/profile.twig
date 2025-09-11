@@ -1,66 +1,31 @@
-{% extends "_layout.twig" %}
+{% extends "_layout_profile.twig" %}
 {% block title %}{{ data.displayname }}{% endblock %}
 
-{% block head %}
-    <meta name="title" content="{{ data.displayname }} - {{ website_branding.name }}">
-    <meta name="description"
-          content="{{ data.about|length > 250 ? data.about|slice(0, 250) ~ '...' : data.about }}">
-    <meta name="theme-color" content="{{ data.customcolor }}">
-    <meta property="og:site_name" content="{{ website_branding.name }}"/>
-    <meta property="og:title" content="{{ data.displayname }} - {{ website_branding.name }}">
-    <meta property="og:description"
-          content="{{ data.about|length > 250 ? data.about|slice(0, 250) ~ '...' : data.about }}">
-    <meta property="og:image" content="{{ profile_picture(user_data.name) }}">
-    <meta property="og:url" content="{{ page_url }}">
-    <script>
-        user_id = '{{ data.id }}';
-    </script>
-{% endblock %}
+{% set selected_tab = "home" %}
 
-{% block customcss %}
-    .channel-header-bg {
-        background: url('{{ profile_banner(data.username) }}') center no-repeat, #333;
-        height: 210px;
-    }
-
-    {% if data.customization and current_theme != "hitchhiker" %}
-        body {
-            background: {{ data.customization.background_color }};
-        }
-
-        .container {
-            font-family: {{ data.customization.font | raw }};
-        }
-
-        .container a:not(.userlink) {
-            color: {{ data.customization.link_color }} !important;
-        }
-
-        /* Titles */
-        h1, h2, h3, h4, h5, h6 {
-          color: {{ data.customization.title_color }};
-        }
-
-        /* Highlight box */
-        .highlight-box {
-            background: {{ data.customization.highlight_box_background_color }};
-            border: 1px solid {{ data.customization.basic_box_border_color }};
-            color: {{ data.customization.highlight_box_text_color }};
-        }
-
-        /* Basic box */
-        .basic-box {
-            background: {{ data.customization.basic_box_background_color }};
-            border: 1px solid {{ data.customization.basic_box_border_color }};
-            color: {{ data.customization.basic_box_text_color }};
-        }
-    {% endif %}
-{% endblock %}
-
-{% block content %}
-    {% if current_theme == "hitchhiker" %}
-        {{ include('/profile_hitchhiker.twig') }}
-    {% else %}
-        {{ include('/profile_finalium.twig') }}
-    {% endif %}
+{% block profile_content %}
+    <div class="card">
+        <div class="card-body">
+            {% if data.featured_submission %}
+                <div class="profile-featured-upload">
+                    <div class="upload-container">
+                        <img src="{{ thumbnail(data.id, data.type, data.flags.custom_thumbnail) }}" alt="{{ data.title }}">
+                    </div>
+                    <div class="upload-info">
+                        <div class="content-wrapper">
+                            <h3 class="title">
+                            <a href="/watch?v={{ data.featured_submission.id }}">{{ data.featured_submission.title }}</a>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            {% endif %}
+            {% for submission in data.submissions %}
+                {{ submission_box(submission) }}
+            {% else %}
+                <p>There are currently no uploads by {{ data.displayname }}</p>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}
