@@ -1,30 +1,30 @@
 {
-  "metadata":
-  {
-    "id": "finalium",
-    "name": "Finalium",
-    "author": "OpenSB developers",
-    "description": "The classic SquareBracket look.",
-    "site": "squarebracket",
-    "themes": [
-      {
-        "id": "default",
-        "name": "Default",
-        "description": "The classic SquareBracket look.",
-        "author": "OpenSB developers"
-      },
-      {
-        "id": "dark",
-        "name": "Dark",
-        "description": "The classic SquareBracket look, now dark!",
-        "author": "OpenSB developers"
-      },
-      {
-        "id": "hitchhiker",
-        "name": "FulpTube",
-        "description": "Work in progress!",
-        "author": "OpenSB developers"
-      }
-    ]
-  }
+    "metadata":
+    {
+        "id": "finalium",
+        "name": "Finalium",
+        "author": "Bluffingo Development",
+        "description": "The classic look of SquareBracket.",
+        "site": "squarebracket",
+        "themes": [
+            {
+                "id": "default",
+                "name": "Light",
+                "description": "The light theme.",
+                "author": "Bluffingo Development"
+            },
+            {
+                "id": "dark",
+                "name": "Dark",
+                "description": "The dark theme, which is a little unpolished.",
+                "author": "Bluffingo Development"
+            },
+            {
+                "id": "hitchhiker",
+                "name": "Hitchhiker",
+                "description": "Emulates the look of a certain video sharing site as seen in 2016.",
+                "author": "Bluffingo Development"
+            }
+        ]
+    }
 }
