@@ -3,7 +3,7 @@
         <div class="footer-main">
             <img src="/assets/opensb_logo.png" alt="OpenSB">
             {% if is_debug %}
-                <a class="button button-danger tooltip" id="debug-button" title="Spicy!" role="button">{{ localize('debug') }}</a>
+                <a class="button button-danger tooltip" id="debug-button" role="button">{{ localize('debug') }}</a>
             {% endif %}
         </div>
         <hr>
@@ -14,7 +14,7 @@
                 {% endfor %}
             </div>
             <div class="footer-links-secondary">
-                <a href="/version">Running OpenSB {{ opensb_version }}</a>
+                <a href="/version">Running OpenSB {{ opensb_version.name }} {{ opensb_version.number }}</a>
                 <span>{{ localize('footer_copyright', ('now' | date('Y'))) }}</span>
             </div>
             {% if is_debug %}
