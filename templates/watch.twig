@@ -1,14 +1,14 @@
 {% extends "_layout.twig" %}
 {% block head %}
-<meta name="description" content="{{ submission.description|length > 250 ? submission.description|slice(0, 250) ~ '...' : submission.description }}">
-<meta property="og:description" content="{{ submission.description|length > 250 ? submission.description|slice(0, 250) ~ '...' : submission.description }}">
-<meta property="og:image" content="{{ domain }}{{ thumbnail(submission.id, submission.type, submission.flags.custom_thumbnail) }}">
+<meta name="description" content="{{ upload.description|length > 250 ? upload.description|slice(0, 250) ~ '...' : upload.description }}">
+<meta property="og:description" content="{{ upload.description|length > 250 ? upload.description|slice(0, 250) ~ '...' : upload.description }}">
+<meta property="og:image" content="{{ domain }}{{ thumbnail(upload.id, upload.type, upload.flags.custom_thumbnail) }}">
 <meta property="og:url" content="{{ page_url }}">
 <script>
-    submission_id = '{{ submission.id }}';
-    user_id = '{{ submission.author.id }}';
+    upload_id = '{{ upload.id }}';
+    user_id = '{{ upload.author.id }}';
     comment_location_type = 'upload';
-    comment_location_id = '{{ submission.id }}';
+    comment_location_id = '{{ upload.id }}';
 </script>
 {% endblock %}
 
@@ -22,36 +22,36 @@
 {% set col_right = 'col-4' %}
 {% endif %}
 
-{% block title %}{{ submission.title }}{% endblock %}
+{% block title %}{{ upload.title }}{% endblock %}
 {% block content %}
 <div class="{{ grid }}">
     <div class="{{ col_left }}">
         <div class="upload-container">
-            {{ submission_view(submission) }}
+            {{ upload_view(upload) }}
         </div>
-        {% if submission.is_owner %}
+        {% if upload.is_owner %}
             <div class="card card-body">
-                <a class="button button-secondary" href="/edit.php?v={{ submission.id }}">Edit</a>
+                <a class="button button-secondary" href="/edit.php?v={{ upload.id }}">Edit</a>
             </div>
         {% endif %}
         <div class="card card-body watch-header">
-            <h1>{{ submission.title }}</h1>
+            <h1>{{ upload.title }}</h1>
             <div class="grid watch-user-header">
             <div class="col-6">
                 <div class="watch-creator">
                     <div>
-                        <img src="{{ profile_picture(submission.author.info.username) }}" class="img-pfp" style="width:48px;">
+                        <img src="{{ profile_picture(upload.author.info.username) }}" class="img-pfp" style="width:48px;">
                     </div>
                     <div class="watch-creator-info">
                         <div class="watch-creator-userlink">
-                            {{ user_link(submission.author) }}
+                            {{ user_link(upload.author) }}
                         </div>
                         <div>
-                            {% if submission.is_owner %}
+                            {% if upload.is_owner %}
                             <a class="button button-secondary button-small">Settings</a>
                             {% else %}
-                            <button id="subscribe-watch" class="button button-{% if submission.author.following %}secondary{% else %}primary{% endif %} button-small" type="button" {% if not is_user_logged_in or user_data.id == submission.author.id %}disabled{% endif %}>{% if submission.author.following %}Unfollow{% else %}Follow{% endif %}</button>
-                            <div class="subscribe-count">{{ submission.author.followers }}</div>
+                            <button id="subscribe-watch" class="button button-{% if upload.author.following %}secondary{% else %}primary{% endif %} button-small" type="button" {% if not is_user_logged_in or user_data.id == upload.author.id %}disabled{% endif %}>{% if upload.author.following %}Unfollow{% else %}Follow{% endif %}</button>
+                            <div class="subscribe-count">{{ upload.author.followers }}</div>
                             {% endif %}
                         </div>
                     </div>
@@ -59,12 +59,12 @@
                 </div>
             </div>
             <div class="col-6 right watch-view-info">
-                    {% if submission.interactions.views != 1 %}
+                    {% if upload.interactions.views != 1 %}
                         {% set pluralViews = "s" %}
                     {% endif %}
-                <div class="watch-view-count">{{ submission.interactions.views }} view{{ pluralViews }}</div>
+                <div class="watch-view-count">{{ upload.interactions.views }} view{{ pluralViews }}</div>
                 <div class="likesaber">
-                    <div class="like" style="width:{{ submission.interactions.legacy.ratio }}"></div>
+                    <div class="like" style="width:{{ upload.interactions.legacy.ratio }}"></div>
                 </div>
             </div>
             </div>
@@ -93,14 +93,14 @@
             </div>
             <div class="watch-sentiment-actions">
                 <button href="/#" id="{% if is_user_logged_in %}like{% else %}action_unlogged{% endif %}"
-                        class="button button-like button-secondary-invis {% if submission.interactions.legacy.current_rating == "like" %}button-toggled{% endif %}">
+                        class="button button-like button-secondary-invis {% if upload.interactions.legacy.current_rating == "like" %}button-toggled{% endif %}">
                     {{ icon("hand-thumbs-up-fill", 20) }}
-                    <span id="like-count">{{ submission.interactions.legacy.likes }}</span>
+                    <span id="like-count">{{ upload.interactions.legacy.likes }}</span>
                 </button>
                 <button href="/#" id="{% if is_user_logged_in %}dislike{% else %}action_unlogged{% endif %}"
-                        class="button button-dislike button-secondary-invis {% if submission.interactions.legacy.current_rating == "dislike" %}button-toggled{% endif %} tooltip" title="Dislike">
+                        class="button button-dislike button-secondary-invis {% if upload.interactions.legacy.current_rating == "dislike" %}button-toggled{% endif %} tooltip" title="Dislike">
                     {{ icon("hand-thumbs-down-fill", 20) }}
-                    <span id="dislike-count">{{ submission.interactions.legacy.dislikes }}</span>
+                    <span id="dislike-count">{{ upload.interactions.legacy.dislikes }}</span>
                 </button>
             </div>
             </div>
@@ -122,15 +122,15 @@
         <div class="card card-body">
             <div class="watch-description">
             <div class="watch-uploader-info">
-                <strong>Uploaded on {{ submission.published | date('M j, Y') }}</strong>
+                <strong>Uploaded on {{ upload.published | date('M j, Y') }}</strong>
             </div>
-            {% if submission.published_originally and submission.original_site %}
-                <div class="watch-box-author-info-small">First uploaded on {{ submission.original_site }} on {{ submission.published_originally | date('M j, Y') }}</div>
-            {% elseif submission.original_site %}
-                <div class="watch-box-author-info-small">Originally uploaded on {{ submission.original_site }}</div>
+            {% if upload.published_originally and upload.original_site %}
+                <div class="watch-box-author-info-small">First uploaded on {{ upload.original_site }} on {{ upload.published_originally | date('M j, Y') }}</div>
+            {% elseif upload.original_site %}
+                <div class="watch-box-author-info-small">Originally uploaded on {{ upload.original_site }}</div>
             {% endif %}
-            {% if submission.description | trim is not empty %}
-                {{ submission.description | markdown_user_written }}
+            {% if upload.description | trim is not empty %}
+                {{ upload.description | markdown_user_written }}
             {% else %}
                 <p>This upload has no description.</p>
             {% endif %}
@@ -147,17 +147,17 @@
     <div class="{{ col_right }}">
         <div class="card">
             <div class="card-body card-body-watch-sidebar">
-            {% if submission.recommended %}
-                {% for submission in submission.recommended %}
-                    {{ submission_box(submission) }}
+            {% if upload.recommended %}
+                {% for upload in upload.recommended %}
+                    {{ upload_box(upload) }}
                 {% endfor %}
-            {% elseif submission.other_by_author %}
-                {% for submission in submission.other_by_author %}
-                    {{ submission_box(submission) }}
+            {% elseif upload.other_by_author %}
+                {% for upload in upload.other_by_author %}
+                    {{ upload_box(upload) }}
                 {% endfor %}
-            {% elseif submission.random %}
-                {% for submission in submission.random %}
-                    {{ submission_box(submission) }}
+            {% elseif upload.random %}
+                {% for upload in upload.random %}
+                    {{ upload_box(upload) }}
                 {% endfor %}
             {% endif %}
             <div class="center">

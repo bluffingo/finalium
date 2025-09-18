@@ -23,8 +23,8 @@
             </div>
             <div class="col-10">
                 <div class="card card-body">
-                    {% for submission in data.submissions %}
-                        {{ submission_box(submission) }}
+                    {% for upload in data.uploads %}
+                        {{ upload_box(upload) }}
                     {% else %}
                         <div class="banner banner-danger" role="alert">There are no uploads.</div>
                     {% endfor %}
