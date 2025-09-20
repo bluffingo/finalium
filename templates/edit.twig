@@ -18,6 +18,14 @@
                             form="uploadForm"
                             style="overflow:hidden;resize:vertical" rows="3">{{ data.description }}</textarea>
                     <br>
+                    <label for="thumbnail">{{ localize('custom_thumbnail') }}</label>
+                    <input class="form-submit" type="file" name="thumbnail" id="thumbnail">
+                    <br>
+                    <input type="checkbox" id="block_guests" name="block_guests" value="yes">
+                    <label for="block_guests">{{ localize('block_guests_from_upload') }}</label>
+                    <br>
+                        <input type="checkbox" id="block_comments" name="block_comments" value="yes">
+                        <label for="block_comments">{{ localize('disable_comments_from_upload') }}</label>
                     <br>
                     <div class="right">
                         <input class="button button-primary" type="submit" id="upload" name="upload"
