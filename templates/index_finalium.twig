@@ -51,7 +51,7 @@
         <div class="col-8">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="card-title">{{ localize('recent_uploads') }}</h3>
+                    <h3 class="card-title">{{ localize('homepage_recent_uploads') }}</h3>
                     {% for upload in data.uploads_new %}
                         {{ upload_box(upload) }}
                     {% else %}
@@ -61,7 +61,7 @@
             </div>
             <div class="card">
                 <div class="card-body">
-                    <h3 class="card-title">{{ localize('random_uploads') }}</h3>
+                    <h3 class="card-title">{{ localize('homepage_random_uploads') }}</h3>
                     {% for upload in data.uploads %}
                         {{ upload_box(upload) }}
                     {% else %}

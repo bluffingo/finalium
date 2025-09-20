@@ -1,0 +1,42 @@
+{% extends "_layout.twig" %}
+
+{% block content %}
+    <div class="tabs">
+        {% for tab_key, tab in page.tabs %}
+            <a class="tab" href="#{{ tab_key }}">
+                {{ tab.name }}
+            </a>
+        {% endfor %}
+    </div>
+    <div class="card">
+        <div class="card-body">
+        {% for section in page.sections %}
+            <h1>{{ section.title }}</h1>
+            <div class="box-contents">
+                {% if section.contents.texts is defined %}
+                    {% for text in section.contents.texts %}
+                        <p>{{ text }}</p>
+                    {% endfor %}
+                {% endif %}
+
+                {% if section.contents.list is defined %}
+                    <ul>
+                        {% for key, entry in section.contents.list %}
+                            <li>{{ key }}: {{ entry }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                
+                {% if section.contents.buttons is defined %}
+                    {% for button in section.contents.buttons %}
+                        <button class="button button-{{ button.color }}">
+                            {{ button.text }}
+                        </button>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            {% if not loop.last %}<hr>{% endif %}
+        {% endfor %}
+        </div>
+    </div>
+{% endblock %}
