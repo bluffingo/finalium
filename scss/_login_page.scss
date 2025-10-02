@@ -33,9 +33,15 @@
         height: 96px;
     }
 
-    h1 {
-        font-weight: 300;
-        margin-bottom: 15px;
+    @if $theme =="hitchhiker" {
+        h1 {
+            font-weight: 300;
+            margin-bottom: 15px;
+        }
+    }
+
+    .form-login-heading {
+        margin-bottom: 1em;
     }
 
     .login-footer {

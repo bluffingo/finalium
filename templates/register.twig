@@ -8,27 +8,42 @@
             <div class="banner banner-danger" role="alert">{{ error }}</div>
             <br>
         {% endif %}
-        <div class="loginPage">
-            <form method="post" name="loginForm" id="loginForm" action="register" class="form-login">
-                <h2 class="form-login-heading">{{ localize('register') }}</h2>
+        {% if current_theme == 'hitchhiker' %}
+            <a href="/">
+                <img id="logo" src="{{ logo }}" alt="{{ website_branding.name }}">
+            </a>
+            <h1>{{ localize('register') }}</h1>
+        {% endif %}
+        <form method="post" name="loginForm" id="loginForm" action="register" class="card card-body">
+            {% if current_theme != 'hitchhiker' %}
+                <h1 class="form-login-heading">{{ localize('register') }}</h1>
+            {% endif %}
 
-                <input type="text" name="email" class="input-block-level" placeholder="Email" required>
-                <input type="text" name="username" class="input-block-level" placeholder="Username" required>
+            <input type="text" name="email" class="input-block-level" placeholder="{{ localize('email_address') }}" required>
+            <input type="text" name="username" class="input-block-level" placeholder="{{ localize('username') }}" required>
 
-                <input type="password" name="pass1" class="input-block-level" placeholder="Password" required>
-                <input type="password" name="pass2" class="input-block-level" placeholder="Confirm Password" required>
+            <input type="password" name="pass1" class="input-block-level" placeholder="{{ localize('password') }}" required>
+            <input type="password" name="pass2" class="input-block-level" placeholder="{{ localize('password_again') }}" required>
 
-                {% if captcha_public_token %}
-                    <div class="h-captcha" data-sitekey="{{ captcha_public_token }}"></div>
-                {% endif %}
+            {% if invite_keys_enabled %}
+                <input type="text" name="invite" class="input-block-level" placeholder="{{ localize('invite_key') }}" required>
+            {% endif %}
 
-                <div>
-                    <input type="date" name="birthdate" required />
-                </div>
+            <div>
+                <label for="birthdate">{{ localize('birthdate') }}</label>
+                <input type="date" name="birthdate" required />
+            </div>
 
-                <input class="button button-big button-primary" type="submit" value="Register"
-                       name="registersubmit">
-            </form>
-        </div>
+            {% if captcha_public_token %}
+                <div class="h-captcha" data-sitekey="{{ captcha_public_token }}"></div>
+            {% endif %}
+
+            {% if is_chaziz_sb %}
+                <p>{{ localize('register_discord_requirement', website_branding.name) }}</p>
+            {% endif %}
+
+            <input class="button button-big button-primary" type="submit" value="{{ localize('register') }}"
+                    name="registersubmit">
+        </form>
     {% endblock %}
 {% endembed %}
