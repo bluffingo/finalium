@@ -61,15 +61,18 @@
                 <a href="{{ link.url }}" class="guide-item">{{ link.name }}</a>
             </li>
         {% endfor %}
-        {% if is_user_logged_in %}
-            {% for link in sidebar_following_users() %}
-                <li class="guide-channel">
-                    <a href="/user/{{ link.username }}" class="guide-item">
-                        <img class="thumb img-pfp" src="{{ profile_picture(link.username) }}">
-                        {{ link.username }}
-                    </a>
-                </li>
-            {% endfor %}
+        {% for link in sidebar_following_users() %}
+            <li class="guide-channel">
+                <a href="/user/{{ link.username }}" class="guide-item">
+                    <img class="thumb img-pfp" src="{{ profile_picture(link.username) }}">
+                    {{ link.username }}
+                </a>
+            </li>
+        {% endfor %}
+        {% if not is_user_logged_in %}
+            <hr>
+            <p>login text</p>
+            <a href="/login" class="button button-primary">Login</a>
         {% endif %}
     </ul>
 </div>
