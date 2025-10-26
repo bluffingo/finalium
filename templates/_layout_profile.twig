@@ -17,16 +17,15 @@
 {% endblock %}
 
 {% block customcss %}
-    .channel-header-bg {
-        background: url('{{ profile_banner(data.username) }}') center no-repeat, #333;
-        height: 210px;
+    .channel-header-background {
+        background-image: url('{{ profile_banner(data.username) }}');
     }
 {% endblock %}
 
 {% set show_related_channels = false %}
 
 {% block content %}
-    <div class="channel-header-bg">
+    <div class="channel-header-background">
         <img class="channel-header-profile-picture img-pfp" 
              src="{{ profile_picture(data.username) }}"  
              alt="{{ data.username }}">
