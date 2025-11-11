@@ -9,7 +9,7 @@
             {% if data.featured_upload %}
                 <div class="profile-featured-upload">
                     <div class="upload-container">
-                        <img src="{{ thumbnail(data.id, data.type, data.flags.custom_thumbnail) }}" alt="{{ data.title }}">
+                        <img src="{{ thumbnail(data.featured_upload.id, data.featured_upload.type, data.featured_upload.flags.custom_thumbnail) }}" alt="{{ data.featured_upload.title }}">
                     </div>
                     <div class="upload-info">
                         <div class="content-wrapper">
