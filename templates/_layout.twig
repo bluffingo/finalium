@@ -61,6 +61,7 @@
                 <a href="{{ link.url }}" class="guide-item">{{ link.name }}</a>
             </li>
         {% endfor %}
+        <hr>
         {% for link in sidebar_following_users() %}
             <li class="guide-channel">
                 <a href="/user/{{ link.username }}" class="guide-item">
@@ -71,7 +72,7 @@
         {% endfor %}
         {% if not is_user_logged_in %}
             <hr>
-            <p>login text</p>
+            <p>Login now to see your channels and recommendations!</p>
             <a href="/login" class="button button-primary">Login</a>
         {% endif %}
     </ul>
