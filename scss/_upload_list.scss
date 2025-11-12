@@ -1,4 +1,4 @@
-/* used on homrpage */
+/* used on homepage */
 .shelf {
     padding: 15px 18px;
     border-bottom: 1px solid $border;
@@ -32,26 +32,6 @@
                 object-fit: contain;
                 @if $theme =="hitchhiker" {
                     background: black;
-                }
-            }
-
-            .thumbnail-badge-container {
-                display: flex;
-                position: absolute;
-                bottom: 4px;
-                right: 4px;
-                gap: 2px;
-
-                font-size: 0.85em;
-
-                .thumbnail-badge {
-                    background: rgba(black, 0.75);
-                    backdrop-filter: blur(4px);
-
-                    height: 18px;
-
-                    color: white;
-                    padding: 0 4px;
                 }
             }
         }
@@ -133,26 +113,6 @@
                 background: black;
             }
         }
-
-        .thumbnail-badge-container {
-            display: flex;
-            position: absolute;
-            bottom: 4px;
-            right: 4px;
-            gap: 2px;
-
-            font-size: 0.85em;
-
-            .thumbnail-badge {
-                background: rgba(black, 0.75);
-                backdrop-filter: blur(4px);
-
-                height: 18px;
-
-                color: white;
-                padding: 0 4px;
-            }
-        }
     }
 
     // originally known as .vid-info
@@ -201,5 +161,24 @@
             height: 1.4em;
         }
         */
+    }
+}
+
+.thumbnail-badge-container {
+    display: flex;
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    gap: 2px;
+    font-weight: 500;
+    font-size: 11px;
+
+    .thumbnail-badge {
+        background: black;
+        opacity: 0.75;
+        height: 14px;
+        line-height: 14px;
+        color: white;
+        padding: 0 4px;
     }
 }

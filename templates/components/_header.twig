@@ -21,11 +21,13 @@
         <div id="header-user">
             {% if current_theme == 'hitchhiker' %}
                 <a href="/upload" class="button button-secondary">Upload</a>
+                {% if is_user_logged_in %}
+                    <a class="button button-secondary-invis masthead-button" href="/notifications">{{ icon("bell", 20) }}</a>
+                {% endif %}
             {% else %}
                 {% if is_user_logged_in %}
-                    <a href="/upload">
-                        <div class="button button-secondary-invis masthead-button tooltip" title="Upload">{{ icon("upload", 20) }}</div>
-                    </a>
+                    <a class="button button-secondary-invis masthead-button" href="/upload">{{ icon("upload", 20) }}</a>
+                    <a class="button button-secondary-invis masthead-button" href="/notifications">{{ icon("bell", 20) }}</a>
                 {% endif %}
             {% endif %}
             {% if is_user_logged_in %}
