@@ -1,5 +1,79 @@
-{% if current_theme == 'hitchhiker' %}
-    {{ include('/index_hitchhiker.twig') }}
-{% else %}
-    {{ include('/index_finalium.twig') }}
+{% extends "_layout.twig" %}
+{% block title %}Home{% endblock %}
+
+{# hack to prevent twig from outputing the number 1 #}
+{% if is_user_logged_in %}
+    {% if data.totals.followers != 1 %}
+        {% set pluralSubscribers = "s" %}
+    {% endif %}
+    {% if data.totals.views != 1 %}
+        {% set pluralViews = "s" %}
+    {% endif %}
 {% endif %}
+
+{% block precontent %}
+    {% if current_theme != 'hitchhiker' %}
+        <div class="main-content">
+            <div class="container page-container sb-welcome grid">
+                {% if is_user_logged_in %}
+                    <div class="col-8">
+                        <h1>{{ localize('welcome_logged_in', user_data.title) }}</h1>
+                        <h3 class="card-title">@{{ user_data.name }}</h3>
+                        <a class="button button-secondary"
+                        href="/my_uploads">Manage {{ icon('caret-right-fill', 12) }}</a>
+                    </div>
+                    <div class="col-4 right stats">
+                        <p>{{ user_stat_data.followers ?? "no" }} follower{{ pluralSubscribers }}
+                            <br>{{ user_stat_data.views ?? "no" }} view{{ pluralViews }}</p>
+                    </div>
+                {% else %}
+                    <div class="col-8">
+                        <h1>{{ localize('welcome_logged_out', website_branding.name) }}</h1>
+                        <h3 style="padding:0;margin:0;">
+                            {% if is_chaziz_sb %}
+                                {{ localize('welcome_slogan') }}
+                            {% endif %}
+                        </h3>
+                    </div>
+                    <div class="col-4">
+                        <a class="button button-secondary"
+                        href="/register">Get started {{ icon('caret-right-fill', 16) }}</a><br>
+                        Already have an account? <a class="button button-secondary button-small" href="/login">{{ localize('login') }}</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div {#class="card-body"#} id="feed">
+            {% for shelf in feed %}
+                <div class="shelf">
+                    <h1>{{ shelf.title }}</h1>
+                    <div class="shelf-uploads">
+                        {% for upload in shelf.uploads %}
+                            {% include "components/shelfvideobox.twig" %}
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        {#
+            <h1>Featured on {{ website_branding.name }}</h1>
+            <div>
+                {% for upload in data.uploads_featured %}
+                    {{ upload_box(upload) }}
+                {% endfor %}
+            </div>
+            <hr>
+            <h1>Recent Uploads</h1>
+            <div>
+                {% for upload in data.uploads_new %}
+                    {{ upload_box(upload) }}
+                {% endfor %}
+            </div>
+        #}
+        </div>
+    </div>
+{% endblock %}

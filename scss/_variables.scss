@@ -61,13 +61,17 @@ $theme-colors: (
 // https://medium.com/@jainbhavukspeaks/leveraging-scss-mixins-to-create-responsive-layouts-the-easy-way-5bbe4080cb15
 
 $breakpoints: (
-    "tiny": (300px,
+    "tiny": (
+        300px,
     ),
-    "small": (500px,
+    "small": (
+        425px,
     ),
-    "medium": (950px,
+    "medium": (
+        656px,
     ),
-    "large": (1250px,
+    "large": (
+        1294px,
     ),
 );
 //

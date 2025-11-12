@@ -1,0 +1,30 @@
+{% if upload.views != 1 %}
+    {% set pluralViews = "s" %}
+{% endif %}
+<div class="shelf-upload-item">
+    <div class="thumbnail">
+        <a href="/watch?v={{ upload.id }}">
+            <img src="{{ thumbnail(upload.id, upload.type, upload.flags.custom_thumbnail) }}" alt="{{ upload.title }}">
+            {% if upload.type == 0 %}
+                <div class="thumbnail-badge-container">
+                    <div class="thumbnail-badge">
+                        {{ convert_time(upload.length) }}
+                    </div>
+                </div>
+            {% endif %}
+        </a>
+    </div>
+    <div class="content-wrapper">
+        <h3 class="title"><a href="/watch?v={{ upload.id }}">{{ upload.title }}</a></h3>
+        <span class="stat">{{ user_link(upload.author) }}</span>
+        <span class="stat">
+            {{ upload.views }} view{{ pluralViews }}
+            {% if date(upload.published) > date('-1 week') %}
+            <div class="badge">New</div>
+            {% endif %}
+            {% if upload.type == 2 %}
+            <div class="badge">Image</div>
+            {% endif %}
+        </span>
+    </div>
+</div>

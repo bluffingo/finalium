@@ -1,9 +1,4 @@
-$masthead-user-pfp: 32px;
-
-
-@if $theme =="hitchhiker" {
-    $masthead-user-pfp: 27px;
-}
+$masthead-user-pfp: 27px;
 
 .masthead-user {
     width: $masthead-user-pfp;
@@ -103,6 +98,12 @@ $masthead-user-pfp: 32px;
 
     margin-left: auto;
     text-align: right;
+
+    @if $theme !="hitchhiker" {
+        a {
+            color: black;
+        }
+    }
 }
 
 #masthead-container {
@@ -118,13 +119,11 @@ $masthead-user-pfp: 32px;
         backdrop-filter: blur(4px);
     }
 
-    @if $theme =="hitchhiker" {
-        padding-left: 30px;
-        padding-right: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
 
-        &.with-fullscreen-banner {
-            top: 35px;
-        }
+    &.with-fullscreen-banner {
+        top: 35px;
     }
 }
 
@@ -133,14 +132,7 @@ $masthead-user-pfp: 32px;
     align-items: center;
 
     width: 100%;
-
-    @if $theme =="hitchhiker" {
-        max-width: 100%;
-    }
-
-    @else {
-        @include maxwidths();
-    }
+    max-width: 100%;
 
     position: relative;
     margin: auto;
@@ -164,7 +156,7 @@ $masthead-user-pfp: 32px;
         }
 
         @else {
-            height: 33px;
+            height: 30px;
         }
 
         a {
@@ -197,14 +189,11 @@ $masthead-user-pfp: 32px;
     }
 }
 
-@if $theme =="hitchhiker" {
-
-    /* this sucks */
-    #guide-toggle {
-        width: 38px !important;
-        height: 30px !important;
-        margin-left: -7px;
-    }
+/* this sucks */
+#guide-toggle {
+    width: 38px !important;
+    height: 30px !important;
+    margin-left: -7px;
 }
 
 #masthead-search {
@@ -298,15 +287,5 @@ $masthead-user-pfp: 32px;
                 border-radius: 3px 0 0 3px;
             }
         }
-    }
-}
-
-.masthead-links-container {
-    float: left;
-
-    .masthead-links {
-        display: table-cell;
-        vertical-align: middle;
-        height: 33px;
     }
 }

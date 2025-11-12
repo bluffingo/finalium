@@ -22,6 +22,9 @@
             {% if date(data.published) > date('-1 week') %}
             <div class="badge">New</div>
             {% endif %}
+            {% if data.type == 2 %}
+            <div class="badge">Image</div>
+            {% endif %}
         </span>
     </div>
 </div>

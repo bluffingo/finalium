@@ -63,7 +63,7 @@
                         </td>
                         <td class="b"><textarea name="about" rows="5" cols="80" wrap="virtual">{{ user_data.about }}</textarea></td>
                     </tr>
-                    {% if not is_fulptube %}
+                    {% if not current_theme == "hitchhiker" %}
                     <tr>
                         <td class="a">Username color</td>
                         <td class="b"><input name="userlink_color" type="color"

@@ -1,3 +1,111 @@
+/* used on homrpage */
+.shelf {
+    padding: 15px 18px;
+    border-bottom: 1px solid $border;
+
+    .shelf-uploads {
+        display: grid;
+        gap: 10px;
+        grid-auto-flow: column;
+        grid-auto-columns: minmax(196px, 196px);
+        //grid-template-columns: repeat(6, 1fr); fucks shit up, look into this later
+        overflow-x: scroll; // temporary until slider is implemented
+    }
+
+    .shelf-upload-item {
+        gap: 4px;
+        display: flex;
+        flex-direction: column;
+
+        .thumbnail {
+            display: flex;
+            position: relative;
+            height: fit-content;
+
+            // this needs to remain hardcoded otherwise its fucked. -chaziz 11/12/2025 
+            width: 196px;
+            height: 110px;
+
+            img {
+                width: 196px;
+                height: 110px;
+                object-fit: contain;
+                @if $theme =="hitchhiker" {
+                    background: black;
+                }
+            }
+
+            .thumbnail-badge-container {
+                display: flex;
+                position: absolute;
+                bottom: 4px;
+                right: 4px;
+                gap: 2px;
+
+                font-size: 0.85em;
+
+                .thumbnail-badge {
+                    background: rgba(black, 0.75);
+                    backdrop-filter: blur(4px);
+
+                    height: 18px;
+
+                    color: white;
+                    padding: 0 4px;
+                }
+            }
+        }
+
+        // originally known as .vid-info
+        .content-wrapper {
+            .title {
+                max-height: 2.4em;
+                line-height: 1.2;
+                display: block;
+                overflow: hidden;
+                margin-bottom: 2px;
+
+                font-size: 13px;
+                font-weight: 500;
+
+                a {
+                    color: $description-text-color;
+
+                    &:hover {
+                        color: $primary;
+                    }
+                }
+            }
+
+            .stat {
+                color: #767676;
+                font-size: 11px;
+                display: block;
+                line-height: 1.4em;
+                height: 1.4em;
+            }
+
+            /*
+            // unused?
+            .stat-larger {
+                @if $theme =="hitchhiker" {
+                    color: #999;
+                }
+
+                @else {
+                    color: $gray-600;
+                }
+
+                font-size: 13px;
+                display: block;
+                line-height: 1.4em;
+                height: 1.4em;
+            }
+            */
+        }
+    }
+}
+
 .upload-list-item {
     //gap: 13px;
     gap: 8px;
