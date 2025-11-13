@@ -1,15 +1,14 @@
 {% extends "_layout.twig" %}
 
-{% block title %}Upload{% endblock %}
+{% block title %}{{ localize('new_upload') }}{% endblock %}
 
 	{% block content %}
         <form name="uploadForm" id="uploadForm" method="post" action="upload" enctype="multipart/form-data">
             <div class="card">
                 <div class="card-body">
-                    <h2 style="margin-bottom: 0.5em;">Upload</h2>
+                    <h2 style="margin-bottom: 0.5em;">{{ localize('new_upload') }}</h2>
                     <p>
-                        Make sure you have read the <a href="/guidelines">guidelines</a> first. Failure to comply
-                        with the guidelines will result in your upload being taken down.
+                        {{ localize('new_upload_intro', '/guidelines') | raw }}
                     </p>
                     {% if current_theme == 'hitchhiker' %}
                         <p style="color:red;font-weight:700;font-size:24px;">
@@ -17,27 +16,27 @@
                             If you attempt to reupload anything, you WILL be banned.
                         </p>
                     {% else %}
-                        <p style="font-weight:550;">
-                            Reminder: Do not reupload content that you have not made.
+                        <p style="font-weight:600;">
+                            {{ localize('reupload_warning') }}
                         </p>
                     {% endif %}
-                    <h4 style="margin-bottom: 0.5em;">Title</h4>
+                    <h4 style="margin-bottom: 0.5em;">{{ localize('title') }} ({{ localize('form_required') }})</h4>
                     <input type="text" class="form-control form-long uploader-form" id="title" name="title" required>
                     <br>
-                    <h4 style="margin-bottom: 0.5em;">Description (optional)</h4>
+                    <h4 style="margin-bottom: 0.5em;">{{ localize('description') }} ({{ localize('form_optional') }})</h4>
                     <textarea class="form-control form-long uploader-form" name="desc" maxlength="65535"
                               form="uploadForm"
                               style="overflow:hidden;resize:vertical" rows="3"></textarea>
                     <br>
-                    <h4 style="margin-bottom: 0.5em;">Tags (optional)</h4>
+                    <h4 style="margin-bottom: 0.5em;">{{ localize('tags') }} ({{ localize('form_optional') }})</h4>
                     <input type="text" class="form-control form-long uploader-form" name="tags">
-                    <h2 style="margin-bottom: 0.5em;">Select file</h2>
-                    <p>File limit: {{ limit }}</p>
+                    <h2 style="margin-bottom: 0.5em;">{{ localize('file') }} ({{ localize('form_required') }})</h2>
+                    <p>{{ localize('upload_limit', limit) }}</p>
                     <input class="form-control" type="file" name="fileToUpload" id="fileToUpload" required>
                     <br>
                     <div class="right">
                         <input class="button button-primary" type="submit" id="upload" name="upload"
-                               value="Upload">
+                               value="{{ localize('upload_action') }}">
                     </div>
                 </div>
             </div>

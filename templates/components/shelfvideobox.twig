@@ -18,13 +18,10 @@
         <h3 class="title"><a href="/watch?v={{ upload.id }}">{{ upload.title }}</a></h3>
         <span class="stat">{{ user_link(upload.author) }}</span>
         <span class="stat">
-            {{ upload.views }} view{{ pluralViews }}
-            {% if date(upload.published) > date('-1 week') %}
-            <div class="badge">New</div>
-            {% endif %}
-            {% if upload.type == 2 %}
-            <div class="badge">Image</div>
-            {% endif %}
+            {{ upload.views }} view{{ pluralViews }} {{ upload.published | relative_time }}
         </span>
+        {% if upload.type == 2 %}
+        <span><div class="badge">Image</div></span>
+        {% endif %}
     </div>
 </div>

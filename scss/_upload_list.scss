@@ -3,6 +3,23 @@
     padding: 15px 18px;
     border-bottom: 1px solid $border;
 
+    .shelf-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+
+        .shelf-icon {
+            width: 20px;
+            margin-right: 7px;
+        }
+
+        .shelf-title {
+            font-size: 15px;
+            color: $description-text-color;
+            font-weight: 500;
+        }
+    }
+
     .shelf-uploads {
         display: grid;
         gap: 10px;

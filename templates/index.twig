@@ -1,16 +1,6 @@
 {% extends "_layout.twig" %}
 {% block title %}Home{% endblock %}
 
-{# hack to prevent twig from outputing the number 1 #}
-{% if is_user_logged_in %}
-    {% if data.totals.followers != 1 %}
-        {% set pluralSubscribers = "s" %}
-    {% endif %}
-    {% if data.totals.views != 1 %}
-        {% set pluralViews = "s" %}
-    {% endif %}
-{% endif %}
-
 {% block precontent %}
     {% if current_theme != 'hitchhiker' %}
         <div class="jumbotron">
@@ -25,8 +15,8 @@
                         </div>
                     </div>
                     <div class="jumbotron-right stats">
-                        <p>{{ user_stat_data.followers ?? "no" }} follower{{ pluralSubscribers }}
-                        <br>{{ user_stat_data.views ?? "no" }} view{{ pluralViews }}</p>
+                        <p>{{ localize('followers', user_stat_data.followers) }}
+                        <br>{{ localize('views', user_stat_data.views) }}</p>
                     </div>
                 {% else %}
                     <div class="jumbotron-left">
@@ -48,7 +38,10 @@
         <div {#class="card-body"#} id="feed">
             {% for shelf in feed %}
                 <div class="shelf">
-                    <h1>{{ shelf.title }}</h1>
+                    <div class="shelf-header">
+                        {% if shelf.icon %}<img src="{{ shelf.icon }}" class="shelf-icon">{% endif %}
+                        <h1 class="shelf-title">{{ shelf.title }}</h1>
+                    </div>
                     <div class="shelf-uploads">
                         {% for upload in shelf.uploads %}
                             {% include "components/shelfvideobox.twig" %}
