@@ -13,32 +13,29 @@
 
 {% block precontent %}
     {% if current_theme != 'hitchhiker' %}
-        <div class="main-content">
-            <div class="container page-container sb-welcome grid">
+        <div class="jumbotron">
+            <div class="container page-container {% if is_user_logged_in %}logged-in{% else %}logged-out{% endif %}">
                 {% if is_user_logged_in %}
-                    <div class="col-8">
+                    <div class="jumbotron-left">
+                        <img class="img-pfp img-fluid" src="{{ profile_picture(user_data.name) }}" alt="{{ user_data.name }}">
+                        <div>
                         <h1>{{ localize('welcome_logged_in', user_data.title) }}</h1>
-                        <h3 class="card-title">@{{ user_data.name }}</h3>
-                        <a class="button button-secondary"
-                        href="/my_uploads">Manage {{ icon('caret-right-fill', 12) }}</a>
+                        <h3>@{{ user_data.name }}</h3>
+                        <a class="button button-secondary" href="/my_uploads">Manage {{ icon('caret-right-fill', 12) }}</a>
+                        </div>
                     </div>
-                    <div class="col-4 right stats">
+                    <div class="jumbotron-right stats">
                         <p>{{ user_stat_data.followers ?? "no" }} follower{{ pluralSubscribers }}
-                            <br>{{ user_stat_data.views ?? "no" }} view{{ pluralViews }}</p>
+                        <br>{{ user_stat_data.views ?? "no" }} view{{ pluralViews }}</p>
                     </div>
                 {% else %}
-                    <div class="col-8">
+                    <div class="jumbotron-left">
                         <h1>{{ localize('welcome_logged_out', website_branding.name) }}</h1>
-                        <h3 style="padding:0;margin:0;">
-                            {% if is_chaziz_sb %}
-                                {{ localize('welcome_slogan') }}
-                            {% endif %}
-                        </h3>
+                        {% if is_chaziz_sb %}<h3>{{ localize('welcome_slogan') }}</h3>{% endif %}
                     </div>
-                    <div class="col-4">
-                        <a class="button button-secondary"
-                        href="/register">Get started {{ icon('caret-right-fill', 16) }}</a><br>
-                        Already have an account? <a class="button button-secondary button-small" href="/login">{{ localize('login') }}</a>
+                    <div class="jumbotron-right">
+                        <div><a class="button button-secondary" href="/register">Get started {{ icon('caret-right-fill', 12) }}</a></div>
+                        <div>Already have an account? <a class="button button-secondary button-small" href="/login">{{ localize('login') }}</a></div>
                     </div>
                 {% endif %}
             </div>

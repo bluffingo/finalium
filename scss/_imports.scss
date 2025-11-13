@@ -234,7 +234,7 @@ blockquote {
     }
 }
 
-.main-content {
+.jumbotron {
     background: #3e3e3e;
     background: linear-gradient(90deg, rgb(62, 62, 62) 0%, rgb(107, 107, 107) 35%, rgb(155, 155, 155) 100%);
 
@@ -244,22 +244,53 @@ blockquote {
     display: inline-block;
     width: 100%;
 
+    .img-pfp {
+        width: 100px;
+    }
+
     .page-container {
+        display: flex;
         min-height: auto;
 
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        p {
+        h1, h2, h3, h4, h5, h6, p {
             padding: 0;
             margin: 8px 0;
         }
 
         .stats {
             font-size: 1.25em;
+            text-align: right;
+        }
+
+        &.logged-in {
+            .jumbotron-left {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 1em;
+                flex-grow: 1;
+            }
+
+            .jumbotron-right {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+            }
+        }
+
+        &.logged-out {
+            align-items: center;
+
+            .jumbotron-left {
+                display: flex;
+                flex-grow: 1;
+                flex-direction: column;
+            }
+
+            .jumbotron-right {
+                display: flex;
+                flex-direction: column;
+            }
         }
     }
 }
