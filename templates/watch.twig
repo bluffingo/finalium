@@ -12,20 +12,10 @@
 </script>
 {% endblock %}
 
-{% if current_theme == 'hitchhiker' %}
-{% set grid = 'watch-grid' %}
-{% set col_left = 'col-left' %}
-{% set col_right = 'col-right' %}
-{% else %}
-{% set grid = 'grid' %}
-{% set col_left = 'col-8' %}
-{% set col_right = 'col-4' %}
-{% endif %}
-
 {% block title %}{{ upload.title }}{% endblock %}
 {% block content %}
-<div class="{{ grid }}">
-    <div class="{{ col_left }}">
+<div class="watch-grid">
+    <div class="col-left">
         <div class="upload-container">
             {{ upload_view(upload) }}
         </div>
@@ -50,7 +40,7 @@
                             {% if upload.is_owner %}
                             <a class="button button-secondary button-small">Settings</a>
                             {% else %}
-                            <button id="subscribe-watch" class="button button-{% if upload.author.following %}secondary{% else %}primary{% endif %} button-small" type="button" {% if not is_user_logged_in or user_data.id == upload.author.id %}disabled{% endif %}>{% if upload.author.following %}Unfollow{% else %}Follow{% endif %}</button>
+                            <button id="subscribe-watch" class="button button-{% if upload.author.following %}secondary{% else %}primary{% endif %} button-small" type="button" {% if not is_user_logged_in or user_data.id == upload.author.id %}disabled{% endif %}>{% if upload.author.following %}{{ localize('unfollow') }}{% else %}{{ localize('follow') }}{% endif %}</button>
                             <div class="subscribe-count">{{ upload.author.followers }}</div>
                             {% endif %}
                         </div>
@@ -144,7 +134,7 @@
             </div>
         </div>
     </div>
-    <div class="{{ col_right }}">
+    <div class="col-right">
         <div class="card">
             <div class="card-body card-body-watch-sidebar">
             {% if upload.recommended %}

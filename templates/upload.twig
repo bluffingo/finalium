@@ -11,9 +11,8 @@
                         {{ localize('new_upload_intro', '/guidelines') | raw }}
                     </p>
                     {% if current_theme == 'hitchhiker' %}
-                        <p style="color:red;font-weight:700;font-size:24px;">
-                            Do not upload any copyrighted content that does not belong to you.
-                            If you attempt to reupload anything, you WILL be banned.
+                        <p style="color:red;font-weight:700;font-size:2em;">
+                            {{ localize('reupload_warning') }}
                         </p>
                     {% else %}
                         <p style="font-weight:600;">

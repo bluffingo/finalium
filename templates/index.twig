@@ -36,8 +36,8 @@
 {% block content %}
     <div class="card">
         <div {#class="card-body"#} id="feed">
-            {% for shelf in feed %}
-                <div class="shelf">
+            {% for key, shelf in feed %}
+                <div class="shelf" id="shelf-{{ key }}" >
                     <div class="shelf-header">
                         {% if shelf.icon %}<img src="{{ shelf.icon }}" class="shelf-icon">{% endif %}
                         <h1 class="shelf-title">{{ shelf.title }}</h1>

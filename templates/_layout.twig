@@ -30,8 +30,8 @@
     <script src="/assets/common_finalium.js?r={{ get_css_file_date() }}"></script>
     {% block script %}{% endblock %}
     <script>
-        subscribe_string = 'Follow';
-        unsubscribe_string = 'Unfollow';
+        subscribe_string = {{ localize('follow') }};
+        unsubscribe_string = {{ localize('unfollow') }};
         opensb_version = '{{ opensb_version.name }} {{ opensb_version.string }}';
     </script>
     <script src="/assets/common_shared.js?r={{ get_css_file_date() }}"></script>
