@@ -1,10 +1,10 @@
 {% extends "_layout.twig" %}
 
-{% block title %}Version{% endblock %}
+{% block title %}{{ localize('version') }}{% endblock %}
 
 {% block content %}
     <div class="card card-body-article">
-        <h1>Version</h1>
+        <h1>{{ localize('version') }}</h1>
         <div class="grid">
             <div class="col-4 col-version">
                 <img srcset="/assets/chaz_opensb.png, /assets/chaz_opensb_2x.png 2x" class="img-version">
@@ -16,11 +16,10 @@
                 <p>{{ localize('version_license_notice', '/license', 'http://www.gnu.org/licenses/') | raw }}</p>
                 <p>{{ localize('version_github', 'https://github.com/bluffingo/OpenSB') | raw }}</p>
                 <hr>
-                <h2>Installed software</h2>
                 <table class="c1">
                     <tr class="h">
                         <th>Software</th>
-                        <th>Version</th>
+                        <th>{{ localize('version') }}</th>
                     </tr>
                     {% for thing in data.software %}
                         <tr>

@@ -123,9 +123,9 @@ a {
         text-decoration: underline;
     }
 
-    &:focus {
+    /*&:focus {
         outline: 1px dotted;
-    }
+    }*/
 }
 
 menu {
@@ -493,6 +493,12 @@ input[type]:not([type=file]):not([type=submit]):not([type=range]):focus {
     @if $theme =="hitchhiker" {
         margin-left: 5px;
     }
+}
+
+ul.unstyled-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
 }
 
 /// Gradients \\\
