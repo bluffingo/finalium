@@ -23,38 +23,5 @@
                 </div>
             {% endif %}
         </div>
-        {% if is_debug %}
-            {% set profiler = db_profiler_info() %}
-            <div id="debugModal" class="bg-secondary" style="padding:0.3em;">
-                <h3>Debug info</h3>
-                <div class="banner banner-danger">It is risky to screenshot this due to security reasons, so please don't.</div>
-                <div>
-                    Total queries: {{ profiler.total_queries }}<br>
-                    Total query time: {{ profiler.total_time }} seconds<br>
-                    Average time: {{ profiler.average_time }} seconds<br><br>
-
-                    <strong>Slowest query ({{ profiler.slowest_query.execution_time }}s):</strong><br>
-                    <pre>{{ profiler.slowest_query.query }}</pre>
-                    Parameters: {% for param in profiler.slowest_query.params %}<code>{{ param }}</code>{% if not loop.last %},{% endif %} {% endfor %}<br>
-                    Location: {{ profiler.fastest_query.caller_info.file }} (line {{ profiler.fastest_query.caller_info.line }})<br><br>
-
-                    <strong>Fastest query ({{ profiler.fastest_query.execution_time }}s):</strong><br>
-                    <pre>{{ profiler.fastest_query.query }}</pre>
-                    Parameters: {% for param in profiler.fastest_query.params %}<code>{{ param }}</code>{% if not loop.last %},{% endif %} {% endfor %}<br>
-                    Location: {{ profiler.fastest_query.caller_info.file }} (line {{ profiler.fastest_query.caller_info.line }})
-
-                    <hr>
-
-                    <strong>All Queries:</strong><br>
-                    {% for query in profiler.queries %}
-                        #{{ loop.index }} ({{ query.time }}s):
-                        <pre>{{ query.query }}</pre>
-                        Parameters: {% for param in query.params %}<code>{{ param }}</code>{% if not loop.last %},{% endif %} {% endfor %}<br>
-                        Location: {{ query.caller_info.file }} (line {{ query.caller_info.line }}, {{ query.caller_info.function }})<br><br>
-                    {% endfor %}
-                </div>
-                <div><pre>{{ dump() }}</pre></div>
-            </div>
-        {% endif %}
     </div>
 </footer>

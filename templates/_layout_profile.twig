@@ -45,15 +45,15 @@
                 {% endif %}
             </div>
             <div class="channel-header-secondary">
-                <a class="tab{% if selected_tab == 'home' %} selected{% endif %}" 
+                <a class="tab{% if selected_tab == 'home' %} active{% endif %}" 
                     href="/user/{{ data.username }}">Home</a>
-                <a class="tab{% if selected_tab == 'uploads' %} selected{% endif %}" 
+                <a class="tab{% if selected_tab == 'uploads' %} active{% endif %}" 
                     href="/user/{{ data.username }}/uploads">Uploads</a>
-                <a class="tab{% if selected_tab == 'journals' %} selected{% endif %}" 
+                <a class="tab{% if selected_tab == 'journals' %} active{% endif %}" 
                     href="/user/{{ data.username }}/journals">Journals</a>
-                <a class="tab{% if selected_tab == 'comments' %} selected{% endif %}" 
+                <a class="tab{% if selected_tab == 'comments' %} active{% endif %}" 
                     href="/user/{{ data.username }}/comments">Discussion</a>
-                <a class="tab{% if selected_tab == 'about' %} selected{% endif %}" 
+                <a class="tab{% if selected_tab == 'about' %} active{% endif %}" 
                     href="/user/{{ data.username }}/about">About</a>
             </div>
         </div>

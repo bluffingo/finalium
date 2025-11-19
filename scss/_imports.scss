@@ -134,14 +134,18 @@ menu {
 
 code {
     color: #a33a3a;
+    background-color: #ffe8e8;
+    border: 1px solid #eed1d1;
+    border-radius: 4px;
+    padding: 2px 4px;
 }
 
 pre {
     color: #a33a3a;
     background-color: #ffe8e8;
     border: 1px solid #eed1d1;
-    border-radius: 5px;
-    padding: 10px;
+    border-radius: 4px;
+    padding: 0.5rem;
     margin: 0;
     overflow-x: auto;
     line-height: 1.5;
@@ -499,6 +503,35 @@ ul.unstyled-list {
     padding: 0;
     margin: 0;
     list-style: none;
+}
+
+// unlike trinium, which uses content-box styling (finalium equivalent is card/card-body),
+// we gotta style this shit Differently.
+dialog {
+    background: $card-bg;
+    border: 1px solid $card-border;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.18);
+}
+
+.debug-dialog {
+    z-index: 50000;
+    width: 800px;
+
+    .tabcontent {
+        //@include scrollbar();
+        overflow-y: scroll;
+        height: 400px;
+    }
+}
+
+::backdrop {
+    @if $theme =="hitchhiker" {
+        background: white;
+        opacity: 0.8;
+    } @else {
+        background: black;
+        opacity: 0.6;
+    }
 }
 
 /// Gradients \\\

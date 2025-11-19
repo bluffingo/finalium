@@ -3,7 +3,7 @@
 {% block content %}
     <div class="tabs">
         {% for tab_key, tab in page.tabs %}
-            <a class="tab" href="#{{ tab_key }}">
+            <a class="tablink" href="#{{ tab_key }}">
                 {{ tab.name }}
             </a>
         {% endfor %}

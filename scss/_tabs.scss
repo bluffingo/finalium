@@ -1,16 +1,20 @@
-.tab {
+.tabcontent {
+    display: none;
+}
+
+.tablink {
     color: $light-text-color;
 
     padding: 0 3px;
     height: 32px; // on yt this was defined as 29px but this doesnt work here
     line-height: 29px;
 
-    &.selected,
+    &.active,
     &:hover {
         border-bottom: 3px solid $nav-selected;
     }
 
-    &.selected {
+    &.active {
         color: $description-text-color;
         font-weight: 500;
     }

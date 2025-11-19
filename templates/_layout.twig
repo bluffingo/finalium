@@ -30,8 +30,8 @@
     <script src="/assets/common_finalium.js?r={{ get_css_file_date() }}"></script>
     {% block script %}{% endblock %}
     <script>
-        subscribe_string = {{ localize('follow') }};
-        unsubscribe_string = {{ localize('unfollow') }};
+        subscribe_string = '{{ localize('follow') }}';
+        unsubscribe_string = '{{ localize('unfollow') }}';
         opensb_version = '{{ opensb_version.name }} {{ opensb_version.string }}';
     </script>
     <script src="/assets/common_shared.js?r={{ get_css_file_date() }}"></script>
@@ -40,6 +40,9 @@
     </style>
 </head>
 <body>
+{% if is_debug %}
+    {% include('components/debug_dialog.twig') %}
+{% endif %}
 {% if show_warning_banner %}
     <div class="banner {% if current_theme == 'hitchhiker' %}banner-primary{% else %}banner-danger{% endif %} full-screen">
         {% if current_theme == 'hitchhiker' %}
