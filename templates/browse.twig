@@ -8,16 +8,21 @@
                 <div class="card">
                     <ul class="nav">
                         <li class="title">Sort by</li>
-                        <li {% if type=='recent' %}class="active" {% endif %}><a
+                        {% for key, tab in tabs %}
+                            <li {% if type==key %}class="active"{% endif %}>
+                                <a href="/browse?type={{key}}">{{ localize(tab.name) }}</a>
+                            </li>
+                        {% endfor %}
+                        {#<li {% if type=='recent' %}class="active" {% endif %}><a
                                     href="/browse?type=recent">Most recent</a></li>
                         <li {% if type=='popular' %}class="active" {% endif %}><a
                                     href="/browse?type=popular">Most popular</a></li>
-                        {# <li {% if type=='discussed' %}class="active" {% endif %}><a
+                        <li {% if type=='discussed' %}class="active" {% endif %}><a
                                     href="/browse?type=discussed">Most discussed</a></li>
                         <li {% if type=='favorited' %}class="active" {% endif %}><a
-                                    href="/browse?type=favorited">Most favorited</a></li> #}
+                                    href="/browse?type=favorited">Most favorited</a></li>
                         <li {% if type=='random' %}class="active" {% endif %}><a
-                                    href="/browse?type=random">Random</a></li>
+                                    href="/browse?type=random">Random</a></li>#}
                     </ul>
                 </div>
             </div>
