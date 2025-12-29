@@ -7,7 +7,7 @@
             <div class="container page-container {% if is_user_logged_in %}logged-in{% else %}logged-out{% endif %}">
                 {% if is_user_logged_in %}
                     <div class="jumbotron-left">
-                        <img class="img-pfp img-fluid" src="{{ profile_picture(user_data.name) }}" alt="{{ user_data.name }}">
+                        <img class="img-pfp img-fluid" src="{{ profile_picture(user_data.id) }}" alt="{{ user_data.name }}">
                         <div>
                         <h1>{{ localize('welcome_logged_in', user_data.title) }}</h1>
                         <h3>@{{ user_data.name }}</h3>
@@ -21,7 +21,11 @@
                 {% else %}
                     <div class="jumbotron-left">
                         <h1>{{ localize('welcome_logged_out', website_branding.name) }}</h1>
-                        {% if is_chaziz_sb %}<h3>{{ localize('welcome_slogan') }}</h3>{% endif %}
+                        {% if slogan %}
+                            <h3><q>{{ slogan }}</q></h3>
+                        {% elseif is_chaziz_sb %}
+                            <h3>{{ localize('welcome_slogan') }}</h3>
+                        {% endif %}
                     </div>
                     <div class="jumbotron-right">
                         <div><a class="button button-secondary" href="/register">Get started {{ icon('caret-right-fill', 12) }}</a></div>

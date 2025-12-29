@@ -12,7 +12,7 @@
 			<div class="members-list">
 				{% for user in users.users %}
 					<div class="members-list-member">
-						<img src="{{ profile_picture(user.info.username) }}" alt="{{ user.info.username }}" class="img-pfp">
+						<img src="{{ profile_picture(user.id) }}" alt="{{ user.info.username }}" class="img-pfp">
 						<div class="members-list-entry-info">
 							<div class="members-list-entry-top">
 								<div class="members-list-entry-username">{{ user_link(user) }} ({{ user.info.displayname }})</div>

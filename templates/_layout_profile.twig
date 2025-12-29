@@ -9,16 +9,16 @@
     <meta property="og:title" content="{{ data.displayname }} - {{ website_branding.name }}">
     <meta property="og:description"
           content="{{ data.about|length > 250 ? data.about|slice(0, 250) ~ '...' : data.about }}">
-    <meta property="og:image" content="{{ profile_picture(user_data.name) }}">
+    <meta property="og:image" content="{{ profile_picture(data.id) }}">
     <meta property="og:url" content="{{ page_url }}">
     <script>
         user_id = '{{ data.id }}';
     </script>
 {% endblock %}
-
+    
 {% block customcss %}
     .channel-header-background {
-        background-image: url('{{ profile_banner(data.username) }}');
+        background-image: url('{{ profile_banner(data.id) }}');
     }
 {% endblock %}
 
@@ -27,7 +27,7 @@
 {% block content %}
     <div class="channel-header-background">
         <img class="channel-header-profile-picture img-pfp" 
-             src="{{ profile_picture(data.username) }}"  
+             src="{{ profile_picture(data.id) }}"  
              alt="{{ data.username }}">
     </div>
     <div class="card channel-header">

@@ -68,7 +68,7 @@
         {% for link in sidebar_following_users() %}
             <li class="guide-channel">
                 <a href="/user/{{ link.username }}" class="guide-item">
-                    <img class="thumb img-pfp" src="{{ profile_picture(link.username) }}">
+                    <img class="thumb img-pfp" src="{{ profile_picture(link.id) }}">
                     {{ link.username }}
                 </a>
             </li>
