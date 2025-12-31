@@ -30,7 +30,9 @@
                     <div class="col-8">
                         <h1>{{ localize('welcome_logged_out', website_branding.name) }}</h1>
                         <h3 style="padding:0;margin:0;">
-                            {% if is_chaziz_sb %}
+                            {% if slogan %}
+                                <q>{{ slogan }}</q>
+                            {% elseif is_chaziz_sb %}
                                 Your content, your narration, your niche on the web.
                             {% endif %}
                         </h3>
@@ -51,18 +53,8 @@
         <div class="col-8">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="card-title">{{ localize('homepage_recent_uploads') }}</h3>
-                    {% for upload in data.uploads_new %}
-                        {{ upload_box(upload) }}
-                    {% else %}
-                        <p>No uploads.</p>
-                    {% endfor %}
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="card-title">{{ localize('homepage_random_uploads') }}</h3>
-                    {% for upload in data.uploads %}
+                    <h3 class="card-title">{{ localize('featured_uploads') }}</h3>
+                    {% for upload in data.uploads_featured %}
                         {{ upload_box(upload) }}
                     {% else %}
                         <p>No uploads.</p>
@@ -71,16 +63,6 @@
             </div>
         </div>
         <div class="col-4">
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="card-title">{{ localize('featured_uploads') }}</h3>
-                    {% for upload in data.uploads_featured %}
-                        {{ upload_box(upload) }}
-                    {% else %}
-                        <p>No featured uploads.</p>
-                    {% endfor %}
-                </div>
-            </div>
             <div class="card">
                 <div class="card-body">
                     <h3 class="card-title">{{ localize('site_news') }}</h3>
