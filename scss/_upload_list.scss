@@ -47,9 +47,7 @@
                 width: 196px;
                 height: 110px;
                 object-fit: contain;
-                @if $theme =="hitchhiker" {
-                    background: black;
-                }
+                background: black;
             }
         }
 

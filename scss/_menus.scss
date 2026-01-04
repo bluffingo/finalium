@@ -91,3 +91,18 @@ $header-link-active-opacity: 1; // includes hover
     direction: rtl;
     width: 150px;
 }
+
+#user-menu {
+    width: 272px;
+    top: 54px;
+    position: fixed;
+    right: 23px;
+
+    // hardcode text alignment and direction to left for header menus
+    text-align: left;
+    direction: ltr;
+
+    background: $card-bg;
+    border: 1px solid $card-border; // should be #c5c5c5 ?
+    box-shadow: 0 0 15px rgba(black, .18);
+}

@@ -1,6 +1,13 @@
 {% if upload.views != 1 %}
     {% set pluralViews = "s" %}
 {% endif %}
+
+{% if upload.published_originally and upload.original_site %}
+    {% set time = upload.published_originally | relative_time %}
+{% else %}
+    {% set time = upload.published | relative_time %}
+{% endif %}
+
 <div class="shelf-upload-item">
     <div class="thumbnail">
         <a href="/watch?v={{ upload.id }}">
@@ -18,7 +25,7 @@
         <h3 class="title"><a href="/watch?v={{ upload.id }}">{{ upload.title }}</a></h3>
         <span class="stat">{{ user_link(upload.author) }}</span>
         <span class="stat">
-            {{ upload.views }} view{{ pluralViews }} {{ upload.published | relative_time }}
+            {{ upload.views }} view{{ pluralViews }} {{ time }}
         </span>
         {% if upload.type == 2 %}
         <span><div class="badge">Image</div></span>
