@@ -42,6 +42,7 @@
 <body>
 {% if is_debug %}
     {% include('components/debug_dialog.twig') %}
+    <a id="debug-button">{{ localize('debug') }} @{{ opensb_version.hash }}</a>
 {% endif %}
 {% if show_warning_banner %}
     <div class="banner {% if current_theme == 'hitchhiker' %}banner-primary{% else %}banner-danger{% endif %} full-screen">

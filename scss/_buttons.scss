@@ -210,3 +210,15 @@ input[type=file]::file-selector-button {
         color: contrast-color($value);
     }
 }
+
+#debug-button {
+    color: $text-color;
+    background: $card-bg;
+    cursor: pointer;
+    padding: 4px 8px;
+    font-weight: 500;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    text-decoration: none;
+}
