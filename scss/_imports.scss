@@ -513,15 +513,24 @@ dialog {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.18);
 }
 
+// TODO: figure out how this looked back then
+.dialog-footer {
+    text-align: right;
+}
+
 .debug-dialog {
     z-index: 50000;
     width: 800px;
 
-    .tabcontent {
+    .card {
+        overflow-y: scroll;
+        max-height: 300px;
+    }
+    /*.tabcontent {
         //@include scrollbar();
         overflow-y: scroll;
-        height: 400px;
-    }
+        max-height: 400px;
+    }*/
 }
 
 ::backdrop {

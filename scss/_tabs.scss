@@ -2,12 +2,22 @@
     display: none;
 }
 
+.tabs {
+    display: flex;
+    gap: 15px;
+}
+
 .tablink {
     color: $light-text-color;
 
     padding: 0 3px;
     height: 32px; // on yt this was defined as 29px but this doesnt work here
     line-height: 29px;
+
+    &:hover {
+        text-decoration: none;
+        cursor: pointer;
+    }
 
     &.active,
     &:hover {
