@@ -37,10 +37,10 @@ ul.nav {
     li.active {
         @if $theme == "hitchhiker" {
             a {
-                color: $nav-selected;
+                color: $accent;
             }
         } @else {
-            background: $nav-selected;
+            background: $accent;
 
             a {
                 color: white;

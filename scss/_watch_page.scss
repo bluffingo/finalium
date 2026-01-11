@@ -68,6 +68,11 @@
                 }
             }
         }
+
+        .watch-creator-subscribe {
+            display: flex;
+            align-items: center;
+        }
     }
 }
 
@@ -88,6 +93,13 @@
     padding: 0 10px;
 
     @include button-opacity();
+}
+
+.watch-creator-bar {
+    display: flex;
+    .watch-creator-bar-left {
+        flex-grow: 1;
+    }
 }
 
 .watch-header {

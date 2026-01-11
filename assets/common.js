@@ -355,7 +355,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(data => {
                     if (data === subscribe_string) {
                         subscribeBtn.textContent = subscribe_string;
-                        subscribeBtn.className = "button button-primary";
+                        subscribeBtn.className = "button button-accent";
                         console.log("Unsubscribed " + user_id);
                     } else if (data === unsubscribe_string) {
                         subscribeBtn.textContent = unsubscribe_string;
@@ -383,7 +383,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(data => {
                     if (data === subscribe_string) {
                         subscribeWatchBtn.textContent = subscribe_string;
-                        subscribeWatchBtn.className = "button button-primary button-small";
+                        subscribeWatchBtn.className = "button button-accent button-small";
                         console.log("Unsubscribed " + user_id);
                     } else if (data === unsubscribe_string) {
                         subscribeWatchBtn.textContent = unsubscribe_string;

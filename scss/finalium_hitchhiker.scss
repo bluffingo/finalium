@@ -48,9 +48,10 @@ $success: $green;
 $warning: $yellow;
 $danger: $red;
 
-$nav-selected: #CC181E;
+$accent: #CC181E;
 
 $theme-colors: (
+    "accent": $accent,
     "primary": $primary,
     "secondary": $secondary,
     "success": $success,

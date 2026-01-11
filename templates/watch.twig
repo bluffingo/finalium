@@ -20,8 +20,11 @@
             {{ upload_view(upload) }}
         </div>
         {% if upload.is_owner %}
-            <div class="card card-body">
-                <a class="button button-secondary" href="/edit.php?v={{ upload.id }}">Edit</a>
+            <div class="card card-body watch-creator-bar">
+                <div class="watch-creator-bar-left">
+                    <a class="button button-secondary-invis" href="/edit?v={{ upload.id }}">{{ icon("pencil-fill", 18) }}</a>
+                </div>
+                <a class="button button-secondary" href="/my_uploads">Upload Manager</a>
             </div>
         {% endif %}
         <div class="card card-body watch-header">
@@ -36,11 +39,11 @@
                         <div class="watch-creator-userlink">
                             {{ user_link(upload.author) }}
                         </div>
-                        <div>
+                        <div class="watch-creator-subscribe">
                             {% if upload.is_owner %}
-                            <a class="button button-secondary button-small">Settings</a>
+                            <a class="button button-secondary button-small">Channel settings</a>
                             {% else %}
-                            <button id="subscribe-watch" class="button button-{% if upload.author.following %}secondary{% else %}primary{% endif %} button-small" type="button" {% if not is_user_logged_in or user_data.id == upload.author.id %}disabled{% endif %}>{% if upload.author.following %}{{ localize('unfollow') }}{% else %}{{ localize('follow') }}{% endif %}</button>
+                            <button id="subscribe-watch" class="button button-{% if upload.author.following %}secondary{% else %}accent{% endif %} button-small" type="button" {% if not is_user_logged_in or user_data.id == upload.author.id %}disabled{% endif %}>{% if upload.author.following %}{{ localize('unfollow') }}{% else %}{{ localize('follow') }}{% endif %}</button>
                             <div class="subscribe-count">{{ upload.author.followers }}</div>
                             {% endif %}
                         </div>
@@ -54,7 +57,7 @@
                     {% endif %}
                 <div class="watch-view-count">{{ upload.interactions.views }} view{{ pluralViews }}</div>
                 <div class="likesaber">
-                    <div class="like" style="width:{{ upload.interactions.legacy.ratio }}"></div>
+                    <div class="like" style="width:{{ upload.interactions.legacy.ratio }}%"></div>
                 </div>
             </div>
             </div>
