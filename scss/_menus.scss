@@ -93,10 +93,10 @@ $header-link-active-opacity: 1; // includes hover
 }
 
 #user-menu {
-    width: 272px;
+    width: 274px;
     top: 54px;
-    position: fixed;
-    right: 23px;
+    right: -7px;
+    position: absolute;
 
     // hardcode text alignment and direction to left for header menus
     text-align: left;
@@ -105,4 +105,13 @@ $header-link-active-opacity: 1; // includes hover
     background: $card-bg;
     border: 1px solid $card-border; // should be #c5c5c5 ?
     box-shadow: 0 0 15px rgba(black, .18);
+
+    .header {
+        background-color: $lightest-gray;
+        color: white;
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 11px;
+        padding: 6.5px 15px; //5px 15px;
+    }
 }

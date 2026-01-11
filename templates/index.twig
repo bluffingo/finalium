@@ -1,6 +1,8 @@
 {% extends "_layout.twig" %}
 {% block title %}Home{% endblock %}
 
+{% set open_guide = true %}
+
 {% block precontent %}
     {% if current_theme != 'hitchhiker' %}
         <div class="jumbotron">

@@ -58,11 +58,11 @@
         {% endif %}
     </div>
 {% endif %}
-<div id="guide" class="{% if show_warning_banner %}with-fullscreen-banner{% endif %}">
+<div id="guide" class="{% if show_warning_banner %}with-fullscreen-banner{% endif %}" {% if open_guide %}style="display: block;"{% endif %}>
     <ul>
-        {% for link in header_main_links() %}
+        {% for key, link in header_main_links() %}
             <li class="guide-channel">
-                <a href="{{ link.url }}" class="guide-item">{{ link.name }}</a>
+                <a href="{{ link.url }}" class="guide-item {% if page_name == key %}selected{% endif %}">{{ link.name }}</a>
             </li>
         {% endfor %}
         <hr>
@@ -83,7 +83,7 @@
 </div>
 {% include "components/_header.twig" %}
 {% block precontent %}{% endblock %}
-<div class="container page-container {{ page_name }}">
+<div class="container page-container {{ page_name }} {% if open_guide %}container-open-guide{% endif %}" id="page">
     {% if session.notif_message %}
         <div class="banner banner-{{ session.notif_color }}">
         {{ session.notif_message }}

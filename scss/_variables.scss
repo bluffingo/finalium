@@ -21,11 +21,14 @@ $text-color: #000;
 $card-bg: #fff;
 $card-border: #eee; // only used on default finalium theme
 
+// these variables should be renamed to be more generic, 
+// i dont know wtf was i thinking when i named these -chaziz 1/10/2026
 $description-text-color: #333;
 $emphasis-text-color: #444;
 $header-text-color: #555;
 $light-text-color: #666;
 $comment-timestamp: #767676;
+$lightest-gray: #999999;
 
 $border: #e2e2e2;
 

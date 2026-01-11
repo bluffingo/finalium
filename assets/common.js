@@ -186,6 +186,9 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    // container
+    var page = document.getElementById("page");
+
     // guide button
     var guide_button = document.getElementById("guide-toggle");
 
