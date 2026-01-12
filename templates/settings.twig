@@ -127,28 +127,24 @@
                         <th>Option</th>
                         <th>Value</th>
                     </tr>
-                    {% if not is_chaziz_sb %}
-                        <tr>
-                        <td class="a">Adult content</td>
-                            {% if isUserOver18 %}
-                                <td class="b">
-                                    <input type="checkbox" name="rating" id="rating" value="true"
-                                        {% if user_data.comfortable_rating == "mature" %}checked{% endif %}>
-                                    <label for="rating"> Enable adult content</label><br>
+                    <tr>
+                    <td class="a">{{ localize('filtering') }}</td>
+                        {% if isUserOver18 %}
+                            <td class="b">
+                                <input type="checkbox" name="rating" id="rating" value="true"
+                                    {% if user_data.comfortable_rating == "mature" %}checked{% endif %}>
+                                <label for="rating"> {{ localize('enable_sensitive_content') }}</label><br>
 
-                                    <input type="checkbox" name="block_under_18" id="block_under_18" value="true"
-                                        {% if user_data.block_under_18 %}checked{% endif %}>
-                                    <label for="block_under_18"> Block profile/upload access from people under 18</label>
-                                </td>
-                            {% else %}
-                                <td class="b">
-                                    Based on your account's birthdate, access to mature-rated content is restricted.
-                                    If you entered an incorrect birthdate, please contact {{ website_branding.name }}
-                                    administration.
-                                </td>
-                            {% endif %}
-                        </tr>
-                    {% endif %}
+                                {#<input type="checkbox" name="block_under_18" id="block_under_18" value="true"
+                                    {% if user_data.block_under_18 %}checked{% endif %}>
+                                <label for="block_under_18"> Block profile/upload access from people under 18</label>#}
+                            </td>
+                        {% else %}
+                            <td class="b">
+                                {{ localize('restricted_sensitive_content', website_branding.name) }}
+                            </td>
+                        {% endif %}
+                    </tr>
                     <tr>
                         <td class="a">Blacklisted tags</td>
                         <td class="b">
