@@ -76,8 +76,8 @@
         {% endfor %}
         {% if not is_user_logged_in %}
             <hr>
-            <p>Login now to see your channels and recommendations!</p>
-            <a href="/login" class="button button-primary">Login</a>
+            <p>Sign in now to see your channels and recommendations!</p>
+            <a href="/login" class="button button-primary">{{ localize('login') }}</a>
         {% endif %}
     </ul>
 </div>

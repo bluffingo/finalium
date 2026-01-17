@@ -12,7 +12,7 @@ function handleCommentEvents() {
         postButton.addEventListener('click', function () {
             const commentText = commentContents ? commentContents.value.trim() : '';
             if (!commentText) {
-                return alert('you must put something to comment!');
+                return alert('You must enter a comment before posting.');
             }
 
             fetch("/api/legacy/comment", {
@@ -223,7 +223,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const actionUnlogged = document.getElementById('action_unlogged');
     if (actionUnlogged) {
         actionUnlogged.addEventListener('click', function () {
-            alert('you must be logged in.');
+            alert('You cannot proceed with this action.');
         });
     }
 

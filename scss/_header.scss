@@ -68,6 +68,7 @@ $masthead-user-pfp: 27px;
     bottom: 0;
     width: $guide-width;
     background: $guide-bg;
+    border-top: 1px solid $guide-border;
     border-right: 1px solid $guide-border;
     z-index: 9999999999;
     display: none;
@@ -133,6 +134,8 @@ $masthead-user-pfp: 27px;
 
     padding-left: 30px;
     padding-right: 30px;
+    //padding-top: 8px;
+    //padding-bottom: 7px;
 
     &.with-fullscreen-banner {
         top: 35px;
