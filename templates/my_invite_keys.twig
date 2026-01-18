@@ -1,0 +1,51 @@
+{% extends "_layout.twig" %}
+
+{% block title %}{{ localize("my_invite_keys") }}{% endblock %}
+
+	{% block content %}
+        <h1>{{ localize("my_invite_keys") }}</h1>
+            <div class="card card-body">
+                {% if cooldown %}
+                    {% if user_data.joined >= ("now"|date("U") - 604800) %}
+                        <p class="text-danger">{{ localize("invite_key_cooldown_new_users") }}</p>
+                    {% else %}
+                        <p class="text-danger">{{ localize("invite_key_cooldown") }}</p>
+                    {% endif %}
+                {% else %}
+                    <div class="center">
+                        <form name="inviteKeyGenerationForm" id="inviteKeyGenerationForm" method="post"
+                            action="/my_invite_keys" enctype="multipart/form-data">
+                            <input type="hidden" id="action" name="action" value="generate_invite_key"/>
+                            <input class="button button-primary" type="submit" id="generate" name="generate"
+                                value="{{ localize("invite_key_action") }}">
+                            <p>{{ localize("invite_key_disclaimer") }}</p>
+                        </form>
+                    </div>
+                {% endif %}
+                <hr>
+                {% if data.invites %}
+                    <table class="c1">
+                        <tr class="h">
+                            <th>{{ localize("invite_key") }}</th>
+                            <th>{{ localize("claimed_by") }}</th>
+                        </tr>
+                        {% for inviteKey in data.invites %}
+                            <tr>
+                                <td>
+                                    <code>{{ inviteKey.invite_key }}</code>
+                                </td>
+                                <td>
+                                    {% if inviteKey.claimed_by %}
+                                        {{ user_link(inviteKey.claimee) }}
+                                    {% else %}
+                                        {{ localize("unclaimed") }}
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                {% else %}
+                    <p>{{ localize("no_invite_keys_generated") }}</p>
+                {% endif %}
+            </div>
+    {% endblock %}
