@@ -221,4 +221,5 @@ input[type=file]::file-selector-button {
     bottom: 0;
     position: fixed;
     text-decoration: none;
+    z-index: 10;
 }

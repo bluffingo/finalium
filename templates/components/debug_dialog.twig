@@ -5,8 +5,6 @@
 <dialog class="tab-group debug-dialog" id="debug-dialog">
     <div>{{ version_banner() }}</div>
     <div><small>{{ profiler_stats() }}</small>
-    <div><a href="/debug">Debug backend</a></div>
-    <hr>
     <div class="tabs">
         {# spaceless removes html whitespace that causes unnecessary margins #}
         {% apply spaceless %}
@@ -98,6 +96,7 @@
     </div>
     <br>
     <form method="dialog" class="dialog-footer">
+        <a class="button button-danger" href="/debug">Debug Backend</a>
         <button class="button button-secondary" id="debug-close-button">OK</button>
     </form>
 </dialog>

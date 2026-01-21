@@ -1,7 +1,7 @@
 {% extends "_layout.twig" %}
 {% block title %}Home{% endblock %}
 
-{% set open_guide = true %}
+{% set open_guide = false %} {# SHOULD BE TRUE, THIS IS TEMPORARY #}
 
 {% block precontent %}
     {% if current_theme != 'hitchhiker' %}
@@ -44,6 +44,8 @@
         <div {#class="card-body"#} id="feed">
             {% for key, shelf in feed %}
                 <div class="shelf" id="shelf-{{ key }}" >
+                    <div class="button button-secondary">Left</div>
+                    <div class="button button-secondary">Right</div>
                     <div class="shelf-header">
                         {% if shelf.icon %}<img src="{{ shelf.icon }}" class="shelf-icon">{% endif %}
                         <h1 class="shelf-title">{{ shelf.title }}</h1>

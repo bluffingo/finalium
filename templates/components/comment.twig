@@ -25,12 +25,11 @@
                 </div>
             {% endif %}
             #}
-
-            <div class="replies" id="replies-{{ comment.id }}">
-                {% for reply in comment.replies %}
-                    {{ comment(reply) }}
-                {% endfor %}
-            </div>
+        </div>
+        <div class="replies" id="replies-{{ comment.id }}">
+            {% for reply in comment.replies %}
+                {{ comment(reply) }}
+            {% endfor %}
         </div>
     </div>
 </div>

@@ -197,6 +197,13 @@ document.addEventListener("DOMContentLoaded", () => {
             var guide = document.getElementById("guide");
             if (guide) {
                 toggleElementDisplay(guide);
+                // if we're on homepage (i think this behavior also applies to profiles?)
+                // this probably isn't the best way to do this. they made use 
+                // of something called content snap widths. this should be looked into later.
+                // chaziz -01/21/2025
+                if (page.classList.contains("home")) {
+                    page.classList.toggle("container-open-guide");
+                }
             } else {
                 error("where the fuck is the guide???")
             }

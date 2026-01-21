@@ -52,11 +52,13 @@
     }
 }
 
-#replies {
-    margin-top: 15px;
+.replies {
+    margin-top: 12px;
 
     .comment {
-        img.pfp {
+        padding: 0;
+        
+        .img-pfp {
             width: 32px;
             height: 32px;
 
