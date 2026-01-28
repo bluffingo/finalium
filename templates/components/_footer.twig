@@ -1,7 +1,7 @@
-<footer>
-    <div class="footer">
+<footer class="footer">
+    <div class="footer-container">
         <div class="footer-main">
-            <img src="/assets/opensb_logo.svg" alt="OpenSB">
+            <a href="/"><img id="logo" src="{{ logo }}" alt="{{ website_branding.name }}"></a>
         </div>
         <hr>
         <div class="footer-links">
@@ -11,14 +11,9 @@
                 {% endfor %}
             </div>
             <div class="footer-links-secondary">
-                <a href="/version">Running OpenSB {{ opensb_version.name }} {{ opensb_version.number }}</a>
+                <span>{{ localize('powered_by') }} OpenSB {{ opensb_version.name }} {{ opensb_version.number }}</span>
                 <span>{{ localize('footer_copyright', ('now' | date('Y'))) }}</span>
             </div>
-            {% if is_debug %}
-                <div class="footer-profiler">
-                    {{ profiler_stats() }}
-                </div>
-            {% endif %}
         </div>
     </div>
 </footer>

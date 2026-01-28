@@ -1,13 +1,17 @@
 {% extends "_layout.twig" %}
 
-{% block title %}{{ localize('version') }}{% endblock %}
+{% block title %}{{ localize('about') }}{% endblock %}
 
 {% block content %}
     <div class="card card-body-article">
-        <h1>{{ localize('version') }}</h1>
+        <h1>{{ localize('about_site', website_branding.name) }}</h1>
         <div class="grid">
-            <div class="col-4 col-version">
-                <img srcset="/assets/chaz_opensb.png, /assets/chaz_opensb_2x.png 2x" class="img-version">
+            <div class="col-4">
+                <ul>
+                    {% for user in data.staff|sort((a, b) => b.level <=> a.level) %}
+                        <li>{{ user_link(user) }}</li>
+                    {% endfor %}
+                </ul>
             </div>
             <div class="col-8">
                 <p>{{ localize('version_intro', '2021-' ~ ('now' | date('Y')), data.developers|join(', ')) }}</p>

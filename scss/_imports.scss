@@ -392,70 +392,6 @@ body {
     }
 }
 
-// move this
-.footer {
-    background-color: $footer-bg;
-    border-bottom: 1px solid $footer-border;
-    border-top: 1px solid $footer-border;
-    padding: 2em 3em;
-
-    margin-top: 0;
-    overflow: hidden;
-
-    img {
-        width: 135px;
-    }
-
-    hr {
-        border-color: $footer-border;
-    }
-
-    .footer-main {
-        display: flex;
-        align-items: center;
-        gap: 1em;
-    }
-
-    .footer-links {
-        padding: 1em 0.5em;
-
-        .footer-links-primary,
-        .footer-links-secondary {
-            display: flex;
-            gap: 1em;
-        }
-
-        .footer-links-primary a,
-        .footer-links-secondary a {
-            font-weight: 500;
-        }
-
-        .footer-links-primary {
-            margin-bottom: 0.5em;
-
-            a,
-            span {
-                color: #333;
-            }
-        }
-
-        .footer-links-secondary {
-
-            a,
-            span {
-                color: #666;
-                font-size: 11px;
-            }
-        }
-
-        .footer-profiler {
-            margin-top: 0.5em;
-            color: #666;
-            font-size: 11px;
-        }
-    }
-}
-
 textarea,
 input[type]:not([type=file]):not([type=submit]):not([type=range]) {
     @if $theme =="hitchhiker" {
@@ -567,6 +503,8 @@ dialog {
 @import "_tabs";
 /// Header \\\
 @import "_header";
+/// Footer \\\
+@import "_footer";
 /// Comments \\\
 @import "_comments";
 /// Badges \\\
@@ -574,8 +512,6 @@ dialog {
 /// Menus \\\
 @import "_menus";
 
-/// Version page \\\
-@import "_version_page";
 /// Watch page \\\
 @import "_watch_page";
 /// Upload lists \\\
