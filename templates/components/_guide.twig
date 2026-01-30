@@ -1,0 +1,43 @@
+<div id="guide" class="{% if show_warning_banner %}with-fullscreen-banner{% endif %}" {% if open_guide %}style="display: block;"{% endif %}>
+    <div class="guide-container">
+        <ul>
+            {# MAIN LINKS #}
+            {% for key, link in header_main_links() %}
+                <li class="guide-channel">
+                    <a href="{{ link.url }}" class="guide-item {% if page_name == key %}selected{% endif %}">
+                        {{ icon('house', 16) }}
+                        {{ link.name }}
+                    </a>
+                </li>
+            {% endfor %}
+            <hr>
+
+            {# PLAYLISTS/COLLECTIONS #}
+            {% if is_user_logged_in %}
+            <h3>{{ localize('collections') }}</h3>
+            <div>temporary</div>
+            <hr>
+            {% endif %}
+
+            {# FOLLOWING/FEATURED #}
+            {% if is_user_logged_in %}
+                <h3>{{ localize('following') }}</h3>
+            {% else %}
+                <h3>{{ localize('best_of_site', website_branding.name )}}</h3>
+            {% endif %}
+            {% for link in sidebar_following_users() %}
+                <li class="guide-channel">
+                    <a href="/user/{{ link.username }}" class="guide-item {% if page_name == "user " ~ link.username %}selected{% endif %}">
+                        <img class="thumb img-pfp" src="{{ profile_picture(link.id) }}">
+                        {{ link.username }}
+                    </a>
+                </li>
+            {% endfor %}
+            {% if not is_user_logged_in %}
+                <hr>
+                <p>Sign in now to see your channels and recommendations!</p>
+                <a href="/login" class="button button-primary">{{ localize('login') }}</a>
+            {% endif %}
+        </ul>
+    </div>
+</div>

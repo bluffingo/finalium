@@ -58,29 +58,7 @@
         {% endif %}
     </div>
 {% endif %}
-<div id="guide" class="{% if show_warning_banner %}with-fullscreen-banner{% endif %}" {% if open_guide %}style="display: block;"{% endif %}>
-    <ul>
-        {% for key, link in header_main_links() %}
-            <li class="guide-channel">
-                <a href="{{ link.url }}" class="guide-item {% if page_name == key %}selected{% endif %}">{{ link.name }}</a>
-            </li>
-        {% endfor %}
-        <hr>
-        {% for link in sidebar_following_users() %}
-            <li class="guide-channel">
-                <a href="/user/{{ link.username }}" class="guide-item">
-                    <img class="thumb img-pfp" src="{{ profile_picture(link.id) }}">
-                    {{ link.username }}
-                </a>
-            </li>
-        {% endfor %}
-        {% if not is_user_logged_in %}
-            <hr>
-            <p>Sign in now to see your channels and recommendations!</p>
-            <a href="/login" class="button button-primary">{{ localize('login') }}</a>
-        {% endif %}
-    </ul>
-</div>
+{% include "components/_guide.twig" %}
 {% include "components/_header.twig" %}
 {% block precontent %}{% endblock %}
 <div class="container page-container {{ page_name }} {% if open_guide %}container-open-guide{% endif %}" id="page">
