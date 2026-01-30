@@ -5,7 +5,14 @@
                 <div class="button button-secondary-invis masthead-button guide-button" id="guide-toggle">
                     {{ icon("list", 16) }}
                 </div>
-                <a href="/"><img id="logo" src="{{ logo }}" alt="{{ website_branding.name }}"></a>
+                <a href="/">
+                    {% apply spaceless %}
+                    <img id="logo" src="{{ logo }}" alt="{{ website_branding.name }}">
+                    {% if country_code is defined and country_code|trim != '' and country_code != 'US' %}
+                        <span class="content-region">{{ country_code }}</span>
+                    {% endif %}
+                    {% endapply %}
+                </a>
             </div>
             <form id="masthead-search" action="/search">
                 <div id="masthead-search-terms">

@@ -163,6 +163,7 @@ $masthead-user-pfp: 27px;
     }
 
     #logo-container {
+        position: relative;
         display: flex;
 
         @if $theme =="hitchhiker" {
@@ -176,12 +177,30 @@ $masthead-user-pfp: 27px;
 
         a {
             display: block;
+            * {
+                text-decoration: none;
+            }
+        }
+
+        @if $theme =="hitchhiker" {
+            .content-region {
+                position: relative;
+                bottom: 19px;
+                right: 1px;
+                color: #767676;
+                font-size: 11px;
+                text-decoration: none;
+                font-weight: normal;
+            }
         }
     }
 
     #logo {
         height: 30px;
         border: 0;
+        @if $theme =="hitchhiker" {
+            margin-right: 2px;
+        }
     }
 
     // kinda hacky
