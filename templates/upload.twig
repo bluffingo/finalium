@@ -3,6 +3,9 @@
 {% block title %}{{ localize('new_upload') }}{% endblock %}
 
 	{% block content %}
+        {% if current_theme == 'hitchhiker' %}
+        <div class="banner banner-danger">{{ localize('reupload_warning') }}</div>
+        {% endif %}
         <form name="uploadForm" id="uploadForm" method="post" action="upload" enctype="multipart/form-data">
             <div class="card">
                 <div class="card-body">
@@ -10,11 +13,7 @@
                     <p>
                         {{ localize('new_upload_intro', '/guidelines') | raw }}
                     </p>
-                    {% if current_theme == 'hitchhiker' %}
-                        <p style="color:red;font-weight:700;font-size:2em;">
-                            {{ localize('reupload_warning') }}
-                        </p>
-                    {% else %}
+                    {% if current_theme != 'hitchhiker' %}
                         <p style="font-weight:600;">
                             {{ localize('reupload_warning') }}
                         </p>

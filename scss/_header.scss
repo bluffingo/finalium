@@ -295,14 +295,14 @@ $masthead-user-pfp: 27px;
             box-sizing: border-box;
             height: $masthead-search-bar-height;
 
-            border-right: none;
-
             @if $theme !="hitchhiker" {
                 border: 1px solid $form-input-border;
                 background-color: $form-input;
                 color: $text-color;
                 border-radius: 3px 0 0 3px;
             }
+
+            border-right: none;
         }
     }
 }

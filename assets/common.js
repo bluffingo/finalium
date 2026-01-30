@@ -234,6 +234,36 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // feed shelf thing
+    const feed = document.getElementById('feed');
+
+    if (feed) {
+        const shelves = feed.querySelectorAll('.shelf');
+
+        shelves.forEach(shelf => {
+            console.debug("initialized shelf", shelf.id);
+
+            const uploads = shelf.querySelector('.shelf-uploads');
+            const buttons = shelf.querySelectorAll('.shelf-nav');
+
+            if (!uploads) return;
+
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const direction = button.dataset.direction;
+
+                    // scroll amount = width of shelf viewport
+                    const scrollAmount = uploads.clientWidth;
+
+                    uploads.scrollBy({
+                        left: direction === 'right' ? scrollAmount : -scrollAmount,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    }
+
     /*
     // comments
     // NOTE: this references a bunch of leftovers from the bootstrap frontend.
@@ -258,7 +288,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // load comments
     const comments = document.getElementById('comments');
-
     if (comments) {
         fetch(`/api/frontend/comment_load?location=${encodeURIComponent(comment_location_type)}&id=${encodeURIComponent(comment_location_id)}`, {
             method: "GET",

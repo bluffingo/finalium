@@ -1,5 +1,6 @@
 /* used on homepage */
 .shelf {
+    position: relative;
     padding: 15px 18px;
     border-bottom: 1px solid $border;
 
@@ -20,13 +21,37 @@
         }
     }
 
+    .shelf-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 5;
+        background: $card-bg;
+        border: 1px solid $card-border;
+        width: 40px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        &[data-direction="left"] {
+            left: -22px;
+        }
+
+        &[data-direction="right"] {
+            right: -22px;
+        }
+    }
+
     .shelf-uploads {
         display: grid;
         gap: 10px;
         grid-auto-flow: column;
         grid-auto-columns: minmax(196px, 196px);
         //grid-template-columns: repeat(6, 1fr); //fucks shit up, look into this later
-        overflow-x: scroll; // temporary until slider is implemented
+        overflow-x: hidden;
+        scroll-behavior: smooth;
     }
 
     .shelf-upload-item {

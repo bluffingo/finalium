@@ -41,11 +41,16 @@
 
 {% block content %}
     <div class="card">
-        <div {#class="card-body"#} id="feed">
+        <div id="feed">
             {% for key, shelf in feed %}
                 <div class="shelf" id="shelf-{{ key }}" >
-                    <div class="button button-secondary">Left</div>
-                    <div class="button button-secondary">Right</div>
+                    <div class="shelf-nav" data-direction="left">
+                        {{ icon('chevron-left', 13) }}
+                    </div>
+                    <div class="shelf-nav" data-direction="right">
+                        {{ icon('chevron-right', 13) }}
+                    </div>
+                    
                     <div class="shelf-header">
                         {% if shelf.icon %}<img src="{{ shelf.icon }}" class="shelf-icon">{% endif %}
                         <h1 class="shelf-title">{{ shelf.title }}</h1>
@@ -57,21 +62,6 @@
                     </div>
                 </div>
             {% endfor %}
-        {#
-            <h1>Featured on {{ website_branding.name }}</h1>
-            <div>
-                {% for upload in data.uploads_featured %}
-                    {{ upload_box(upload) }}
-                {% endfor %}
-            </div>
-            <hr>
-            <h1>Recent Uploads</h1>
-            <div>
-                {% for upload in data.uploads_new %}
-                    {{ upload_box(upload) }}
-                {% endfor %}
-            </div>
-        #}
         </div>
     </div>
 {% endblock %}
