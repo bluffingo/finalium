@@ -8,11 +8,7 @@
     <div class="section">
         {% for color in color_types %}
             <div class="banner banner-{{ color }}">
-                {# fucked? #}
-                <i class="{{ notification_icon(color) }} notification-icon"></i>
-                <span class="notification-text">
                 This is a {{ color }} banner. You may go back to the homepage <a href="/">here</a>.
-                </span>
             </div>
         {% endfor %}
     </div>
@@ -100,18 +96,6 @@
                             <span>A menu item button with a very long name.</span>
                         </div>
                         <hr>
-                        <div class="menu-item-button">
-                            <div class="menu-item-profile-picture profile-picture">
-                                <img src="/assets/profiledef.svg" class="pfp" alt="Profile picture">
-                            </div>
-                            <span>User</span>
-                        </div>
-                        <div class="menu-item-button">
-                            <div class="menu-item-profile-picture profile-picture">
-                                <img src="/assets/profiledef.svg" class="pfp" alt="Profile picture">
-                            </div>
-                            <span>UserUserUserUserUserUserUserUserUserUserUserUserUserUserUserUserUserUserUserUserUserUser</span>
-                        </div>
                         <div class="menu-item-button small">A small menu item button.</div>
                     </div>
                 </div>

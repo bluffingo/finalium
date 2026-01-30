@@ -1,0 +1,31 @@
+{% extends "_layout.twig" %}
+
+{% block title %}{{ localize('notifications') }}{% endblock %}
+
+{% block content %}
+    <div class="card card-body">
+        <h1>{{ localize('notifications') }}</h1>
+        {% for notice in data %}
+            <div class="comment">
+                <img src="{{ profile_picture(notice.sender.id) }}" class="img-pfp" alt="{{ notice.sender.info.username }}">
+                <div class="comment-body">
+                    <div class="comment-header">
+                        <div class="comment-author">
+                            {{ notice.intro }} {{ user_link(notice.sender) }}
+                        </div>
+                        <div class="comment-timestamp" title="{{ notice.time | date('F j, Y') }}">
+                            {{ notice.time | relative_time }}
+                        </div>
+                    </div>
+                    <div class="comment-contents">
+                        {% if notice.detail.info %}
+                            {{ notice.detail.info }}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            {{ localize('no_notifications') }}
+        {% endfor %}
+    </div>
+{% endblock %}

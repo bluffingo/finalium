@@ -1,0 +1,7 @@
+<button
+    class="button {{ user.info.following ? 'button-secondary' : 'button-accent' }} button-small button-follow"
+    data-user-id="{{ user.id }}"
+    data-following="{{ user.info.following ? '1' : '0' }}"
+>
+    {{ user.info.following ? localize('unfollow') : localize('follow') }}
+</button>

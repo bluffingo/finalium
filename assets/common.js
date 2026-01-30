@@ -376,6 +376,14 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // follow/subscribe buttons
+    const followButtons = document.querySelectorAll(".button-follow");
+
+    followButtons.forEach(button => {
+        console.log("Button userId: " + button.dataset.userId);
+    });
+
+    /*
     // subscribe button (main)
     const subscribeBtn = document.getElementById('subscribe');
     if (subscribeBtn) {
@@ -429,6 +437,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 })
         });
     }
+    */
 
     // like/dislike 
     const likeButton = document.getElementById('like');
