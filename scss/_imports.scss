@@ -392,6 +392,10 @@ body {
     }
 }
 
+#page {
+    padding-bottom: 195px;
+}
+
 textarea,
 input[type]:not([type=file]):not([type=submit]):not([type=range]) {
     @if $theme =="hitchhiker" {

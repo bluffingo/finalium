@@ -2,6 +2,8 @@
 
 {% block title %}{{ pagetitle }}{% endblock %}
 
+{% block precontent %}{% include "components/_subheader.twig" %}{% endblock %}
+
 {% block content %}
 	<div class="card card-body-article">
 		{{ source('markdown/' ~ file) | markdown_info_page }}

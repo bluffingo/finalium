@@ -332,3 +332,28 @@ $masthead-user-pfp: 27px;
         }
     }
 }
+
+.subheader {
+    background: #535353;
+    padding-left: 45px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+
+    .subheader-link {
+        color: #fff;
+        font-weight: 500;
+        line-height: 40px;
+        padding: 0 25px;
+
+        &:hover {
+            background: #666;
+            text-decoration: none;
+        }
+
+        &:active, &.selected {
+            background: #343434;
+            text-decoration: none;
+        }
+    }
+}

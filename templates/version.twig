@@ -2,6 +2,8 @@
 
 {% block title %}{{ localize('about') }}{% endblock %}
 
+{% block precontent %}{% include "components/_subheader.twig" %}{% endblock %}
+
 {% block content %}
     <div class="card card-body-article">
         <h1>{{ localize('about_site', website_branding.name) }}</h1>
