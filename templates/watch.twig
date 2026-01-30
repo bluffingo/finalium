@@ -6,6 +6,7 @@
 <meta property="og:url" content="{{ page_url }}">
 <script>
     upload_id = '{{ upload.id }}';
+    upload_int_id = '{{ upload.int_id }}';
     user_id = '{{ upload.author.id }}';
     comment_location_type = 'upload';
     comment_location_id = '{{ upload.id }}';
@@ -115,17 +116,21 @@
         <div class="card card-body">
             <div class="watch-description">
             <div class="watch-uploader-info">
-                <strong>Uploaded on {{ upload.published | date('M j, Y') }}</strong>
+                <strong>{{ localize('uploaded_on', upload.published | format_date('medium', 'none')) }}</strong>
             </div>
             {% if upload.published_originally and upload.original_site %}
-                <div class="watch-box-author-info-small">First uploaded on {{ upload.original_site }} on {{ upload.published_originally | date('M j, Y') }}</div>
+                <div class="watch-box-author-info-small">
+                    {{ localize('first_uploaded_on', upload.original_site, upload.published_originally | format_date('long', 'none')) }}
+                </div>
             {% elseif upload.original_site %}
-                <div class="watch-box-author-info-small">Originally uploaded on {{ upload.original_site }}</div>
+                <div class="watch-box-author-info-small">
+                    {{ localize('originally_uploaded_on', upload.original_site )}}
+                </div>
             {% endif %}
             {% if upload.description | trim is not empty %}
                 {{ upload.description | markdown_user_written }}
             {% else %}
-                <p>This upload has no description.</p>
+                <p>{{ localize('upload_no_description') }}</p>
             {% endif %}
             </div>
         </div>

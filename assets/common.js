@@ -392,13 +392,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (data === subscribe_string) {
                         subscribeBtn.textContent = subscribe_string;
                         subscribeBtn.className = "button button-accent";
-                        console.log("Unsubscribed " + user_id);
                     } else if (data === unsubscribe_string) {
                         subscribeBtn.textContent = unsubscribe_string;
                         subscribeBtn.className = "button button-secondary";
-                        console.log("Subscribed " + user_id);
                     } else {
-                        alert('unexpected output! report to https://github.com/bluffingo/OpenSB/issues');
+                        error('Failed to subscribe to user', user_id);
                     }
                 })
         });
@@ -426,87 +424,90 @@ document.addEventListener("DOMContentLoaded", () => {
                         subscribeWatchBtn.className = "button button-secondary button-small";
                         console.log("Subscribed " + user_id);
                     } else {
-                        alert('unexpected output! report to https://github.com/bluffingo/OpenSB/issues');
+                        error('Failed to subscribe to user', user_id);
                     }
                 })
         });
     }
 
     // like/dislike 
-    // NOTE: this is based on the original shitty jquery implementation from 2021. it is fucked up (you cant unrate shit).
-    // i'll fix this later. -chaziz 2025/07/20
     const likeButton = document.getElementById('like');
     const dislikeButton = document.getElementById('dislike');
+    const likeCount = document.getElementById('like-count');
+    const dislikeCount = document.getElementById('dislike-count');
 
-    let likeCount = document.getElementById('like-count');
-    let dislikeCount = document.getElementById('dislike-count');
+    if (likeButton && dislikeButton && likeCount && dislikeCount) {
 
-    if (likeButton) {
-        likeButton.addEventListener('click', function () {
-            if (!this.classList.contains('button-toggled')) {
-                fetch("/api/legacy/rate", {
-                    method: "POST",
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: `rating=5&vidid=${upload_id}`
-                })
-                    .then(response => response.text())
-                    .then(data => {
-                        if (data == 1) {
-                            this.className = "button button-like button-secondary-invis button-toggled";
-                            likeCount.textContent = parseInt(likeCount.textContent) + 1;
-                            dislikeCount.textContent = parseInt(dislikeCount.textContent) - 1;
-                            document.getElementById('dislike').className = "button button-dislike button-secondary-invis";
-                        } else if (data == 0) {
-                            this.click();
-                        } else {
-                            alert('unexpected output! report to https://github.com/bluffingo/OpenSB/issues');
-                        }
-                    })
+        const buttons = {
+            like: likeButton,
+            dislike: dislikeButton,
+        };
+
+        const counts = {
+            like: likeCount,
+            dislike: dislikeCount,
+        };
+
+        function getState() {
+            if (likeButton.classList.contains('button-toggled')) return 'like';
+            if (dislikeButton.classList.contains('button-toggled')) return 'dislike';
+            return null;
+        }
+
+        function updateCount(el, delta) {
+            el.textContent = Math.max(0, (parseInt(el.textContent, 10) || 0) + delta);
+        }
+
+        function applyState(prev, next) {
+            if (prev) {
+                buttons[prev].classList.remove('button-toggled');
+                updateCount(counts[prev], -1);
             }
-        });
-    }
 
-    if (dislikeButton) {
-        dislikeButton.addEventListener('click', function () {
-            if (!this.classList.contains('button-toggled')) {
-                fetch("/api/legacy/rate", {
-                    method: "POST",
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: `rating=1&vidid=${upload_id}`
-                })
-                    .then(response => response.text())
-                    .then(data => {
-                        if (data == 1) {
-                            this.className = "button button-dislike button-secondary-invis button-toggled";
-                            likeCount.textContent = parseInt(likeCount.textContent) - 1;
-                            dislikeCount.textContent = parseInt(dislikeCount.textContent) + 1;
-                            document.getElementById('like').className = "button button-like button-secondary-invis";
-                        } else if (data == 0) {
-                            this.click();
-                        } else {
-                            lert('unexpected output! report to https://github.com/bluffingo/OpenSB/issues');
-                        }
-                    })
+            if (next) {
+                buttons[next].classList.add('button-toggled');
+                updateCount(counts[next], +1);
             }
-        });
+        }
+
+        function sendInteraction(action) {
+            return fetch("/api/frontend/upload_interaction", {
+                method: "POST",
+                headers: { "Content-Type": "application/json; charset=UTF-8" },
+                body: JSON.stringify({
+                    action,
+                    upload: upload_int_id,
+                }),
+            }).then(res => {
+                if (!res.ok) throw new Error("request failed");
+                return res.json().catch(() => null);
+            });
+        }
+
+        function handleClick(type) {
+            const prev = getState();
+            const next = prev === type ? null : type;
+            const action = next ? type : 'unrate';
+
+            sendInteraction(action)
+                .then(() => applyState(prev, next))
+                .catch(() => {
+                    alert('Failed to rate upload. Please try again later.');
+                    error('Failed to rate upload.')
+                });
+        }
+
+        likeButton.addEventListener('click', () => handleClick('like'));
+        dislikeButton.addEventListener('click', () => handleClick('dislike'));
     }
 
     let debug_button = (document.getElementById('debug-button'));
-    //let debug_close_button = (document.getElementById('debug-close-button'));
     let debug_dialog = (document.getElementById('debug-dialog'));
 
     if (debug_button) {
         debug_button.addEventListener("click", () => {
             debug_dialog.showModal();
         });
-
-        //debug_close_button.addEventListener("click", () => {
-        //    debug_dialog.close();
-        //});
     }
 });
 
