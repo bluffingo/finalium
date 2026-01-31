@@ -92,7 +92,7 @@
                     <span id="like-count">{{ upload.interactions.legacy.likes }}</span>
                 </button>
                 <button href="/#" id="{% if is_user_logged_in %}dislike{% else %}action_unlogged{% endif %}"
-                        class="button button-dislike button-secondary-invis {% if upload.interactions.legacy.current_rating == "dislike" %}button-toggled{% endif %} tooltip" title="Dislike">
+                        class="button button-dislike button-secondary-invis uix-tooltip {% if upload.interactions.legacy.current_rating == "dislike" %}button-toggled{% endif %}" title="Dislike">
                     {{ icon("hand-thumbs-down-fill", 20) }}
                     <span id="dislike-count">{{ upload.interactions.legacy.dislikes }}</span>
                 </button>

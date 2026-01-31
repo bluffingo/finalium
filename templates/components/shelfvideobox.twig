@@ -10,15 +10,15 @@
 
 <div class="shelf-upload-item">
     <div class="thumbnail">
+        {% if upload.type == 0 %}
+            <div class="thumbnail-badge-container">
+                <div class="thumbnail-badge">
+                    {{ convert_time(upload.length) }}
+                </div>
+            </div>
+        {% endif %}
         <a href="/watch?v={{ upload.id }}">
             <img src="{{ thumbnail(upload.id, upload.type, upload.flags.custom_thumbnail) }}" alt="{{ upload.title }}">
-            {% if upload.type == 0 %}
-                <div class="thumbnail-badge-container">
-                    <div class="thumbnail-badge">
-                        {{ convert_time(upload.length) }}
-                    </div>
-                </div>
-            {% endif %}
         </a>
     </div>
     <div class="content-wrapper">
