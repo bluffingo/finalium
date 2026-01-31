@@ -30,12 +30,15 @@ $masthead-user-pfp: 27px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
 
     margin-left: auto;
     text-align: right;
 
-    @if $theme !="hitchhiker" {
+    @if $theme == "hitchhiker" {
+        gap: 20px;
+    } @else {
+        gap: 1em;
+
         a {
             color: black;
         }
@@ -78,8 +81,12 @@ $masthead-user-pfp: 27px;
     font-size: 13px;
 
     @if $theme =="hitchhiker" {
+        #guide-toggle.masthead-button {
+            color: #B8B8B8;
+        }
+
         &:hover {
-            .masthead-button {
+            #guide-toggle.masthead-button {
                 color: #666666;
             }
         }
@@ -131,7 +138,7 @@ $masthead-user-pfp: 27px;
         @if $theme =="hitchhiker" {
             width: 30px;
             height: 30px;
-            color: #B8B8B8;
+            color: #7F7F7F;
         }
 
         @else {
@@ -183,16 +190,12 @@ $masthead-user-pfp: 27px;
         @if $theme =="hitchhiker" {
             border-top-left-radius: 0;
             border-bottom-left-radius: 0;
-            padding: 0;
-            color: #a0a0a0;
+            padding: 0 25px;
+            color: #969696;
 
             &:hover,
             &:focus {
-                color: #666666;
-            }
-
-            span {
-                margin: 0 25px;
+                color: #555555;
             }
         }
 

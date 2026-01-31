@@ -7,7 +7,7 @@
                 <li class="guide-channel">
                     <a href="{{ item.url }}"
                     class="guide-item {% if page_name == (item.page ?? key) %}selected{% endif %}">
-                        <div class="thumb">icon</div>
+                        <div class="thumb">{{ icon(item.icon, 20) }}</div>
                         {{ item.name }}
                     </a>
                 </li>
@@ -41,7 +41,7 @@
                 <li class="guide-channel">
                     <a href="{{ item.url }}"
                     class="guide-item {% if page_name == (item.page ?? key) %}selected{% endif %}">
-                        <div class="thumb">icon</div>
+                        <div class="thumb">{{ icon(item.icon, 20) }}</div>
                         {{ item.name }}
                     </a>
                 </li>

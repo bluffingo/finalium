@@ -1,0 +1,13 @@
+{
+    "mode": {
+        "symbol": {
+            "dest": ".",
+            "sprite": "../assets/icons.svg",
+            "example": false
+        }
+    },
+    "svg": {
+        "xmlDeclaration": false,
+        "doctypeDeclaration": false
+    }
+}

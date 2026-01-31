@@ -32,10 +32,11 @@ html {
 
 @import "_grid_system";
 
-.bi {
+.icon {
+    /* icons! */
     display: inline-block;
-    margin-top: -0.2em;
-    vertical-align: middle;
+    color: currentColor;
+    //color: rebeccapurple;
 }
 
 h1,

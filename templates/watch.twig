@@ -66,14 +66,14 @@
             <div class="watch-action-buttons">
             <div class="watch-secondary-actions">
                 <button class="button button-secondary-invis" onclick="toggleNotAvailable()">
-                    {{ icon("plus-lg", 20) }} Add to
+                    {{ icon("watch-add-to", 20) }} Add to
                 </button>
                 <button class="button button-secondary-invis" onclick="toggleNotAvailable()">
-                    {{ icon("share-fill", 20) }} Share
+                    {{ icon("watch-share", 20) }} Share
                 </button>
                 <div class="menu-container">
                     <button class="menu-button button button-secondary-invis" data-menu-id="watch-more-menu">
-                        {{ icon("three-dots", 20) }} More
+                        {{ icon("watch-more", 20) }} More
                     </button>
                     <div class="menu" id="watch-more-menu">
                         <div class="menu-item-button" onclick="toggleNotAvailable()">
@@ -88,12 +88,12 @@
             <div class="watch-sentiment-actions">
                 <button href="/#" id="{% if is_user_logged_in %}like{% else %}action_unlogged{% endif %}"
                         class="button button-like button-secondary-invis {% if upload.interactions.legacy.current_rating == "like" %}button-toggled{% endif %}">
-                    {{ icon("hand-thumbs-up-fill", 20) }}
+                    {{ icon("watch-like", 20) }}
                     <span id="like-count">{{ upload.interactions.legacy.likes }}</span>
                 </button>
                 <button href="/#" id="{% if is_user_logged_in %}dislike{% else %}action_unlogged{% endif %}"
                         class="button button-dislike button-secondary-invis uix-tooltip {% if upload.interactions.legacy.current_rating == "dislike" %}button-toggled{% endif %}" title="Dislike">
-                    {{ icon("hand-thumbs-down-fill", 20) }}
+                    {{ icon("watch-dislike", 20) }}
                     <span id="dislike-count">{{ upload.interactions.legacy.dislikes }}</span>
                 </button>
             </div>

@@ -36,19 +36,10 @@
 // originally .viewcount
 .watch-view-count {
     color: $light-text-color;
-
-    @if $theme =="hitchhiker" {
-        margin-bottom: 2px;
-    }
-
-    @else {
-        margin-bottom: 4px;
-    }
-
+    margin-bottom: 2px;
     font-size: 19px;
     line-height: 24px;
     max-height: 24px;
-    margin-bottom: 2px;
 }
 
 .watch-creator {
@@ -183,6 +174,9 @@
 
 /// "Likesaber" for watch page \\\
 .likesaber {
+    top: 1px;
+    position: relative;
+    
     width: 160px;
     height: 2px;
     background-color: $likesaber-gray;
