@@ -1,12 +1,14 @@
+{% set guide_links = header_main_links() %}
 <div id="guide" class="{% if show_warning_banner %}with-fullscreen-banner{% endif %}" {% if open_guide %}style="display: block;"{% endif %}>
     <div class="guide-container">
         <ul>
             {# MAIN LINKS #}
-            {% for key, link in header_main_links() %}
+            {% for key, item in guide_links.top %}
                 <li class="guide-channel">
-                    <a href="{{ link.url }}" class="guide-item {% if page_name == key %}selected{% endif %}">
-                        {{ icon('house', 16) }}
-                        {{ link.name }}
+                    <a href="{{ item.url }}"
+                    class="guide-item {% if page_name == (item.page ?? key) %}selected{% endif %}">
+                        <div class="thumb">icon</div>
+                        {{ item.name }}
                     </a>
                 </li>
             {% endfor %}
@@ -14,25 +16,38 @@
 
             {# PLAYLISTS/COLLECTIONS #}
             {% if is_user_logged_in %}
-            <h3>{{ localize('collections') }}</h3>
-            <div>temporary</div>
+            <li class="header">{{ localize('collections') }}</li>
             <hr>
             {% endif %}
 
             {# FOLLOWING/FEATURED #}
             {% if is_user_logged_in %}
-                <h3>{{ localize('following') }}</h3>
+                <div class="header">{{ localize('following') }}</div>
             {% else %}
-                <h3>{{ localize('best_of_site', website_branding.name )}}</h3>
+                <div class="header">{{ localize('best_of_site', website_branding.name )}}</div>
             {% endif %}
-            {% for link in sidebar_following_users() %}
+            {% for item in sidebar_following_users() %}
                 <li class="guide-channel">
-                    <a href="/user/{{ link.username }}" class="guide-item {% if page_name == "user " ~ link.username %}selected{% endif %}">
-                        <img class="thumb img-pfp" src="{{ profile_picture(link.id) }}">
-                        {{ link.username }}
+                    <a href="/user/{{ item.username }}" class="guide-item {% if page_name == "user " ~ item.username %}selected{% endif %}">
+                        <img class="thumb img-pfp" src="{{ profile_picture(item.id) }}">
+                        {{ item.username }}
                     </a>
                 </li>
             {% endfor %}
+
+            {# BOTTOM LINKS #}
+            <hr>
+            {% for key, item in guide_links.bottom %}
+                <li class="guide-channel">
+                    <a href="{{ item.url }}"
+                    class="guide-item {% if page_name == (item.page ?? key) %}selected{% endif %}">
+                        <div class="thumb">icon</div>
+                        {{ item.name }}
+                    </a>
+                </li>
+            {% endfor %}
+            
+            {# LOGIN THING #}
             {% if not is_user_logged_in %}
                 <hr>
                 <p>Sign in now to see your channels and recommendations!</p>
