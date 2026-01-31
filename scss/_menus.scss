@@ -1,3 +1,4 @@
+// trinium leftovers?
 $menu-item-padding: 0.4rem 0.8rem;
 $header-link-color: black;
 $header-link-hover: rgba($header-link-color, 0.05);
@@ -103,11 +104,29 @@ $header-link-active-opacity: 1; // includes hover
     text-align: left;
     direction: ltr;
 
-    background: $card-bg;
-    border: 1px solid $card-border; // should be #c5c5c5 ?
+    background: $menu-bg;
+    border: 1px solid $menu-border;
     box-shadow: 0 0 15px rgba(black, .18);
 
     .header {
         padding: 10px 15px;
+    }
+
+    .body {
+        display: flex;
+        gap: 10px;
+        padding: 15px;
+
+        .img-pfp {
+            width: 64px;
+            height: 64px;
+        }
+    }
+
+    .user-menu-footer {
+        padding: 10px 15px;
+        background: #f5f5f5;
+        border-top: 1px solid rgba(0,0,0,0.1);
+        text-align: right;
     }
 }

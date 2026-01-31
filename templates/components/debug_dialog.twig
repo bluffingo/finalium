@@ -3,8 +3,9 @@
 {% set user_data_cache = get_user_data_cache() %}
 {% endif %}
 <dialog class="tab-group debug-dialog" id="debug-dialog">
-    <div>{{ version_banner() }}</div>
-    <div><small>{{ profiler_stats() }}</small>
+    <div class="dialog-header">
+        {{ version_banner() }}<br><small>{{ profiler_stats() }}</small>
+    </div>
     <div class="tabs">
         {# spaceless removes html whitespace that causes unnecessary margins #}
         {% apply spaceless %}

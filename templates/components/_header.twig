@@ -56,8 +56,15 @@
                     </div>
                     <div id="user-menu">
                         <div class="header">{{ user_data.email }}</div>
-                        <div>This is the new Finalium user menu!</div>
-                        <a class="button button-secondary" href="/logout">{{ localize('logout') }}</a>
+                        <div class="body">
+                            <img class="img-pfp img-fluid" src="{{ profile_picture(user_data.id) }}" alt="{{ user_data.name }}">
+                            <div class="info">
+                                {{ user_data.name }}
+                            </div>
+                        </div>
+                        <div class="user-menu-footer">
+                            <a class="button button-secondary" href="/logout">{{ localize('logout') }}</a>
+                        </div>
                     </div>
                 </div>
             {% else %}

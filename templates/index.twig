@@ -53,7 +53,12 @@
                     
                     <div class="shelf-header">
                         {% if shelf.icon %}<img src="{{ shelf.icon }}" class="shelf-icon">{% endif %}
-                        <h1 class="shelf-title">{{ shelf.title }}</h1>
+                        {% if shelf.link %}
+                            <h1 class="shelf-title"><a href="{{ shelf.link }}">{{ shelf.title }}</a></h1>
+                        {% else %}
+                            <h1 class="shelf-title">{{ shelf.title }}</h1> 
+                        {% endif %}
+                        {% if shelf.label %}<span class="shelf-label">{{ shelf.label }}</span>{% endif %}
                     </div>
                     <div class="shelf-uploads">
                         {% for upload in shelf.uploads %}

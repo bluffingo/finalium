@@ -237,30 +237,54 @@ document.addEventListener("DOMContentLoaded", () => {
     // feed shelf thing
     const feed = document.getElementById('feed');
 
+    function normalizeScroll(uploads) {
+        const first = uploads.firstElementChild;
+        if (!first) return;
+
+        const step =
+            uploads.children[1]
+                ? uploads.children[1].offsetLeft - first.offsetLeft
+                : first.offsetWidth;
+
+        const corrected =
+            Math.round(uploads.scrollLeft / step) * step;
+
+        uploads.scrollLeft = corrected;
+    }
+
     if (feed) {
-        const shelves = feed.querySelectorAll('.shelf');
-
-        shelves.forEach(shelf => {
-            console.debug("initialized shelf", shelf.id);
-
+        feed.querySelectorAll('.shelf').forEach(shelf => {
             const uploads = shelf.querySelector('.shelf-uploads');
             const buttons = shelf.querySelectorAll('.shelf-nav');
 
-            if (!uploads) return;
+            if (!uploads || uploads.children.length === 0) return;
+
+            let isScrolling = false;
 
             buttons.forEach(button => {
                 button.addEventListener('click', () => {
-                    const direction = button.dataset.direction;
+                    if (isScrolling) return;
 
-                    // scroll amount = width of shelf viewport
-                    const scrollAmount = uploads.clientWidth;
+                    isScrolling = true;
+                    buttons.forEach(b => b.disabled = true);
+
+                    const dir = button.dataset.direction === 'right' ? 1 : -1;
+                    const viewport = uploads.clientWidth;
 
                     uploads.scrollBy({
-                        left: direction === 'right' ? scrollAmount : -scrollAmount,
+                        left: dir * viewport,
                         behavior: 'smooth'
                     });
+
+                    setTimeout(() => {
+                        normalizeScroll(uploads);
+                        isScrolling = false;
+                        buttons.forEach(b => b.disabled = false);
+                    }, 350);
                 });
             });
+
+            console.debug("initialized shelf", shelf.id);
         });
     }
 

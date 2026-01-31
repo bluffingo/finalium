@@ -445,44 +445,6 @@ ul.unstyled-list {
     list-style: none;
 }
 
-// unlike trinium, which uses content-box styling (finalium equivalent is card/card-body),
-// we gotta style this shit Differently.
-dialog {
-    background: $card-bg;
-    border: 1px solid $card-border;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.18);
-}
-
-// TODO: figure out how this looked back then
-.dialog-footer {
-    text-align: right;
-}
-
-.debug-dialog {
-    z-index: 50000;
-    width: 800px;
-
-    .card {
-        overflow-y: scroll;
-        max-height: 300px;
-    }
-    /*.tabcontent {
-        //@include scrollbar();
-        overflow-y: scroll;
-        max-height: 400px;
-    }*/
-}
-
-::backdrop {
-    @if $theme =="hitchhiker" {
-        background: white;
-        opacity: 0.8;
-    } @else {
-        background: black;
-        opacity: 0.6;
-    }
-}
-
 /// Gradients \\\
 @import "_gradients";
 /// Backgrounds \\\
@@ -517,6 +479,8 @@ dialog {
 @import "_badges";
 /// Menus \\\
 @import "_menus";
+/// Dialog \\\
+@import "_dialog";
 
 /// Watch page \\\
 @import "_watch_page";
