@@ -117,9 +117,20 @@ $header-link-active-opacity: 1; // includes hover
         gap: 10px;
         padding: 15px;
 
-        .img-pfp {
+        .profile-picture {
             width: 64px;
             height: 64px;
+        }
+
+        .info {
+            .name {
+                font-weight: 500;
+                margin-bottom: 1px;
+            }
+
+            .followers {
+                color: $lightest-gray;
+            }
         }
     }
 

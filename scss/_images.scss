@@ -4,8 +4,10 @@
     height: auto;
 }
 
-.img-pfp {
-    @if $theme !="hitchhiker" {
+.profile-picture {
+    @if $theme == "hitchhiker" {
+        background: #f1f1f1;
+    } @else {
         border-radius: 50%;
     }
 }

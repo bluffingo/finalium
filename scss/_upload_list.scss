@@ -1,4 +1,5 @@
 /* used on homepage */
+/* this should be split into spinner -chaziz 01/31/2026 */
 .shelf {
     position: relative;
     padding: 15px 18px;
@@ -41,6 +42,7 @@
         top: 50%;
         transform: translateY(-50%);
         z-index: 5;
+        color: $lightest-gray;
         background: $card-bg;
         width: 15px;
         height: 60px;
@@ -54,6 +56,7 @@
 
             &:focus, &:hover {
                 left: -22px;
+                border-right: none;
             }
         }
 
@@ -62,6 +65,7 @@
 
             &:focus, &:hover {
                 right: -22px;
+                border-left: none;
             }
         }
 
@@ -69,6 +73,7 @@
             width: 40px;
             border: 1px solid $card-border;
             box-shadow: 1px 1px 3px rgba(0,0,0,.1);
+            color: $description-text-color;
         }
     }
 
@@ -100,7 +105,7 @@
                 width: 196px;
                 height: 110px;
                 object-fit: contain;
-                background: black;
+                background: #f1f1f1;
             }
         }
 
@@ -178,7 +183,7 @@
             @if $theme =="hitchhiker" {
                 height: 68px;
                 object-fit: contain;
-                background: black;
+                background: #f1f1f1;
             }
         }
     }

@@ -230,12 +230,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function findTooltipTarget(node) {
         while (node && node !== document) {
-        if (node.nodeType === 1 &&
-            node.className &&
-            node.className.indexOf("uix-tooltip") !== -1) {
-            return node;
-        }
-        node = node.parentNode;
+            if (
+                node.nodeType === 1 &&
+                node.classList &&
+                node.classList.contains("uix-tooltip")
+            ) {
+                return node;
+            }
+            node = node.parentNode;
         }
         return null;
     }
@@ -245,6 +247,9 @@ document.addEventListener("DOMContentLoaded", () => {
         var el = findTooltipTarget(e.target);
         if (!el || tooltipEl) return;
 
+        // ignore moves inside the same tooltip target
+        if (el.contains(e.relatedTarget)) return;
+
         var title = el.getAttribute("title");
         if (!title) return;
 
@@ -253,8 +258,8 @@ document.addEventListener("DOMContentLoaded", () => {
         el.removeAttribute("title");
 
         showTimer = setTimeout(function () {
-        tooltipEl = createTooltip(title);
-        positionTooltip(el);
+            tooltipEl = createTooltip(title);
+            positionTooltip(el);
         });
     });
 
@@ -262,14 +267,17 @@ document.addEventListener("DOMContentLoaded", () => {
         var el = findTooltipTarget(e.target);
         if (!el) return;
 
+        // ignore moves inside the same element
+        if (el.contains(e.relatedTarget)) return;
+
         clearTimeout(showTimer);
         destroyTooltip();
 
         // restore title fallback
         var oldTitle = el.getAttribute("data-tooltip-title");
         if (oldTitle) {
-        el.setAttribute("title", oldTitle);
-        el.removeAttribute("data-tooltip-title");
+            el.setAttribute("title", oldTitle);
+            el.removeAttribute("data-tooltip-title");
         }
     });
 

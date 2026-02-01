@@ -7,7 +7,7 @@
         <h1>{{ localize('notifications') }}</h1>
         {% for notice in data %}
             <div class="comment">
-                <img src="{{ profile_picture(notice.sender.id) }}" class="img-pfp" alt="{{ notice.sender.info.username }}">
+                <img src="{{ profile_picture(notice.sender.id) }}" class="profile-picture" alt="{{ notice.sender.info.username }}">
                 <div class="comment-body">
                     <div class="comment-header">
                         <div class="comment-author">

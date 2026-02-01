@@ -9,11 +9,11 @@
             <div class="container page-container {% if is_user_logged_in %}logged-in{% else %}logged-out{% endif %}">
                 {% if is_user_logged_in %}
                     <div class="jumbotron-left">
-                        <img class="img-pfp img-fluid" src="{{ profile_picture(user_data.id) }}" alt="{{ user_data.name }}">
+                        <img class="profile-picture img-fluid" src="{{ profile_picture(user_data.id) }}" alt="{{ user_data.name }}">
                         <div>
                         <h1>{{ localize('welcome_logged_in', user_data.title) }}</h1>
                         <h3>@{{ user_data.name }}</h3>
-                        <a class="button button-secondary" href="/my_uploads">Manage {{ icon('caret-right-fill', 12) }}</a>
+                        <a class="button button-secondary" href="/my_uploads">Manage {{ icon('placeholder', 12) }}</a>
                         </div>
                     </div>
                     <div class="jumbotron-right stats">
@@ -30,7 +30,7 @@
                         {% endif %}
                     </div>
                     <div class="jumbotron-right">
-                        <div><a class="button button-secondary" href="/register">Get started {{ icon('caret-right-fill', 12) }}</a></div>
+                        <div><a class="button button-secondary" href="/register">Get started {{ icon('placeholder', 12) }}</a></div>
                         <div>Already have an account? <a class="button button-secondary button-small" href="/login">{{ localize('login') }}</a></div>
                     </div>
                 {% endif %}
@@ -45,14 +45,14 @@
             {% for key, shelf in feed %}
                 <div class="shelf" id="shelf-{{ key }}" >
                     <div class="shelf-nav" data-direction="left">
-                        {{ icon('chevron-left', 13) }}
+                        {{ icon('spinner-left', 14) }}
                     </div>
                     <div class="shelf-nav" data-direction="right">
-                        {{ icon('chevron-right', 13) }}
+                        {{ icon('spinner-right', 14) }}
                     </div>
                     
                     <div class="shelf-header">
-                        {% if shelf.icon %}<img src="{{ shelf.icon }}" class="shelf-icon img-pfp">{% endif %}
+                        {% if shelf.icon %}<img src="{{ shelf.icon }}" class="shelf-icon profile-picture">{% endif %}
                         {% if shelf.link %}
                             <h1 class="shelf-title"><a href="{{ shelf.link }}">{{ shelf.title }}</a></h1>
                         {% else %}
