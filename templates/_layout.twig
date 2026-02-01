@@ -13,7 +13,7 @@
 {% endif %}
 
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en-US" class="{% if open_guide %}show-guide{% endif %}">
 <head>
     <meta charset="utf-8">
     <title>{% block title %}{% endblock %} - {{ website_branding.name }}</title>
@@ -61,14 +61,16 @@
 {% include "components/_guide.twig" %}
 {% include "components/_header.twig" %}
 {% block precontent %}{% endblock %}
-<div class="container page-container {{ page_name }} {% if open_guide %}container-open-guide{% endif %}" id="page">
-    {% if session.notif_message %}
-        <div class="banner banner-{{ session.notif_color }}">
-        {{ session.notif_message }}
-        </div>
-        {{ remove_notification() }}
-    {% endif %}
-    {% block content %}{% endblock %}
+<div class="container {{ page_name }}" id="page">
+    <div id="content">
+        {% if session.notif_message %}
+            <div class="banner banner-{{ session.notif_color }}">
+            {{ session.notif_message }}
+            </div>
+            {{ remove_notification() }}
+        {% endif %}
+        {% block content %}{% endblock %}
+    </div>
 </div>
 {% include "components/_footer.twig" %}
 </body>

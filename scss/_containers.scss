@@ -1,24 +1,21 @@
-.container {
-    margin-right: auto;
-    margin-left: auto;
-}
-
 // the login/register pages need to be centered at every resolution.
 .login-container {
     margin-right: auto;
     margin-left: auto;
 }
 
-.container-open-guide {
-    margin-left: 230px;
+.show-guide {
+    #page {
+        padding-left: 230px;
+    }
+
+    .footer {
+        margin-left: 230px;
+    }
 }
 
-// TODO: CONTENT SNAP WIDTH -chaziz 11/12/2025
-
-.page-container {
-    width: 100%;
-    max-width: 100%;
-    margin-top: 10px;
+#content {
+    margin: 10px auto auto auto;
 
     @include responsive('tiny') {
         max-width: 438px;
@@ -28,19 +25,22 @@
         max-width: 438px;
     }
 
-    // content snap width 2?
     @include responsive('medium') {
         max-width: 850px;
     }
 
-    // content snap width 3?
     @include responsive('large') {
         max-width: 1262px;
     }
 }
 
+.container {
+    width: 100%;
+    max-width: 100%;
+}
+
 // view page uses different widths
-.page-container.watch, .page-container.view {
+#page.watch #content, #page.view #content {
     @include responsive('tiny') {
         max-width: 100%;
         min-width: 250px;
@@ -61,4 +61,8 @@
         //min-width: 1000px;
         max-width: 1280px;
     }
+}
+
+#page.user #content {
+    margin: auto;
 }
