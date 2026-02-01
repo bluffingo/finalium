@@ -1,28 +1,16 @@
-// trinium leftovers?
-$menu-item-padding: 0.4rem 0.8rem;
-$header-link-color: black;
-$header-link-hover: rgba($header-link-color, 0.05);
-$header-link-active: rgba($header-link-color, 0.1);
-$header-link-inactive-opacity: 0.75;
-$header-link-active-opacity: 1; // includes hover
-
-@if $theme =="hitchhiker" {
-    $menu-item-padding: 0 15px;
-}
-
 .menu {
     display: none;
     position: absolute;
     background: $card-bg;
 
+    padding: 10px 0;
+
     @if $theme =="hitchhiker" {
-        padding: 10px 0;
         box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
         border: $form-input-border;
     }
 
     @else {
-        padding: 3px 0;
         border: 1px solid $card-border;
     }
 
@@ -44,12 +32,14 @@ $header-link-active-opacity: 1; // includes hover
         display: flex;
         align-items: center;
         text-align: left;
-        padding: $menu-item-padding;
-        color: rgba($text-color, $header-link-inactive-opacity);
-        gap: 10px;
+        height: 26px;
+        padding: 0 15px;
+        color: $description-text-color;
 
         @if $theme =="hitchhiker" {
-            height: 26px;
+            gap: 13.2px; // on actual hitchhiker: 10px with whitespace element
+        } @else {
+            gap: 10px;
         }
 
         span {
@@ -62,22 +52,17 @@ $header-link-active-opacity: 1; // includes hover
         }
 
         &:hover {
-            background: $header-link-hover;
+            background: #eeeeee;
             color: $text-color;
             text-decoration: none;
             cursor: pointer;
         }
 
         &:active {
-            background: $header-link-active;
+            background: #eeeeee;
             color: $text-color;
             text-decoration: none;
             cursor: pointer;
-        }
-
-        .menu-item-profile-picture {
-            width: 24px;
-            height: 24px;
         }
     }
 }

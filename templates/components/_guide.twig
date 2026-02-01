@@ -1,4 +1,4 @@
-{% set guide_links = header_main_links() %}
+{% set guide_links = sidebar_main_links() %}
 <div id="guide" class="{% if show_warning_banner %}with-fullscreen-banner{% endif %}" {% if open_guide %}style="display: block;"{% endif %}>
     <div class="guide-container">
         <ul>
@@ -17,6 +17,15 @@
             {# PLAYLISTS/COLLECTIONS #}
             {% if is_user_logged_in %}
             <li class="header">{{ localize('library') }}</li>
+                {% for key, item in sidebar_library_links() %}
+                    <li class="guide-channel">
+                        <a href="{{ item.url }}"
+                        class="guide-item {% if page_name == (item.page ?? key) %}selected{% endif %}">
+                            <div class="thumb">{{ icon(item.icon, 20) }}</div>
+                            {{ item.name }}
+                        </a>
+                    </li>
+                {% endfor %}
             <hr>
             {% endif %}
 

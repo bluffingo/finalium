@@ -23,7 +23,7 @@
         </div>
         <div id="header-user">
             {% if current_theme == 'hitchhiker' %}
-                <a href="/upload" class="button button-secondary">{{ localize('upload_action') }}</a>
+                <a href="/upload" class="button button-secondary">{{ localize('new_upload') }}</a>
                 {% if is_user_logged_in %}
                     <a class="button button-secondary-invis masthead-button" href="/notifications">{{ icon("masthead-bell", 24) }}</a>
                 {% endif %}

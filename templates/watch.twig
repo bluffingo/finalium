@@ -23,7 +23,7 @@
         {% if upload.is_owner %}
             <div class="card card-body watch-creator-bar">
                 <div class="watch-creator-bar-left">
-                    <a class="button button-secondary-invis" href="/edit?v={{ upload.id }}">{{ icon("pencil-fill", 18) }}</a>
+                    <a class="button button-secondary-invis" href="/edit?v={{ upload.id }}">{{ icon("placeholder", 18) }}</a>
                 </div>
                 <a class="button button-secondary" href="/my_uploads">Upload Manager</a>
             </div>
@@ -77,7 +77,7 @@
                     </button>
                     <div class="menu" id="watch-more-menu">
                         <div class="menu-item-button" onclick="toggleNotAvailable()">
-                            {{ icon("placeholder", 16) }} <span>Report</span>
+                            {{ icon("watch-panel-report", 16) }} <span>Report</span>
                         </div>
                         <div class="menu-item-button" onclick="toggleNotAvailable()">
                             {{ icon("placeholder", 16) }} <span>Statistics</span>
@@ -110,7 +110,7 @@
             </div>
         </div>
         <div class="card card-body" id="watch-not-available" style="display:none;">
-            <button class="watch-panel-close-button" id="watch-not-available-close">{{ icon("placeholder", 10) }}</button>
+            <button class="watch-panel-close-button" id="watch-not-available-close">{{ icon("watch-panel-dismiss", 10) }}</button>
             <div>This feature is not available right now. Please try again later.</div>
         </div>
         <div class="card card-body">

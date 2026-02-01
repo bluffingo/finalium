@@ -84,6 +84,8 @@
     height: 30px;
     padding: 0 10px;
 
+    color: #7F7F7F;
+
     @include button-opacity();
 }
 
@@ -126,6 +128,27 @@
             display: flex;
             position: relative;
             left: -10px;
+
+            // temporary
+            .menu-item-button {
+                .icon {
+                    color: black;
+                    opacity: 50%;
+                    //@include button-opacity();
+                }
+
+                &:hover {
+                    .icon {
+                        opacity: 60%;
+                    }
+                }
+
+                &:active {
+                    .icon {
+                        opacity: 80%;
+                    }
+                }   
+            }
         }
 
         .button {
