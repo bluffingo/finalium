@@ -1,0 +1,16 @@
+{% extends "_layout_login.twig" %}
+
+{% block title %}{{ localize('ban_title') }}{% endblock %}
+
+{% block content %}
+    {% if current_theme == 'hitchhiker' %}<h1>{{ localize('ban_title') }}</h1>{% endif %}
+    <div class="card card-body">
+        {% if current_theme != 'hitchhiker' %}<h1>{{ localize('ban_title') }}</h1>{% endif %}
+        <p>{{ localize('ban_intro_1', user_data.name) }}</p>
+        <p>{{ localize('ban_intro_2', '/tos', '/guidelines') | raw }}</p>
+        <p>{{ localize('ban_filed_permanent', timestamp | format_date('long', 'long') ) }}</p>
+        <p>{{ localize('ban_evasion_warning') }}</p>
+        {#<p>Reason: {{ reason }}</p>#}
+        <a href="/logout" class="button button-primary button-big">{{ localize('logout') }}</a>
+    </div>
+{% endblock %}

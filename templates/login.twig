@@ -1,29 +1,28 @@
-{% set layout_template = current_theme == 'beta' ? '_layout.twig' : '_layout_login.twig' %}
-{% embed layout_template %}
-    {% block title %}Login{% endblock %}
+{% extends "_layout_login.twig" %}
 
-    {% block content %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    {% if current_theme == 'hitchhiker' %}
+        <a href="/">
+            <img id="logo" src="{{ logo }}" alt="{{ website_branding.name }}">
+        </a>
+        <h1>{{ localize('login') }}</h1>
+    {% endif %}
+    <form method="post" name="loginForm" id="loginForm" action="login" class="card card-body">
         {% if current_theme == 'hitchhiker' %}
-            <a href="/">
-                <img id="logo" src="{{ logo }}" alt="{{ website_branding.name }}">
-            </a>
-            <h1>{{ localize('login') }}</h1>
+            <img src="/assets/profiledef_hitchhiker.svg" class="pfp">
+        {% else %}
+            <h1 class="form-login-heading">{{ localize('login') }}</h1>
         {% endif %}
-        <form method="post" name="loginForm" id="loginForm" action="login" class="card card-body">
-            {% if current_theme == 'hitchhiker' %}
-                <img src="/assets/profiledef_hitchhiker.svg" class="pfp">
-            {% else %}
-                <h1 class="form-login-heading">{{ localize('login') }}</h1>
-            {% endif %}
-            <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
-            <input type="text" name="username" class="input-block-level" placeholder="{{ localize('username') }}">
-            <input type="password" name="password" class="input-block-level" placeholder="{{ localize('password') }}">
-            <input class="button button-big button-primary" type="submit" value="{{ localize('login') }}"
-                   name="loginsubmit">
-            <p>{{ localize('dont_have_an_account') }} <a href="/register">{{ localize('register') }}</a></p>
-        </form>
-        <div class="login-footer">
-            {{ localize('footer_copyright', ('now' | date('Y'))) }}
-        </div>
-    {% endblock %}
-{% endembed %}
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+        <input type="text" name="username" class="input-block-level" placeholder="{{ localize('username') }}">
+        <input type="password" name="password" class="input-block-level" placeholder="{{ localize('password') }}">
+        <input class="button button-big button-primary" type="submit" value="{{ localize('login') }}"
+                name="loginsubmit">
+        <p>{{ localize('dont_have_an_account') }} <a href="/register">{{ localize('register') }}</a></p>
+    </form>
+    <div class="login-footer">
+        {{ localize('footer_copyright', ('now' | date('Y'))) }}
+    </div>
+{% endblock %}

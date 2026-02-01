@@ -112,8 +112,8 @@
         // originally known as .vid-info
         .content-wrapper {
             .title {
-                max-height: 2.4em;
-                line-height: 1.2;
+                max-height: 2.6em;
+                line-height: 1.3;
                 display: block;
                 overflow: hidden;
                 margin-bottom: 2px;
@@ -130,12 +130,24 @@
                 }
             }
 
+            .stats {
+                display: flex;
+                //gap: 5px;
+
+                .stat {
+                    &:not(:first-child)::before {
+                        content: '\002022';
+                        margin: 0 5px;
+                    }
+                }
+            }
+
             .stat {
                 color: #767676;
                 font-size: 11px;
                 display: block;
-                line-height: 1.4em;
-                height: 1.4em;
+                line-height: 1.3em;
+                height: 1.3em;
             }
 
             /*

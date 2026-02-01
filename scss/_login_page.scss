@@ -5,7 +5,19 @@
     }
 
     @else {
-        text-align: center;
+        h1 {
+            font-weight: 300;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        .button {
+            width: 100%;
+            justify-content: center;
+        }
     }
 
     display: flex;
@@ -17,13 +29,10 @@
         margin-bottom: 20px;
     }
 
-    .button {
-        width: 100%;
-    }
-
     .login-container {
         display: flex;
         flex-direction: column;
+        align-items: center;
         gap: 1em;
     }
 
@@ -31,13 +40,7 @@
         border-radius: 50%;
         width: 96px;
         height: 96px;
-    }
-
-    @if $theme =="hitchhiker" {
-        h1 {
-            font-weight: 300;
-            margin-bottom: 15px;
-        }
+        align-self: center;
     }
 
     .form-login-heading {
@@ -71,7 +74,6 @@
         @if $theme =="hitchhiker" {
             display: flex;
             flex-direction: column;
-            align-items: center;
             gap: 10px;
 
             width: 354px;
