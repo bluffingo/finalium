@@ -1,4 +1,9 @@
-{% extends "_layout.twig" %}
+{% extends "_layout_profile.twig" %}
+
+{% set show_related_channels = false %}
+
+{% set profile_picture = profile_picture(data.author.id) %}
+{% set banner_picture = profile_banner(data.author.id) %}
 
 {% block title %}{{ data.title }}{% endblock %}
 
@@ -8,11 +13,12 @@
     </script>
 {% endblock %}
 
-{% block content %}
+{% set selected_tab = "journals" %}
+
+{% block profile_content %}
 	<div class="card">
 		<div class="card-body">
 			<h1>{{ data.title }}</h1>
-			<p>By {{ user_link(data.author) }}, {{ data.published | relative_time }}</p>
 			{{ data.contents | markdown_user_written(true) }}
 		</div>
 	</div>

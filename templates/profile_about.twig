@@ -1,4 +1,10 @@
 {% extends "_layout_profile.twig" %}
+
+{% set show_related_channels = true %}
+
+{% set profile_picture = profile_picture(data.id) %}
+{% set banner_picture = profile_banner(data.id) %}
+
 {% block title %}{{ data.displayname }}{% endblock %}
 
 {% set selected_tab = "about" %}
@@ -7,11 +13,12 @@
     <div class="card">
         <div class="card-body profile-about-container">
             <div class="about-stats">
-                <div><strong>{{ data.followers }}</strong> followers • <strong>{{ data.views }}</strong> views</div>
+                {# TODO #}
+                <div><strong>{{ data.followers | format_number() }}</strong> followers • <strong>{{ data.views | format_number() }}</strong> views</div>
                 <div>Joined {{ data.joined | format_date('medium', 'none') }}</div>
             </div>
-            <h2 class="about-header">Description</h2>
             {% if data.about | trim is not empty %}
+                <h2 class="about-header">Description</h2>
                 <div>
                     {{ data.about | markdown_user_written }}
                 </div>

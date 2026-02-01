@@ -1,4 +1,10 @@
 {% extends "_layout_profile.twig" %}
+
+{% set show_related_channels = true %}
+
+{% set profile_picture = profile_picture(data.id) %}
+{% set banner_picture = profile_banner(data.id) %}
+
 {% block title %}{{ data.displayname }}{% endblock %}
 
 {% set selected_tab = "comments" %}
