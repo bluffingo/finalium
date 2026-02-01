@@ -1,5 +1,5 @@
 function error(error) {
-    console.error("OpenSB Finalium Frontend Error: " + error);
+    console.error("OpenSB Finalium Skin Error: " + error);
 }
 
 function handleCommentEvents() {
@@ -388,7 +388,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /*
     // comments
-    // NOTE: this references a bunch of leftovers from the bootstrap frontend.
+    // NOTE: this references a bunch of leftovers from the bootstrap skin.
     const commentContents = document.getElementById('commentContents');
     // stupid: should be merged into one.
     const postButton = document.getElementById('post');
@@ -411,7 +411,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // load comments
     const comments = document.getElementById('comments');
     if (comments) {
-        fetch(`/api/frontend/comment_load?location=${encodeURIComponent(comment_location_type)}&id=${encodeURIComponent(comment_location_id)}`, {
+        fetch(`/api/skin/comment_load?location=${encodeURIComponent(comment_location_type)}&id=${encodeURIComponent(comment_location_id)}`, {
             method: "GET",
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
@@ -602,7 +602,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         function sendInteraction(action) {
-            return fetch("/api/frontend/upload_interaction", {
+            return fetch("/api/skin/upload_interaction", {
                 method: "POST",
                 headers: { "Content-Type": "application/json; charset=UTF-8" },
                 body: JSON.stringify({
