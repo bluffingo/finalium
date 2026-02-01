@@ -107,9 +107,7 @@ $masthead-user-pfp: 27px;
 
         a {
             display: block;
-            * {
-                text-decoration: none;
-            }
+            text-decoration: none;
         }
 
         @if $theme =="hitchhiker" {
