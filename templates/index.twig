@@ -44,10 +44,10 @@
         <div id="feed">
             {% for key, shelf in feed %}
                 <div class="shelf" id="shelf-{{ key }}" >
-                    <div class="shelf-nav" data-direction="left">
+                    <div class="shelf-slider-nav" data-direction="left">
                         {{ icon('spinner-left', 14) }}
                     </div>
-                    <div class="shelf-nav" data-direction="right">
+                    <div class="shelf-slider-nav" data-direction="right">
                         {{ icon('spinner-right', 14) }}
                     </div>
                     
@@ -60,9 +60,9 @@
                         {% endif %}
                         {% if shelf.label %}<span class="shelf-label">{{ shelf.label }}</span>{% endif %}
                     </div>
-                    <div class="shelf-uploads">
+                    <div class="shelf-slider">
                         {% for upload in shelf.uploads %}
-                            {% include "components/shelfvideobox.twig" %}
+                            {% include "components/upload_box_shelf_slider.twig" %}
                         {% endfor %}
                     </div>
                 </div>

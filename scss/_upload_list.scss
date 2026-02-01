@@ -37,7 +37,7 @@
         }
     }
 
-    .shelf-nav {
+    .shelf-slider-nav {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
@@ -77,7 +77,7 @@
         }
     }
 
-    .shelf-uploads {
+    .shelf-slider {
         display: grid;
         gap: 10px;
         grid-auto-flow: column;

@@ -16,7 +16,7 @@
     <div class="card">
         <div class="card-body">
             {% for upload in data.uploads %}
-                {{ upload_box(upload) }}
+                {% include "components/upload_box_small.twig" %}
             {% else %}
                 <p>There are currently no uploads by {{ data.displayname }}</p>
             {% endfor %}

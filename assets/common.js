@@ -332,57 +332,57 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // feed shelf thing
+    // shelf slider (hardcoded to feed)
     const feed = document.getElementById('feed');
 
-    function normalizeScroll(uploads) {
-        const first = uploads.firstElementChild;
+    function normalizeScroll(slider) {
+        const first = slider.firstElementChild;
         if (!first) return;
 
         const step =
-            uploads.children[1]
-                ? uploads.children[1].offsetLeft - first.offsetLeft
+            slider.children[1]
+                ? slider.children[1].offsetLeft - first.offsetLeft
                 : first.offsetWidth;
 
         const corrected =
-            Math.round(uploads.scrollLeft / step) * step;
+            Math.round(slider.scrollLeft / step) * step;
 
-        uploads.scrollLeft = corrected;
+        slider.scrollLeft = corrected;
     }
 
     if (feed) {
         feed.querySelectorAll('.shelf').forEach(shelf => {
-            const uploads = shelf.querySelector('.shelf-uploads');
-            const buttons = shelf.querySelectorAll('.shelf-nav');
+            const slider = shelf.querySelector('.shelf-slider');
+            const buttons = shelf.querySelectorAll('.shelf-slider-nav');
 
-            if (!uploads || uploads.children.length === 0) return;
+            if (slider) {
+                let isScrolling = false;
 
-            let isScrolling = false;
+                buttons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        if (isScrolling) return;
 
-            buttons.forEach(button => {
-                button.addEventListener('click', () => {
-                    if (isScrolling) return;
+                        isScrolling = true;
+                        buttons.forEach(b => b.disabled = true);
 
-                    isScrolling = true;
-                    buttons.forEach(b => b.disabled = true);
+                        const dir = button.dataset.direction === 'right' ? 1 : -1;
+                        const viewport = slider.clientWidth;
 
-                    const dir = button.dataset.direction === 'right' ? 1 : -1;
-                    const viewport = uploads.clientWidth;
+                        slider.scrollBy({
+                            left: dir * viewport,
+                            behavior: 'smooth'
+                        });
 
-                    uploads.scrollBy({
-                        left: dir * viewport,
-                        behavior: 'smooth'
+                        setTimeout(() => {
+                            normalizeScroll(slider);
+                            isScrolling = false;
+                            buttons.forEach(b => b.disabled = false);
+                        }, 350);
                     });
-
-                    setTimeout(() => {
-                        normalizeScroll(uploads);
-                        isScrolling = false;
-                        buttons.forEach(b => b.disabled = false);
-                    }, 350);
                 });
-            });
 
-            console.debug("initialized shelf", shelf.id);
+                console.debug("initialized shelf slider", shelf.id);
+            }
         });
     }
 

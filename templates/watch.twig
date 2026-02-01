@@ -147,15 +147,15 @@
             <div class="card-body card-body-watch-sidebar">
             {% if upload.recommended %}
                 {% for upload in upload.recommended %}
-                    {{ upload_box(upload) }}
+                    {% include "components/upload_box_small.twig" %}
                 {% endfor %}
             {% elseif upload.other_by_author %}
                 {% for upload in upload.other_by_author %}
-                    {{ upload_box(upload) }}
+                    {% include "components/upload_box_small.twig" %}
                 {% endfor %}
             {% elseif upload.random %}
                 {% for upload in upload.random %}
-                    {{ upload_box(upload) }}
+                    {% include "components/upload_box_small.twig" %}
                 {% endfor %}
             {% endif %}
             <div class="center">

@@ -1,5 +1,11 @@
 {% extends "_layout.twig" %}
 
+{% if type == 'all' %}
+    {% set le_url = 'browse?page=%s' %}
+{% else %}
+    {% set le_url = 'browse?type=' ~ type ~ '&page=%s' %}
+{% endif %}
+
 {% block title %}{{ localize('browse') }} {% if page != 1 %}(Page {{ page }}){% endif %}{% endblock %}
 
 	{% block content %}
@@ -13,36 +19,18 @@
                                 <a href="/browse?type={{key}}">{{ localize(tab.name) }}</a>
                             </li>
                         {% endfor %}
-                        {#<li {% if type=='recent' %}class="active" {% endif %}><a
-                                    href="/browse?type=recent">Most recent</a></li>
-                        <li {% if type=='popular' %}class="active" {% endif %}><a
-                                    href="/browse?type=popular">Most popular</a></li>
-                        <li {% if type=='discussed' %}class="active" {% endif %}><a
-                                    href="/browse?type=discussed">Most discussed</a></li>
-                        <li {% if type=='favorited' %}class="active" {% endif %}><a
-                                    href="/browse?type=favorited">Most favorited</a></li>
-                        <li {% if type=='random' %}class="active" {% endif %}><a
-                                    href="/browse?type=random">Random</a></li>#}
                     </ul>
                 </div>
             </div>
             <div class="col-10">
                 <div class="card card-body">
                     {% for upload in data.uploads %}
-                        {{ upload_box(upload) }}
+                        {% include "components/upload_box.twig" %}
                     {% else %}
                         <div class="banner banner-danger" role="alert">There are no uploads.</div>
                     {% endfor %}
+                    <div class="center">{{ pagination(data.count, items_per_page, le_url, page) }}</div>
                 </div>
-
-                {% if type == 'all' %}
-                    {% set le_url = 'browse?page=%s' %}
-                {% else %}
-                    {% set le_url = 'browse?type=' ~ type ~ '&page=%s' %}
-                {% endif %}
-                <div class="center">{{ pagination(data.count, items_per_page, le_url, page) }}</div>
-
-                <br><br>
             </div>
         </div>
     {% endblock %}

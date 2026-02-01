@@ -8,7 +8,7 @@
         <div class="card">
             <div class="card-body">
                 {% for upload in data.uploads %}
-                    {{ upload_box(upload) }}
+                    {% include "components/upload_box_small.twig" %}
                     <a class="button button-secondary" href="/edit?v={{ upload.id }}">
                         <span>{{ localize('edit') }}</span>
                     </a>
