@@ -1,19 +1,20 @@
 {% extends "_layout.twig" %}
 
+{% set user_role_titles = {
+    4: localize('user_role_owner'),
+    3: localize('user_role_administrator'),
+    2: localize('user_role_moderator'),
+} %}
+
+
 {% block title %}{{ localize('about') }}{% endblock %}
 
 {% block content %}
-    <div class="card card-body-article">
-        <h1>{{ localize('about_site', website_branding.name) }}</h1>
-        <div class="grid">
-            <div class="col-4">
-                <ul>
-                    {% for user in data.staff|sort((a, b) => b.level <=> a.level) %}
-                        <li>{{ user_link(user) }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
-            <div class="col-8">
+    <div class="grid">
+        <div class="col-8">
+            <div class="card card-body-article">
+                <h1>{{ localize('about_site', website_branding.name) }}</h1>
+                <img src="/assets/opensb_logo.svg" width="180"> {# temporary #}
                 <p>{{ localize('version_intro', '2021-' ~ ('now' | date('Y')), data.developers|join(', ')) }}</p>
                 <p>{{ localize('version_agpl') }}</p>
                 <p>{{ localize('version_no_warranty') }}</p>
@@ -32,6 +33,19 @@
                         </tr>
                     {% endfor %}
                 </table>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card card-body">
+                <h3>{{ localize('staff') }}</h3>
+                {# temporary design #}
+                {% for user in data.staff|sort((a, b) => b.level <=> a.level) %}
+                        <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+                            <img src="{{ profile_picture(user.id) }}" alt="{{ user.info.username }}" width="48" height="48" class="profile-picture">
+                            {{ user_link(user) }}
+                            <div>{{ user_role_titles[user.level] }}</div>
+                        </div>
+                {% endfor %}
             </div>
         </div>
     </div>

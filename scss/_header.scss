@@ -251,25 +251,24 @@ $masthead-user-pfp: 27px;
 }
 
 .subheader {
-    background: #535353;
-    padding-left: 45px;
+    background: #333;
+    padding-left: 30px;
     height: 40px;
     display: flex;
     align-items: center;
 
     .subheader-link {
         color: #fff;
-        font-weight: 500;
         line-height: 40px;
-        padding: 0 25px;
+        padding: 0 10px;
 
         &:hover {
-            background: #666;
+            background: #444;
             text-decoration: none;
         }
 
         &:active, &.selected {
-            background: #343434;
+            background: #666;
             text-decoration: none;
         }
     }

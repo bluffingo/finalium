@@ -1,13 +1,17 @@
+{% set links = [
+    { name: 'tos',        href: '/tos',        text: localize('terms_of_service') },
+    { name: 'privacy',    href: '/privacy',    text: localize('privacy_policy') },
+    { name: 'guidelines', href: '/guidelines', text: localize('community_guidelines') },
+    { name: 'help',       href: '/help',       text: localize('help') },
+] %}
+
 <div class="subheader">
-    <a href="/" class="subheader-link">Link</a>
-    <a href="/" class="subheader-link">Link</a>
-    <a href="/" class="subheader-link">Link</a>
-    <a href="/" class="subheader-link">Link</a>
-    <a href="/" class="subheader-link">Link</a>
-    <a href="/" class="subheader-link">Link</a>
-    <a href="/" class="subheader-link">Link</a>
-    <a href="/" class="subheader-link">Link</a>
-    <a href="/" class="subheader-link">Link</a>
-    <a href="/" class="subheader-link">Link</a>
-    <a href="/" class="subheader-link">Link</a>
+    {% for link in links %}
+        <a
+            href="{{ link.href }}"
+            class="subheader-link {{ page_name == link.name ? 'selected' : '' }}"
+        >
+            {{ link.text }}
+        </a>
+    {% endfor %}
 </div>

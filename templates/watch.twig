@@ -120,7 +120,7 @@
             </div>
             {% if upload.published_originally and upload.original_site %}
                 <div class="watch-box-author-info-small">
-                    {{ localize('first_uploaded_on', upload.original_site, upload.published_originally | format_date('long', 'none')) }}
+                    {{ localize('first_uploaded_on', upload.original_site, upload.published_originally | format_date('medium', 'none')) }}
                 </div>
             {% elseif upload.original_site %}
                 <div class="watch-box-author-info-small">
