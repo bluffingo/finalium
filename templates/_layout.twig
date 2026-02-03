@@ -12,6 +12,10 @@
     {% set logo = website_branding.assets_location ~ '/' ~ logo_type ~ logo_suffix ~ logo_extension %}
 {% endif %}
 
+{% if theme != "hitchhiker" %}
+{% set open_guide = false %}
+{% endif %}
+
 <!DOCTYPE html>
 <html lang="en-US" class="{% if open_guide %}show-guide{% endif %} {% if current_theme == "hitchhiker" %}hitchhiker{% endif %}">
 <head>

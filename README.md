@@ -4,3 +4,6 @@
 The classic SquareBracket interface, originally forked from the SCSS used by ROllerozxa's Principia-web codebase.
 
 This is the default skin on FulpTube.
+
+## ATTRIBUTION
+"Leaf droplet" login background by Min An on Pexels: https://www.pexels.com/photo/macro-shot-of-water-drop-on-green-textile-689326/
