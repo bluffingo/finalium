@@ -4,7 +4,7 @@
 
 	{% block content %}
         {% if current_theme == 'hitchhiker' %}
-        <div class="banner banner-danger">{{ localize('reupload_warning') }}</div>
+        <div class="banner banner-error">{{ localize('reupload_warning') }}</div>
         {% endif %}
         <form name="uploadForm" id="uploadForm" method="post" action="upload" enctype="multipart/form-data">
             <div class="card">

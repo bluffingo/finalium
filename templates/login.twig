@@ -15,7 +15,7 @@
         {% else %}
             <h1 class="form-login-heading">{{ localize('login') }}</h1>
         {% endif %}
-        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+        <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
         <input type="text" name="username" class="input-block-level" placeholder="{{ localize('username') }}">
         <input type="password" name="password" class="input-block-level" placeholder="{{ localize('password') }}">
         <input class="button button-big button-primary" type="submit" value="{{ localize('login') }}"

@@ -80,7 +80,7 @@
 
 #user-menu {
     width: 270px;
-    top: 50px;
+    top: $header-height + 1px;
     right: -5px;
     position: absolute;
     display: none;

@@ -1,14 +1,22 @@
+{% if current_theme == "hitchhiker" %}
+    {% set masthead_button_icon_size = 24 %}
+    {% set masthead_guide_icon_size = 16 %}
+{% else %}
+    {% set masthead_button_icon_size = 20 %}
+    {% set masthead_guide_icon_size = 20 %}
+{% endif %}
+
 <div id="masthead-container" class="{% if show_warning_banner %}with-fullscreen-banner{% endif %}">
     <div id="masthead">
         <div id="header-main">
-            <div id="logo-container" {% if is_chaziz_sb and not is_fulptube %}class="squarebracket"{% endif %}>
+            <div id="logo-container">
                 <div class="button button-default-invis masthead-button guide-button" id="guide-toggle">
-                    {{ icon("masthead-guide", 16) }}
+                    {{ icon(fi.masthead_guide, masthead_guide_icon_size) }}
                 </div>
                 <a href="/">
                     {% apply spaceless %}
                     <img id="logo" src="{{ logo }}" alt="{{ website_branding.name }}">
-                    {% if country_code is defined and country_code|trim != '' and country_code != 'US' %}
+                    {% if country_code is defined and country_code|trim != '' and country_code != 'US' and current_theme == 'hitchhiker' %}
                         <span class="content-region">{{ country_code }}</span>
                     {% endif %}
                     {% endapply %}
@@ -18,19 +26,19 @@
                 <div id="masthead-search-terms">
                     <label><input type="text" name="query" placeholder="{{ localize('search') }}"></label>
                 </div>
-                <button id="search-btn" class="button button-default">{{ icon("masthead-search", 15) }}</button>
+                <button id="search-btn" class="button button-default">{{ icon(fi.masthead_search, 15) }}</button>
             </form>
         </div>
         <div id="header-user">
             {% if current_theme == 'hitchhiker' %}
                 <a href="/upload" class="button button-default">{{ localize('new_upload') }}</a>
                 {% if is_user_logged_in %}
-                    <a class="button button-default-invis masthead-button" href="/notifications">{{ icon("masthead-bell", 24) }}</a>
+                    <a class="button button-default-invis masthead-button" href="/notifications">{{ icon(fi.masthead_bell, masthead_button_icon_size) }}</a>
                 {% endif %}
             {% else %}
                 {% if is_user_logged_in %}
-                    <a class="button button-default-invis masthead-button uix-tooltip" title="{{ localize('new_upload') }}" href="/upload">{{ icon("masthead-upload", 24) }}</a>
-                    <a class="button button-default-invis masthead-button" href="/notifications">{{ icon("masthead-bell", 24) }}</a>
+                    <a class="button button-default-invis masthead-button uix-tooltip" title="{{ localize('new_upload') }}" href="/upload">{{ icon(fi.masthead_upload, masthead_button_icon_size) }}</a>
+                    <a class="button button-default-invis masthead-button" href="/notifications">{{ icon(fi.masthead_bell, masthead_button_icon_size) }}</a>
                 {% endif %}
             {% endif %}
             {% if is_user_logged_in %}
@@ -71,7 +79,6 @@
                     <a href="/login" class="button button-primary">{{ localize('login') }}</a>
                 {% else %}
                     <a href="/login">{{ localize('login') }}</a>
-                    <a href="/register">{{ localize('register') }}</a>
                 {% endif %}
             {% endif %}
         </div>

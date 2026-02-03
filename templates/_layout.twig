@@ -45,7 +45,7 @@
     <a id="debug-button">{{ localize('debug') }} @{{ opensb_version.hash }}</a>
 {% endif %}
 {% if show_warning_banner %}
-    <div class="banner {% if current_theme == 'hitchhiker' %}banner-primary{% else %}banner-danger{% endif %} full-screen">
+    <div class="banner {% if current_theme == 'hitchhiker' %}banner-info{% else %}banner-error{% endif %} full-screen">
         {% if current_theme == 'hitchhiker' %}
             <div class="banner-icon">
                 {{ icon("asterisk", 16) }}

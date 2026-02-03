@@ -17,9 +17,11 @@
 {% endblock %}
     
 {% block customcss %}
+    {% if banner_picture %}
     .channel-header-background {
         background-image: url('{{ banner_picture }}');
     }
+    {% endif %}
 {% endblock %}
 
 {% block content %}

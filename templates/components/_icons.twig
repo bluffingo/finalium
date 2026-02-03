@@ -1,0 +1,13 @@
+{# define icon sets #}
+{% set icons_hitchhiker = {
+    like: icon('watch-like', 20)
+} %}
+
+{% set icons_default = {
+    like: icon('hand-thumbs-up-fill', 20)
+} %}
+
+{% set icons = current_theme == 'hitchhiker'
+    ? icons_hitchhiker
+    : icons_default
+%}

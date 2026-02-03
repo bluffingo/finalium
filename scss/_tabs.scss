@@ -14,6 +14,12 @@
     height: 32px; // on yt this was defined as 29px but this doesnt work here
     line-height: 29px;
 
+    // emulate the classic finalium implementation of tabs
+    @if $theme != "hitchhiker" {
+        transition: .3s;
+        border-bottom: 3px solid rgba($card-bg, 0);
+    }
+
     &:hover {
         text-decoration: none;
         cursor: pointer;
@@ -22,6 +28,9 @@
     &.active,
     &:hover {
         border-bottom: 3px solid $accent;
+        @if $theme != "hitchhiker" {
+            color: $description-text-color;
+        }
     }
 
     &.active {

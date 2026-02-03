@@ -10,10 +10,6 @@
     z-index: 10000;
     overflow: hidden;
 
-    @if $theme !="hitchhiker" {
-        backdrop-filter: blur(4px);
-    }
-
     &:hover {
         overflow-y: auto;
     }
@@ -45,7 +41,9 @@
     }
 
     .header {
-        color: $accent;
+        @if $theme == "hitchhiker" {
+            color: $accent;
+        }
         margin: 0 5px;
         padding: 1px 0 8px;
         line-height: 13px;
@@ -68,16 +66,16 @@
     }
 
     .thumb {
-        width: 20px;
-        height: 20px;
-        vertical-align: middle;
-
         @if $theme == "hitchhiker" {
+            width: 20px;
+            height: 20px;
             margin-left: 9px;
             margin-right: 9.5px; // hitchhiker had a whitespace causing a slightly larger gap
             color: #878787;
         } @else {
-            margin: 0 8px;
+            width: 16px;
+            height: 16px;
+            margin: 0 6px 0 8px;
         }
     }
 

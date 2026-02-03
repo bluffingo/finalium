@@ -1,5 +1,12 @@
 {% set guide_links = sidebar_main_links() %}
-<div id="guide" class="{% if show_warning_banner %}with-fullscreen-banner{% endif %}" {% if open_guide %}style="display: block;"{% endif %}>
+
+{% if current_theme == "hitchhiker" %}
+    {% set guide_icon_size = 20 %}
+{% else %}
+    {% set guide_icon_size = 16 %}
+{% endif %}
+
+<div id="guide" class="{% if show_warning_basnner %}with-fullscreen-banner{% endif %}" {% if open_guide %}style="display: block;"{% endif %}>
     <div class="guide-container">
         <ul>
             {# MAIN LINKS #}
@@ -7,7 +14,7 @@
                 <li class="guide-channel">
                     <a href="{{ item.url }}"
                     class="guide-item {% if page_name == (item.page ?? key) %}selected{% endif %}">
-                        <div class="thumb">{{ icon(item.icon, 20) }}</div>
+                        <div class="thumb">{{ icon(fi.(item.icon), guide_icon_size) }}</div>
                         {{ item.name }}
                     </a>
                 </li>
@@ -21,7 +28,7 @@
                     <li class="guide-channel">
                         <a href="{{ item.url }}"
                         class="guide-item {% if page_name == (item.page ?? key) %}selected{% endif %}">
-                            <div class="thumb">{{ icon(item.icon, 20) }}</div>
+                            <div class="thumb">{{ icon(fi.(item.icon), guide_icon_size) }}</div>
                             {{ item.name }}
                         </a>
                     </li>
@@ -50,14 +57,14 @@
                 <li class="guide-channel">
                     <a href="{{ item.url }}"
                     class="guide-item {% if page_name == (item.page ?? key) %}selected{% endif %}">
-                        <div class="thumb">{{ icon(item.icon, 20) }}</div>
+                        <div class="thumb">{{ icon(fi.(item.icon), guide_icon_size) }}</div>
                         {{ item.name }}
                     </a>
                 </li>
             {% endfor %}
             
-            {# LOGIN THING #}
-            {% if not is_user_logged_in %}
+            {# LOGIN THING (hitchhiker only) #}
+            {% if not is_user_logged_in and current_theme == "hitchhiker" %}
                 <hr>
                 <p>Sign in now to see your channels and recommendations!</p>
                 <a href="/login" class="button button-primary">{{ localize('login') }}</a>

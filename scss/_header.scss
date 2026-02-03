@@ -20,6 +20,10 @@ $masthead-user-pfp: 27px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @if $theme != "hitchhiker" {
+        gap: 8px;
+    }
 }
 
 #header-user {
@@ -50,12 +54,13 @@ $masthead-user-pfp: 27px;
     background-color: $masthead-bg;
     border-bottom: 1px solid $masthead-border;
 
-    @if $theme !="hitchhiker" {
+    @if $theme == "hitchhiker" {
+        padding-left: 30px;
+        padding-right: 30px;
+    } @else {
         backdrop-filter: blur(4px);
     }
 
-    padding-left: 30px;
-    padding-right: 30px;
     //padding-top: 8px;
     //padding-bottom: 7px;
 
@@ -69,7 +74,14 @@ $masthead-user-pfp: 27px;
     align-items: center;
 
     width: 100%;
-    max-width: 100%;
+
+    @if $theme =="hitchhiker" {
+        max-width: 100%;
+    }
+
+    @else {
+        @include maxwidths();
+    }
 
     position: relative;
     margin: auto;
@@ -92,31 +104,33 @@ $masthead-user-pfp: 27px;
         position: relative;
         display: flex;
 
-        width: 200px;
-        height: 30px;
+        @if $theme == "hitchhiker" {
+            width: 200px;
+            height: 30px;
+        } @else {
+            align-items: center;
+            height: 30px;
+
+        }
 
         a {
             display: block;
             text-decoration: none;
-        }
 
-        .content-region {
             @if $theme != "hitchhiker" {
-                display: none; /* temporary */
+                height: 30px;
             }
-            position: relative;
-            bottom: 19px;
-            right: 1px;
-            color: $comment-timestamp;
-            font-size: 11px;
-            text-decoration: none;
-            font-weight: normal;
         }
 
-        // try to handle the wide classic squarebracket logo
-        &.squarebracket {
-            #guide-toggle {
-                margin-left: -20px;
+        @if $theme == "hitchhiker" {
+            .content-region {
+                position: relative;
+                bottom: 19px;
+                right: 1px;
+                color: $comment-timestamp;
+                font-size: 11px;
+                text-decoration: none;
+                font-weight: normal;
             }
         }
     }
@@ -124,7 +138,10 @@ $masthead-user-pfp: 27px;
     #logo {
         height: 30px;
         border: 0;
-        margin-right: 2px;
+
+        @if $theme == "hitchhiker" {
+            margin-right: 2px;
+        }
     }
 
     // kinda hacky
@@ -147,11 +164,13 @@ $masthead-user-pfp: 27px;
     }
 }
 
-/* this sucks */
-#guide-toggle {
-    width: 38px !important;
-    height: 30px !important;
-    margin-left: -7px;
+@if $theme == "hitchhiker" {
+    /* this sucks */
+    #guide-toggle {
+        width: 38px !important;
+        height: 30px !important;
+        margin-left: -7px;
+    }
 }
 
 #masthead-search {

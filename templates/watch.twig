@@ -13,6 +13,12 @@
 </script>
 {% endblock %}
 
+{% if current_theme == "hitchhiker" %}
+    {% set creator_bar_icon_size = [17, 18] %}
+{% else %}
+    {% set creator_bar_icon_size = 16 %}
+{% endif %}
+
 {% block title %}{{ upload.title }}{% endblock %}
 {% block content %}
 <div class="watch-grid">
@@ -24,7 +30,7 @@
             <div class="card card-body watch-creator-bar">
                 <div class="watch-creator-bar-left">
                     <a class="button button-default-invis uix-tooltip" title="Info and Settings" href="/edit?v={{ upload.id }}">
-                        {{ icon("watch-creator-info", [17, 18]) }}
+                        {{ icon(fi.watch_creator_info, creator_bar_icon_size) }}
                     </a>
                 </div>
                 <a class="button button-default" href="/my_uploads">Upload Manager</a>
@@ -65,21 +71,21 @@
             <div class="watch-action-buttons">
             <div class="watch-secondary-actions">
                 <button class="button button-default-invis uix-tooltip" onclick="toggleNotAvailable()" title="{{ localize('add_to') }}">
-                    {{ icon("watch-add-to", 20) }} {{ localize('add_to') }}
+                    {{ icon(fi.watch_add_to, 20) }} {{ localize('add_to') }}
                 </button>
                 <button class="button button-default-invis uix-tooltip" onclick="toggleNotAvailable()" title="{{ localize('share') }}">
-                    {{ icon("watch-share", 20) }} {{ localize('share') }}
+                    {{ icon(fi.watch_share, 20) }} {{ localize('share') }}
                 </button>
                 <div class="menu-container">
                     <button class="menu-button button button-default-invis uix-tooltip" data-menu-id="watch-more-menu" title="{{ localize('more_actions') }}">
-                        {{ icon("watch-more", 20) }} {{ localize('more') }}
+                        {{ icon(fi.watch_more, 20) }} {{ localize('more') }}
                     </button>
                     <div class="menu" id="watch-more-menu">
                         <div class="menu-item-button" onclick="toggleNotAvailable()">
-                            {{ icon("watch-panel-report", 16) }} <span>{{ localize('report') }}</span>
+                            {{ icon(fi.watch_panel_report, 16) }} <span>{{ localize('report') }}</span>
                         </div>
                         <div class="menu-item-button" onclick="toggleNotAvailable()">
-                            {{ icon("placeholder", 16) }} <span>Statistics</span>
+                            {{ icon(fi.watch_panel_stats, 16) }} <span>Statistics</span>
                         </div>
                     </div>
                 </div>
@@ -87,12 +93,12 @@
             <div class="watch-sentiment-actions">
                 <button href="/#" id="{% if is_user_logged_in %}like{% else %}action_unlogged{% endif %}"
                         class="button button-like button-default-invis uix-tooltip {% if upload.interactions.legacy.current_rating == "like" %}button-toggled{% endif %}" title="{{ localize('i_like_this') }}">
-                    {{ icon("watch-like", 20) }}
+                    {{ icon(fi.watch_like, 20) }}
                     <span id="like-count">{{ upload.interactions.legacy.likes }}</span>
                 </button>
                 <button href="/#" id="{% if is_user_logged_in %}dislike{% else %}action_unlogged{% endif %}"
                         class="button button-dislike button-default-invis uix-tooltip {% if upload.interactions.legacy.current_rating == "dislike" %}button-toggled{% endif %}" title="{{ localize('i_dislike_this') }}">
-                    {{ icon("watch-dislike", 20) }}
+                    {{ icon(fi.watch_dislike, 20) }}
                     <span id="dislike-count">{{ upload.interactions.legacy.dislikes }}</span>
                 </button>
             </div>
@@ -109,7 +115,7 @@
             </div>
         </div>
         <div class="card card-body" id="watch-not-available" style="display:none;">
-            <button class="watch-panel-close-button" id="watch-not-available-close">{{ icon("watch-panel-dismiss", 10) }}</button>
+            <button class="watch-panel-close-button" id="watch-not-available-close">{{ icon(fi.watch_panel_dismiss, 10) }}</button>
             <div>{{ localize('unavailable_feature') }}</div>
         </div>
         <div class="card card-body">

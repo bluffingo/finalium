@@ -31,7 +31,7 @@ html {
 
 @import "_grid_system";
 
-.icon {
+.icon, .bi {
     /* icons! */
     display: inline-block;
     color: currentColor;
@@ -253,8 +253,10 @@ blockquote {
     }
 
     .container {
+        margin: auto;
         display: flex;
         min-height: auto;
+        @include maxwidths();
 
         h1, h2, h3, h4, h5, h6, p {
             padding: 0;
