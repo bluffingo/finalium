@@ -29,7 +29,7 @@
                 {% endif %}
             {% else %}
                 {% if is_user_logged_in %}
-                    <a class="button button-secondary-invis masthead-button" href="/upload">{{ icon("masthead-upload", 24) }}</a>
+                    <a class="button button-secondary-invis masthead-button uix-tooltip" title="{{ localize('new_upload') }}" href="/upload">{{ icon("masthead-upload", 24) }}</a>
                     <a class="button button-secondary-invis masthead-button" href="/notifications">{{ icon("masthead-bell", 24) }}</a>
                 {% endif %}
             {% endif %}

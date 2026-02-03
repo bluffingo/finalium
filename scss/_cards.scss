@@ -49,6 +49,10 @@
     }
 }
 
+.card-body:has(.button-expander) {
+    padding-bottom: 0;
+}
+
 // markdown-based pages
 .card-body-article {
     padding: 0 20px 20px 20px;

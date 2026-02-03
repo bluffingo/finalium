@@ -664,6 +664,7 @@ function showReplies(id) {
         })
 }
 
+/*
 function showMoreVideos() {
     const fromUserVideoList = document.getElementById('fromUserVideoList');
     if (!fromUserVideoList) return;
@@ -692,5 +693,6 @@ function showMoreVideos() {
         fromUserVideoList.classList.add("collapsed");
     }
 }
+*/
 
 // there should be code for replies, but those broke on finalium 1 when i redid the css for it

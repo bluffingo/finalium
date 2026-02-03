@@ -53,31 +53,29 @@
                 </div>
             </div>
             <div class="col-6 right watch-view-info">
-                    {% if upload.interactions.views != 1 %}
-                        {% set pluralViews = "s" %}
-                    {% endif %}
-                <div class="watch-view-count">{{ upload.interactions.views }} view{{ pluralViews }}</div>
+                <div>{{ upload.interactions.legacy.ratio }}</div>
+                <div class="watch-view-count">{{ localize('views', upload.interactions.views) }}</div>
                 <div class="likesaber">
-                    <div class="like" style="width:{{ upload.interactions.legacy.ratio }}%"></div>
+                    <div class="like" style="width:{{ upload.interactions.legacy.ratio }}"></div>
                 </div>
             </div>
             </div>
             <hr class="watch-info-divider">
             <div class="watch-action-buttons">
             <div class="watch-secondary-actions">
-                <button class="button button-secondary-invis uix-tooltip" onclick="toggleNotAvailable()" title="Add to">
-                    {{ icon("watch-add-to", 20) }} Add to
+                <button class="button button-secondary-invis uix-tooltip" onclick="toggleNotAvailable()" title="{{ localize('add_to') }}">
+                    {{ icon("watch-add-to", 20) }} {{ localize('add_to') }}
                 </button>
-                <button class="button button-secondary-invis uix-tooltip" onclick="toggleNotAvailable()" title="Share">
-                    {{ icon("watch-share", 20) }} Share
+                <button class="button button-secondary-invis uix-tooltip" onclick="toggleNotAvailable()" title="{{ localize('share') }}">
+                    {{ icon("watch-share", 20) }} {{ localize('share') }}
                 </button>
                 <div class="menu-container">
-                    <button class="menu-button button button-secondary-invis uix-tooltip" data-menu-id="watch-more-menu" title="More">
-                        {{ icon("watch-more", 20) }} More
+                    <button class="menu-button button button-secondary-invis uix-tooltip" data-menu-id="watch-more-menu" title="{{ localize('more_actions') }}">
+                        {{ icon("watch-more", 20) }} {{ localize('more') }}
                     </button>
                     <div class="menu" id="watch-more-menu">
                         <div class="menu-item-button" onclick="toggleNotAvailable()">
-                            {{ icon("watch-panel-report", 16) }} <span>Report</span>
+                            {{ icon("watch-panel-report", 16) }} <span>{{ localize('report') }}</span>
                         </div>
                         <div class="menu-item-button" onclick="toggleNotAvailable()">
                             {{ icon("placeholder", 16) }} <span>Statistics</span>
@@ -87,12 +85,12 @@
             </div>
             <div class="watch-sentiment-actions">
                 <button href="/#" id="{% if is_user_logged_in %}like{% else %}action_unlogged{% endif %}"
-                        class="button button-like button-secondary-invis uix-tooltip {% if upload.interactions.legacy.current_rating == "like" %}button-toggled{% endif %}" title="I like this">
+                        class="button button-like button-secondary-invis uix-tooltip {% if upload.interactions.legacy.current_rating == "like" %}button-toggled{% endif %}" title="{{ localize('i_like_this') }}">
                     {{ icon("watch-like", 20) }}
                     <span id="like-count">{{ upload.interactions.legacy.likes }}</span>
                 </button>
                 <button href="/#" id="{% if is_user_logged_in %}dislike{% else %}action_unlogged{% endif %}"
-                        class="button button-dislike button-secondary-invis uix-tooltip {% if upload.interactions.legacy.current_rating == "dislike" %}button-toggled{% endif %}" title="I dislike this">
+                        class="button button-dislike button-secondary-invis uix-tooltip {% if upload.interactions.legacy.current_rating == "dislike" %}button-toggled{% endif %}" title="{{ localize('i_dislike_this') }}">
                     {{ icon("watch-dislike", 20) }}
                     <span id="dislike-count">{{ upload.interactions.legacy.dislikes }}</span>
                 </button>
@@ -111,7 +109,7 @@
         </div>
         <div class="card card-body" id="watch-not-available" style="display:none;">
             <button class="watch-panel-close-button" id="watch-not-available-close">{{ icon("watch-panel-dismiss", 10) }}</button>
-            <div>This feature is not available right now. Please try again later.</div>
+            <div>{{ localize('unavailable_feature') }}</div>
         </div>
         <div class="card card-body">
             <div class="watch-description">
@@ -133,11 +131,12 @@
                 <p>{{ localize('upload_no_description') }}</p>
             {% endif %}
             </div>
+            <div class="button button-expander">{{ localize('show_more') }}</div>
         </div>
         <div class="card">
             <div class="card-body">
                 <div id="comments">
-                    Loading...
+                    {{ localize("loading") }}
                 </div>
             </div>
         </div>
@@ -145,26 +144,20 @@
     <div class="col-right">
         <div class="card">
             <div class="card-body card-body-watch-sidebar">
-            {% if upload.recommended %}
-                {% for upload in upload.recommended %}
-                    {% include "components/upload_box_small.twig" %}
-                {% endfor %}
-            {% elseif upload.other_by_author %}
-                {% for upload in upload.other_by_author %}
-                    {% include "components/upload_box_small.twig" %}
-                {% endfor %}
-            {% elseif upload.random %}
-                {% for upload in upload.random %}
-                    {% include "components/upload_box_small.twig" %}
-                {% endfor %}
-            {% endif %}
-            <div class="center">
-                <div class="button button-secondary" onclick="showMoreVideos()" id="fromUser">
-                    Show more
-                </div>
-            </div>
-            <div class="collapsed" id="fromUserVideoList">
-            </div>
+                {% if upload.recommended %}
+                    {% for upload in upload.recommended %}
+                        {% include "components/upload_box_small.twig" %}
+                    {% endfor %}
+                {% elseif upload.other_by_author %}
+                    {% for upload in upload.other_by_author %}
+                        {% include "components/upload_box_small.twig" %}
+                    {% endfor %}
+                {% elseif upload.random %}
+                    {% for upload in upload.random %}
+                        {% include "components/upload_box_small.twig" %}
+                    {% endfor %}
+                {% endif %}
+                <div class="button button-expander">{{ localize('show_more') }}</div>
             </div>
         </div>
     </div>
