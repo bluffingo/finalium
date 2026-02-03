@@ -13,7 +13,7 @@
 {% endif %}
 
 <!DOCTYPE html>
-<html lang="en-US" class="{% if open_guide %}show-guide{% endif %}">
+<html lang="en-US" class="{% if open_guide %}show-guide{% endif %} {% if current_theme == "hitchhiker" %}hitchhiker{% endif %}">
 <head>
     <meta charset="utf-8">
     <title>{% block title %}{% endblock %} - {{ website_branding.name }}</title>

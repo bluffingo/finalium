@@ -231,7 +231,11 @@
     .like {
         float: left;
         height: 2px;
-        background-color: $primary;
+        //@if $theme == "hitchhiker" {
+            background-color: $primary;
+        //} @else {
+            //background-color: $green;
+        //}
     }
 }
 

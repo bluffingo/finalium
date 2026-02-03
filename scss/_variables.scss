@@ -1,17 +1,17 @@
 $threshold: 50%;
-$red: #CB122E;
+$red: #993300;
 $white: #FCFCFC;
 $black: #111;
-$yellow: #FFBB00;
-$blue: #0069B4;
-$green: #00A651;
+$yellow: #ffbf00;
+$blue: #1b7fcc;
+$green: #559900;
 $primary: $blue;
 $success: $green;
 $warning: $yellow;
 $danger: $red;
 
-$light: #f8f8f8;
-$dark: #333333;
+$light: #f8f9fa;
+$dark: #343a40;
 
 $form-input: #fff;
 $form-input-border: #D3D3D3;
@@ -19,7 +19,7 @@ $form-input-border: #D3D3D3;
 $text-color: #000;
 
 $card-bg: #fff;
-$card-border: #eee; // only used on default finalium theme
+$card-border: #e2e2e2; // only used on default finalium theme
 
 // these variables should be renamed to be more generic, 
 // i dont know wtf was i thinking when i named these -chaziz 1/10/2026
@@ -36,17 +36,17 @@ $masthead-bg: #fffffff0;
 $masthead-border: #D3D3D3; // lightgrey
 
 $footer-bg: #F1F1F1; //gray-150
-$footer-border: #D3D3D3; //gray-250
+$footer-border: #E8E8E8; //gray-250
 
-$guide-bg: #F1F1F1;
-$guide-border: #D3D3D3; // lightgrey
+$guide-bg: #F9F9F9;
+$guide-border: #E8E8E8; // lightgrey
 
 $menu-bg: #ffffff;
 $menu-border: #c5c5c5;
 
-$body-bg: #F8F8F8;
+$body-bg: #F9F9F9;
 
-$likesaber-gray: #D3D3D3;
+$likesaber-gray: #CCCCCC;
 
 $primary: $blue;
 $secondary: $light;

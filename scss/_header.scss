@@ -1,4 +1,8 @@
-$masthead-user-pfp: 27px;
+$masthead-user-pfp: 32px;
+
+@if $theme == "hitchhiker" {
+    $masthead-user-pfp: 27px;
+}
 
 .masthead-user {
     width: $masthead-user-pfp;
@@ -22,7 +26,7 @@ $masthead-user-pfp: 27px;
     justify-content: space-between;
 
     @if $theme != "hitchhiker" {
-        gap: 8px;
+        gap: 15px;
     }
 }
 
