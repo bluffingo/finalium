@@ -176,21 +176,17 @@
     align-self: end;
 }
 
-.subscribe-count {
+.follow-count {
+    margin-left: -2px;
     padding: 0 6px;
     border: 1px solid #ccc;
+    border-radius: 0 2px 2px 0;
     background: #fafafa;
     color: #737373;
-    font-size: 12px;
+    font-size: 11px;
     text-align: center;
-
-    @if $theme =="hitchhiker" {
-        line-height: 22px;
-    }
-
-    @else {
-        line-height: 24px;
-    }
+    height: 24px;
+    line-height: 24px;
 
     display: inline-block;
 }

@@ -1,5 +1,7 @@
 {% extends "_layout.twig" %}
 
+{% set open_guide = true %}
+
 {% if type == 'all' %}
     {% set le_url = 'browse?page=%s' %}
 {% else %}

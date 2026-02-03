@@ -21,7 +21,7 @@
     .footer-main {
         display: flex;
         align-items: center;
-        gap: 1em;
+        gap: 16.2px; // 14px + 3.2px (html whitespace) - 1px (button group margin???)
     }
 
     .footer-links {
@@ -30,7 +30,8 @@
         .footer-links-primary,
         .footer-links-secondary {
             display: flex;
-            gap: 1em;
+            gap: 18.2px; // 15px + 3.2px (html whitespace)
+            line-height: 16px;
         }
 
         .footer-links-primary a,

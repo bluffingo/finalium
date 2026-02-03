@@ -297,7 +297,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 toggleElementDisplay(guide);
 
                 // if we're on the homepage or on a profile, toggle show-guide in <html>
-                if (page.classList.contains("home") || page.classList.contains("user")) {
+                if (page.classList.contains("home") 
+                 || page.classList.contains("user")
+                 || page.classList.contains("members") // should be channels
+                 || page.classList.contains("browse")
+                ) {
                     document.documentElement.classList.toggle("show-guide");
                 }
             } else {
@@ -519,7 +523,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(data => {
                     if (data === subscribe_string) {
                         subscribeBtn.textContent = subscribe_string;
-                        subscribeBtn.className = "button button-accent";
+                        subscribeBtn.className = "button button-follow";
                     } else if (data === unsubscribe_string) {
                         subscribeBtn.textContent = unsubscribe_string;
                         subscribeBtn.className = "button button-secondary";
@@ -531,7 +535,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // subscribe button (watch page variant?)
-    const subscribeWatchBtn = document.getElementById('subscribe-watch');
+    const subscribeWatchBtn = document.getElementById('follow-watch');
     if (subscribeWatchBtn) {
         subscribeWatchBtn.addEventListener('click', function () {
             fetch("/api/legacy/subscribe", {
@@ -545,7 +549,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(data => {
                     if (data === subscribe_string) {
                         subscribeWatchBtn.textContent = subscribe_string;
-                        subscribeWatchBtn.className = "button button-accent button-small";
+                        subscribeWatchBtn.className = "button button-follow button-small";
                         console.log("Unsubscribed " + user_id);
                     } else if (data === unsubscribe_string) {
                         subscribeWatchBtn.textContent = unsubscribe_string;

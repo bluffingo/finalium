@@ -1,32 +1,44 @@
 {% extends "_layout.twig" %}
 
-{% block title %}Members{% endblock %}
+{% set open_guide = true %}
+
+{% block title %}{{ localize("members") }}{% endblock %}
 
 	{% block content %}
 		{% set total_pages = (users.count / items_per_page) | round(0, 'ceil') %}
 		{% set current_page = page %}
+        {% set le_url = 'members?page=%s' %}
 
+        <div class="profile-page-grid">
+            <div class="content">
+                <div class="card card-body">
+                    <h1>{{ localize("members") }}</h1>
+                    <div class="members-list">
+                        {% for user in users.users %}
+                            <div class="members-list-member">
+                                <img src="{{ profile_picture(user.id) }}" alt="{{ user.info.username }}" class="profile-picture">
+                                <div class="members-list-entry-info">
+                                    <div class="members-list-entry-top">
+                                        <div class="members-list-entry-username">{{ user_link(user) }}</div>
+                                        <div class="members-list-entry-follower">{{ localize("followers", user.followers) }}</div>
+                                    </div>
+                                    <div class="members-list-entry-description">
+                                    {{ user.about }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    {{ pagination(users.count, items_per_page, le_url, current_page) }}
+                </div>
+            </div>
+            <div class="profile-channels-list">
+                <div class="card">
+                    <div class="card-body">
+                        Recommended channels
+                    </div>
+                </div>
+            </div>
+        </div>
 
-		<div class="card card-body">
-			<h1>Members</h1>
-			<div class="members-list">
-				{% for user in users.users %}
-					<div class="members-list-member">
-						<img src="{{ profile_picture(user.id) }}" alt="{{ user.info.username }}" class="profile-picture">
-						<div class="members-list-entry-info">
-							<div class="members-list-entry-top">
-								<div class="members-list-entry-username">{{ user_link(user) }} ({{ user.info.displayname }})</div>
-								<div class="members-list-entry-follower">{{ user.followers }} followers</div>
-							</div>
-							<div class="members-list-entry-description">
-							 {{ user.about }}
-							</div>
-						</div>
-					</div>
-				{% endfor %}
-			</div>
-		</div>
-		{% set le_url = 'members?page=%s' %}
-
-		{{ pagination(users.count, items_per_page, le_url, current_page) }}
 	{% endblock %}

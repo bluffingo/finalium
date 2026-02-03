@@ -1,11 +1,10 @@
 // the login/register pages need to be centered at every resolution.
 .login-container {
-    margin-right: auto;
-    margin-left: auto;
+    margin: auto;
 }
 
 .show-guide {
-    #page {
+    #page, .jumbotron {
         padding-left: 230px;
     }
 
