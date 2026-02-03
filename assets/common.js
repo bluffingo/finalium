@@ -526,7 +526,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         subscribeBtn.className = "button button-follow";
                     } else if (data === unsubscribe_string) {
                         subscribeBtn.textContent = unsubscribe_string;
-                        subscribeBtn.className = "button button-secondary";
+                        subscribeBtn.className = "button button-default";
                     } else {
                         error('Failed to subscribe to user', user_id);
                     }
@@ -553,7 +553,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         console.log("Unsubscribed " + user_id);
                     } else if (data === unsubscribe_string) {
                         subscribeWatchBtn.textContent = unsubscribe_string;
-                        subscribeWatchBtn.className = "button button-secondary button-small";
+                        subscribeWatchBtn.className = "button button-default button-small";
                         console.log("Subscribed " + user_id);
                     } else {
                         error('Failed to subscribe to user', user_id);

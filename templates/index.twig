@@ -12,7 +12,7 @@
                         <div>
                         <h1>{{ localize('welcome_logged_in', user_data.title) }}</h1>
                         <h3>@{{ user_data.name }}</h3>
-                        <a class="button button-secondary" href="/my_uploads">Manage {{ icon('placeholder', 12) }}</a>
+                        <a class="button button-default" href="/my_uploads">Manage {{ icon('placeholder', 12) }}</a>
                         </div>
                     </div>
                     <div class="jumbotron-right stats">
@@ -29,8 +29,8 @@
                         {% endif %}
                     </div>
                     <div class="jumbotron-right">
-                        <div><a class="button button-secondary" href="/register">Get started {{ icon('placeholder', 12) }}</a></div>
-                        <div>Already have an account? <a class="button button-secondary button-small" href="/login">{{ localize('login') }}</a></div>
+                        <div><a class="button button-default" href="/register">Get started {{ icon('placeholder', 12) }}</a></div>
+                        <div>Already have an account? <a class="button button-default button-small" href="/login">{{ localize('login') }}</a></div>
                     </div>
                 {% endif %}
             </div>

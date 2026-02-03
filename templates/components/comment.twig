@@ -21,7 +21,7 @@
                 <a class="reply-button" data-comment-id="{{ comment.id }}">{{ localize("reply_action") }}</a>
                 <div class="reply-form" id="reply-form-{{ comment.id }}" style="display: none;">
                     <textarea class="form-submit" id="reply_contents_{{ comment.id }}" maxlength="1000" placeholder="Write your reply" rows="4"></textarea>
-                    <button class="button button-secondary submit-reply-button" data-comment-id="{{ comment.id }}">{{ localize("reply_action") }}</button>
+                    <button class="button button-default submit-reply-button" data-comment-id="{{ comment.id }}">{{ localize("reply_action") }}</button>
                 </div>
             {% endif %}
             #}

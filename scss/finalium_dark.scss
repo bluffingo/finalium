@@ -55,14 +55,20 @@ $body-bg: #000;
 
 $likesaber-gray: #555555;
 
-$theme-colors: (
-    "accent": $accent,
+$button-colors: (
     "primary": $primary,
-    "secondary": $secondary,
-    "success": $success,
-    "warning": $warning,
-    "danger": $danger,
+    "default": $secondary,
+    "destructive": $danger,
     "dark": $dark,
+    "light": $light,
+    // "payment": $green,
+);
+
+$banner-colors: (
+    "error": $danger,
+    "warning": $warning,
+    "success": $success,
+    "info": $primary,
 );
 
 /// Imports \\\

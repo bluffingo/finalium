@@ -50,14 +50,20 @@ $danger: $red;
 
 $accent: #CC181E;
 
-$theme-colors: (
-    "accent": $accent,
+$button-colors: (
     "primary": $primary,
-    "secondary": $secondary,
-    "success": $success,
-    "warning": $warning,
-    "danger": $danger,
+    "default": $secondary,
+    "destructive": $danger,
     "dark": $dark,
+    "light": $light,
+    // "payment": $green,
+);
+
+$banner-colors: (
+    "error": #b91f1f,
+    "warning": #f5d562, // piss yellow
+    "success": $primary, // blue, not green
+    "info": $primary, // also blue
 );
 
 /// Imports \\\

@@ -2,7 +2,7 @@
     <div id="masthead">
         <div id="header-main">
             <div id="logo-container">
-                <div class="button button-secondary-invis masthead-button guide-button" id="guide-toggle">
+                <div class="button button-default-invis masthead-button guide-button" id="guide-toggle">
                     {{ icon("masthead-guide", 16) }}
                 </div>
                 <a href="/">
@@ -18,19 +18,19 @@
                 <div id="masthead-search-terms">
                     <label><input type="text" name="query" placeholder="{{ localize('search') }}"></label>
                 </div>
-                <button id="search-btn" class="button button-secondary">{{ icon("masthead-search", 15) }}</button>
+                <button id="search-btn" class="button button-default">{{ icon("masthead-search", 15) }}</button>
             </form>
         </div>
         <div id="header-user">
             {% if current_theme == 'hitchhiker' %}
-                <a href="/upload" class="button button-secondary">{{ localize('new_upload') }}</a>
+                <a href="/upload" class="button button-default">{{ localize('new_upload') }}</a>
                 {% if is_user_logged_in %}
-                    <a class="button button-secondary-invis masthead-button" href="/notifications">{{ icon("masthead-bell", 24) }}</a>
+                    <a class="button button-default-invis masthead-button" href="/notifications">{{ icon("masthead-bell", 24) }}</a>
                 {% endif %}
             {% else %}
                 {% if is_user_logged_in %}
-                    <a class="button button-secondary-invis masthead-button uix-tooltip" title="{{ localize('new_upload') }}" href="/upload">{{ icon("masthead-upload", 24) }}</a>
-                    <a class="button button-secondary-invis masthead-button" href="/notifications">{{ icon("masthead-bell", 24) }}</a>
+                    <a class="button button-default-invis masthead-button uix-tooltip" title="{{ localize('new_upload') }}" href="/upload">{{ icon("masthead-upload", 24) }}</a>
+                    <a class="button button-default-invis masthead-button" href="/notifications">{{ icon("masthead-bell", 24) }}</a>
                 {% endif %}
             {% endif %}
             {% if is_user_logged_in %}
@@ -62,7 +62,7 @@
                             </div>
                         </div>
                         <div class="user-menu-footer">
-                            <a class="button button-secondary" href="/logout">{{ localize('logout') }}</a>
+                            <a class="button button-default" href="/logout">{{ localize('logout') }}</a>
                         </div>
                     </div>
                 </div>

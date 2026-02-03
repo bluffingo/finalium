@@ -9,10 +9,10 @@
             <div class="card-body">
                 {% for upload in data.uploads %}
                     {% include "components/upload_box_small.twig" %}
-                    <a class="button button-secondary" href="/edit?v={{ upload.id }}">
+                    <a class="button button-default" href="/edit?v={{ upload.id }}">
                         <span>{{ localize('edit') }}</span>
                     </a>
-                    <a class="button button-danger" href="/delete?v={{ upload.id }}"
+                    <a class="button button-destructive" href="/delete?v={{ upload.id }}"
                        onclick="return confirm('{{ localize('delete_upload_confirm') }}');">
                         <span>{{ localize('delete') }}</span>
                     </a>

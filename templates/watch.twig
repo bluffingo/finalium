@@ -23,9 +23,11 @@
         {% if upload.is_owner %}
             <div class="card card-body watch-creator-bar">
                 <div class="watch-creator-bar-left">
-                    <a class="button button-secondary-invis" href="/edit?v={{ upload.id }}">{{ icon("placeholder", 18) }}</a>
+                    <a class="button button-default-invis uix-tooltip" title="Info and Settings" href="/edit?v={{ upload.id }}">
+                        {{ icon("watch-creator-info", [17, 18]) }}
+                    </a>
                 </div>
-                <a class="button button-secondary" href="/my_uploads">Upload Manager</a>
+                <a class="button button-default" href="/my_uploads">Upload Manager</a>
             </div>
         {% endif %}
         <div class="card card-body watch-header">
@@ -42,7 +44,7 @@
                         </div>
                         <div class="watch-creator-subscribe">
                             {% if upload.is_owner %}
-                            <a class="button button-secondary button-small">Channel settings</a>
+                            <a class="button button-default button-small">Channel settings</a>
                             {% else %}
                             <button id="follow-watch" class="button button-{% if upload.author.following %}secondary{% else %}follow{% endif %} button-small" type="button" {% if not is_user_logged_in or user_data.id == upload.author.id %}disabled{% endif %}>{% if upload.author.following %}{{ localize('unfollow') }}{% else %}{{ localize('follow') }}{% endif %}</button>
                             <div class="follow-count">{{ upload.author.followers }}</div>
@@ -53,7 +55,6 @@
                 </div>
             </div>
             <div class="col-6 right watch-view-info">
-                <div>{{ upload.interactions.legacy.ratio }}</div>
                 <div class="watch-view-count">{{ localize('views', upload.interactions.views) }}</div>
                 <div class="likesaber">
                     <div class="like" style="width:{{ upload.interactions.legacy.ratio }}"></div>
@@ -63,14 +64,14 @@
             <hr class="watch-info-divider">
             <div class="watch-action-buttons">
             <div class="watch-secondary-actions">
-                <button class="button button-secondary-invis uix-tooltip" onclick="toggleNotAvailable()" title="{{ localize('add_to') }}">
+                <button class="button button-default-invis uix-tooltip" onclick="toggleNotAvailable()" title="{{ localize('add_to') }}">
                     {{ icon("watch-add-to", 20) }} {{ localize('add_to') }}
                 </button>
-                <button class="button button-secondary-invis uix-tooltip" onclick="toggleNotAvailable()" title="{{ localize('share') }}">
+                <button class="button button-default-invis uix-tooltip" onclick="toggleNotAvailable()" title="{{ localize('share') }}">
                     {{ icon("watch-share", 20) }} {{ localize('share') }}
                 </button>
                 <div class="menu-container">
-                    <button class="menu-button button button-secondary-invis uix-tooltip" data-menu-id="watch-more-menu" title="{{ localize('more_actions') }}">
+                    <button class="menu-button button button-default-invis uix-tooltip" data-menu-id="watch-more-menu" title="{{ localize('more_actions') }}">
                         {{ icon("watch-more", 20) }} {{ localize('more') }}
                     </button>
                     <div class="menu" id="watch-more-menu">
@@ -85,12 +86,12 @@
             </div>
             <div class="watch-sentiment-actions">
                 <button href="/#" id="{% if is_user_logged_in %}like{% else %}action_unlogged{% endif %}"
-                        class="button button-like button-secondary-invis uix-tooltip {% if upload.interactions.legacy.current_rating == "like" %}button-toggled{% endif %}" title="{{ localize('i_like_this') }}">
+                        class="button button-like button-default-invis uix-tooltip {% if upload.interactions.legacy.current_rating == "like" %}button-toggled{% endif %}" title="{{ localize('i_like_this') }}">
                     {{ icon("watch-like", 20) }}
                     <span id="like-count">{{ upload.interactions.legacy.likes }}</span>
                 </button>
                 <button href="/#" id="{% if is_user_logged_in %}dislike{% else %}action_unlogged{% endif %}"
-                        class="button button-dislike button-secondary-invis uix-tooltip {% if upload.interactions.legacy.current_rating == "dislike" %}button-toggled{% endif %}" title="{{ localize('i_dislike_this') }}">
+                        class="button button-dislike button-default-invis uix-tooltip {% if upload.interactions.legacy.current_rating == "dislike" %}button-toggled{% endif %}" title="{{ localize('i_dislike_this') }}">
                     {{ icon("watch-dislike", 20) }}
                     <span id="dislike-count">{{ upload.interactions.legacy.dislikes }}</span>
                 </button>
@@ -100,7 +101,7 @@
             <div class="col-8">
                 <div style="margin-top:-9px;">
                     {# <button href="/#" id="{% if is_user_logged_in %}favorite{% else %}action_unlogged{% endif %}"
-                                class="button {% if isFavorited %}button-warning{% else %}button-secondary-invis{% endif %} tooltip" title="Favorite">
+                                class="button {% if isFavorited %}button-warning{% else %}button-default-invis{% endif %} tooltip" title="Favorite">
                         {{ icon("star-fill", 20) }}
                         </button> #}
                 </div>

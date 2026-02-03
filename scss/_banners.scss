@@ -3,12 +3,18 @@
     @if $theme =="hitchhiker" {
         padding: 9.5px 1em;
         font-size: 13px;
+        line-height: 1.2;
         font-weight: 500;
     }
 
     @else {
         padding: 0.5em 1em;
         border-radius: 3px;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: underline;
     }
 
     &.full-screen {
@@ -33,7 +39,7 @@
     }
 }
 
-@each $state, $value in $theme-colors {
+@each $state, $value in $banner-colors {
     .banner-#{$state} {
         @if $theme =="hitchhiker" {
             background-color: $value;
@@ -42,9 +48,13 @@
         @else {
             border: 1px solid darken($value, 3.5%);
             background-color: lighten($value, 1.5%);
-            @include gradient-y($start-color: lighten($value, 1.5%), $end-color: darken($value, 1.5%));
+            background-image: linear-gradient(
+                to bottom,
+                lighten($value, 1.5%),
+                darken($value, 1.5%)
+            );
         }
 
-        color: contrast-color($value) !important;
+        color: contrast-color($value);
     }
 }
