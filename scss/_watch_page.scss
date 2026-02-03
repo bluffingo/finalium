@@ -14,11 +14,7 @@
     text-align: center;
     background: $card-bg;
 
-    @if $theme =="hitchhiker" {
-        margin-bottom: 10px;
-    } @else {
-        margin-bottom: 0.75em;
-    }
+    margin-bottom: 10px;
 
     .img-upload {
         padding: 1rem;
@@ -217,7 +213,7 @@
     font-size: 11px;
     text-align: center;
     height: 24px;
-    line-height: 24px;
+    line-height: 22px;
 
     display: inline-block;
 }

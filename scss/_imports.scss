@@ -16,12 +16,11 @@
 
 $header-height: 48px;
 $masthead-search-bar-height: 31px;
-$guide-width: 17.5em;
+$guide-width: 230px;
 
 @if $theme =="hitchhiker" {
     $header-height: 49px;
     $masthead-search-bar-height: 29px;
-    $guide-width: 230px;
 }
 
 /* SB CSS STARTS HERE ======================================================== */

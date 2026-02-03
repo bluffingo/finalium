@@ -20,10 +20,6 @@ $masthead-user-pfp: 27px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    @if $theme !="hitchhiker" {
-        gap: 1em;
-    }
 }
 
 #header-user {
@@ -96,29 +92,31 @@ $masthead-user-pfp: 27px;
         position: relative;
         display: flex;
 
-        @if $theme =="hitchhiker" {
-            width: 200px;
-            height: 30px;
-        }
-
-        @else {
-            height: 30px;
-        }
+        width: 200px;
+        height: 30px;
 
         a {
             display: block;
             text-decoration: none;
         }
 
-        @if $theme =="hitchhiker" {
-            .content-region {
-                position: relative;
-                bottom: 19px;
-                right: 1px;
-                color: $comment-timestamp;
-                font-size: 11px;
-                text-decoration: none;
-                font-weight: normal;
+        .content-region {
+            @if $theme != "hitchhiker" {
+                display: none; /* temporary */
+            }
+            position: relative;
+            bottom: 19px;
+            right: 1px;
+            color: $comment-timestamp;
+            font-size: 11px;
+            text-decoration: none;
+            font-weight: normal;
+        }
+
+        // try to handle the wide classic squarebracket logo
+        &.squarebracket {
+            #guide-toggle {
+                margin-left: -20px;
             }
         }
     }
@@ -126,9 +124,7 @@ $masthead-user-pfp: 27px;
     #logo {
         height: 30px;
         border: 0;
-        @if $theme =="hitchhiker" {
-            margin-right: 2px;
-        }
+        margin-right: 2px;
     }
 
     // kinda hacky
@@ -159,19 +155,16 @@ $masthead-user-pfp: 27px;
 }
 
 #masthead-search {
+    position: relative;
+
     display: flex;
     overflow: hidden;
 
     align-items: center;
 
     @if $theme =="hitchhiker" {
-        position: relative;
         padding: 0;
         margin-bottom: 1px;
-    }
-
-    @else {
-        padding: 3px;
     }
 
     label {

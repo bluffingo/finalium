@@ -176,13 +176,13 @@ input[type=file]::-webkit-file-upload-button {
 }
 
 .button-small {
+    height: 24px;
+    
     @if $theme == "hitchhiker" {
         padding: 0 8px;
-        height: 24px;
     } @else {
         border-radius: 2px;
         padding: 5px 13px;
-        height: 26px;
         font-size: 11px;
     }
 }
