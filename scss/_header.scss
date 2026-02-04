@@ -59,9 +59,9 @@ $masthead-user-pfp: 32px;
     border-bottom: 1px solid $masthead-border;
 
     @if $theme == "hitchhiker" {
-        padding-left: 30px;
-        padding-right: 30px;
+        padding: 0 30px;
     } @else {
+        paddinG: 0 10px;
         backdrop-filter: blur(4px);
     }
 
@@ -81,10 +81,6 @@ $masthead-user-pfp: 32px;
 
     @if $theme =="hitchhiker" {
         max-width: 100%;
-    }
-
-    @else {
-        @include maxwidths();
     }
 
     position: relative;
@@ -113,6 +109,7 @@ $masthead-user-pfp: 32px;
             height: 30px;
         } @else {
             align-items: center;
+            width: 205px; // otherwise 2022 sb logo fucks up the guide button
             height: 30px;
 
         }
@@ -267,11 +264,17 @@ $masthead-user-pfp: 32px;
 }
 
 .subheader {
-    background: #333;
-    padding-left: 30px;
     height: 40px;
     display: flex;
     align-items: center;
+
+    @if $theme == "hitchhiker" {
+        background: #333;
+        padding-left: 30px;
+    } @else {
+        background: linear-gradient(#333, #222);
+        padding-left: 10px;
+    }
 
     .subheader-link {
         color: #fff;
@@ -279,12 +282,22 @@ $masthead-user-pfp: 32px;
         padding: 0 10px;
 
         &:hover {
-            background: #444;
+            @if $theme == "hitchhiker" {
+                background: #444;
+            } @else {
+                background: linear-gradient(#444, #333);
+            }
+
             text-decoration: none;
         }
 
         &:active, &.selected {
-            background: #666;
+            @if $theme == "hitchhiker" {
+                background: #666;
+            } @else {
+                background: linear-gradient(#555, #666);
+            }
+
             text-decoration: none;
         }
     }

@@ -36,6 +36,13 @@
 
         .footer-links-primary a,
         .footer-links-secondary a {
+
+            @if $theme == "hitchhiker" {
+                &:hover {
+                    color: $primary;
+                }
+            }
+            
             font-weight: 500;
         }
 

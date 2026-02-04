@@ -461,33 +461,6 @@ ul.unstyled-list {
     list-style: none;
 }
 
-.tooltip {
-    position: fixed;
-    background: #000;
-    color: #fff;
-    padding: 6px;
-    font-size: 11px;
-    font-weight: 500;
-    border-radius: 2px;
-    box-shadow: 0 1px 1px rgba(0,0,0,.25);
-    white-space: nowrap;
-    pointer-events: none;
-    z-index: 10001;
-    opacity: 0;
-    transition: opacity .2s ease-out;
-
-    &::after {
-        content: "";
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        margin-left: -5px;
-        border-left: 5px solid transparent;
-        border-right: 5px solid transparent;
-        border-top: 5px solid #000;
-    }
-}
-
 /// Tables \\\
 @import "_tables";
 /// Containers \\\
@@ -516,8 +489,10 @@ ul.unstyled-list {
 @import "_badges";
 /// Menus \\\
 @import "_menus";
-/// Dialog \\\
-@import "_dialog";
+/// Tooltips \\\
+@import "_tooltips";
+/// Dialogs \\\
+@import "_dialogs";
 
 /// Watch page \\\
 @import "_watch_page";

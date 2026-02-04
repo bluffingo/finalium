@@ -74,12 +74,17 @@
     gap: 10px;
     margin-bottom: 6px;
 
+    .profile-picture {
+        width: 48px;
+        aspect-ratio: 1/1;
+    }
+
     .watch-creator-info {
         display: flex;
-        gap: 8px;
         flex-direction: column;
 
         .watch-creator-userlink {
+            height: 22px;
             @if $theme =="hitchhiker" {
                 .userlink {
                     color: $description-text-color;
