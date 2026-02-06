@@ -1,8 +1,11 @@
 .comments-header {
     color: $header-text-color;
-    font-weight: 500;
     text-transform: uppercase;
     margin-bottom: 17px;
+
+    .title {
+        font-weight: 500;
+    }
 }
 
 #commentContents {

@@ -33,8 +33,10 @@
         unsubscribe_string = 'Unfollow';
         opensb_version = '{{ opensb_version.name }} {{ opensb_version.string }}';
     </script>
-    <script src="/assets/common_shared.js?r={{ get_css_file_date() }}"></script>
-    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+    <script src="/assets/common.js?r={{ get_css_file_date() }}"></script>
+    {% if page_name == "register" and captcha_public_token %}
+        <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+    {% endif %}
 </head>
 <body class="login-body">
 {% block precontent %}{% endblock %}
