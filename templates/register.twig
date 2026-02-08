@@ -43,7 +43,7 @@
                     {{ localize('register_invite_key_required', website_branding.name) }}
                 </p>
             {% elseif is_chaziz_sb %}
-                <p>
+                <p style="color:red;font-weight:bold;">
                     {{ localize('register_discord_requirement', website_branding.name) }}
                 </p>
             {% endif %}
@@ -52,4 +52,5 @@
                     name="registersubmit">
         </form>
     {% endblock %}
+
 {% endembed %}
