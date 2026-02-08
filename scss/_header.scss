@@ -99,10 +99,19 @@ $masthead-user-pfp: 32px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
 
     margin-left: auto;
     text-align: right;
+
+    @if $theme == "hitchhiker" {
+        gap: 20px;
+    } @else {
+        gap: 1em;
+
+        a {
+            color: black;
+        }
+    }
 }
 
 #masthead-container {
