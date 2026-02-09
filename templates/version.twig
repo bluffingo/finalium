@@ -14,7 +14,8 @@
         <div class="col-8">
             <div class="card card-body-article">
                 <h1>{{ localize('about_site', website_branding.name) }}</h1>
-                <img src="/assets/opensb_logo.svg" width="180"> {# temporary #}
+                {# awkwardly hardcoded #}
+                <svg class="icon " width="180" height="41.4" fill="currentColor"><use href="/assets/icons.svg#opensb_logo"></use></svg>
                 <p>{{ localize('version_intro', '2021-' ~ ('now' | date('Y')), data.developers|join(', ')) }}</p>
                 <p>{{ localize('version_agpl') }}</p>
                 <p>{{ localize('version_no_warranty') }}</p>
