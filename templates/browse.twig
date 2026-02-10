@@ -29,9 +29,9 @@
                     {% for upload in data.uploads %}
                         {% include "components/upload_box.twig" %}
                     {% else %}
-                        <div class="banner banner-error" role="alert">There are no uploads.</div>
+                        There are no uploads.
                     {% endfor %}
-                    <div class="center">{{ pagination(data.count, items_per_page, le_url, page) }}</div>
+                    {{ pagination(data.count, items_per_page, le_url, page) }}
                 </div>
             </div>
         </div>

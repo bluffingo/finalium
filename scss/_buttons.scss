@@ -78,7 +78,7 @@ $button-padding: 7px 12px;
         color: contrast-color($value);
     }
 
-    &:active {
+    &:active, &.toggled {
         $box-shadow-color: rgba(0, 0, 0, 0.5);
 
         @if $state == "default" {
@@ -106,6 +106,8 @@ $button-padding: 7px 12px;
 
         color: contrast-color($value);
     }
+
+    // TODO: toggled hover/active
 
     &-invis {
         border: 1px solid #0000;

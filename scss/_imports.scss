@@ -182,14 +182,9 @@ blockquote {
 
 // Pagination \\
 .pagination {
-    margin-top: 1em;
-    font-size: 14pt;
-    font-weight: bold;
-
-    span {
-        margin-left: 13px;
-        display: inline-block;
-    }
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 /// Generic text aligns \\\
