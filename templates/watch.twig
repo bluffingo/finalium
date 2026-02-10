@@ -39,77 +39,67 @@
         <div class="card card-body watch-header">
             <h1>{{ upload.title }}</h1>
             <div class="grid watch-user-header">
-            <div class="col-6">
-                <div class="watch-creator">
-                    <a href=""><img src="{{ profile_picture(upload.author.id) }}" class="profile-picture"></a>
-                    <div class="watch-creator-info">
-                        <div class="watch-creator-userlink">
-                            {{ user_link(upload.author) }}
+                <div class="col-6">
+                    <div class="watch-creator">
+                        <a href=""><img src="{{ profile_picture(upload.author.id) }}" class="profile-picture"></a>
+                        <div class="watch-creator-info">
+                            <div class="watch-creator-userlink">
+                                {{ user_link(upload.author) }}
+                            </div>
+                            <div class="watch-creator-subscribe">
+                                {% if upload.is_owner %}
+                                <a class="button button-default button-small">Channel settings</a>
+                                {% else %}
+                                <button id="follow-watch" class="button button-{% if upload.author.following %}default{% else %}follow{% endif %} button-small" type="button" {% if not is_user_logged_in or user_data.id == upload.author.id %}disabled{% endif %}>{% if upload.author.following %}{{ localize('unfollow') }}{% else %}{{ localize('follow') }}{% endif %}</button>
+                                <div class="follow-count">{{ upload.author.followers }}</div>
+                                {% endif %}
+                            </div>
                         </div>
-                        <div class="watch-creator-subscribe">
-                            {% if upload.is_owner %}
-                            <a class="button button-default button-small">Channel settings</a>
-                            {% else %}
-                            <button id="follow-watch" class="button button-{% if upload.author.following %}default{% else %}follow{% endif %} button-small" type="button" {% if not is_user_logged_in or user_data.id == upload.author.id %}disabled{% endif %}>{% if upload.author.following %}{{ localize('unfollow') }}{% else %}{{ localize('follow') }}{% endif %}</button>
-                            <div class="follow-count">{{ upload.author.followers }}</div>
-                            {% endif %}
-                        </div>
+                        <br>
                     </div>
-                    <br>
                 </div>
-            </div>
-            <div class="col-6 right watch-view-info">
-                <div class="watch-view-count">{{ localize('views', upload.interactions.views) }}</div>
-                <div class="likesaber">
-                    <div class="like" style="width:{{ upload.interactions.legacy.ratio }}"></div>
+                <div class="col-6 right watch-view-info">
+                    <div class="watch-view-count">{{ localize('views', upload.interactions.views) }}</div>
+                    <div class="likesaber">
+                        <div class="like" style="width:{{ upload.interactions.legacy.ratio }}"></div>
+                    </div>
                 </div>
-            </div>
             </div>
             <hr class="watch-info-divider">
             <div class="watch-action-buttons">
-            <div class="watch-secondary-actions">
-                <button class="button button-default-invis uix-tooltip" onclick="toggleNotAvailable()" title="{{ localize('add_to') }}">
-                    {{ icon(fi.watch_add_to, 20) }} {{ localize('add_to') }}
-                </button>
-                <button class="button button-default-invis uix-tooltip" onclick="toggleNotAvailable()" title="{{ localize('share') }}">
-                    {{ icon(fi.watch_share, 20) }} {{ localize('share') }}
-                </button>
-                <div class="menu-container">
-                    <button class="menu-button button button-default-invis uix-tooltip" data-menu-id="watch-more-menu" title="{{ localize('more_actions') }}">
-                        {{ icon(fi.watch_more, 20) }} {{ localize('more') }}
+                <div class="watch-secondary-actions">
+                    <button class="button button-default-invis uix-tooltip" onclick="toggleNotAvailable()" title="{{ localize('add_to') }}">
+                        {{ icon(fi.watch_add_to, 20) }} {{ localize('add_to') }}
                     </button>
-                    <div class="menu" id="watch-more-menu">
-                        <div class="menu-item-button" onclick="toggleNotAvailable()">
-                            {{ icon(fi.watch_panel_report, 16) }} <span>{{ localize('report') }}</span>
-                        </div>
-                        <div class="menu-item-button" onclick="toggleNotAvailable()">
-                            {{ icon(fi.watch_panel_stats, 16) }} <span>Statistics</span>
+                    <button class="button button-default-invis uix-tooltip" onclick="toggleNotAvailable()" title="{{ localize('share') }}">
+                        {{ icon(fi.watch_share, 20) }} {{ localize('share') }}
+                    </button>
+                    <div class="menu-container">
+                        <button class="menu-button button button-default-invis uix-tooltip" data-menu-id="watch-more-menu" title="{{ localize('more_actions') }}">
+                            {{ icon(fi.watch_more, 20) }} {{ localize('more') }}
+                        </button>
+                        <div class="menu" id="watch-more-menu">
+                            <div class="menu-item-button" onclick="toggleNotAvailable()">
+                                {{ icon(fi.watch_panel_report, 16) }} <span>{{ localize('report') }}</span>
+                            </div>
+                            <div class="menu-item-button" onclick="toggleNotAvailable()">
+                                {{ icon(fi.watch_panel_stats, 16) }} <span>Statistics</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="watch-sentiment-actions">
-                <button href="/#" id="{% if is_user_logged_in %}like{% else %}action_unlogged{% endif %}"
-                        class="button button-like button-default-invis uix-tooltip {% if upload.interactions.legacy.current_rating == "like" %}button-toggled{% endif %}" title="{{ localize('i_like_this') }}">
-                    {{ icon(fi.watch_like, 20) }}
-                    <span id="like-count">{{ upload.interactions.legacy.likes }}</span>
-                </button>
-                <button href="/#" id="{% if is_user_logged_in %}dislike{% else %}action_unlogged{% endif %}"
-                        class="button button-dislike button-default-invis uix-tooltip {% if upload.interactions.legacy.current_rating == "dislike" %}button-toggled{% endif %}" title="{{ localize('i_dislike_this') }}">
-                    {{ icon(fi.watch_dislike, 20) }}
-                    <span id="dislike-count">{{ upload.interactions.legacy.dislikes }}</span>
-                </button>
-            </div>
-            </div>
-            <div class="grid" style="margin-top:5px;">
-            <div class="col-8">
-                <div style="margin-top:-9px;">
-                    {# <button href="/#" id="{% if is_user_logged_in %}favorite{% else %}action_unlogged{% endif %}"
-                                class="button {% if isFavorited %}button-warning{% else %}button-default-invis{% endif %} tooltip" title="Favorite">
-                        {{ icon("star-fill", 20) }}
-                        </button> #}
+                <div class="watch-sentiment-actions">
+                    <button href="/#" id="{% if is_user_logged_in %}like{% else %}action_unlogged{% endif %}"
+                            class="button button-like button-default-invis uix-tooltip {% if upload.interactions.legacy.current_rating == "like" %}button-toggled{% endif %}" title="{{ localize('i_like_this') }}">
+                        {{ icon(fi.watch_like, 20) }}
+                        <span id="like-count">{{ upload.interactions.legacy.likes }}</span>
+                    </button>
+                    <button href="/#" id="{% if is_user_logged_in %}dislike{% else %}action_unlogged{% endif %}"
+                            class="button button-dislike button-default-invis uix-tooltip {% if upload.interactions.legacy.current_rating == "dislike" %}button-toggled{% endif %}" title="{{ localize('i_dislike_this') }}">
+                        {{ icon(fi.watch_dislike, 20) }}
+                        <span id="dislike-count">{{ upload.interactions.legacy.dislikes }}</span>
+                    </button>
                 </div>
-            </div>
             </div>
         </div>
         <div class="card card-body" id="watch-not-available" style="display:none;">

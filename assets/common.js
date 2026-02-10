@@ -44,7 +44,58 @@ function toggleNotAvailable() {
     }
 }
 
+// content snap width
+var SNAP_CLASSES = [
+    "content-snap-width-1",
+    "content-snap-width-2",
+    "content-snap-width-3"
+];
+
+function getViewportWidth() {
+    return document.documentElement.clientWidth || window.innerWidth;
+}
+
+function calculateContentSnapWidth(wideLayout) {
+    var width = getViewportWidth() - 21 - 50;
+
+    if (getViewportWidth() >= 1251 && wideLayout) {
+        width -= 230; // 230px is the length of the guide
+    }
+
+    return width;
+}
+
+function pickContentSnapClass(width) {
+    if (width >= 1262) return "content-snap-width-3";
+    if (width >= 1056) return "content-snap-width-2";
+    return "content-snap-width-1";
+}
+
+function updateContentSnap() {
+    var body = document.body;
+
+    var isGuideOpen = document.documentElement.classList.contains("show-guide");
+
+    var width = calculateContentSnapWidth(isGuideOpen);
+    var snap = pickContentSnapClass(width);
+
+    for (var i = 0; i < SNAP_CLASSES.length; i++) {
+            var cls = SNAP_CLASSES[i];
+            var shouldHave = (cls === snap);
+            var has = body.classList.contains(cls);
+
+            if (has !== shouldHave) {
+            body.classList.toggle(cls, shouldHave);
+        }
+    }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+    updateContentSnap();
+    window.addEventListener("resize", function () {
+        updateContentSnap();
+    });
+
     // ported from trinium
     // Get all menu buttons
     const menuButtons = document.querySelectorAll('.menu-button');
@@ -294,37 +345,16 @@ document.addEventListener("DOMContentLoaded", () => {
         guide_button.addEventListener("click", function () {
             var guide = document.getElementById("guide");
             if (guide) {
-                toggleElementDisplay(guide);
+                document.documentElement.classList.toggle("show-guide");
 
-                // if we're on the homepage or on a profile, toggle show-guide in <html>
-                if (page.classList.contains("home") 
-                 || page.classList.contains("user")
-                 || page.classList.contains("members") // should be channels
-                 || page.classList.contains("browse")
-                ) {
-                    document.documentElement.classList.toggle("show-guide");
+                if (document.documentElement.classList.contains("guide-pinned")) {
+                    updateContentSnap();
                 }
             } else {
                 error("where the fuck is the guide???")
             }
         });
     }
-
-    // user button
-    /*
-    var masthead_user_button = document.getElementById("masthead-loggedin");
-
-    if (masthead_user_button) {
-        masthead_user_button.addEventListener("click", function () {
-            var masthead_user_menu = document.getElementById("masthead-below");
-            if (masthead_user_menu) {
-                toggleElementDisplay(masthead_user_menu);
-            } else {
-                error("where the fuck is the user menu???")
-            }
-        });
-    }
-    */
 
     // logged out error?
     const actionUnlogged = document.getElementById('action_unlogged');
@@ -334,7 +364,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // shelf slider (hardcoded to feed)
+    // shelf slider (hardcoded to feed for the time being)
     const feed = document.getElementById('feed');
 
     function normalizeScroll(slider) {

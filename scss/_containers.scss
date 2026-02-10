@@ -3,7 +3,7 @@
     margin: auto;
 }
 
-.show-guide {
+html.show-guide.guide-pinned {
     #page, .jumbotron {
         padding-left: 230px;
     }
@@ -64,4 +64,20 @@
 
 #page.user #content {
     margin: auto;
+}
+
+// content snap
+body.content-snap-width-1 #page.home #content {
+    width: 850px;
+    max-width: 850px;
+}
+
+body.content-snap-width-2 #page.home #content {
+    width: 1056px;
+    max-width: 1056px;
+}
+
+body.content-snap-width-3 #page.home #content {
+    width: 1262px;
+    max-width: 1262px;
 }

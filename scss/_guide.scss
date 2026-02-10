@@ -1,14 +1,30 @@
+html.guide-pinned #guide {
+    box-shadow: none;
+    border-right: 1px solid $guide-border;
+    bottom: 0;
+}
+
+html.show-guide #guide {
+    opacity: 1;
+    visibility: visible;
+}
+
 #guide {
-    display: none;
+    display: block;
+    visibility: hidden;
     position: fixed;
     left: 0;
     top: $header-height;
-    bottom: 0;
+    padding-bottom: 50px;
     background: $guide-bg;
     border-top: 1px solid $guide-border;
-    border-right: 1px solid $guide-border;
     z-index: 10000;
     overflow: hidden;
+    opacity: 0;
+    transition: opacity .1s;
+
+    box-shadow: 5px 10px 15px 5px rgba(black, .1);
+
 
     &:hover {
         overflow-y: auto;
@@ -24,10 +40,8 @@
         margin: 8px 0;
     }
 
-    @if $theme =="hitchhiker" {
-        &.with-fullscreen-banner {
-            top: $header-height + $fullscreen-banner-height;
-        }
+    &.with-fullscreen-banner {
+        top: $header-height + $fullscreen-banner-height;
     }
 
     .guide-container {
