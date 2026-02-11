@@ -1,6 +1,6 @@
 {% extends "_layout_login.twig" %}
 
-{% block title %}{{ localize('ban_title') }}{% endblock %}
+{% set title = localize('ban_title') %}
 
 {% block content %}
     {% if current_theme == 'hitchhiker' %}<h1>{{ localize('ban_title') }}</h1>{% endif %}

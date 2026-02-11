@@ -5,7 +5,7 @@
 {% set profile_picture = profile_picture(data.id) %}
 {% set banner_picture = profile_banner(data.id) %}
 
-{% block title %}{{ data.displayname }}{% endblock %}
+{% set title = data.username %}
 
 {% set selected_tab = "home" %}
 

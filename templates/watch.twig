@@ -1,9 +1,6 @@
 {% extends "_layout.twig" %}
-{% block head %}
-<meta name="description" content="{{ upload.description|length > 250 ? upload.description|slice(0, 250) ~ '...' : upload.description }}">
-<meta property="og:description" content="{{ upload.description|length > 250 ? upload.description|slice(0, 250) ~ '...' : upload.description }}">
-<meta property="og:image" content="{{ domain }}{{ thumbnail(upload.id, upload.type, upload.flags.custom_thumbnail) }}">
-<meta property="og:url" content="{{ page_url }}">
+
+{% block script %}
 <script>
     upload_id = '{{ upload.id }}';
     upload_int_id = '{{ upload.int_id }}';

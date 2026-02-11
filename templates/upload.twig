@@ -1,6 +1,6 @@
 {% extends "_layout.twig" %}
 
-{% block title %}{{ localize('new_upload') }}{% endblock %}
+{% set title = localize('new_upload') %}
 
 	{% block content %}
         {% if current_theme == 'hitchhiker' %}

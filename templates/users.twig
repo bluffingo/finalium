@@ -2,7 +2,7 @@
 
 {% set pin_guide = true %}
 
-{% block title %}{{ localize("members") }}{% endblock %}
+{% set title = localize('members') %}
 
 	{% block content %}
 		{% set total_pages = (users.count / items_per_page) | round(0, 'ceil') %}

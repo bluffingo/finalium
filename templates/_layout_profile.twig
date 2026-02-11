@@ -1,16 +1,6 @@
 {% extends "_layout.twig" %}
 
-{% block head %}
-    <meta name="title" content="{{ data.displayname }} - {{ website_branding.name }}">
-    <meta name="description"
-          content="{{ data.about|length > 250 ? data.about|slice(0, 250) ~ '...' : data.about }}">
-    <meta name="theme-color" content="{{ data.userlink_color }}">
-    <meta property="og:site_name" content="{{ website_branding.name }}"/>
-    <meta property="og:title" content="{{ data.displayname }} - {{ website_branding.name }}">
-    <meta property="og:description"
-          content="{{ data.about|length > 250 ? data.about|slice(0, 250) ~ '...' : data.about }}">
-    <meta property="og:image" content="{{ profile_picture }}">
-    <meta property="og:url" content="{{ page_url }}">
+{% block script %}
     <script>
         user_id = '{{ data.id }}';
     </script>

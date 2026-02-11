@@ -1,9 +1,11 @@
 {% extends "_layout.twig" %}
 
-{% block title %}My uploads {% if page != 1 %}(Page {{ page }}){% endif %}{% endblock %}
+{% set title = localize('my_uploads') %}
+
+{% set total_pages = (data.count / items_per_page) | round(0, 'ceil') %}
 
 	{% block content %}
-        <h1>My uploads {% if page != 1 %}(Page {{ page }}){% endif %}</h1>
+        <h1>{{ localize('my_uploads') }} ({{ localize('page_num_of_num', page, total_pages )}})</h1>
         <p>Temporary design!</p>
         <div class="card">
             <div class="card-body">
