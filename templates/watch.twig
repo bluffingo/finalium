@@ -16,7 +16,8 @@
     {% set creator_bar_icon_size = 16 %}
 {% endif %}
 
-{% block title %}{{ upload.title }}{% endblock %}
+{% set title = upload.title %}
+
 {% block content %}
 <div class="watch-grid">
     <div class="col-left">
