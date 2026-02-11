@@ -1,5 +1,3 @@
-spf.init();
-
 function error(error) {
     console.error("OpenSB Finalium Skin Error: " + error);
 }

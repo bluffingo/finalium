@@ -25,11 +25,17 @@
         opensb_version = '{{ opensb_version.name }} {{ opensb_version.string }}';
     </script>
     <script src="/assets/common.js?r={{ get_css_file_date() }}"></script>
+    {% if options.finalium_enable_spf %}
     <script src="/assets/skin/finalium/spf.js?r={{ get_css_file_date() }}"></script>
+    <script>spf.init();</script>
+    {% endif %}
     <script src="/assets/skin/finalium/common.js?r={{ get_css_file_date() }}"></script>
     <style>
         {% block customcss %}{% endblock %}
     </style>
+
+    {% block head %}
+    {% endblock %}
 </head>
 <body id="body">
 
