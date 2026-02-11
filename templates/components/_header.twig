@@ -13,7 +13,7 @@
                 <div class="button button-default-invis masthead-button guide-button" id="guide-toggle">
                     {{ icon(fi.masthead_guide, masthead_guide_icon_size) }}
                 </div>
-                <a href="/">
+                <a href="/" class="spf-link">
                     {% apply spaceless %}
                     <img id="logo" src="{{ logo }}" alt="{{ website_branding.name }}">
                     {% if country_code is defined and country_code|trim != '' and country_code != 'US' and current_theme == 'hitchhiker' %}

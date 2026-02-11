@@ -7,12 +7,12 @@
                 </div>
             </div>
         {% endif %}
-        <a href="/watch?v={{ upload.id }}">
+        <a href="/watch?v={{ upload.id }}" class="spf-link">
             <img src="{{ thumbnail(upload.id, upload.type, upload.flags.custom_thumbnail) }}" alt="{{ upload.title }}">
         </a>
     </div>
     <div class="content-wrapper">
-        <h3 class="title"><a href="/watch?v={{ upload.id }}">{{ upload.title }}</a></h3>
+        <h3 class="title"><a href="/watch?v={{ upload.id }}" class="spf-link">{{ upload.title }}</a></h3>
         <span class="stat">{{ user_link(upload.author) }}</span>
         <span class="stat">
             {{ localize('views', upload.views) }}

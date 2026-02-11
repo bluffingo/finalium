@@ -1,0 +1,3 @@
+[submodule "spfjs"]
+	path = spfjs
+	url = https://github.com/bluffingo/spfjs.git

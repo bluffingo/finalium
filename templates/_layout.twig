@@ -27,7 +27,6 @@
     <meta name="application-name" content="{{ website_branding.name }}">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="/assets/css/finalium_{{ current_theme }}.css?r={{ get_css_file_date() }}" type="text/css">
-    <script src="/assets/skin/finalium/common.js?r={{ get_css_file_date() }}"></script>
     {% block script %}{% endblock %}
     <script>
         subscribe_string = '{{ localize('follow') }}';
@@ -35,11 +34,14 @@
         opensb_version = '{{ opensb_version.name }} {{ opensb_version.string }}';
     </script>
     <script src="/assets/common.js?r={{ get_css_file_date() }}"></script>
+    <script src="/assets/skin/finalium/spf.js?r={{ get_css_file_date() }}"></script>
+    <script src="/assets/skin/finalium/common.js?r={{ get_css_file_date() }}"></script>
     <style>
         {% block customcss %}{% endblock %}
     </style>
 </head>
 <body id="body">
+
 {% if is_debug %}
     {% include('components/debug_dialog.twig') %}
     <a id="debug-button">{{ localize('debug') }} @{{ opensb_version.hash }}</a>
@@ -56,7 +58,11 @@
 {% endif %}
 {% include "components/_guide.twig" %}
 {% include "components/_header.twig" %}
+
+<div id="precontent">
 {% block precontent %}{% endblock %}
+</div>
+
 <div class="container {{ page_name }}" id="page">
     <div id="content">
         {% if session.notif_message %}
@@ -68,6 +74,8 @@
         {% block content %}{% endblock %}
     </div>
 </div>
+
 {% include "components/_footer.twig" %}
+
 </body>
 </html>
