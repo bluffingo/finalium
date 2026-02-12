@@ -17,19 +17,19 @@
 <head>
     {{ include('_html_head.twig') }}
     
-    <link rel="stylesheet" href="/assets/css/finalium_{{ current_theme }}.css?r={{ get_css_file_date() }}" type="text/css">
+    <link name="skin-css" rel="stylesheet" href="/assets/css/finalium_{{ current_theme }}.css?r={{ get_css_file_date() }}" type="text/css">
     {% block script %}{% endblock %}
     <script>
         subscribe_string = '{{ localize('follow') }}';
         unsubscribe_string = '{{ localize('unfollow') }}';
         opensb_version = '{{ opensb_version.name }} {{ opensb_version.string }}';
     </script>
-    <script src="/assets/common.js?r={{ get_css_file_date() }}"></script>
+    <script name="common" src="/assets/common.js?r={{ get_css_file_date() }}"></script>
     {% if options.finalium_enable_spf %}
-    <script src="/assets/skin/finalium/spf.js?r={{ get_css_file_date() }}"></script>
+    <script name="spf" src="/assets/skin/finalium/spf.js?r={{ get_css_file_date() }}"></script>
     <script>spf.init();</script>
     {% endif %}
-    <script src="/assets/skin/finalium/common.js?r={{ get_css_file_date() }}"></script>
+    <script name="base" src="/assets/skin/finalium/base.js?r={{ get_css_file_date() }}"></script>
     <style>
         {% block customcss %}{% endblock %}
     </style>

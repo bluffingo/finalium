@@ -7,6 +7,49 @@ if (typeof spf !== "undefined") {
     console.debug("SPF is not available.")
 }
 
+function triggerReady() {
+    console.debug("triggerReady()");
+    document.dispatchEvent(new Event('pageReady'));
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', triggerReady, { once: true });
+} else {
+    triggerReady();
+}
+
+if (is_spf) {
+    const bar = document.getElementById("progress");
+
+    window.addEventListener("spfrequest", function () {
+        console.debug("spfrequest");
+        // if it still exists, delete it so the bar doesn't go 
+        // right-to-left in a jarring way.
+        if (bar) {
+            bar.remove();
+        }
+        setSpfProgressBar([900, 60, "waiting"]);
+    });
+
+    window.addEventListener("spfprocess", function () {
+        setSpfProgressBar([500, 99, "waiting"]);
+    });
+
+    window.addEventListener("spfdone", function () {
+        triggerReady();
+        setSpfProgressBar([300, 101, "done"]);
+
+        clearTimeout(spfProgressRemovalTimer);
+
+        spfProgressRemovalTimer = setTimeout(() => {
+            const bar = document.getElementById("progress");
+            if (bar) {
+                bar.remove();
+            }
+        }, 350);
+    });
+}
+
 function error(error) {
     console.error("OpenSB Finalium Skin Error: " + error);
 }
@@ -133,35 +176,7 @@ function setSpfProgressBar([duration, percent, className]) {
     }, 0);
 }
 
-
 document.addEventListener("DOMContentLoaded", () => {
-    if (is_spf) {
-        window.addEventListener("spfrequest", function () {
-            console.debug("spfrequest");
-            setSpfProgressBar([900, 60, "waiting"]);
-        });
-
-        window.addEventListener("spfprocess", function () {
-            console.debug("spfprocess");
-            setSpfProgressBar([500, 99, "waiting"]);
-        });
-
-        window.addEventListener("spfdone", function () {
-            console.debug("spfdone");
-
-            setSpfProgressBar([300, 101, "done"]);
-
-            clearTimeout(spfProgressRemovalTimer);
-
-            spfProgressRemovalTimer = setTimeout(() => {
-                const bar = document.getElementById("progress");
-                if (bar) {
-                    bar.remove();
-                }
-            }, 350);
-        });
-    }
-
     updateContentSnap();
     window.addEventListener("resize", function () {
         updateContentSnap();
@@ -432,60 +447,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (actionUnlogged) {
         actionUnlogged.addEventListener('click', function () {
             alert('You cannot proceed with this action.');
-        });
-    }
-
-    // shelf slider (hardcoded to feed for the time being)
-    const feed = document.getElementById('feed');
-
-    function normalizeScroll(slider) {
-        const first = slider.firstElementChild;
-        if (!first) return;
-
-        const step =
-            slider.children[1]
-                ? slider.children[1].offsetLeft - first.offsetLeft
-                : first.offsetWidth;
-
-        const corrected =
-            Math.round(slider.scrollLeft / step) * step;
-
-        slider.scrollLeft = corrected;
-    }
-
-    if (feed) {
-        feed.querySelectorAll('.shelf').forEach(shelf => {
-            const slider = shelf.querySelector('.shelf-slider');
-            const buttons = shelf.querySelectorAll('.shelf-slider-nav');
-
-            if (slider) {
-                let isScrolling = false;
-
-                buttons.forEach(button => {
-                    button.addEventListener('click', () => {
-                        if (isScrolling) return;
-
-                        isScrolling = true;
-                        buttons.forEach(b => b.disabled = true);
-
-                        const dir = button.dataset.direction === 'right' ? 1 : -1;
-                        const viewport = slider.clientWidth;
-
-                        slider.scrollBy({
-                            left: dir * viewport,
-                            behavior: 'smooth'
-                        });
-
-                        setTimeout(() => {
-                            normalizeScroll(slider);
-                            isScrolling = false;
-                            buttons.forEach(b => b.disabled = false);
-                        }, 350);
-                    });
-                });
-
-                console.debug("initialized shelf slider", shelf.id);
-            }
         });
     }
 

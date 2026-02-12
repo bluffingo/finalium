@@ -2,6 +2,10 @@
 
 {% set pin_guide = true %}
 
+{% block head %}
+<script name="feed" src="/assets/skin/finalium/feed.js?r={{ get_css_file_date() }}"></script>
+{% endblock %}
+
 {% block precontent %}
     {% if current_theme != 'hitchhiker' %}
         <div class="jumbotron">
