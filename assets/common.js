@@ -1,3 +1,12 @@
+// check if spf is defined, if it is, then that means we do have it.
+let is_spf = false;
+if (typeof spf !== "undefined") {
+    console.debug("SPF appears to have initialized.");
+    is_spf = true;
+} else {
+    console.debug("SPF is not available.")
+}
+
 function error(error) {
     console.error("OpenSB Finalium Skin Error: " + error);
 }
@@ -90,7 +99,69 @@ function updateContentSnap() {
     }
 }
 
+let spfProgressUpdateTimer = null;
+let spfProgressClassTimer = null;
+let spfProgressRemovalTimer = null;
+
+function setSpfProgressBar([duration, percent, className]) {
+    if (!is_spf) return;
+
+    let bar = document.getElementById("progress");
+
+    if (!bar) {
+        bar = document.createElement("div");
+        bar.id = "progress";
+        bar.append(
+            document.createElement("dt"),
+            document.createElement("dd")
+        );
+        document.body.appendChild(bar);
+    }
+
+    clearTimeout(spfProgressUpdateTimer);
+    clearTimeout(spfProgressClassTimer);
+
+    spfProgressUpdateTimer = setTimeout(() => {
+        bar.className = "";
+
+        bar.style.transition = `width ${duration}ms ease`;
+        bar.style.width = `${percent}%`;
+
+        spfProgressClassTimer = setTimeout(() => {
+            bar.className = className;
+        }, duration);
+    }, 0);
+}
+
+
 document.addEventListener("DOMContentLoaded", () => {
+    if (is_spf) {
+        window.addEventListener("spfrequest", function () {
+            console.debug("spfrequest");
+            setSpfProgressBar([900, 60, "waiting"]);
+        });
+
+        window.addEventListener("spfprocess", function () {
+            console.debug("spfprocess");
+            setSpfProgressBar([500, 99, "waiting"]);
+        });
+
+        window.addEventListener("spfdone", function () {
+            console.debug("spfdone");
+
+            setSpfProgressBar([300, 101, "done"]);
+
+            clearTimeout(spfProgressRemovalTimer);
+
+            spfProgressRemovalTimer = setTimeout(() => {
+                const bar = document.getElementById("progress");
+                if (bar) {
+                    bar.remove();
+                }
+            }, 350);
+        });
+    }
+
     updateContentSnap();
     window.addEventListener("resize", function () {
         updateContentSnap();
