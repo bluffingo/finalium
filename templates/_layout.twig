@@ -30,6 +30,14 @@
     <script>spf.init();</script>
     {% endif %}
     <script name="base" src="/assets/skin/finalium/base.js?r={{ get_css_file_date() }}"></script>
+
+    {# on spf, we have to preload plyr so that we dont run into issues later #}
+    {% if options.finalium_enable_spf %}
+    {# nah laughing my fucking ass off this refuses to work with spf ive tried everything #}
+    {#<link name="plyr-css" href="https://unpkg.com/plyr@3.8.4/dist/plyr.css" rel="stylesheet">
+    <script name="plyr-js" src="https://unpkg.com/plyr@3.8.4/dist/plyr.min.js"></script>#}
+    {% endif %}
+
     <style>
         {% block customcss %}{% endblock %}
     </style>

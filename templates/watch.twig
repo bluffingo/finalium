@@ -23,7 +23,6 @@
     <div class="col-left">
         <div class="upload-container">
             {{ upload_view(upload) }}
-            {% if options.finalium_enable_spf %}<div class="banner banner-error">The player does NOT load on SPF. This is a known issue.</div>{% endif %}
         </div>
         {% if upload.is_owner %}
             <div class="card card-body watch-creator-bar">
