@@ -42,7 +42,7 @@
                     </div>
                     <hr>
                     <div class="form-input">
-                        <label for="locale">Locale (not fully supported outside of Trinium)</label>
+                        <label for="locale">Locale</label>
                         <select id="locale" name="locale" class="form-submit">
                             {% for locale in locales %}
                                 <option value="{{ locale.id }}"
@@ -51,6 +51,10 @@
                                 </option>
                             {% endfor %}
                         </select>
+                    </div>
+                    <div class="form-input">
+                        <input type="checkbox" id="spf" name="spf" {% if options.finalium_enable_spf %}checked{% endif %}/>
+                        <label for="spf">Enable SPF (experimental)</label>
                     </div>
                     <br>
                     <input type="submit" id="apply" name="apply" value="Apply" class="button button-primary">
