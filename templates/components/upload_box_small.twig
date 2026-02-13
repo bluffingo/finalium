@@ -1,4 +1,4 @@
-<div class="upload-list-item">
+<a href="/watch?v={{ upload.id }}" class="upload-list-item small spf-link">
     <div class="thumbnail">
         {% if upload.type == 0 %}
             <div class="thumbnail-badge-container">
@@ -7,13 +7,11 @@
                 </div>
             </div>
         {% endif %}
-        <a href="/watch?v={{ upload.id }}" class="spf-link">
-            <img src="{{ thumbnail(upload.id, upload.type, upload.flags.custom_thumbnail) }}" alt="{{ upload.title }}">
-        </a>
+        <img src="{{ thumbnail(upload.id, upload.type, upload.flags.custom_thumbnail) }}" alt="{{ upload.title }}">
     </div>
     <div class="content-wrapper">
-        <h3 class="title"><a href="/watch?v={{ upload.id }}" class="spf-link">{{ upload.title }}</a></h3>
-        <span class="stat">{{ user_link(upload.author) }}</span>
+        <h3 class="title">{{ upload.title }}</h3>
+        <span class="stat">{{ upload.author.info.username }}</span>
         <span class="stat">
             {{ localize('views', upload.views) }}
             {% if date(upload.published) > date('-1 week') %}
@@ -24,4 +22,4 @@
             {% endif %}
         </span>
     </div>
-</div>
+</a>

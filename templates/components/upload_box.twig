@@ -13,15 +13,18 @@
     </div>
     <div class="content-wrapper">
         <h3 class="title"><a href="/watch?v={{ upload.id }}" class="spf-link">{{ upload.title }}</a></h3>
-        <span class="stat">{{ user_link(upload.author) }}</span>
-        <span class="stat">
-            {{ localize('views', upload.views) }}
+        <div class="byline">{{ user_link(upload.author) }}</div>
+        <div class="meta">{{ upload.published | relative_time }} • {{ localize('views', upload.views) }}</div>
+        {% if upload.description|trim is not empty %}
+        <div class="description">{{ upload.description | markdown_user_written }}</div>
+        {% endif %}
+        {#<span class="stat">
             {% if date(upload.published) > date('-1 week') %}
             <div class="badge">New</div>
             {% endif %}
             {% if upload.type == 2 %}
             <div class="badge">Image</div>
             {% endif %}
-        </span>
+        </span>#}
     </div>
 </div>

@@ -181,18 +181,18 @@
         position: relative;
         height: fit-content;
 
-        width: 120px;
+        width: 196px;
 
         @if $theme =="hitchhiker" {
-            height: 68px;
+            height: 110px;
             margin-left: 5px;
         }
 
         img {
-            width: 120px;
+            width: 196px;
 
             @if $theme =="hitchhiker" {
-                height: 68px;
+                height: 110px;
                 object-fit: contain;
                 background: #f1f1f1;
             }
@@ -211,40 +211,79 @@
             font-size: 13px;
             font-weight: 500;
 
-            a {
-                color: $description-text-color;
+            color: $description-text-color;
+        }
 
-                &:hover {
+        // only used by small upload box
+        .stat {
+            display: block;
+            font-size: 11px;
+            color: $comment-timestamp;
+
+            line-height: 1.4em;
+            height: 1.4em;
+        }
+
+
+        // these are only used on big upload boxes
+        .byline, .meta {
+            display: block;
+            font-size: 12px;
+            color: $comment-timestamp;
+
+            a {
+                color: $comment-timestamp;
+            }
+        }
+
+        .description {
+            display: block;
+            margin-top: 2px;
+            font-size: 12px;
+            line-height: 1.3em;
+            max-height: 2.6em;
+            color: $comment-timestamp;
+
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+        }
+    }
+
+    &:hover {
+        .content-wrapper {
+            .byline a, .meta a {
+                color: $primary;
+            }
+        }
+    }
+
+    &:not(.small) {
+        .title,
+        .byline,
+        .description {
+            max-width: 499px;
+        }
+    }
+
+    &.small {
+        .thumbnail, img {
+            width: 120px;
+            @if $theme =="hitchhiker" {
+                height: 68px;
+            }
+        }
+
+        &:hover {
+            text-decoration: none;
+            
+            .content-wrapper {
+                .title {
                     color: $primary;
                 }
             }
         }
-
-        .stat {
-            color: $comment-timestamp;
-            font-size: 11px;
-            display: block;
-            line-height: 1.4em;
-            height: 1.4em;
-        }
-
-        /*
-        // unused?
-        .stat-larger {
-            @if $theme =="hitchhiker" {
-                color: #999;
-            }
-
-            @else {
-                color: $gray-600;
-            }
-
-            font-size: 13px;
-            display: block;
-            line-height: 1.4em;
-            height: 1.4em;
-        }
-        */
     }
 }
 

@@ -109,16 +109,13 @@ hr {
 
 a {
     color: $primary;
+    cursor: pointer;
     text-decoration: none;
 
     &:hover,
     &:focus {
         text-decoration: underline;
     }
-
-    /*&:focus {
-        outline: 1px dotted;
-    }*/
 }
 
 menu {
