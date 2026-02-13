@@ -1,5 +1,7 @@
 <div class="comment" id="comment-{{ comment.id }}">
-    <img src="{{ profile_picture(comment.author.id) }}" class="profile-picture" alt="{{ comment.author.info.username }}">
+    <a href="/user/{{ comment.author.info.username }}" class="spf-link">
+        <img src="{{ profile_picture(comment.author.id) }}" class="profile-picture" alt="{{ comment.author.info.username }}">
+    </a>
     <div class="comment-body">
         <div class="comment-header">
             <div class="comment-author">

@@ -39,7 +39,9 @@
             <div class="grid watch-user-header">
                 <div class="col-6">
                     <div class="watch-creator">
-                        <a href=""><img src="{{ profile_picture(upload.author.id) }}" class="profile-picture"></a>
+                        <a href="/user/{{ upload.author.info.username }}" class="spf-link">
+                            <img src="{{ profile_picture(upload.author.id) }}" class="profile-picture">
+                        </a>
                         <div class="watch-creator-info">
                             <div class="watch-creator-userlink">
                                 {{ user_link(upload.author) }}
