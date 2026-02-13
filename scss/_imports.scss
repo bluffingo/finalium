@@ -31,13 +31,6 @@ html {
 
 @import "_grid_system";
 
-.icon, .bi {
-    /* icons! */
-    display: inline-block;
-    color: currentColor;
-    //color: rebeccapurple;
-}
-
 h1,
 h2,
 h3,
@@ -490,6 +483,8 @@ ul.unstyled-list {
 @import "_dialogs";
 /// SPF Progress Bar \\\
 @import "_spf_progress_bar";
+/// Icons \\\
+@import "_icons";
 
 /// Watch page \\\
 @import "_watch_page";

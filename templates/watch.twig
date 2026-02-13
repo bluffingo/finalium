@@ -102,7 +102,7 @@
                 </div>
             </div>
         </div>
-        <div class="card card-body" id="watch-not-available" style="display:none;">
+        <div class="card card-body action-panel-error" id="watch-not-available" style="display:none;">
             <button class="watch-panel-close-button" id="watch-not-available-close">{{ icon(fi.watch_panel_dismiss, 10) }}</button>
             <div>{{ localize('unavailable_feature') }}</div>
         </div>
@@ -131,7 +131,12 @@
         <div class="card">
             <div class="card-body">
                 <div id="comments">
-                    {{ localize("loading") }}
+                    <div class="action-panel-loading">
+                        <div class="spinner">
+                            <span class="spinner-img sprite" title="{{ localize("loading") }}"></span>
+                            {{ localize("loading") }}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

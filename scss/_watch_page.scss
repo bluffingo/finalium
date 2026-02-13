@@ -270,3 +270,15 @@
         }
     }
 }
+
+.action-panel-error, .action-panel-loading {
+    padding: 20px;
+    color: $light-text-color;
+    text-align: center;
+}
+
+// may be used in other pages, but just put this here for now.
+.spinner {
+    padding: 1em;
+    line-height: 20px;
+}
