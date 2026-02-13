@@ -106,8 +106,7 @@
             <button class="watch-panel-close-button" id="watch-not-available-close">{{ icon(fi.watch_panel_dismiss, 10) }}</button>
             <div>{{ localize('unavailable_feature') }}</div>
         </div>
-        <div class="card card-body">
-            <div class="watch-description">
+        <div class="card card-body" id="watch-description">
             <div class="watch-uploader-info">
                 <strong>{{ localize('uploaded_on', upload.published | format_date('medium', 'none')) }}</strong>
             </div>
@@ -123,9 +122,8 @@
             {% if upload.description | trim is not empty %}
                 {{ upload.description | markdown_user_written }}
             {% else %}
-                <p>{{ localize('upload_no_description') }}</p>
+                <span>{{ localize('upload_no_description') }}</span>
             {% endif %}
-            </div>
             <div class="button button-expander">{{ localize('show_more') }}</div>
         </div>
         <div class="card">

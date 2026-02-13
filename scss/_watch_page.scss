@@ -245,7 +245,7 @@
 }
 
 // formerly #About
-.watch-description {
+#watch-description {
     color: $description-text-color;
     line-height: 17px;
 
@@ -258,6 +258,10 @@
         a {
             color: $primary;
         }
+    }
+
+    .button-expander {
+        margin-top: 10px;
     }
 }
 
