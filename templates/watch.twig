@@ -108,15 +108,15 @@
         </div>
         <div class="card card-body" id="watch-description">
             <div class="watch-uploader-info">
-                <strong>{{ localize('uploaded_on', upload.published | format_date('medium', 'none')) }}</strong>
+                {% if upload.published_originally and upload.original_site %}
+                    <strong title="{{ localize('uploaded_on', upload.published | format_date('medium', 'none')) }}">{{ localize('first_uploaded_on', upload.original_site, upload.published_originally | format_date('medium', 'none')) }}</strong>
+                {% else %}
+                    <strong>{{ localize('uploaded_on', upload.published | format_date('medium', 'none')) }}</strong>
+                {% endif %}
             </div>
-            {% if upload.published_originally and upload.original_site %}
+            {% if upload.original_site and not upload.published_originally %}
                 <div class="watch-box-author-info-small">
-                    {{ localize('first_uploaded_on', upload.original_site, upload.published_originally | format_date('medium', 'none')) }}
-                </div>
-            {% elseif upload.original_site %}
-                <div class="watch-box-author-info-small">
-                    {{ localize('originally_uploaded_on', upload.original_site )}}
+                    {{ localize('first_uploaded_on', upload.original_site) }}
                 </div>
             {% endif %}
             {% if upload.description | trim is not empty %}

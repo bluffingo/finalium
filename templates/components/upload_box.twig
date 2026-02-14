@@ -1,3 +1,9 @@
+{% if upload.published_originally and upload.original_site %}
+    {% set time = upload.published_originally %}
+{% else %}
+    {% set time = upload.published %}
+{% endif %}
+
 <div class="upload-list-item">
     <div class="thumbnail">
         {% if upload.type == 0 %}
@@ -14,7 +20,7 @@
     <div class="content-wrapper">
         <h3 class="title"><a href="/watch?v={{ upload.id }}" class="spf-link">{{ upload.title }}</a></h3>
         <div class="byline">{{ user_link(upload.author) }}</div>
-        <div class="meta">{{ upload.published | relative_time }} • {{ localize('views', upload.views) }}</div>
+        <div class="meta">{{ time | relative_time }} • {{ localize('views', upload.views) }}</div>
         {% if upload.description|trim is not empty %}
         <div class="description">{{ upload.description | markdown_user_written }}</div>
         {% endif %}

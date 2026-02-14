@@ -38,8 +38,8 @@
                 <div class="h-captcha" data-sitekey="{{ captcha_public_token }}"></div>
             {% endif %}
 
-            {% if is_chaziz_sb %}
-                <p>{{ localize('register_discord_requirement', website_branding.name) }}</p>
+            {% if invite_keys_enabled %}
+                <p>{{ localize('register_invite_key_required', website_branding.name) }}</p>
             {% endif %}
 
             <input class="button button-big button-primary" type="submit" value="{{ localize('register') }}"
