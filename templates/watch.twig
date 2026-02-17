@@ -25,7 +25,7 @@
             {{ upload_view(upload) }}
         </div>
         {% if upload.is_owner %}
-            <div class="card card-body watch-creator-bar">
+            <div class="card card-has-padding watch-creator-bar">
                 <div class="watch-creator-bar-left">
                     <a class="button button-default-invis uix-tooltip" title="Info and Settings" href="/edit?v={{ upload.id }}">
                         {{ icon(fi.watch_creator_info, creator_bar_icon_size) }}
@@ -34,7 +34,7 @@
                 <a class="button button-default" href="/my_uploads">Upload Manager</a>
             </div>
         {% endif %}
-        <div class="card card-body watch-header">
+        <div class="card card-has-padding watch-header">
             <h1>{{ upload.title }}</h1>
             <div class="grid watch-user-header">
                 <div class="col-6">
@@ -102,32 +102,35 @@
                 </div>
             </div>
         </div>
-        <div class="card card-body action-panel-error" id="watch-not-available" style="display:none;">
+        <div class="card card-has-padding action-panel-error" id="watch-not-available" style="display:none;">
             <button class="watch-panel-close-button" id="watch-not-available-close">{{ icon(fi.watch_panel_dismiss, 10) }}</button>
             <div>{{ localize('unavailable_feature') }}</div>
         </div>
-        <div class="card card-body" id="watch-description">
-            <div class="watch-uploader-info">
-                {% if upload.published_originally and upload.original_site %}
-                    <strong title="{{ localize('uploaded_on', upload.published | format_date('medium', 'none')) }}">{{ localize('first_uploaded_on', upload.original_site, upload.published_originally | format_date('medium', 'none')) }}</strong>
+        <div class="card card-has-padding expander expander-collapsed" id="watch-details">
+            <div id="watch-description">
+                <div class="watch-uploader-info">
+                    {% if upload.published_originally and upload.original_site %}
+                        <strong title="{{ localize('uploaded_on', upload.published | format_date('medium', 'none')) }}">{{ localize('first_uploaded_on', upload.original_site, upload.published_originally | format_date('medium', 'none')) }}</strong>
+                    {% else %}
+                        <strong>{{ localize('uploaded_on', upload.published | format_date('medium', 'none')) }}</strong>
+                    {% endif %}
+                </div>
+                {% if upload.original_site and not upload.published_originally %}
+                    <div class="watch-box-author-info-small">
+                        {{ localize('first_uploaded_on', upload.original_site) }}
+                    </div>
+                {% endif %}
+                {% if upload.description | trim is not empty %}
+                    {{ upload.description | markdown_user_written }}
                 {% else %}
-                    <strong>{{ localize('uploaded_on', upload.published | format_date('medium', 'none')) }}</strong>
+                    <span>{{ localize('upload_no_description') }}</span>
                 {% endif %}
             </div>
-            {% if upload.original_site and not upload.published_originally %}
-                <div class="watch-box-author-info-small">
-                    {{ localize('first_uploaded_on', upload.original_site) }}
-                </div>
-            {% endif %}
-            {% if upload.description | trim is not empty %}
-                {{ upload.description | markdown_user_written }}
-            {% else %}
-                <span>{{ localize('upload_no_description') }}</span>
-            {% endif %}
-            <div class="button button-expander">{{ localize('show_more') }}</div>
+            <div class="button button-expander expander-collapsed-body">{{ localize('show_more') }}</div>
+            <div class="button button-expander expander-body">{{ localize('show_less') }}</div>
         </div>
         <div class="card">
-            <div class="card-body">
+            <div class="card-has-padding">
                 <div id="comments">
                     <div class="action-panel-loading">
                         <div class="spinner">
@@ -141,7 +144,7 @@
     </div>
     <div class="col-right">
         <div class="card">
-            <div class="card-body card-body-watch-sidebar">
+            <div class="card-has-padding card-body-watch-sidebar">
                 {% if upload.recommended %}
                     {% for upload in upload.recommended %}
                         {% include "components/upload_box_small.twig" %}

@@ -2,7 +2,7 @@
     background: $card-bg;
     margin-bottom: 10px;
 
-    @if $theme =="hitchhiker" {
+    @if $theme == "hitchhiker" {
         box-shadow: 0 1px 2px rgba(black, .1);
     }
 
@@ -11,10 +11,10 @@
     }
 }
 
-.card-body {
+.card-has-padding {
     padding: 15px;
 
-    @if $theme =="hitchhiker" {
+    @if $theme == "hitchhiker" {
 
         h3.card-title,
         h4.card-title {
@@ -37,13 +37,13 @@
 
 // watch sidebar
 .card-body-watch-sidebar {
-    @if $theme =="hitchhiker" {
+    @if $theme == "hitchhiker" {
         //padding-left: 5px;
         padding-left: 10px;
     }
 }
 
-.card-body:has(.button-expander) {
+.card-has-padding:has(.button-expander) {
     padding-bottom: 0;
 }
 

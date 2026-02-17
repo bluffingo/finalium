@@ -5,7 +5,7 @@
 
     padding: 10px 0;
 
-    @if $theme =="hitchhiker" {
+    @if $theme == "hitchhiker" {
         box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
         border: $form-input-border;
     }
@@ -36,7 +36,7 @@
         padding: 0 15px;
         color: $description-text-color;
 
-        @if $theme =="hitchhiker" {
+        @if $theme == "hitchhiker" {
             gap: 13.2px; // on actual hitchhiker: 10px with whitespace element
         } @else {
             gap: 10px;

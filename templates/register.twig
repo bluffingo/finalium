@@ -1,20 +1,18 @@
-{% set layout_template = current_theme == 'beta' ? '_layout.twig' : '_layout_login.twig' %}
+{% set layout_template = current_theme == 'hitchhiker' ? '_layout.twig' : '_layout_login.twig' %}
+
 {% embed layout_template %}
-    {% block title %}Register{% endblock %}
+    {% set title = localize('register') %}
 
     {% block content %}
-
+        <div class="banner banner-error" role="alert">TODO: redesign this for fulphiker</div>
         {% if error %}
             <div class="banner banner-error" role="alert">{{ error }}</div>
             <br>
         {% endif %}
         {% if current_theme == 'hitchhiker' %}
-            <a href="/">
-                <img id="logo" src="{{ logo }}" alt="{{ website_branding.name }}">
-            </a>
             <h1>{{ localize('register') }}</h1>
         {% endif %}
-        <form method="post" name="loginForm" id="loginForm" action="register" class="card card-body">
+        <form method="post" name="loginForm" id="loginForm" action="register" class="card card-has-padding">
             {% if current_theme != 'hitchhiker' %}
                 <h1 class="form-login-heading">{{ localize('register') }}</h1>
             {% endif %}

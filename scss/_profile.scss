@@ -24,7 +24,7 @@
 
 // slightly ugly but i dont care
 .card.channel-header {
-    .card-body {
+    .card-has-padding {
         padding-bottom: 0;
 
         h1 {
@@ -35,7 +35,7 @@
 }
 
 .channel-header-primary {
-    @if $theme =="hitchhiker" {
+    @if $theme == "hitchhiker" {
         height: 33px;
     }
 
@@ -79,7 +79,7 @@
 }
 
 .profile-about-container {
-    @if $theme =="hitchhiker" {
+    @if $theme == "hitchhiker" {
         line-height: 18px;
     }
 

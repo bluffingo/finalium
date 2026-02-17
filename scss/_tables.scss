@@ -14,7 +14,7 @@ table.styled {
             text-align: left;
             background-color: color.adjust($border, $lightness: 7.5%);
 
-            @if $theme =="hitchhiker" {
+            @if $theme == "hitchhiker" {
                 font-weight: 500;
             }
 

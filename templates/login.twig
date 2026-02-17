@@ -9,7 +9,7 @@
         </a>
         <h1>{{ localize('login') }}</h1>
     {% endif %}
-    <form method="post" name="loginForm" id="loginForm" action="login" class="card card-body">
+    <form method="post" name="loginForm" id="loginForm" action="login" class="card card-has-padding">
         {% if current_theme == 'hitchhiker' %}
             <img src="/assets/profiledef_hitchhiker.svg" class="pfp">
         {% else %}
@@ -20,10 +20,13 @@
         <input type="password" name="password" class="input-block-level" placeholder="{{ localize('password') }}">
         <input class="button button-big button-primary" type="submit" value="{{ localize('login') }}"
                 name="loginsubmit">
-        {% if not is_test_instance %}
+        {% if not is_test_instance and current_theme != "hitchhiker" %}
         <p>{{ localize('dont_have_an_account') }} <a href="/register">{{ localize('register') }}</a></p>
         {% endif %}
     </form>
+    {% if not is_test_instance and current_theme == "hitchhiker" %}
+        <p>{{ localize('dont_have_an_account') }} <a href="/register">{{ localize('register') }}</a></p>
+    {% endif %}
     <div class="login-footer">
         {{ localize('footer_copyright', ('now' | date('Y'))) }}
     </div>

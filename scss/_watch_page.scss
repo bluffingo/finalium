@@ -19,7 +19,7 @@
     .img-upload {
         padding: 1rem;
 
-        @if $theme =="hitchhiker" {
+        @if $theme == "hitchhiker" {
             filter: drop-shadow(0 1px 2px rgba(black, .1));
         }
 
@@ -85,7 +85,7 @@
 
         .watch-creator-userlink {
             height: 22px;
-            @if $theme =="hitchhiker" {
+            @if $theme == "hitchhiker" {
                 .userlink {
                     color: $description-text-color;
                     font-weight: 500;
@@ -244,10 +244,17 @@
     }
 }
 
+#watch-details {
+    .button-expander {
+        margin-top: 10px;
+    }
+}
+
 // formerly #About
 #watch-description {
     color: $description-text-color;
     line-height: 17px;
+    overflow: hidden;
 
     a {
         color: inherit;
@@ -259,10 +266,11 @@
             color: $primary;
         }
     }
+}
 
-    .button-expander {
-        margin-top: 10px;
-    }
+// awkward as fuck -chaziz 02/16/2026
+.expander.expander-collapsed #watch-description {
+    max-height: 51px;
 }
 
 .action-panel-error, .action-panel-loading {

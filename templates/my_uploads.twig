@@ -8,7 +8,7 @@
         <h1>{{ localize('my_uploads') }} ({{ localize('page_num_of_num', page, total_pages )}})</h1>
         <p>Temporary design!</p>
         <div class="card">
-            <div class="card-body">
+            <div class="card-has-padding">
                 {% for upload in data.uploads %}
                     {% include "components/upload_box_small.twig" %}
                     <a class="button button-default" href="/edit?v={{ upload.id }}">

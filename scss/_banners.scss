@@ -1,6 +1,6 @@
 .banner {
 
-    @if $theme =="hitchhiker" {
+    @if $theme == "hitchhiker" {
         padding: 9.5px 1em;
         font-size: 13px;
         line-height: 1.2;
@@ -38,7 +38,7 @@
 
 @each $state, $value in $banner-colors {
     .banner-#{$state} {
-        @if $theme =="hitchhiker" {
+        @if $theme == "hitchhiker" {
             background-color: $value;
         }
 

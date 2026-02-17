@@ -1,0 +1,25 @@
+.button-expander {
+    width: 100%;
+    text-transform: uppercase;
+    color: $comment-timestamp;
+    border-top: 1px solid #e2e2e2;
+    box-shadow: none;
+
+    &:hover {
+        color: #222222;
+    }
+}
+
+.expander {
+    &.expander-collapsed {
+        .expander-body {
+            display: none;
+        }
+    }
+
+    &:not(.expander-collapsed) {
+        .expander-collapsed-body {
+            display: none;
+        }
+    }
+}

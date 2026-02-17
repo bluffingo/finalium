@@ -73,7 +73,7 @@ $masthead-user-pfp: 32px;
 
     width: 100%;
 
-    @if $theme =="hitchhiker" {
+    @if $theme == "hitchhiker" {
         max-width: 100%;
     }
 
@@ -82,7 +82,7 @@ $masthead-user-pfp: 32px;
     height: $header-height;
     font-size: 13px;
 
-    @if $theme =="hitchhiker" {
+    @if $theme == "hitchhiker" {
         #guide-toggle.masthead-button {
             color: #B8B8B8;
         }
@@ -141,7 +141,7 @@ $masthead-user-pfp: 32px;
 
     // kinda hacky
     .masthead-button {
-        @if $theme =="hitchhiker" {
+        @if $theme == "hitchhiker" {
             width: 30px;
             height: 30px;
             color: #7F7F7F;
@@ -176,7 +176,7 @@ $masthead-user-pfp: 32px;
 
     align-items: center;
 
-    @if $theme =="hitchhiker" {
+    @if $theme == "hitchhiker" {
         padding: 0;
         margin-bottom: 1px;
     }
@@ -192,7 +192,7 @@ $masthead-user-pfp: 32px;
     #search-btn {
         height: $masthead-search-bar-height;
 
-        @if $theme =="hitchhiker" {
+        @if $theme == "hitchhiker" {
             border-top-left-radius: 0;
             border-bottom-left-radius: 0;
             padding: 0 25px;
@@ -245,7 +245,7 @@ $masthead-user-pfp: 32px;
             box-sizing: border-box;
             height: $masthead-search-bar-height;
 
-            @if $theme !="hitchhiker" {
+            @if $theme != "hitchhiker" {
                 border: 1px solid $form-input-border;
                 background-color: $form-input;
                 color: $text-color;

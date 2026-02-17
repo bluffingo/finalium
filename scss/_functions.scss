@@ -2,11 +2,11 @@
     $light-contrast: #ffffff;
     $dark-contrast: #000000;
 
-    @if $theme =="hitchhiker" {
+    @if $theme == "hitchhiker" {
         $dark-contrast: #333333;
     }
 
-    @if $theme =="dark" {
+    @if $theme == "dark" {
         @return if(lightness($color) > $threshold, $dark-contrast, $light-contrast);
     }
 

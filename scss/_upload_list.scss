@@ -153,7 +153,7 @@
             /*
             // unused?
             .stat-larger {
-                @if $theme =="hitchhiker" {
+                @if $theme == "hitchhiker" {
                     color: #999;
                 }
 
@@ -183,7 +183,7 @@
 
         width: 196px;
 
-        @if $theme =="hitchhiker" {
+        @if $theme == "hitchhiker" {
             height: 110px;
             margin-left: 5px;
         }
@@ -191,7 +191,7 @@
         img {
             width: 196px;
 
-            @if $theme =="hitchhiker" {
+            @if $theme == "hitchhiker" {
                 height: 110px;
                 object-fit: contain;
                 background: #f1f1f1;
@@ -270,7 +270,7 @@
     &.small {
         .thumbnail, img {
             width: 120px;
-            @if $theme =="hitchhiker" {
+            @if $theme == "hitchhiker" {
                 height: 68px;
             }
         }

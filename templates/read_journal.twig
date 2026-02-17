@@ -17,13 +17,13 @@
 
 {% block profile_content %}
 	<div class="card">
-		<div class="card-body">
+		<div class="card-has-padding">
 			<h1>{{ data.title }}</h1>
 			{{ data.contents | markdown_user_written(true) }}
 		</div>
 	</div>
 	<div class="card">
-		<div class="card-body">
+		<div class="card-has-padding">
 			<div id="comments">
                 {% if is_user_logged_in %}
                     <div>

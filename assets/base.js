@@ -176,6 +176,17 @@ function setSpfProgressBar([duration, percent, className]) {
     }, 0);
 }
 
+document.addEventListener("pageReady", () => {
+    document.querySelectorAll(".expander").forEach(expander => {
+        expander.addEventListener("click", (e) => {
+            const button = e.target.closest(".button-expander");
+            if (!button || !expander.contains(button)) return;
+
+            expander.classList.toggle("expander-collapsed");
+        });
+    });
+});
+
 document.addEventListener("DOMContentLoaded", () => {
     updateContentSnap();
     window.addEventListener("resize", function () {

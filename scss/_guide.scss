@@ -47,7 +47,7 @@ html.show-guide #guide {
     .guide-container {
         width: $guide-width;
 
-        @if $theme =="hitchhiker" {
+        @if $theme == "hitchhiker" {
             padding: 13px 22px;
         } @else {
             padding: 1em;

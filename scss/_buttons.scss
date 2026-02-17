@@ -159,8 +159,6 @@ input[type="submit"] {
     @include button;
 }
 
-$FUCK: #694206;
-
 input[type=file]::file-selector-button,
 input[type=file]::-webkit-file-upload-button {
     @include button;
@@ -209,18 +207,6 @@ $hitchhiker-follow-button-color: #e62117; // seperate from $accent
         @include button-variant("follow", $accent);
         font-size: 12px;
         font-weight: normal;
-    }
-}
-
-.button-expander {
-    width: 100%;
-    text-transform: uppercase;
-    color: $comment-timestamp;
-    border-top: 1px solid #e2e2e2;
-    box-shadow: none;
-
-    &:hover {
-        color: #222222;
     }
 }
 
