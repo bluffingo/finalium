@@ -47,7 +47,9 @@
                 font-weight: 500;
 
                 &.owner {
-                    background: #dbe4eb;
+                    .userlink {
+                        background: #dbe4eb;
+                    }
                 }
             }
 

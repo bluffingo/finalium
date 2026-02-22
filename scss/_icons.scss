@@ -16,3 +16,22 @@
     background: url("/assets/skin/finalium/loading.gif") no-repeat center;
     image-rendering: pixelated;
 }
+
+// awkward hack
+.userlink-icon {
+    display: inline-block;
+
+    @if $theme == "hitchhiker" {
+        width: 12px;
+        height: 9px;
+        color: #B7B7B7;
+
+        &:hover {
+            color: #12A5E6;
+        }
+    }
+
+    .icon {
+        display: block;
+    }
+}
