@@ -3,5 +3,7 @@
     data-user-id="{{ user.id }}"
     data-following="{{ user.info.following ? '1' : '0' }}"
 >
-    {{ user.info.following ? localize('unfollow') : localize('follow') }}
+    <span class="follow-label">{{ localize('follow') }}</span>
+    <span class="followed-label">{{ localize('followed') }}</span>
+    <span class="unfollow-label">{{ localize('unfollow') }}</span>
 </button>

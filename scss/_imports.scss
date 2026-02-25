@@ -410,10 +410,9 @@ input[type]:not([type=file]):not([type=submit]):not([type=range]) {
         background: $form-input;
         border-radius: 4px;
         box-shadow: 0 0 1px $form-input-border;
+        transition: border linear 0.3s,
+        box-shadow linear 0.3s;
     }
-
-    transition: border linear 0.3s,
-    box-shadow linear 0.3s;
 }
 
 textarea:focus,

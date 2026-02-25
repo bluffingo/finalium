@@ -38,6 +38,17 @@
     .comment-body {
         width: 100%;
 
+        .form-control {
+            overflow: hidden;
+            resize: none;
+
+            @if $theme == "hitchhiker" {
+                &:focus {
+                    border-color: $primary;
+                }
+            }
+        }
+
         .comment-header {
             display: flex;
             align-items: center;
