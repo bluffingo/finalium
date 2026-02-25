@@ -42,7 +42,7 @@ ul.nav {
             }
         }
 
-        &:hover:not(.active):has(a) {
+        &:hover:not(.active) a {
             @if $theme == "hitchhiker" {
                 background: #f6f6f6;
             } @else {
