@@ -397,34 +397,6 @@ body {
     padding-bottom: 195px;
 }
 
-textarea,
-input[type]:not([type=file]):not([type=submit]):not([type=range]) {
-    @if $theme == "hitchhiker" {
-        background-color: #ffffff;
-        border: 1px solid #cccccc;
-        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-    }
-
-    @else {
-        border: 1px solid $form-input-border;
-        background: $form-input;
-        border-radius: 4px;
-        box-shadow: 0 0 1px $form-input-border;
-        transition: border linear 0.3s,
-        box-shadow linear 0.3s;
-    }
-}
-
-textarea:focus,
-input[type]:not([type=file]):not([type=submit]):not([type=range]):focus {
-    @if $theme != "hitchhiker" {
-        border-color: $primary;
-        box-shadow: 0 0 5px $primary;
-    }
-
-    outline: 0;
-}
-
 .emoji {
     display: inline;
     width: 24px;
@@ -483,6 +455,8 @@ ul.unstyled-list {
 @import "_expander";
 /// Icons \\\
 @import "_icons";
+/// Forms and Inputs \\\
+@import "_forms_and_inputs";
 
 /// Watch page \\\
 @import "_watch_page";

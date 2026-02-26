@@ -7,60 +7,60 @@
         <h1>Change theme</h1>
         <div class="grid">
             <div class="col-4">
-                <div id="previewContainer">
-                    <img id="themePreview" src="" alt="Theme Preview" style="max-width: 100%;">
-                    <div id="skinThemeInfo">
-                        <h2 id="skinName"></h2>
-                        <div id="skinDescription"></div>
-                        <div id="skinAuthor"></div>
-                        <h3 id="themeName"></h3>
-                        <div id="themeDescription"></div>
-                        <div id="themeAuthor"></div>
-                    </div>
-                </div>
+                <img id="themePreview" src="" alt="Theme Preview" style="max-width: 100%;">
             </div>
             <div class="col-8">
-                <form name="uploadForm" id="uploadForm" method="post" action="theme">
-                    <div class="form-input">
-                        <label for="skin">Skin</label>
-                        <select id="skin" name="skin" class="form-submit" onchange="updateSkinThemes()">
-                            {% for skin in skins %}
-                                <option value="{{ skin.metadata.id }}" 
-                                        data-description='{{ skin.metadata.description }}' 
-                                        data-author='{{ skin.metadata.author }}'
-                                        data-themes='{{ skin.metadata.themes|json_encode }}'
-                                        {% if skin.metadata.id == current_skin %} selected{% endif %}>
-                                    {{ skin.metadata.name }}
-                                </option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div class="form-input">
-                        <label for="theme">Theme</label>
-                        <select id="theme" name="theme" class="form-submit" onchange="updatePreview()">
-                        </select>
-                    </div>
-                    <hr>
-                    <div class="form-input">
-                        <label for="locale">Locale</label>
-                        <select id="locale" name="locale" class="form-submit">
-                            {% for locale in locales %}
-                                <option value="{{ locale.id }}"
-                                        {% if options.locale == locale.id %} selected{% endif %}>
-                                    {{ locale.name }}
-                                </option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div class="form-input">
-                        <input type="checkbox" id="spf" name="spf" {% if options.finalium_enable_spf %}checked{% endif %}/>
-                        <label for="spf">Enable SPF (experimental)</label>
-                    </div>
-                    <br>
-                    <input type="submit" id="apply" name="apply" value="Apply" class="button button-primary">
-                </form>
+                <div id="skinThemeInfo">
+                    <div id="skinName"></div>
+                    <div id="skinDescription"></div>
+                    <div id="skinAuthor"></div>
+                    <div id="themeName"></div>
+                    <div id="themeDescription"></div>
+                    <div id="themeAuthor"></div>
+                </div>
             </div>
         </div>
+        <hr>
+        <form name="uploadForm" id="uploadForm" method="post" action="theme">
+            <div class="form-content">
+                <div class="input">
+                    <label for="skin">Skin</label>
+                    <select id="skin" name="skin" class="form-submit" onchange="updateSkinThemes()">
+                        {% for skin in skins %}
+                            <option value="{{ skin.metadata.id }}" 
+                                    data-description='{{ skin.metadata.description }}' 
+                                    data-author='{{ skin.metadata.author }}'
+                                    data-themes='{{ skin.metadata.themes|json_encode }}'
+                                    {% if skin.metadata.id == current_skin %} selected{% endif %}>
+                                {{ skin.metadata.name }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="input">
+                    <label for="theme">Theme</label>
+                    <select id="theme" name="theme" class="form-submit" onchange="updatePreview()">
+                    </select>
+                </div>
+                <div class="input">
+                    <label for="locale">Locale</label>
+                    <select id="locale" name="locale" class="form-submit">
+                        {% for locale in locales %}
+                            <option value="{{ locale.id }}"
+                                    {% if options.locale == locale.id %} selected{% endif %}>
+                                {{ locale.name }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="input">
+                    <input type="checkbox" id="spf" name="spf" {% if options.finalium_enable_spf %}checked{% endif %}/>
+                    <label for="spf">Enable SPF (experimental)</label>
+                </div>
+                <br>
+                <input type="submit" id="apply" name="apply" value="Apply" class="button button-primary">
+            </div>
+        </form>
     </div>
     <script>currentSkinAndTheme = '{{ current_skin }},{{ current_theme }}';</script>
     <script src="/assets/theme.js"></script>

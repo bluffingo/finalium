@@ -23,16 +23,16 @@
     <div class="card channel-header">
         <div class="card-has-padding">
             <div class="channel-header-primary">
-                {% if data.displayname|lower == data.username|lower %}
-                    <div class="channel-header-name">
-                        <h1>{{ data.displayname }}</h1>
-                    </div>
-                {% else %}
-                    <div class="channel-header-name">
-                        <h1>{{ data.displayname }}</h1>
-                        <div class="channel-header-handle">@{{ data.username }}</div>
-                    </div>
-                {% endif %}
+                <div class="channel-header-name">
+                    <h1>{{ data.displayname }}</h1>
+                    {{ icon(fi.userlink_staff, 16) }}
+
+                    {% if data.displayname|lower != data.username|lower %}
+                        <div class="channel-header-handle">
+                            @{{ data.username }}
+                        </div>
+                    {% endif %}
+                </div>
             </div>
             <div class="channel-header-secondary">
                 <a class="tablink{% if selected_tab == 'home' %} active{% endif %}" 
