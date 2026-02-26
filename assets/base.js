@@ -50,6 +50,11 @@ if (is_spf) {
     });
 }
 
+let guidePinned = false;
+if (document.documentElement.classList.contains("guide-pinned")) {
+    guidePinned = true;
+}
+
 function error(error) {
     console.error("OpenSB Finalium Skin Error: " + error);
 }
@@ -107,14 +112,26 @@ function getViewportWidth() {
     return document.documentElement.clientWidth || window.innerWidth;
 }
 
-function calculateContentSnapWidth(wideLayout) {
+function calculateContentSnapWidth(guidePinned) {
     var width = getViewportWidth() - 21 - 50;
 
-    if (getViewportWidth() >= 1251 && wideLayout) {
+    // the guide hides at 1250px, but we need to account for the guide at 1251px and above.
+    if (getViewportWidth() >= 1251 && guidePinned) {
         width -= 230; // 230px is the length of the guide
     }
 
     return width;
+}
+
+function handlePinnedGuide() {
+    if (getViewportWidth() >= 1251) {
+        document.documentElement.classList.add("guide-pinned");
+    } else {
+        document.documentElement.classList.remove("guide-pinned");
+        if (document.documentElement.classList.contains("show-guide")) {
+            document.documentElement.classList.remove("show-guide");
+        }
+    }
 }
 
 function pickContentSnapClass(width) {
@@ -126,9 +143,9 @@ function pickContentSnapClass(width) {
 function updateContentSnap() {
     var body = document.body;
 
-    var isGuideOpen = document.documentElement.classList.contains("show-guide");
+    var guidePinnedAndShown = document.documentElement.classList.contains("show-guide") && document.documentElement.classList.contains("guide-pinned");
 
-    var width = calculateContentSnapWidth(isGuideOpen);
+    var width = calculateContentSnapWidth(guidePinnedAndShown);
     var snap = pickContentSnapClass(width);
 
     for (var i = 0; i < SNAP_CLASSES.length; i++) {
@@ -187,10 +204,15 @@ document.addEventListener("pageReady", () => {
     });
 });
 
-document.addEventListener("DOMContentLoaded", () => {
+function handleScaleChanges() {
+    handlePinnedGuide();
     updateContentSnap();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    handleScaleChanges();
     window.addEventListener("resize", function () {
-        updateContentSnap();
+        handleScaleChanges();
     });
 
     // ported from trinium
