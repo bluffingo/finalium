@@ -200,14 +200,13 @@ $hitchhiker-follow-button-color: #e62117; // seperate from $accent
 .button-follow {
     @if $theme == "hitchhiker" {
         @include button-variant("follow", $hitchhiker-follow-button-color);
-        padding: 0 8px; //0 5.5px;
-        font-size: 12px;
-        font-weight: normal;
     } @else {
         @include button-variant("follow", $accent);
-        font-size: 12px;
-        font-weight: normal;
     }
+
+    padding: 0 8px 0 5.5px;
+    font-size: 12px;
+    font-weight: normal;
 }
 
 #debug-button {
@@ -221,4 +220,10 @@ $hitchhiker-follow-button-color: #e62117; // seperate from $accent
     position: fixed;
     text-decoration: none;
     z-index: 10;
+}
+
+.follow-label, .followed-label, .unfollow-label {
+    display: flex;
+    gap: 6px;
+    align-items: center;
 }

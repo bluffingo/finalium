@@ -42,16 +42,22 @@
     {% endif %}
 {% endblock %}
 
+{% if current_theme == 'hitchhiker' %}
+    {% set spinner_icon_size = 14 %}
+{% else %}
+    {% set spinner_icon_size = 16 %}
+{% endif %}
+
 {% block content %}
     <div class="card">
         <div id="feed">
             {% for key, shelf in feed %}
                 <div class="shelf" id="shelf-{{ key }}" >
                     <div class="shelf-slider-nav" data-direction="left">
-                        {{ icon('spinner-left', 14) }}
+                        {{ icon(fi.spinner_left, spinner_icon_size) }}
                     </div>
                     <div class="shelf-slider-nav" data-direction="right">
-                        {{ icon('spinner-right', 14) }}
+                        {{ icon(fi.spinner_right, spinner_icon_size) }}
                     </div>
                     
                     <div class="shelf-header">

@@ -1,9 +1,17 @@
+{% if current_theme == 'hitchhiker' %}
+    {% set follow_button_icon_size = [16,12] %}
+{% else %}
+    {% set follow_button_icon_size = 16 %}
+{% endif %}
 <button
-    class="button {{ user.info.following ? 'button-default' : 'button-follow' }} button-small button-follow"
+    class="button {{ user.info.following ? 'button-default' : 'button-follow' }} button-small"
     data-user-id="{{ user.id }}"
     data-following="{{ user.info.following ? '1' : '0' }}"
 >
-    <span class="follow-label">{{ localize('follow') }}</span>
-    <span class="followed-label">{{ localize('followed') }}</span>
-    <span class="unfollow-label">{{ localize('unfollow') }}</span>
+    <span class="follow-label">{{ icon(fi.button_follow, follow_button_icon_size) }}{{ localize('follow') }}</span>
+    {#<span class="followed-label">{{ localize('followed') }}</span>
+    <span class="unfollow-label">{{ localize('unfollow') }}</span>#}
 </button>
+{% if show_followers %}
+<div class="follow-count">{{ user.followers | format_number }}</div>
+{% endif %}
