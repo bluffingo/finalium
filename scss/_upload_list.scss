@@ -1,3 +1,11 @@
+$thumbnail-object-fit: contain;
+$thumbnail-background: #F0F0F0;
+
+@if $theme == "hitchhiker" {
+    $thumbnail-object-fit: cover;
+    $thumbnail-background: #F1F1F1;
+}
+
 /* used on homepage */
 /* this should be split into spinner -chaziz 01/31/2026 */
 .shelf {
@@ -104,8 +112,8 @@
             img {
                 width: 196px;
                 height: 110px;
-                object-fit: contain;
-                background: #f1f1f1;
+                object-fit: $thumbnail-object-fit;
+                background: $thumbnail-background;
             }
         }
 
@@ -172,7 +180,7 @@
 }
 
 .upload-list-item {
-    gap: 8px;
+    gap: 10px;
     display: flex;
     margin-bottom: 15px;
 
@@ -183,19 +191,18 @@
 
         width: 196px;
 
-        @if $theme == "hitchhiker" {
-            height: 110px;
-            margin-left: 5px;
-        }
+        //@if $theme == "hitchhiker" {
+        height: 110px;
+        //}
 
         img {
             width: 196px;
 
-            @if $theme == "hitchhiker" {
-                height: 110px;
-                object-fit: contain;
-                background: #f1f1f1;
-            }
+            //@if $theme == "hitchhiker" {
+            height: 110px;
+            object-fit: $thumbnail-object-fit;
+            background: $thumbnail-background;
+            //}
         }
     }
 
@@ -268,11 +275,14 @@
     }
 
     &.small {
+        gap: 8px;
+
         .thumbnail, img {
+            //margin-left: 5px;
             width: 120px;
-            @if $theme == "hitchhiker" {
-                height: 68px;
-            }
+            //@if $theme == "hitchhiker" {
+            height: 68px;
+            //}
         }
 
         &:hover {

@@ -3,14 +3,22 @@
 {% else %}
     {% set follow_button_icon_size = 16 %}
 {% endif %}
+
+{% if user.info.following %}
+    {% set follow_button_class = 'following' %}
+    {% set follow_button_following = '1' %}
+{% else %}
+    {% set follow_button_following = '0' %}
+{% endif %}
+
 <button
-    class="button {{ user.info.following ? 'button-default' : 'button-follow' }} button-small"
+    class="button button-follow {{ follow_button_class }} button-small"
     data-user-id="{{ user.id }}"
-    data-following="{{ user.info.following ? '1' : '0' }}"
+    data-following="{{ follow_button_following }}"
 >
     <span class="follow-label">{{ icon(fi.button_follow, follow_button_icon_size) }}{{ localize('follow') }}</span>
-    {#<span class="followed-label">{{ localize('followed') }}</span>
-    <span class="unfollow-label">{{ localize('unfollow') }}</span>#}
+    <span class="followed-label">{{ icon(fi.button_followed, follow_button_icon_size) }}{{ localize('followed') }}</span>
+    <span class="unfollow-label">{{ localize('unfollow') }}</span>
 </button>
 {% if show_followers %}
 <div class="follow-count">{{ user.followers | format_number }}</div>

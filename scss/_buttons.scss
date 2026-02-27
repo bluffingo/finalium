@@ -204,9 +204,36 @@ $hitchhiker-follow-button-color: #e62117; // seperate from $accent
         @include button-variant("follow", $accent);
     }
 
+    .followed-label, .unfollow-label {
+        display: none;
+    }
+
     padding: 0 8px 0 5.5px;
     font-size: 12px;
     font-weight: normal;
+
+    // haha. fucking kill me -chaziz 02/27/2026
+    &.following {
+        @include button-variant("default", $secondary);
+
+        .follow-label {
+            display: none;
+        }
+
+        .followed-label {
+            display: flex;
+        }
+
+        &:hover {
+            .followed-label {
+                display: none;
+            }
+
+            .unfollow-label {
+                display: flex;
+            }
+        }
+    }
 }
 
 #debug-button {

@@ -124,12 +124,14 @@ function calculateContentSnapWidth(guidePinned) {
 }
 
 function handlePinnedGuide() {
-    if (getViewportWidth() >= 1251) {
-        document.documentElement.classList.add("guide-pinned");
-    } else {
-        document.documentElement.classList.remove("guide-pinned");
-        if (document.documentElement.classList.contains("show-guide")) {
-            document.documentElement.classList.remove("show-guide");
+    if (guidePinned) {
+        if (getViewportWidth() >= 1251) {
+            document.documentElement.classList.add("guide-pinned");
+        } else {
+            document.documentElement.classList.remove("guide-pinned");
+            if (document.documentElement.classList.contains("show-guide")) {
+                document.documentElement.classList.remove("show-guide");
+            }
         }
     }
 }
