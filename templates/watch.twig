@@ -112,23 +112,30 @@
         </div>
         <div class="card card-has-padding expander expander-collapsed" id="watch-details">
             <div id="watch-description">
-                <div class="watch-uploader-info">
+                <div id="watch-uploader-info">
                     {% if upload.published_originally and upload.original_site %}
                         <strong title="{{ localize('uploaded_on', upload.published | format_date('medium', 'none')) }}">{{ localize('first_uploaded_on', upload.original_site, upload.published_originally | format_date('medium', 'none')) }}</strong>
                     {% else %}
                         <strong>{{ localize('uploaded_on', upload.published | format_date('medium', 'none')) }}</strong>
                     {% endif %}
                 </div>
-                {% if upload.original_site and not upload.published_originally %}
-                    <div class="watch-box-author-info-small">
-                        {{ localize('first_uploaded_on', upload.original_site) }}
-                    </div>
-                {% endif %}
-                {% if upload.description | trim is not empty %}
-                    {{ upload.description | markdown_user_written }}
-                {% else %}
-                    <span>{{ localize('upload_no_description') }}</span>
-                {% endif %}
+                <div id="watch-description-text">
+                    {% if upload.description | trim is not empty %}
+                        {{ upload.description | markdown_user_written }}
+                    {% else %}
+                        <span>{{ localize('upload_no_description') }}</span>
+                    {% endif %}
+                </div>
+            <div id="watch-description-extras">
+                <ul class="watch-extras-section">
+                    <li class="watch-meta-item expander-body">
+                        <h4 class="title">License</h4>
+                        <ul class="content watch-info-tag-list">
+                            <li>{{ localize('standard_site_license', website_branding.name) }}</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
             </div>
             <div class="button button-expander expander-collapsed-body">{{ localize('show_more') }}</div>
             <div class="button button-expander expander-body">{{ localize('show_less') }}</div>

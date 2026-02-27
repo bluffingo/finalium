@@ -185,6 +185,9 @@
 
         .button {
             @include button-opacity();
+            @if $theme != "dark" {
+                color: black;
+            }
         }
 
         // this should be in _buttons.scss but i dont wanna fuck with !important
@@ -250,10 +253,15 @@
     }
 }
 
+#watch-description-text {
+    overflow: hidden;
+    padding-top: 4px;
+}
+
 // formerly #About
 #watch-description {
     color: $description-text-color;
-    line-height: 17px;
+    line-height: 14px;
     overflow: hidden;
 
     a {
@@ -268,9 +276,40 @@
     }
 }
 
+#watch-description-extras {
+    margin-top: 8px;
+}
+
+.watch-extras-section {
+    padding: 0;
+    margin: 0;
+}
+
+.watch-meta-item {
+    display: flex;
+
+    .ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    .title, .content {
+        font-size: 11px;
+        line-height: 11px;
+        margin-bottom: 5px;
+        list-style: none;
+    }
+
+    .title {
+        font-weight: 500;
+        width: 100px;
+        margin-right: 10px;
+    }
+}
+
 // awkward as fuck -chaziz 02/16/2026
-.expander.expander-collapsed #watch-description {
-    max-height: 51px;
+.expander.expander-collapsed #watch-description-text {
+    max-height: 46px; // 42px
 }
 
 .action-panel-error, .action-panel-loading {
