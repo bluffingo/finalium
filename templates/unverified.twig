@@ -1,12 +1,26 @@
-{% extends "_layout.twig" %}
+{% extends "_layout_login.twig" %}
 
 {% set title = localize('unverified_email_title') %}
 
 {% block content %}
-<div class="card card-has-padding">
-    <p>Before doing anything, you must first verify yourself to the {{ website_branding.name }} staff team.</p>
-    <p>Currently, this can only be done via joining the official 
-        <a href="https://discord.gg/jG3DaRf6Rm">Bluffingo (Gamerappium 9) Discord server</a>.</p>
-    <p>We apologize for the inconvenience.</p>
-</div>
+    {% if current_theme == 'hitchhiker' %}
+        <a href="/">
+            <img id="logo" src="{{ logo }}" alt="{{ website_branding.name }}">
+        </a>
+        <h1>{{ localize('unverified_email_title') }}</h1>
+    {% endif %}
+    <div class="card card-has-padding">
+        {% if current_theme == 'hitchhiker' %}
+            <img src="{{ profile_picture(user_data.id) }}" class="profile-picture" alt="{{ user_data.name }}">
+        {% else %}
+            <h1 class="form-login-heading">{{ localize('unverified_email_title') }}</h1>
+        {% endif %}
+        <p>{{ localize('unverified_email') }}</p>
+        {% if is_chaziz_sb and not is_fulptube %}
+            <p>{{ localize('unverified_email_chaziz_instance') | raw }}</p>
+        {% endif %}
+        <form method="post" name="loginForm" id="loginForm" action="/verify_email" class="form-login">
+            <input type="submit" class="button button-big button-primary" value="{{ localize('resend') }}" name="loginsubmit">
+        </form>
+    </div>
 {% endblock %}

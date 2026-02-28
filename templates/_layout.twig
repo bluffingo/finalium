@@ -14,8 +14,10 @@
 
 {% if current_theme == "hitchhiker" %}
     {% set account_settings_button_icon_size = 20 %}
+    {% set alert_icon_size = 20 %}
 {% else %}
     {% set account_settings_button_icon_size = 16 %}
+    {% set alert_icon_size = 16 %}
 {% endif %}
 
 <!DOCTYPE html>
@@ -60,7 +62,7 @@
 {% if show_warning_banner %}
     <div class="banner banner-info full-screen">
         <div class="banner-icon">
-            {{ icon("asterisk", 16) }}
+            {{ icon(fi.alert_info, alert_icon_size) }}
         </div>
         <div>
             {{ warning_banner_text | raw }}

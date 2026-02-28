@@ -33,6 +33,12 @@
 
     .banner-icon {
         margin-right: 13px;
+
+        @if $theme == "hitchhiker" {
+            height: 20px;
+        } @else {
+            height: 16px;
+        }
     }
 }
 
