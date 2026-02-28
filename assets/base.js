@@ -598,67 +598,39 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // follow/subscribe buttons
-    const followButtons = document.querySelectorAll(".button-follow");
+    document.querySelectorAll('.button-follow').forEach(followButton => {
+        const userId = followButton.dataset.userId;
+        const followCountEl = followButton.closest('.follow-wrapper')?.querySelector('.follow-count')
+            ?? document.querySelector('.follow-count');
 
-    followButtons.forEach(button => {
-        console.log("Button userId: " + button.dataset.userId);
+        followButton.addEventListener('click', function () {
+            fetch('/api/skin/user_interaction', {
+                method: 'POST',
+                body: JSON.stringify({
+                    action: 'follow',
+                    member: userId,
+                }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+            })
+                .then(response => response.json())
+                .then(json => {
+                    if (json['error']) {
+                        error(json['error']);
+                    } else {
+                        if (followCountEl) {
+                            followCountEl.textContent = json['number'];
+                        }
+                        followButton.dataset.following = json['followed'] ? '1' : '0';
+                        followButton.classList.toggle('following', json['followed']);
+                    }
+                })
+                .catch(err => {
+                    error('Failed to follow:', err);
+                });
+        });
     });
-
-    /*
-    // subscribe button (main)
-    const subscribeBtn = document.getElementById('subscribe');
-    if (subscribeBtn) {
-        subscribeBtn.addEventListener('click', function () {
-            fetch("/api/legacy/subscribe", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: `subscription=${user_id}`
-            })
-                .then(response => response.text())
-                .then(data => {
-                    if (data === subscribe_string) {
-                        subscribeBtn.textContent = subscribe_string;
-                        subscribeBtn.className = "button button-follow";
-                    } else if (data === unsubscribe_string) {
-                        subscribeBtn.textContent = unsubscribe_string;
-                        subscribeBtn.className = "button button-default";
-                    } else {
-                        error('Failed to subscribe to user', user_id);
-                    }
-                })
-        });
-    }
-
-    // subscribe button (watch page variant?)
-    const subscribeWatchBtn = document.getElementById('follow-watch');
-    if (subscribeWatchBtn) {
-        subscribeWatchBtn.addEventListener('click', function () {
-            fetch("/api/legacy/subscribe", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: `subscription=${user_id}`
-            })
-                .then(response => response.text())
-                .then(data => {
-                    if (data === subscribe_string) {
-                        subscribeWatchBtn.textContent = subscribe_string;
-                        subscribeWatchBtn.className = "button button-follow button-small";
-                        console.log("Unsubscribed " + user_id);
-                    } else if (data === unsubscribe_string) {
-                        subscribeWatchBtn.textContent = unsubscribe_string;
-                        subscribeWatchBtn.className = "button button-default button-small";
-                        console.log("Subscribed " + user_id);
-                    } else {
-                        error('Failed to subscribe to user', user_id);
-                    }
-                })
-        });
-    }
-    */
 
     // like/dislike 
     const likeButton = document.getElementById('like');

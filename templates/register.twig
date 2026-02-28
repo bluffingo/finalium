@@ -1,47 +1,49 @@
-{% set layout_template = current_theme == 'hitchhiker' ? '_layout.twig' : '_layout_login.twig' %}
+{% extends "_layout_login.twig" %}
 
-{% embed layout_template %}
-    {% set title = localize('register') %}
+{% set title = localize('register') %}
 
-    {% block content %}
-        <div class="banner banner-error" role="alert">TODO: redesign this for fulphiker</div>
-        {% if error %}
-            <div class="banner banner-error" role="alert">{{ error }}</div>
-            <br>
+{% block content %}
+    {% if error %}
+        <div class="banner banner-error" role="alert">{{ error }}</div>
+        <br>
+    {% endif %}
+    {% if current_theme == 'hitchhiker' %}
+        <a href="/">
+            <img id="logo" src="{{ logo }}" alt="{{ website_branding.name }}">
+        </a>
+        <h1>{{ localize('register') }}</h1>
+    {% endif %}
+    <form method="post" name="loginForm" id="loginForm" action="register" class="card card-has-padding">
+        {% if current_theme != 'hitchhiker' %}
+            <h1 class="form-login-heading">{{ localize('register') }}</h1>
         {% endif %}
-        {% if current_theme == 'hitchhiker' %}
-            <h1>{{ localize('register') }}</h1>
+
+        <input type="text" name="email" class="input-block-level" placeholder="{{ localize('email_address') }}" required>
+        <input type="text" name="username" class="input-block-level" placeholder="{{ localize('username') }}" required>
+
+        <input type="password" name="pass1" class="input-block-level" placeholder="{{ localize('password') }}" required>
+        <input type="password" name="pass2" class="input-block-level" placeholder="{{ localize('password_again') }}" required>
+
+        {% if invite_keys_enabled %}
+            <input type="text" name="invite" class="input-block-level" placeholder="{{ localize('invite_key') }}" required>
         {% endif %}
-        <form method="post" name="loginForm" id="loginForm" action="register" class="card card-has-padding">
-            {% if current_theme != 'hitchhiker' %}
-                <h1 class="form-login-heading">{{ localize('register') }}</h1>
-            {% endif %}
 
-            <input type="text" name="email" class="input-block-level" placeholder="{{ localize('email_address') }}" required>
-            <input type="text" name="username" class="input-block-level" placeholder="{{ localize('username') }}" required>
+        <div>
+            <label for="birthdate">{{ localize('birthdate') }}</label>
+            <input type="date" name="birthdate" required />
+        </div>
 
-            <input type="password" name="pass1" class="input-block-level" placeholder="{{ localize('password') }}" required>
-            <input type="password" name="pass2" class="input-block-level" placeholder="{{ localize('password_again') }}" required>
+        {% if captcha_public_token %}
+            <div class="h-captcha" data-sitekey="{{ captcha_public_token }}"></div>
+        {% endif %}
 
-            {% if invite_keys_enabled %}
-                <input type="text" name="invite" class="input-block-level" placeholder="{{ localize('invite_key') }}" required>
-            {% endif %}
+        {% if invite_keys_enabled %}
+            <p>{{ localize('register_invite_key_required', website_branding.name) }}</p>
+        {% endif %}
 
-            <div>
-                <label for="birthdate">{{ localize('birthdate') }}</label>
-                <input type="date" name="birthdate" required />
-            </div>
+        <p>{{ localize('register_agreement',  website_branding.name, '/tos', '/privacy') | raw }}</p>
 
-            {% if captcha_public_token %}
-                <div class="h-captcha" data-sitekey="{{ captcha_public_token }}"></div>
-            {% endif %}
-
-            {% if invite_keys_enabled %}
-                <p>{{ localize('register_invite_key_required', website_branding.name) }}</p>
-            {% endif %}
-
-            <input class="button button-big button-primary" type="submit" value="{{ localize('register') }}"
-                    name="registersubmit">
-        </form>
-    {% endblock %}
-{% endembed %}
+        <input class="button button-big button-primary" type="submit" value="{{ localize('register') }}"
+                name="registersubmit">
+    </form>
+{% endblock %}

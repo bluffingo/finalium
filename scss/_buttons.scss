@@ -197,6 +197,12 @@ input[type=file]::-webkit-file-upload-button {
 }
 
 $hitchhiker-follow-button-color: #e62117; // seperate from $accent
+
+.follow-wrapper {
+    display: flex;
+    align-items: center;
+}
+
 .button-follow {
     @if $theme == "hitchhiker" {
         @include button-variant("follow", $hitchhiker-follow-button-color);
