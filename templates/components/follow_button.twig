@@ -18,7 +18,7 @@
 >
     <span class="follow-label">{{ icon(fi.button_follow, follow_button_icon_size) }}{{ localize('follow') }}</span>
     <span class="followed-label">{{ icon(fi.button_followed, follow_button_icon_size) }}{{ localize('followed') }}</span>
-    <span class="unfollow-label">{{ localize('unfollow') }}</span>
+    <span class="unfollow-label">{{ icon(fi.button_unfollow, follow_button_icon_size) }}{{ localize('unfollow') }}</span>
 </button>
 {% if show_followers %}
 <div class="follow-count">{{ user.followers | format_number }}</div>

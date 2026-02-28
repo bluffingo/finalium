@@ -255,13 +255,11 @@
 
 #watch-description-text {
     overflow: hidden;
-    padding-top: 4px;
 }
 
-// formerly #About
 #watch-description {
     color: $description-text-color;
-    line-height: 14px;
+    line-height: 17px;
     overflow: hidden;
 
     a {
@@ -309,7 +307,7 @@
 
 // awkward as fuck -chaziz 02/16/2026
 .expander.expander-collapsed #watch-description-text {
-    max-height: 46px; // 42px
+    max-height: 51px;
 }
 
 .action-panel-error, .action-panel-loading {
