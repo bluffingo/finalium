@@ -353,6 +353,20 @@ $masthead-user-pfp: 32px;
 
             .followers {
                 color: $lightest-gray;
+                margin-bottom: 7px;
+            }
+
+            .buttons {
+                display: flex;
+                gap: 5px;
+                
+                .button {
+                    height: 24px;
+
+                    &.settings {
+                        padding: 0 4px;
+                    }
+                }
             }
         }
     }

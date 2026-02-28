@@ -136,7 +136,11 @@
     }
 
     hr.watch-info-divider {
-        margin: 0 0 5px 0;
+        @if $theme != "hitchhiker" {
+            margin: 0;
+        } @else {
+            margin: 0 0 5px 0;
+        }
     }
 
     .watch-action-buttons {

@@ -47,16 +47,14 @@
                                 {{ user_link(upload.author) }}
                             </div>
                             <div class="watch-creator-subscribe">
-                                {% include 'components/follow_button.twig' with { 
-                                    user: upload.author,
-                                    show_followers: true,
-                                } %}
-                                {#{% if upload.is_owner %}
-                                <a class="button button-default button-small">Channel settings</a>
+                                {% if upload.is_owner %}
+                                <a class="button button-default button-small" href="/settings">{{ icon(fi.account_settings, account_settings_button_icon_size) }} Channel settings</a>
                                 {% else %}
-                                <button id="follow-watch" class="button button-{% if upload.author.following %}default{% else %}follow{% endif %} button-small" type="button" {% if not is_user_logged_in or user_data.id == upload.author.id %}disabled{% endif %}>{% if upload.author.following %}{{ localize('unfollow') }}{% else %}{{ localize('follow') }}{% endif %}</button>
-                                <div class="follow-count">{{ upload.author.cc }}</div>
-                                {% endif %}#}
+                                    {% include 'components/follow_button.twig' with { 
+                                        user: upload.author,
+                                        show_followers: true,
+                                    } %}
+                                {% endif %}
                             </div>
                         </div>
                         <br>

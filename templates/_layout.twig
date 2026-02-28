@@ -12,6 +12,12 @@
     {% set logo = website_branding.assets_location ~ '/' ~ logo_type ~ logo_suffix ~ logo_extension %}
 {% endif %}
 
+{% if current_theme == "hitchhiker" %}
+    {% set account_settings_button_icon_size = 20 %}
+{% else %}
+    {% set account_settings_button_icon_size = 16 %}
+{% endif %}
+
 <!DOCTYPE html>
 <html lang="en-US" class="{% if pin_guide %}show-guide guide-pinned{% endif %} {% if current_theme == "hitchhiker" %}hitchhiker{% endif %}">
 <head>

@@ -44,20 +44,6 @@
                 {% endif %}
             {% endif %}
             {% if is_user_logged_in %}
-            {#
-                <div style="margin:0;width:1.75rem;" id="masthead-loggedin" class="masthead-user">
-                    <div style="margin-top: 4px;">
-                        <img class="profile-picture img-fluid" src="{{ profile_picture(user_data.id) }}" alt="{{ user_data.name }}">
-                        <div class="menu" id="masthead-below">
-                            <ul style="padding:0">
-                                {% for link in header_user_links() %}
-                                    <li><a class="menulink" href="{{ link.url }}">{{ link.name }}</a></li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            #}
                 <div id="masthead-loggedin" class="masthead-user">
                     <div class="menu-button user-menu-button" data-menu-id="user-menu">
                         <img class="profile-picture img-fluid" src="{{ profile_picture(user_data.id) }}" alt="{{ user_data.name }}">
@@ -69,6 +55,10 @@
                             <div class="info">
                                 <div class="name">{{ user_data.name }}</div>
                                 <div class="followers">{{ localize('followers', user_stat_data.followers) }}</div>
+                                <div class="buttons">
+                                    <a class="button button-default" href="/my_uploads">{{ localize('my_uploads') }}</a>
+                                    <a class="button button-default settings" href="/settings" title="{{ localize('account_settings') }}">{{ icon(fi.account_settings, account_settings_button_icon_size) }}</a>
+                                </div>
                             </div>
                         </div>
                         <div class="user-menu-footer">

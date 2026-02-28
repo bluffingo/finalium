@@ -24,7 +24,7 @@
         <form name="uploadForm" id="uploadForm" method="post" action="theme">
             <div class="form-content">
                 <div class="input">
-                    <label for="skin">Skin</label>
+                    <label for="skin">{{ localize('skin') }}</label>
                     <select id="skin" name="skin" class="form-submit" onchange="updateSkinThemes()">
                         {% for skin in skins %}
                             <option value="{{ skin.metadata.id }}" 
@@ -38,12 +38,12 @@
                     </select>
                 </div>
                 <div class="input">
-                    <label for="theme">Theme</label>
+                    <label for="theme">{{ localize('theme') }}</label>
                     <select id="theme" name="theme" class="form-submit" onchange="updatePreview()">
                     </select>
                 </div>
                 <div class="input">
-                    <label for="locale">Locale</label>
+                    <label for="locale">{{ localize('language') }}</label>
                     <select id="locale" name="locale" class="form-submit">
                         {% for locale in locales %}
                             <option value="{{ locale.id }}"
@@ -58,7 +58,7 @@
                     <label for="spf">Enable SPF (experimental)</label>
                 </div>
                 <br>
-                <input type="submit" id="apply" name="apply" value="Apply" class="button button-primary">
+                <input type="submit" id="apply" name="apply" value="{{ localize('apply_action') }}" class="button button-primary">
             </div>
         </form>
     </div>
