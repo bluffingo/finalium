@@ -9,8 +9,7 @@
 }
 
 #commentContents {
-    margin-bottom: 10px;
-    padding: 5px 10px;
+    width: 100%;
 }
 
 .thread {
@@ -39,14 +38,23 @@
         width: 100%;
 
         .form-control {
+            width: 100%;
             overflow: hidden;
             resize: none;
+            padding: 5px 10px;
 
             @if $theme == "hitchhiker" {
                 &:focus {
                     border-color: $primary;
                 }
             }
+        }
+
+        .comment-form-buttons {
+            margin-top: 10px;
+            display: flex;
+            gap: 9px;
+            justify-content: flex-end;
         }
 
         .comment-header {
@@ -86,6 +94,16 @@
 
         .comment-actions {
             color: $header-text-color;
+
+            a {
+                color: $header-text-color;
+                text-decoration: none;
+                opacity: 75%;
+
+                &:hover {
+                    opacity: 100%;
+                }
+            }
         }
     }
 }
@@ -115,14 +133,20 @@
     }
 }
 
-.new-comment,
-.reply-form {
+#new-comment {
     margin-bottom: 5px;
+}
 
-    #comment_button,
-    .submit-reply-button {
-        margin-left: auto;
-        display: block;
-        padding: 5px 10px;
+.reply-form {
+    padding: 12px 0;
+
+    // ugh. -chaziz 02/28/2026
+    .comment .comment-avatar .profile-picture {
+        width: 32px;
+        height: 32px;
+
+        &:last-child {
+            padding-bottom: 0;
+        }
     }
 }

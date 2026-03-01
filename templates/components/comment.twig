@@ -18,22 +18,30 @@
                 {% if comment.post | trim is not empty %}
                     {{ comment.post | markdown_user_written }}
                 {% else %}
-                    <small>Null comment</small>
+                    <em>Null comment</em>
                 {% endif %}
-
-                {# Fucked !
-                {% if comment.id and is_user_logged_in %}
-                    <a class="reply-button" data-comment-id="{{ comment.id }}">{{ localize("reply_action") }}</a>
-                    <div class="reply-form" id="reply-form-{{ comment.id }}" style="display: none;">
-                        <textarea class="form-submit" id="reply_contents_{{ comment.id }}" maxlength="1000" placeholder="Write your reply" rows="4"></textarea>
-                        <button class="button button-default submit-reply-button" data-comment-id="{{ comment.id }}">{{ localize("reply_action") }}</button>
-                    </div>
-                {% endif %}
-                #}
             </div>
             <div class="comment-actions">
-                Action
+                <a class="reply-button" data-comment-id="{{ comment.id }}">{{ localize("reply_action") }}</a>
             </div>
+            {% if comment.id and is_user_logged_in %}
+            <div class="reply-form" id="reply-form-{{ comment.id }}" style="display: none;">
+                <div class="comment">
+                    <div class="comment-avatar">
+                        <a href="/user/{{ user_data.username }}" class="spf-link">
+                            <img src="{{ profile_picture(user_data.id) }}" class="profile-picture" alt="{{ user_data.name }}">
+                        </a>
+                    </div>
+                    <div class="comment-body">
+                        <textarea class="form-control" id="reply_contents_{{ comment.id }}" maxlength="1000" rows="3" placeholder="{{ localize('write_reply') }}"></textarea>
+                        <div class="comment-form-buttons">
+                            <button class="button button-default submit-cancel-button">{{ localize("cancel") }}</button>
+                            <button class="button button-primary submit-reply-button" data-comment-id="{{ comment.id }}">{{ localize("reply_action") }}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
         </div>
     </div>
     <div class="replies" id="replies-{{ comment.id }}">

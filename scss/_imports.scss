@@ -123,51 +123,39 @@ menu {
 }
 
 code {
-    color: #a33a3a;
-    background-color: #ffe8e8;
-    border: 1px solid #eed1d1;
+    color: #b03030;
+    background-color: #fff0f0;
+    border: 1px solid #e8c8c8;
     border-radius: 4px;
     padding: 2px 4px;
 }
 
 pre {
-    color: #a33a3a;
-    background-color: #ffe8e8;
-    border: 1px solid #eed1d1;
+    color: #b03030;
+    background-color: #fff0f0;
+    border: 1px solid #e8c8c8;
     border-radius: 4px;
     padding: 0.5rem;
     margin: 0;
     overflow-x: auto;
     line-height: 1.5;
     white-space: pre-wrap;
+
+    code {
+        color: inherit;
+        background: none;
+        border: none;
+        padding: 0;
+        font-size: inherit;
+        font-weight: inherit;
+        border-radius: 0;
+    }
 }
 
 blockquote {
     margin: 0 0 0.5em 0;
     padding-left: 0.8em;
     border-left: 4px solid $border;
-}
-
-.t_user {
-    color: #0000aa;
-    font-weight: bold;
-}
-
-.dl {
-    border-collapse: collapse;
-
-    td {
-        border: 1px solid black;
-        padding: 7px;
-    }
-}
-
-.noborder {
-    border: 0;
-}
-
-.center {
-    text-align: center;
 }
 
 // Pagination \\
@@ -178,7 +166,6 @@ blockquote {
 }
 
 /// Generic text aligns \\\
-
 .left {
     text-align: left;
 
@@ -212,14 +199,6 @@ blockquote {
 
     &:dir(rtl) {
         float: left;
-    }
-}
-
-.clear_right {
-    clear: right;
-
-    &:dir(rtl) {
-        clear: left;
     }
 }
 
@@ -300,79 +279,6 @@ blockquote {
     }
 }
 
-.form-long {
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.uploader-form {
-    margin-bottom: 0.5em;
-    font-size: 1.05em;
-    padding: 0.33em;
-}
-
-.search-form {
-    margin-bottom: 0.5em;
-    font-size: 1.05em;
-    padding: 0.25em;
-    height: 100%;
-}
-
-.ti {
-    display: inline-block;
-    margin-top: -0.25em;
-    vertical-align: middle;
-}
-
-#commentContents {
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.card-cover {
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-}
-
-.comment {
-    p {
-        width: 100%;
-        margin: 0;
-    }
-
-    /*
-  img {
-    width: 100%;
-  }
-  */
-}
-
-#optionsModal,
-#debugModal {
-    display: none;
-}
-
-.user-action-container {
-    a {
-        text-decoration: none;
-    }
-}
-
-.small-stats {
-    div {
-        display: inline-block;
-        margin-right: 1em;
-    }
-}
-
-#player-container {
-    background-color: black;
-    color: white;
-    width: 100%;
-    margin: 0;
-}
-
 body {
     background: $body-bg;
     color: $text-color;
@@ -409,12 +315,6 @@ body {
     @if $theme == "hitchhiker" {
         margin-left: 5px;
     }
-}
-
-ul.unstyled-list {
-    padding: 0;
-    margin: 0;
-    list-style: none;
 }
 
 /// Tables \\\

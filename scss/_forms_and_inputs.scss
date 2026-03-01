@@ -8,9 +8,14 @@
         padding: 4px 0;
 
         label {
-            color: #555;
+            color: $header-text-color;
         }
     }
+}
+
+.form-long {
+    width: 100%;
+    padding: 4px;
 }
 
 textarea,

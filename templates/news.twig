@@ -1,0 +1,23 @@
+{% extends "_layout.twig" %}
+
+{% set title = localize('site_news') %}
+
+	{% block content %}
+        <h1>{{ localize('site_news') }}</h1>
+        <div class="card">
+            <div class="card-has-padding">
+                {% for news in data %}
+                    <h2>{{ news.title }}</h2>
+                    <div class="content-author">{{ user_link(news.author) }}</div>
+                    <div class="content-detail">{{ news.published | format_date('long', 'none') }}</div>
+                    <div class="content-text">{{ news.contents | markdown_user_written(true) }}</div>
+                    <hr>
+                {% else %}
+                    <p>{{ localize('no_journals') }}</p>
+                {% endfor %}
+
+                {% set le_url = 'news?page=%s' %}
+                <div class="center">{{ pagination(count, items_per_page, le_url, page) }}</div>
+            </div>
+        </div>
+    {% endblock %}

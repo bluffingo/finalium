@@ -2,17 +2,16 @@
 <div class="comments-header"><span class="title">{{ localize("comments") }}</span> • {{ count }}</div>
 
 {% if is_user_logged_in %}
-    <div class="comment">
+    <div class="comment" id="new-comment">
         <div class="comment-avatar">
             <a href="/user/{{ comment.author.info.username }}" class="spf-link">
                 <img src="{{ profile_picture(user_data.id) }}" class="profile-picture" alt="{{ user_data.name }}">
             </a>
         </div>
         <div class="comment-body">
-            <textarea class="form-control" id="commentContents" style="overflow:hidden;resize:none" rows="3"
-                placeholder="{{ localize('write_comment') }}"></textarea>
-            <div class="right">
-                <button id="post" class="button button-primary" style="margin-bottom:0;">{{ localize('post_action') }}</button>
+            <textarea class="form-control" id="commentContents" rows="3" placeholder="{{ localize('write_comment') }}"></textarea>
+            <div class="comment-form-buttons">
+                <button id="post" class="button button-primary">{{ localize('post_action') }}</button>
             </div>
         </div>
     </div>

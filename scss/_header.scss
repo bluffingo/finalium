@@ -55,7 +55,7 @@ $masthead-user-pfp: 32px;
     @if $theme == "hitchhiker" {
         padding: 0 30px;
     } @else {
-        paddinG: 0 10px;
+        padding: 0 20px 0 10px;
         backdrop-filter: blur(4px);
     }
 

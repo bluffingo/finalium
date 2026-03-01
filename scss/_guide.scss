@@ -55,11 +55,7 @@ html.show-guide #guide {
     }
 
     .header {
-        @if $theme == "hitchhiker" {
-            color: $accent;
-        } else {
-            color: #444;
-        }
+        color: $accent;
         margin: 0 5px;
         padding: 1px 0 8px;
         line-height: 13px;

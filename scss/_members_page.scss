@@ -45,7 +45,7 @@ $members-list-entry-height: 100px;
             }
 
             .members-list-entry-description {
-                color: #555;
+                color: $header-text-color;
                 display: -webkit-box;
                 -webkit-box-orient: vertical;
                 overflow: hidden;

@@ -62,35 +62,101 @@ function error(error) {
 function handleCommentEvents() {
     commentContents = document.getElementById('commentContents');
     postButton = document.getElementById('post');
-    commentSection = document.getElementById('comment');
 
-    // post comment
+    // the post button
     if (postButton) {
         postButton.addEventListener('click', function () {
             const commentText = commentContents ? commentContents.value.trim() : '';
             if (!commentText) {
                 return alert('You must enter a comment before posting.');
             }
-
-            fetch("/api/legacy/comment", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: `comment=${encodeURIComponent(commentText)}&vidid=${upload_id}&really=ofcourse&type=video`
-            })
-                .then(response => response.text())
-                .then(data => {
-                    console.log("Commented " + commentText);
-                    if (commentSection) {
-                        commentSection.insertAdjacentHTML('afterbegin', data);
-                    }
-                    if (commentContents) {
-                        commentContents.value = '';
-                    }
-                })
+            submitComment("upload", upload_id, commentContents);
         });
     }
+
+    // start a new reply button
+    document.addEventListener('click', function (e) {
+        const replyButton = e.target.closest('.reply-button');
+        if (replyButton) {
+            const commentId = replyButton.dataset.commentId;
+            const replyForm = document.getElementById(`reply-form-${commentId}`);
+
+            // close the other reply form
+            document.querySelectorAll('[id^="reply-form-"]').forEach(function (form) {
+                if (form !== replyForm) {
+                    form.style.display = 'none';
+                }
+            });
+
+            if (replyForm) {
+                replyForm.style.display = replyForm.style.display === 'none' ? 'block' : 'none';
+            }
+        }
+    });
+
+    // send reply button
+    document.addEventListener('click', function (e) {
+        const submitReplyButton = e.target.closest('.submit-reply-button');
+        if (submitReplyButton) {
+            const commentId = submitReplyButton.dataset.commentId;
+            const replyContents = document.getElementById(`reply_contents_${commentId}`);
+            if (!replyContents || !replyContents.value.trim()) {
+                return alert('You must enter a reply before posting.');
+            }
+            submitComment("upload", upload_id, replyContents, commentId);
+        }
+    });
+
+    // cancel button (hardcoded to replies, whatever)
+    document.addEventListener('click', function (e) {
+        const cancelButton = e.target.closest('.submit-cancel-button');
+        if (cancelButton) {
+            const replyForm = cancelButton.closest('[id^="reply-form-"]');
+            if (replyForm) {
+                replyForm.style.display = 'none';
+            }
+        }
+    });
+}
+
+function submitComment(type, id, content, replyTo = 0) {
+    fetch("/api/skin/comment_send", {
+        method: "POST",
+        body: JSON.stringify({
+            type: type,
+            id: id,
+            comment: content.value,
+            reply_to: replyTo
+        }),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    })
+        .then(response => response.json())
+        .then(json => {
+            if (json.error) {
+                error("Failed to comment:", json.error);
+            } else {
+                if (replyTo !== 0) {
+                    let repliesContainer = document.getElementById(`replies-${replyTo}`);
+                    if (repliesContainer) {
+                        repliesContainer.insertAdjacentHTML("beforeend", json.html);
+                        let replyForm = document.getElementById(`reply-form-${replyTo}`);
+                        if (replyForm) replyForm.style.display = "none";
+                    } else {
+                        error(`replies-${replyTo} doesn't exist.`);
+                    }
+                } else {
+                    let new_comment = document.getElementById('new-comment');
+                    if (new_comment) {
+                        new_comment.insertAdjacentHTML('afterend', json.html);
+                    } else {
+                        error(`The comment form does not appear to exist.`);
+                    }
+                }
+                content.value = '';
+            }
+        });
 }
 
 function toggleNotAvailable() {
@@ -713,6 +779,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+/*
 // some weird fucking shit that was defined like this
 let index = 0;
 
@@ -733,7 +800,6 @@ function showReplies(id) {
         })
 }
 
-/*
 function showMoreVideos() {
     const fromUserVideoList = document.getElementById('fromUserVideoList');
     if (!fromUserVideoList) return;
