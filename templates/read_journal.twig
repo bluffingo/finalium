@@ -7,13 +7,14 @@
 
 {% block title %}{{ data.title }}{% endblock %}
 
+{% set selected_tab = "journals" %}
+
 {% block script %}
     <script>
-        journal_id = '{{ data.int_id }}';
+        comment_location_type = 'journal';
+        comment_location_id = '{{ data.int_id }}';
     </script>
 {% endblock %}
-
-{% set selected_tab = "journals" %}
 
 {% block profile_content %}
 	<div class="card">
@@ -22,25 +23,5 @@
 			{{ data.contents | markdown_user_written(true) }}
 		</div>
 	</div>
-	<div class="card">
-		<div class="card-has-padding">
-			<div id="comments">
-                {% if is_user_logged_in %}
-                    <div>
-                        <div>
-                        <textarea class="form-control" id="commentContents" style="overflow:hidden;resize:none" rows="3"
-                                placeholder="{{ localize('write_comment') }}"></textarea>
-                        </div>
-                        <div class="right">
-                        <button id="post-journal" class="button button-primary" style="margin-bottom:0;">{{ localize('post_action') }}</button>
-                        </div>
-                    </div>
-                {% endif %}
-                <div id="comment"></div>
-				{% for comment in data.comments %}
-					{{ comment(comment) }}
-				{% endfor %}
-			</div>
-		</div>
-	</div>
+	{% include "components/comment-box.twig" %}
 {% endblock %}

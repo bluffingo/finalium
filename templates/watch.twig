@@ -138,18 +138,7 @@
             <div class="button button-expander expander-collapsed-body">{{ localize('show_more') }}</div>
             <div class="button button-expander expander-body">{{ localize('show_less') }}</div>
         </div>
-        <div class="card">
-            <div class="card-has-padding">
-                <div id="comments">
-                    <div class="action-panel-loading">
-                        <div class="spinner">
-                            <span class="spinner-img sprite" title="{{ localize("loading") }}"></span>
-                            {{ localize("loading") }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {% include "components/comment-box.twig" %}
     </div>
     <div class="col-right">
         <div class="card">

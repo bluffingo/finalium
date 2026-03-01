@@ -70,7 +70,7 @@ function handleCommentEvents() {
             if (!commentText) {
                 return alert('You must enter a comment before posting.');
             }
-            submitComment("upload", upload_id, commentContents);
+            submitComment(comment_location_type, comment_location_id, commentContents);
         });
     }
 
@@ -103,7 +103,7 @@ function handleCommentEvents() {
             if (!replyContents || !replyContents.value.trim()) {
                 return alert('You must enter a reply before posting.');
             }
-            submitComment("upload", upload_id, replyContents, commentId);
+            submitComment(comment_location_type, comment_location_id, replyContents, commentId);
         }
     });
 
@@ -551,19 +551,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    /*
-    // comments
-    // NOTE: this references a bunch of leftovers from the bootstrap skin.
-    const commentContents = document.getElementById('commentContents');
-    // stupid: should be merged into one.
-    const postButton = document.getElementById('post');
-    */
-
-    const postUserButton = document.getElementById('post-user');
-    const postJournalButton = document.getElementById('post-journal');
-    const commentPostingSpinner = document.getElementById('commentPostingSpinner');
-    const commentSection2 = document.getElementById('comment');
-
     const watch_not_available = document.getElementById('watch-not-available');
     const watch_not_available_close = document.getElementById('watch-not-available-close');
 
@@ -593,74 +580,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 handleCommentEvents();
             })
-    }
-
-    // post comment (profile)
-    if (postUserButton) {
-        postUserButton.addEventListener('click', function () {
-            if (commentPostingSpinner) {
-                commentPostingSpinner.classList.remove('d-none');
-            }
-
-            const commentText = commentContents ? commentContents.value.trim() : '';
-            fetch("/api/legacy/comment", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: `comment=${encodeURIComponent(commentText)}&uid=${user_id}&really=ofcourse&type=profile`
-            })
-                .then(response => response.text())
-                .then(data => {
-                    console.log("Commented " + commentText);
-                    if (commentSection2) {
-                        commentSection2.insertAdjacentHTML('afterbegin', data);
-                    }
-                    if (commentContents) {
-                        commentContents.value = '';
-                    }
-                    if (postButton) {
-                        postButton.classList.add('disabled');
-                    }
-                    if (commentPostingSpinner) {
-                        commentPostingSpinner.classList.add('d-none');
-                    }
-                })
-        });
-    }
-
-    // post comment (journal)
-    if (postJournalButton) {
-        postJournalButton.addEventListener('click', function () {
-            if (commentPostingSpinner) {
-                commentPostingSpinner.classList.remove('d-none');
-            }
-
-            const commentText = commentContents ? commentContents.value.trim() : '';
-            fetch("/api/legacy/comment", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: `comment=${encodeURIComponent(commentText)}&jid=${journal_id}&really=ofcourse&type=journal`
-            })
-                .then(response => response.text())
-                .then(data => {
-                    console.log("Commented " + commentText);
-                    if (commentSection2) {
-                        commentSection2.insertAdjacentHTML('afterbegin', data);
-                    }
-                    if (commentContents) {
-                        commentContents.value = '';
-                    }
-                    if (postButton) {
-                        postButton.classList.add('disabled');
-                    }
-                    if (commentPostingSpinner) {
-                        commentPostingSpinner.classList.add('d-none');
-                    }
-                })
-        });
     }
 
     // follow/subscribe buttons
@@ -778,56 +697,3 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
-
-/*
-// some weird fucking shit that was defined like this
-let index = 0;
-
-function showReplies(id) {
-    fetch("/api/legacy/get_replies", {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: `comment_id=${id}`
-    })
-        .then(response => response.text())
-        .then(data => {
-            const commentElement = document.getElementById(id);
-            if (commentElement) {
-                commentElement.insertAdjacentHTML('beforeend', data);
-            }
-        })
-}
-
-function showMoreVideos() {
-    const fromUserVideoList = document.getElementById('fromUserVideoList');
-    if (!fromUserVideoList) return;
-
-    if (!fromUserVideoList.classList.contains('card-body')) {
-        fetch("/api/legacy/ajax_watch", {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: `from=${index}&limit=10`
-        })
-            .then(response => response.text())
-            .then(data => {
-                index += 10;
-                fromUserVideoList.insertAdjacentHTML('beforeend', data);
-                fromUserVideoList.classList.remove("collapsed");
-
-                const fromUserElement = document.getElementById('fromUser');
-                if (fromUserElement) {
-                    fromUserElement.remove();
-                }
-            })
-    } else {
-        fromUserVideoList.innerHTML = '';
-        fromUserVideoList.classList.add("collapsed");
-    }
-}
-*/
-
-// there should be code for replies, but those broke on finalium 1 when i redid the css for it
