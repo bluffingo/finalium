@@ -25,12 +25,25 @@
             <div class="channel-header-primary">
                 <div class="channel-header-name">
                     <h1>{{ data.displayname }}</h1>
-                    {{ icon(fi.userlink_staff, 16) }}
 
                     {% if data.displayname|lower != data.username|lower %}
                         <div class="channel-header-handle">
                             @{{ data.username }}
                         </div>
+                    {% endif %}
+
+                    {% if data.is_staff %}
+                        <div class="userlink-icon uix-tooltip" title="{{ localize('staff') }}">{{ icon(fi.userlink_staff, username_verified_icon) }}</div>
+                    {% endif %}
+                </div>
+                <div class="channel-header-follow">
+                    {% if data.is_current or data.id == user_data.id %}
+                        <a class="button button-default button-small" href="/settings">{{ icon(fi.account_settings, account_settings_button_icon_size) }} Channel settings</a>
+                    {% else %}
+                        {% include 'components/follow_button.twig' with { 
+                            user: data,
+                            show_followers: true,
+                        } %}
                     {% endif %}
                 </div>
             </div>

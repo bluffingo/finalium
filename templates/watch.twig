@@ -48,7 +48,7 @@
                             </div>
                             <div class="watch-creator-subscribe">
                                 {% if upload.is_owner %}
-                                <a class="button button-default button-small" href="/settings">{{ icon(fi.account_settings, account_settings_button_icon_size) }} Channel settings</a>
+                                    <a class="button button-default button-small" href="/settings">{{ icon(fi.account_settings, account_settings_button_icon_size) }} Channel settings</a>
                                 {% else %}
                                     {% include 'components/follow_button.twig' with { 
                                         user: upload.author,

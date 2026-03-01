@@ -1,6 +1,8 @@
 {% extends "_layout_profile.twig" %}
 
+{% if show_incomplete_features %}
 {% set show_related_channels = true %}
+{% endif %}
 
 {% set profile_picture = profile_picture(data.id) %}
 {% set banner_picture = profile_banner(data.id) %}
@@ -19,16 +21,14 @@
                     </div>
                     <div class="upload-info">
                         <div class="content-wrapper">
-                            <h3 class="title">
-                            <a href="/watch?v={{ data.featured_upload.id }}">{{ data.featured_upload.title }}</a>
-                            </h3>
+                            <h3 class="title"><a href="/watch?v={{ data.featured_upload.id }}">{{ data.featured_upload.title }}</a></h3>
                         </div>
                     </div>
                 </div>
                 <hr>
             {% endif %}
             {% for upload in data.uploads %}
-                {% include "components/upload_box_small.twig" %}
+                {% include "components/upload_box.twig" %}
             {% else %}
                 <p>There are currently no uploads by {{ data.displayname }}</p>
             {% endfor %}

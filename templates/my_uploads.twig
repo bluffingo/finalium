@@ -10,7 +10,7 @@
         <div class="card">
             <div class="card-has-padding">
                 {% for upload in data.uploads %}
-                    {% include "components/upload_box_small.twig" %}
+                    {% include "components/upload_box.twig" %}
                     <a class="button button-default" href="/edit?v={{ upload.id }}">
                         <span>{{ localize('edit') }}</span>
                     </a>
