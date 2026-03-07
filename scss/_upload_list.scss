@@ -61,27 +61,27 @@ $thumbnail-background: #F0F0F0;
 
         &[data-direction="left"] {
             left: 3px;
-
-            &:focus, &:hover {
-                left: -22px;
-                border-right: none;
-            }
         }
 
         &[data-direction="right"] {
             right: 3px;
-
-            &:focus, &:hover {
-                right: -22px;
-                border-left: none;
-            }
         }
+    }
 
-        &:hover {
+    &:hover {
+        .shelf-slider-nav {
             width: 40px;
             border: 1px solid $card-border;
             box-shadow: 1px 1px 3px rgba(0,0,0,.1);
             color: $description-text-color;
+
+            &[data-direction="left"] {
+                left: -22px;
+            }
+
+            &[data-direction="right"] {
+                right: -22px;
+            }
         }
     }
 
