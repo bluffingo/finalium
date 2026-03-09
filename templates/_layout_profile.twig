@@ -1,5 +1,8 @@
 {% extends "_layout.twig" %}
 
+{% set profile_picture = profile_picture(common.id) %}
+{% set banner_picture = profile_banner(common.id) %}
+
 {% block script %}
     <script>
         user_id = '{{ data.id }}';
@@ -18,30 +21,30 @@
     <div class="channel-header-background">
         <img class="channel-header-profile-picture profile-picture" 
              src="{{ profile_picture }}"  
-             alt="{{ data.username }}">
+             alt="{{ common.username }}">
     </div>
     <div class="card channel-header">
         <div class="card-has-padding">
             <div class="channel-header-primary">
                 <div class="channel-header-name">
-                    <h1>{{ data.displayname }}</h1>
+                    <h1>{{ common.displayname }}</h1>
 
                     {% if data.displayname|lower != data.username|lower %}
                         <div class="channel-header-handle">
-                            @{{ data.username }}
+                            @{{ common.username }}
                         </div>
                     {% endif %}
 
-                    {% if data.is_staff %}
+                    {% if common.is_staff %}
                         <div class="userlink-icon uix-tooltip" title="{{ localize('staff') }}">{{ icon(fi.userlink_staff, username_verified_icon) }}</div>
                     {% endif %}
                 </div>
                 <div class="channel-header-follow">
-                    {% if data.is_current or data.id == user_data.id %}
+                    {% if common.is_current or common.id == user_data.id %}
                         <a class="button button-default button-small" href="/settings">{{ icon(fi.account_settings, account_settings_button_icon_size) }} Channel settings</a>
                     {% else %}
                         {% include 'components/follow_button.twig' with { 
-                            user: data,
+                            user: common,
                             show_followers: true,
                         } %}
                     {% endif %}
@@ -49,15 +52,15 @@
             </div>
             <div class="channel-header-secondary">
                 <a class="tablink{% if selected_tab == 'home' %} active{% endif %}" 
-                    href="/user/{{ data.username }}">Home</a>
+                    href="/user/{{ common.username }}">Home</a>
                 <a class="tablink{% if selected_tab == 'uploads' %} active{% endif %}" 
-                    href="/user/{{ data.username }}/uploads">Uploads</a>
+                    href="/user/{{ common.username }}/uploads">Uploads</a>
                 <a class="tablink{% if selected_tab == 'journals' %} active{% endif %}" 
-                    href="/user/{{ data.username }}/journals">Journals</a>
+                    href="/user/{{ common.username }}/posts">Journals</a>
                 <a class="tablink{% if selected_tab == 'comments' %} active{% endif %}" 
-                    href="/user/{{ data.username }}/comments">Discussion</a>
+                    href="/user/{{ common.username }}/comments">Discussion</a>
                 <a class="tablink{% if selected_tab == 'about' %} active{% endif %}" 
-                    href="/user/{{ data.username }}/about">About</a>
+                    href="/user/{{ common.username }}/about">About</a>
             </div>
         </div>
     </div>

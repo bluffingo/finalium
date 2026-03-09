@@ -2,10 +2,7 @@
 
 {% set show_related_channels = false %}
 
-{% set profile_picture = profile_picture(data.author.id) %}
-{% set banner_picture = profile_banner(data.author.id) %}
-
-{% block title %}{{ data.title }}{% endblock %}
+{% set title = data.title %}
 
 {% set selected_tab = "journals" %}
 

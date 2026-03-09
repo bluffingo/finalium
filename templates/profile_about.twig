@@ -4,10 +4,7 @@
 {% set show_related_channels = true %}
 {% endif %}
 
-{% set profile_picture = profile_picture(data.id) %}
-{% set banner_picture = profile_banner(data.id) %}
-
-{% set title = data.username %}
+{% set title = common.username %}
 
 {% set selected_tab = "about" %}
 
@@ -16,8 +13,8 @@
         <div class="card-has-padding profile-about-container">
             <div class="about-stats">
                 {# TODO #}
-                <div><strong>{{ data.followers | format_number() }}</strong> followers • <strong>{{ data.views | format_number() }}</strong> views</div>
-                <div>Joined {{ data.joined | format_date('medium', 'none') }}</div>
+                <div><strong>{{ common.followers | format_number() }}</strong> followers • <strong>{{ common.views | format_number() }}</strong> views</div>
+                <div>Joined {{ common.joined | format_date('medium', 'none') }}</div>
             </div>
             {% if data.about | trim is not empty %}
                 <h2 class="about-header">Description</h2>

@@ -4,18 +4,15 @@
 {% set show_related_channels = true %}
 {% endif %}
 
-{% set profile_picture = profile_picture(data.id) %}
-{% set banner_picture = profile_banner(data.id) %}
-
-{% set title = data.username %}
+{% set title = common.username %}
 
 {% set total_pages = (data.count / items_per_page) | round(0, 'ceil') %}
 {% set current_page = page %}
 
 {% if type == 'recent' %}
-    {% set le_url = 'user/' ~ data.username ~ '/uploads?page=%s' %}
+    {% set le_url = 'user/' ~ common.username ~ '/uploads?page=%s' %}
 {% else %}
-    {% set le_url = 'user/' ~ data.username ~ '/uploads?type=' ~ type ~ '&page=%s' %}
+    {% set le_url = 'user/' ~ common.username ~ '/uploads?type=' ~ type ~ '&page=%s' %}
 {% endif %}
 
 {% set selected_tab = "uploads" %}
