@@ -1,0 +1,17 @@
+{% extends "_layout.twig" %}
+
+{% block content %}
+    <div class="grid">
+        <div class="col-2">
+            <div class="card">
+                <ul class="nav">
+                    <li class="title">{{ localize('manager') }}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-10">
+            {% block creatorcontent %}
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}
