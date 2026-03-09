@@ -4,17 +4,14 @@
 {% set show_related_channels = true %}
 {% endif %}
 
-{% set profile_picture = profile_picture(data.id) %}
-{% set banner_picture = profile_banner(data.id) %}
-
-{% set title = data.username %}
+{% set title = common.username %}
 
 {% set selected_tab = "comments" %}
 
 {% block script %}
     <script>
         comment_location_type = 'profile';
-        comment_location_id = '{{ data.id }}';
+        comment_location_id = '{{ common.id }}';
     </script>
 {% endblock %}
 

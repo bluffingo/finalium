@@ -4,10 +4,7 @@
 {% set show_related_channels = true %}
 {% endif %}
 
-{% set profile_picture = profile_picture(data.id) %}
-{% set banner_picture = profile_banner(data.id) %}
-
-{% set title = data.username %}
+{% set title = common.username %}
 
 {% set selected_tab = "home" %}
 
@@ -30,7 +27,7 @@
             {% for upload in data.uploads %}
                 {% include "components/upload_box.twig" %}
             {% else %}
-                <p>There are currently no uploads by {{ data.displayname }}</p>
+                <p>There are currently no uploads by {{ common.displayname }}</p>
             {% endfor %}
         </div>
     </div>
