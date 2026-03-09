@@ -1,37 +1,39 @@
-{% extends "_layout.twig" %}
-
+{% extends "_layout_creator_studio.twig" %}
 {% set title = "Edit upload" %}
-
-	{% block content %}
-        <form name="uploadForm" id="uploadForm" method="post" action="edit" enctype="multipart/form-data">
-            <div class="card">
-                <div class="card-has-padding">
-                    <input type="hidden" name="vid_id" value="{{ data.id }}">
-                    <h2 style="margin-bottom: 0.5em;">Edit your upload</h2>
-                    <p>Enter the new information for your upload.</p>
-                    <h4 style="margin-bottom: 0.5em;">Title</h4>
-                    <input type="text" class="form-control form-long" name="title"
-                        value="{{ data.title }}">
-                    <br>
-                    <h4 style="margin-bottom: 0.5em;">Description</h4>
-                    <textarea class="form-control form-long" name="desc" maxlength="2000"
-                            form="uploadForm"
-                            style="overflow:hidden;resize:vertical" rows="3">{{ data.description }}</textarea>
-                    <br>
-                    <label for="thumbnail">{{ localize('custom_thumbnail') }}</label>
-                    <input class="form-submit" type="file" name="thumbnail" id="thumbnail">
-                    <br>
-                    <input type="checkbox" id="block_guests" name="block_guests" value="yes">
-                    <label for="block_guests">{{ localize('block_guests_from_upload') }}</label>
-                    <br>
+{% block creatorcontent %}
+    <form name="uploadForm" id="uploadForm" method="post" action="edit" enctype="multipart/form-data">
+        <div class="card">
+            <div class="card-has-padding">
+                <h1>{{ data.title }}</h1>
+                <input type="hidden" name="vid_id" value="{{ data.id }}">
+                <div class="form-content">
+                    <div class="input">
+                        <input type="text" class="form-control form-long" id="title" name="title"
+                            value="{{ data.title }}" placeholder="{{ localize('title') }} ({{ localize('form_required') }})" required>
+                    </div>
+                    <div class="input">
+                        <textarea class="form-control form-long" id="desc" name="desc" maxlength="2000"
+                            form="uploadForm" rows="3"
+                            placeholder="{{ localize('description') }} ({{ localize('form_optional') }})">{{ data.description }}</textarea>
+                    </div>
+                    <div class="input">
+                        <label for="thumbnail">{{ localize('custom_thumbnail') }}</label>
+                        <input class="form-control" type="file" name="thumbnail" id="thumbnail">
+                    </div>
+                    <div class="input">
+                        <input type="checkbox" id="block_guests" name="block_guests" value="yes">
+                        <label for="block_guests">{{ localize('block_guests_from_upload') }}</label>
+                    </div>
+                    <div class="input">
                         <input type="checkbox" id="block_comments" name="block_comments" value="yes">
                         <label for="block_comments">{{ localize('disable_comments_from_upload') }}</label>
-                    <br>
-                    <div class="right">
-                        <input class="button button-primary" type="submit" id="upload" name="upload"
-                            value="Save">
                     </div>
                 </div>
+                <div class="right">
+                    <input class="button button-primary" type="submit" id="upload" name="upload"
+                        value="{{ localize('save_action') }}">
+                </div>
             </div>
-        </form>
-    {% endblock %}
+        </div>
+    </form>
+{% endblock %}

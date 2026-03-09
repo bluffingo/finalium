@@ -1,8 +1,8 @@
-{% extends "_layout.twig" %}
+{% extends "_layout_account_settings.twig" %}
 
 {% set title = localize('account_settings') %}
 
-	{% block content %}
+	{% block accountcontent %}
 		{% if error %}
 			<div class="banner banner-error" role="alert">{{ error }}</div>
 		{% endif %}
