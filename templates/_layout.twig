@@ -56,7 +56,6 @@
     {% endblock %}
 </head>
 <body id="body">
-
 {% if is_debug %}
     {% include('components/debug_dialog.twig') %}
     <a id="debug-button">{{ localize('debug') }} @{{ opensb_version.hash }}</a>
@@ -79,7 +78,7 @@
 </div>
 
 <div class="container {{ page_name }}" id="page">
-    <div id="content">
+    <div id="content" {% if is_creator_studio %}class="creator"{% endif %}>
         {% if session.notif_message %}
             <div class="banner banner-{{ session.notif_color }}">
             {{ session.notif_message }}
