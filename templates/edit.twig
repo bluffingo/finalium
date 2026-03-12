@@ -2,9 +2,9 @@
 {% set title = "Edit upload" %}
 {% block creatorcontent %}
     <form name="uploadForm" id="uploadForm" method="post" action="edit" enctype="multipart/form-data">
-        <div class="card">
-            <div class="card-has-padding">
-                <h1>{{ data.title }}</h1>
+        <div class="card" id="creator-editor">
+            <div class="creator-editor-content">
+                <h1 class="creator-editor-title">{{ data.title }}</h1>
                 <input type="hidden" name="vid_id" value="{{ data.id }}">
                 <div class="form-content">
                     <div class="input">
@@ -31,7 +31,7 @@
                 </div>
                 <div class="right">
                     <input class="button button-primary" type="submit" id="upload" name="upload"
-                        value="{{ localize('save_action') }}">
+                        value="{{ localize('save_changes') }}">
                 </div>
             </div>
         </div>
