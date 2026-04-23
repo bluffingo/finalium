@@ -4,8 +4,12 @@
     } @else {
         background: linear-gradient(#888, #444);
     }
-    background-position: center -7px; /* sb banners are 300px high, so shift up a bit */
+    border-bottom: 1px solid $border;
+
     background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
     height: 210px;
 }
 
@@ -41,7 +45,7 @@
 
     margin-bottom: 10px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
 
     .channel-header-name {
         display: flex;
