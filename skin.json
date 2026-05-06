@@ -25,6 +25,9 @@
                 "description": "Emulates the look of a certain video sharing site as seen around 2016.",
                 "author": "Carrevue Development"
             }
-        ]
+        ],
+        "options": {
+            "use_old_userlink": true
+        }
     }
 }

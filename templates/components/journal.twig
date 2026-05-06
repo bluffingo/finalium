@@ -1,6 +1,6 @@
 <div class="journal">
     <div class="journal-title">
-        <a href="/user/{{journal.author.info.username}}/post/{{ journal.id }}">{{ journal.title }}</a>
+        <a href="/user/{{journal.author.info.username}}/journal/{{ journal.id }}">{{ journal.title }}</a>
         <br>
         {% if data.username != journal.author.info.username %}
             {{ user_link(journal.author) }}
