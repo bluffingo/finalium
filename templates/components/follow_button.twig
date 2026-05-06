@@ -11,6 +11,12 @@
     {% set follow_button_following = '0' %}
 {% endif %}
 
+{% if user.followers %}
+    {% set followers = user.followers %}
+{% else %}
+    {% set followers = user.info.followers %}
+{% endif %}
+
 <div class="follow-wrapper">
 <button
     class="button button-follow {{ follow_button_class }} button-small"
@@ -22,6 +28,6 @@
     <span class="unfollow-label">{{ icon(fi.button_unfollow, follow_button_icon_size) }}{{ localize('unfollow') }}</span>
 </button>
 {% if show_followers %}
-<div class="follow-count">{{ user.followers | format_number }}</div>
+<div class="follow-count">{{ followers | format_number }}</div>
 {% endif %}
 </div>
