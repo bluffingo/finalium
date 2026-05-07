@@ -8,7 +8,7 @@
 		{% endif %}
         <div class="card card-has-padding">
             <form action="settings" method="post" enctype="multipart/form-data">
-                <h1>Security</h1>
+                <h1>{{ localize('security') }}</h1>
                 <table class="styled">
                     <tr class="table-header">
                         <th>Option</th>
@@ -35,7 +35,7 @@
                     </tr>
                 </table>
 
-                <h1>Profile</h1>
+                <h1>{{ localize('profile') }}</h1>
                 <table class="styled">
                     <tr class="table-header">
                         <th>Option</th>
@@ -73,7 +73,7 @@
                     {% endif %}
                 </table>
 
-                <h1>Filtering</h1>
+                <h1>{{ localize('filtering') }}</h1>
                 <table class="styled">
                     <tr class="table-header">
                         <th>Option</th>
@@ -85,7 +85,7 @@
                             <td class="b">
                                 <input type="checkbox" name="rating" id="rating" value="true"
                                     {% if user_data.comfortable_rating == "mature" %}checked{% endif %}>
-                                <label for="rating"> {{ localize('enable_sensitive_content') }}</label><br>
+                                <label for="rating"> {{ localize('enable_mature_content') }}</label><br>
 
                                 {#<input type="checkbox" name="block_under_18" id="block_under_18" value="true"
                                     {% if user_data.block_under_18 %}checked{% endif %}>
@@ -93,7 +93,7 @@
                             </td>
                         {% else %}
                             <td class="b">
-                                {{ localize('restricted_sensitive_content', website_branding.name) }}
+                                {{ localize('restricted_mature_content', website_branding.name) }}
                             </td>
                         {% endif %}
                     </tr>

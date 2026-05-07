@@ -12,7 +12,13 @@
 {% block customcss %}
     {% if banner_picture %}
     .channel-header-background {
-        background-image: url('{{ banner_picture }}');
+        background-image: url('{{ banner_picture.finalium }}');
+    }
+
+    @media screen and (min-resolution: 1.5dppx) {
+        .channel-header-background {
+            background-image: url('{{ banner_picture.finalium_2x }}');
+        }
     }
     {% endif %}
 {% endblock %}
@@ -56,7 +62,7 @@
                 <a class="tablink{% if selected_tab == 'uploads' %} active{% endif %}" 
                     href="/user/{{ common.username }}/uploads">Uploads</a>
                 <a class="tablink{% if selected_tab == 'journals' %} active{% endif %}" 
-                    href="/user/{{ common.username }}/posts">Journals</a>
+                    href="/user/{{ common.username }}/journals">Journals</a>
                 <a class="tablink{% if selected_tab == 'comments' %} active{% endif %}" 
                     href="/user/{{ common.username }}/comments">Discussion</a>
                 <a class="tablink{% if selected_tab == 'about' %} active{% endif %}" 
