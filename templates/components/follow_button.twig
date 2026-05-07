@@ -4,7 +4,7 @@
     {% set follow_button_icon_size = 16 %}
 {% endif %}
 
-{% if user.info.following %}
+{% if user.info.following or user.following %}
     {% set follow_button_class = 'following' %}
     {% set follow_button_following = '1' %}
 {% else %}
