@@ -1,18 +1,27 @@
-{% set is_creator_studio = true %}
+{% if options.exp_finalium_sidebars %}
+    {% set is_creator_studio = true %}
+{% else %}
+    {% set is_creator_studio = false %}
+{% endif %}
+
 {% extends "_layout.twig" %}
 
 {% block content %}
-    <div class="grid">
-        <div class="col-2">
-            <div class="card">
-                <ul class="nav">
-                    <li class="title">{{ localize('manager') }}</li>
-                </ul>
+    {% if options.exp_finalium_sidebars %}
+        <div class="grid">
+            <div class="col-2">
+                <div class="card">
+                    <ul class="nav">
+                        <li class="title">{{ localize('manager') }}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-10">
+                {% block creatorcontent %}
+                {% endblock %}
             </div>
         </div>
-        <div class="col-10">
-            {% block creatorcontent %}
-            {% endblock %}
-        </div>
-    </div>
+    {% else %}
+        {{ block('creatorcontent') }}
+    {% endif %}
 {% endblock %}

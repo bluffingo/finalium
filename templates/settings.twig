@@ -80,6 +80,7 @@
                         <th>Value</th>
                     </tr>
                     <tr>
+                    {% if mature_uploads_enabled %}
                     <td class="a">{{ localize('filtering') }}</td>
                         {% if isUserOver18 %}
                             <td class="b">
@@ -97,6 +98,7 @@
                             </td>
                         {% endif %}
                     </tr>
+                    {% endif %}
                     <tr>
                         <td class="a">Blacklisted tags</td>
                         <td class="b">

@@ -1,17 +1,21 @@
 {% extends "_layout.twig" %}
 
 {% block content %}
-    <div class="grid">
-        <div class="col-2">
-            <div class="card">
-                <ul class="nav">
-                    <li class="title">Account Settings</li>
-                </ul>
+    {% if options.exp_finalium_sidebars %}
+        <div class="grid">
+            <div class="col-2">
+                <div class="card">
+                    <ul class="nav">
+                        <li class="title">Account Settings</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-10">
+                {% block accountcontent %}
+                {% endblock %}
             </div>
         </div>
-        <div class="col-10">
-            {% block accountcontent %}
-            {% endblock %}
-        </div>
-    </div>
+    {% else %}
+        {{ block('accountcontent') }}
+    {% endif %}
 {% endblock %}
