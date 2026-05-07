@@ -21,7 +21,7 @@
             {% endfor %}
         </div>
 
-        {% set le_url = '/posts/' ~ user ~ '?page=%s' %}
+        {% set le_url = '/user/' ~ user ~ '/journals?page=%s' %}
 
         {{ pagination(count, items_per_page, le_url, current_page) }}
     </div>
