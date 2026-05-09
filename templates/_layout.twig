@@ -78,7 +78,7 @@
 </div>
 
 <div class="container {{ page_name }}" id="page">
-    <div id="content" {% if is_creator_studio %}class="creator"{% endif %}>
+    <div id="content" {% if is_creator_studio %}class="creator"{% else %}class="content-alignment"{% endif %}>
         {% if session.notif_message %}
             <div class="banner banner-{{ session.notif_color }}">
             {{ session.notif_message }}

@@ -14,7 +14,7 @@
 
 	{% block content %}
         <div class="grid">
-            <div class="col-2">
+            <div class="col-3">
                 <div class="card">
                     <ul class="nav">
                         <li class="title">Sort by</li>
@@ -26,7 +26,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-10">
+            <div class="col-9">
                 <div class="card card-has-padding">
                     {% for upload in data.uploads %}
                         {% include "components/upload_box.twig" %}

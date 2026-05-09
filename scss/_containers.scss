@@ -45,7 +45,8 @@ html.show-guide.guide-pinned {
 }
 
 // view page uses different widths
-#page.watch #content, #page.view #content {
+#page.watch .content-alignment, #page.view .content-alignment {
+    width: auto;
     @include responsive('tiny') {
         max-width: 100%;
         min-width: 250px;
@@ -68,22 +69,28 @@ html.show-guide.guide-pinned {
     }
 }
 
-#page.user #content {
+.content-alignment {
+    width: 1003px;
+    margin: auto;
+}
+
+#page.user .content-alignment {
     margin: auto;
 }
 
 // content snap
-body.content-snap-width-1 #page.home #content {
+// todo: are these only for #page.home ??? i think profiles might be using those too
+body.content-snap-width-1 #page.home .content-alignment {
     width: 850px;
     max-width: 850px;
 }
 
-body.content-snap-width-2 #page.home #content {
+body.content-snap-width-2 #page.home .content-alignment {
     width: 1056px;
     max-width: 1056px;
 }
 
-body.content-snap-width-3 #page.home #content {
+body.content-snap-width-3 #page.home .content-alignment {
     width: 1262px;
     max-width: 1262px;
 }

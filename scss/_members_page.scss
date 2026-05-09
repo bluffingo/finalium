@@ -1,6 +1,8 @@
 // REFERENCE: https://web.archive.org/web/20160616115710id_/https://www.youtube.com/channels
 
-$members-list-entry-height: 100px;
+// referred to as guidebuilder
+
+$members-list-entry-height: 80px;
 
 @if $theme == "hitchhiker" {
     $members-list-entry-height: 200px;
@@ -14,11 +16,11 @@ $members-list-entry-height: 100px;
         margin-bottom: 1em;
 
         @if $theme == "hitchhiker" {
-            box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
-            border: 1px solid rgba(0, 0, 0, .1);
+            box-shadow: 0 1px 2px $members-border;
+            border: 1px solid $members-border;
 
             &:hover {
-                box-shadow: 0 2px 3px rgba(0, 0, 0, .2);
+                box-shadow: 0 2px 3px $members-border;
             }
         } @else {
             gap: 1em;
