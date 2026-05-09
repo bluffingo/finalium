@@ -55,7 +55,7 @@
     {% block head %}
     {% endblock %}
 </head>
-<body id="body">
+<body id="body" class="{% if flex_width_enabled %}flex-width-enabled{% endif %}">
 {% if is_debug %}
     {% include('components/debug_dialog.twig') %}
     <a id="debug-button">{{ localize('debug') }} @{{ opensb_version.hash }}</a>

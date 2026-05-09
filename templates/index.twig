@@ -1,6 +1,7 @@
 {% extends "_layout.twig" %}
 
 {% set pin_guide = true %}
+{% set flex_width_enabled = true %}
 
 {% block head %}
 <script name="feed" src="/assets/skin/finalium/feed.js?r={{ get_css_file_date() }}"></script>
@@ -69,6 +70,7 @@
                         {% endif %}
                         {% if shelf.label %}<span class="shelf-label">{{ shelf.label }}</span>{% endif %}
                     </div>
+                    <div class="shelf-description">Shelf Description</div>
                     <div class="shelf-slider">
                         {% for upload in shelf.uploads %}
                             {% include "components/upload_box_shelf_slider.twig" %}

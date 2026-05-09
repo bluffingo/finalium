@@ -4,28 +4,30 @@
     {% set time = upload.published | relative_time %}
 {% endif %}
 
-<div class="shelf-upload-item">
-    <div class="thumbnail">
-        {% if upload.type == 0 %}
-            <div class="thumbnail-badge-container">
-                <div class="thumbnail-badge">
-                    {{ convert_time(upload.length) }}
+<div class="shelf-grid-item">
+    <div class="lockup">
+        <div class="thumbnail">
+            {% if upload.type == 0 %}
+                <div class="thumbnail-badge-container">
+                    <div class="thumbnail-badge">
+                        {{ convert_time(upload.length) }}
+                    </div>
                 </div>
-            </div>
-        {% endif %}
-        <a href="/watch?v={{ upload.id }}" class="spf-link">
-            <img src="{{ thumbnail(upload.id, upload.type, upload.flags.custom_thumbnail) }}" alt="{{ upload.title }}">
-        </a>
-    </div>
-    <div class="content-wrapper">
-        <h3 class="title"><a href="/watch?v={{ upload.id }}" class="spf-link">{{ upload.title }}</a></h3>
-        <span class="stat">{{ user_link(upload.author) }}</span>
-        <div class="stats">
-            <span class="stat">{{ localize('views', upload.views) }}</span>
-            <span class="stat">{{ time }}</span>
+            {% endif %}
+            <a href="/watch?v={{ upload.id }}" class="spf-link">
+                <img src="{{ thumbnail(upload.id, upload.type, upload.flags.custom_thumbnail) }}" alt="{{ upload.title }}">
+            </a>
         </div>
-        {% if upload.type == 2 %}
-        <span><div class="badge">Image</div></span>
-        {% endif %}
+        <div class="content-wrapper">
+            <h3 class="title"><a href="/watch?v={{ upload.id }}" class="spf-link">{{ upload.title }}</a></h3>
+            <span class="stat">{{ user_link(upload.author) }}</span>
+            <div class="stats">
+                <span class="stat">{{ localize('views', upload.views) }}</span>
+                <span class="stat">{{ time }}</span>
+            </div>
+            {% if upload.type == 2 %}
+            <span><div class="badge">Image</div></span>
+            {% endif %}
+        </div>
     </div>
 </div>

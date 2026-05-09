@@ -274,7 +274,9 @@ document.addEventListener("pageReady", () => {
 
 function handleScaleChanges() {
     handlePinnedGuide();
-    updateContentSnap();
+    if (document.body.classList.contains("flex-width-enabled")) {
+        updateContentSnap();
+    }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -534,7 +536,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (guide) {
                 document.documentElement.classList.toggle("show-guide");
 
-                if (document.documentElement.classList.contains("guide-pinned")) {
+                if (document.documentElement.classList.contains("guide-pinned") && document.body.classList.contains("flex-width-enabled")) {
                     updateContentSnap();
                 }
             } else {

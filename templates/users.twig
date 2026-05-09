@@ -13,8 +13,7 @@
             <div class="content">
                 <div class="card card-has-padding">
                     <h1>{{ localize("members") }}</h1>
-                    {# TEMPORARY #}
-                    <div class="channel-header-secondary">
+                    <div class="tabs">
                         {% for key, tab in tabs %}
                             <a class="tablink {% if type==key %}active{% endif %}" href="/members?type={{key}}">
                                 {{ localize(tab.name) }}

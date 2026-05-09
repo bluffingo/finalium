@@ -78,19 +78,15 @@ html.show-guide.guide-pinned {
     margin: auto;
 }
 
-// content snap
-// todo: are these only for #page.home ??? i think profiles might be using those too
-body.content-snap-width-1 #page.home .content-alignment {
-    width: 850px;
-    max-width: 850px;
-}
+/* todo: flex-width-enabled-snap */
 
-body.content-snap-width-2 #page.home .content-alignment {
-    width: 1056px;
-    max-width: 1056px;
-}
+body.flex-width-enabled {
+    $snap-widths: (1: 850px, 2: 1056px, 3: 1262px);
 
-body.content-snap-width-3 #page.home .content-alignment {
-    width: 1262px;
-    max-width: 1262px;
+    @each $i, $width in $snap-widths {
+        &.content-snap-width-#{$i} #page .content-alignment {
+            width: $width;
+            max-width: $width;
+        }
+    }
 }

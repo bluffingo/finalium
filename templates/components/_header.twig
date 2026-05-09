@@ -62,6 +62,7 @@
                             </div>
                         </div>
                         <div class="user-menu-footer">
+                            {% if user_data.powerlevel > 2 %}<a href="/dashboard" class="button button-destructive">{{ localize('dashboard') }}</a>{% endif %}
                             <a class="button button-default" href="/logout">{{ localize('logout') }}</a>
                         </div>
                     </div>
