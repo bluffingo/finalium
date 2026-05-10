@@ -1,31 +1,34 @@
 {
-    "metadata":
-    {
+    "metadata": {
         "id": "finalium",
         "name": "Finalium",
         "author": "Carrevue Development",
         "description": "The default FulpTube look.",
         "site": "squarebracket",
-        "themes": [
-            {
-                "id": "default",
+        "themes": {
+            "default": {
                 "name": "Light",
                 "description": "The classic look of squareBracket from 2022.",
                 "author": "Carrevue Development"
             },
-            {
-                "id": "dark",
+            "dark": {
                 "name": "Dark",
                 "description": "The classic dark look of squareBracket, which is a little unpolished.",
                 "author": "Carrevue Development"
             },
-            {
-                "id": "hitchhiker",
+            "hitchhiker": {
                 "name": "Hitchhiker",
-                "description": "Emulates the look of a certain video sharing site as seen around 2016.",
-                "author": "Carrevue Development"
+                "description": "Emulates the look of a popular video sharing site as seen around 2016.",
+                "author": "Carrevue Development",
+                "options": {
+                    "storage": {
+                        "default_pfp_override": "profiledef_hitchhiker.svg",
+                        "default_video_thumbnail_override": "placeholder_hitchhiker.svg",
+                        "default_image_thumbnail_override": "placeholder_hitchhiker.svg"
+                    }
+                }
             }
-        ],
+        },
         "options": {
             "use_old_userlink": true
         }

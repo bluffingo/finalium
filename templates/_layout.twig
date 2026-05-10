@@ -60,13 +60,13 @@
     {% include('components/debug_dialog.twig') %}
     <a id="debug-button">{{ localize('debug') }} @{{ opensb_version.hash }}</a>
 {% endif %}
-{% if show_warning_banner %}
+{% if banner_text %}
     <div class="banner banner-info full-screen">
         <div class="banner-icon">
             {{ icon(fi.alert_info, alert_icon_size) }}
         </div>
         <div>
-            {{ warning_banner_text | raw }}
+            {{ banner_text | raw }}
         </div>
     </div>
 {% endif %}
