@@ -13,16 +13,16 @@
 {% endblock %}
     
 {% block customcss %}
-    {% if banner_picture %}
-    .channel-header-background {
-        background-image: url('{{ banner_picture.finalium }}');
-    }
-
-    @media screen and (min-resolution: 1.5dppx) {
+    {% if banner_picture.finalium %}
         .channel-header-background {
-            background-image: url('{{ banner_picture.finalium_2x }}');
+            background-image: url('{{ banner_picture.finalium }}');
         }
-    }
+
+        @media screen and (min-resolution: 1.5dppx) {
+            .channel-header-background {
+                background-image: url('{{ banner_picture.finalium_2x }}');
+            }
+        }
     {% endif %}
 {% endblock %}
 
