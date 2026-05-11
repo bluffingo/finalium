@@ -19,14 +19,17 @@
 
 {% block profile_content %}
     <div class="card">
-        <div class="card-has-padding">
+        <p>here shall lie the sort buttons...</p>
+        <hr>
+        <div class="shelf-channels-browse">
             {% for upload in data.uploads %}
-                {% include "components/upload_box.twig" %}
+                {% include "components/upload_box_shelf.twig" with { 
+                    channels_browse: true
+                } %}
             {% else %}
                 <p>There are currently no uploads by {{ data.displayname }}</p>
             {% endfor %}
-
-            {{ pagination(data.count, items_per_page, le_url, current_page) }}
         </div>
+        {{ pagination(data.count, items_per_page, le_url, current_page) }}
     </div>
 {% endblock %}

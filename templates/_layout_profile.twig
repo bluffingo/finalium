@@ -38,7 +38,7 @@
                 <div class="channel-header-name">
                     <h1>{{ common.displayname }}</h1>
 
-                    {% if data.displayname|lower != data.username|lower %}
+                    {% if common.displayname|lower != common.username|lower %}
                         <div class="channel-header-handle">
                             @{{ common.username }}
                         </div>

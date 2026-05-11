@@ -20,7 +20,7 @@
         </div>
         <div class="content-wrapper">
             <h3 class="title"><a href="/watch?v={{ upload.id }}" class="spf-link">{{ upload.title }}</a></h3>
-            <span class="stat">{{ user_link(upload.author) }}</span>
+            {% if not channels_browse %}<span class="stat">{{ user_link(upload.author) }}</span>{% endif %}
             <div class="stats">
                 <span class="stat">{{ localize('views', upload.views) }}</span>
                 <span class="stat">{{ time }}</span>
