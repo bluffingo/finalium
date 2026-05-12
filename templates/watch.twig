@@ -121,7 +121,7 @@
                     {% if upload.description | trim is not empty %}
                         {{ upload.description | markdown_user_written }}
                     {% else %}
-                        <em>{{ localize('upload_no_description') }}</em>
+                        <em>{{ localize('no_description') }}</em>
                     {% endif %}
                 </div>
             <div id="watch-description-extras">
