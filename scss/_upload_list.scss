@@ -105,12 +105,12 @@ $thumbnail-background: #F0F0F0;
         gap: 10px;
         grid-auto-flow: column;
         grid-auto-columns: minmax(196px, 196px);
-        //grid-template-columns: repeat(6, 1fr); //fucks shit up, look into this later
         overflow-x: hidden;
         scroll-behavior: smooth;
     }
 }
 
+// TODO: make this small by default, these were only used in recommendations
 .upload-list-item {
     gap: 10px;
     display: flex;
@@ -249,9 +249,21 @@ $thumbnail-background: #F0F0F0;
 }
 
 .lockup {
-    gap: 4px;
     display: flex;
-    flex-direction: column;
+
+    &.grid {
+        gap: 4px;
+        flex-direction: column;   
+    }
+
+    &.tile {
+        gap: 10px;
+        flex-direction: row;
+
+        .title, .byline, .meta, .description {
+            max-width: 499px;
+        }
+    }
     
     .thumbnail {
         display: flex;
@@ -301,24 +313,31 @@ $thumbnail-background: #F0F0F0;
             display: block;
             line-height: 1.3em;
             height: 1.3em;
+
+            a {
+                color: $comment-timestamp;
+                &:hover {
+                    color: $primary;
+                }
+            }
         }
 
-        /*
-        // unused?
-        .stat-larger {
-            @if $theme == "hitchhiker" {
-                color: #999;
-            }
-
-            @else {
-                color: $gray-600;
-            }
-
-            font-size: 13px;
+        .description {
             display: block;
-            line-height: 1.4em;
-            height: 1.4em;
+            margin-top: 2px;
+            font-size: 12px;
+            line-height: 1.3em;
+            max-height: 2.6em;
+            color: $comment-timestamp;
+
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
         }
-        */
+
+        .badges {
+            margin-top: 5px; // 2px with exp-responsive
+        }
     }
 }

@@ -5,7 +5,9 @@
 	{% block content %}
         <div class="card card-has-padding">
             {% for upload in data.uploads %}
-                {% include "components/upload_box.twig" %}
+                {% include "components/lockup.twig" with { 
+                    type: "tile",
+                } %}
             {% else %}
                 <div>No results could be found.</div>
             {% endfor %}

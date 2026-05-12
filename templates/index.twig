@@ -73,7 +73,11 @@
                     <div class="shelf-description">Shelf Description</div>
                     <div class="shelf-slider">
                         {% for upload in shelf.uploads %}
-                            {% include "components/upload_box_shelf.twig" %}
+                            <div class="shelf-grid-item">
+                                {% include "components/lockup.twig" with { 
+                                    type: "grid",
+                                } %}
+                            </div>
                         {% endfor %}
                     </div>
                 </div>

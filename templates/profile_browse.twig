@@ -23,8 +23,9 @@
         <hr>
         <div class="shelf-channels-browse">
             {% for upload in data.uploads %}
-                {% include "components/upload_box_shelf.twig" with { 
-                    channels_browse: true
+                {% include "components/lockup.twig" with { 
+                    type: "grid",
+                    channels_browse: true,
                 } %}
             {% else %}
                 <p>There are currently no uploads by {{ data.displayname }}</p>

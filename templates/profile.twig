@@ -25,7 +25,9 @@
                 <hr>
             {% endif %}
             {% for upload in data.uploads %}
-                {% include "components/upload_box.twig" %}
+                {% include "components/lockup.twig" with { 
+                    type: "tile",
+                } %}
             {% else %}
                 <p>There are currently no uploads by {{ common.displayname }}</p>
             {% endfor %}

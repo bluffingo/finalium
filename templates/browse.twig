@@ -29,7 +29,9 @@
             <div class="col-9">
                 <div class="card card-has-padding">
                     {% for upload in data.uploads %}
-                        {% include "components/upload_box.twig" %}
+                        {% include "components/lockup.twig" with { 
+                            type: "tile",
+                        } %}
                     {% else %}
                         There are no uploads.
                     {% endfor %}

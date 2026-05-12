@@ -11,7 +11,7 @@
     </div>
     <div class="content-wrapper">
         <h3 class="title">{{ upload.title }}</h3>
-        <span class="stat">{{ upload.author.info.username }}</span>
+        <span class="stat">{{ upload.author.info.displayname }}</span>
         <span class="stat">
             {{ localize('views', upload.views) }}
             {% if date(upload.published) > date('-1 week') %}
