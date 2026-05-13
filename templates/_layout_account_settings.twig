@@ -1,21 +1,25 @@
 {% extends "_layout.twig" %}
 
 {% block content %}
-    {% if options.exp_finalium_sidebars %}
-        <div class="grid">
-            <div class="col-2">
-                <div class="card">
-                    <ul class="nav">
-                        <li class="title">Account Settings</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-10">
-                {% block accountcontent %}
-                {% endblock %}
+    <div class="banner banner-warning">UNDER CONSTRUCTION</div>
+    <br>
+    <div class="grid">
+        <div class="col-2">
+            <div class="card">
+                <ul class="nav">
+                    <li class="title">Account Settings</li>
+                    <li>
+                        <a href="/settings">{{ localize('account_settings') }}</a>
+                    </li>
+                    <li>
+                        <a href="/my_profile">{{ localize('my_profile') }}</a>
+                    </li>
+                </ul>
             </div>
         </div>
-    {% else %}
-        {{ block('accountcontent') }}
-    {% endif %}
+        <div class="col-10">
+            {% block accountcontent %}
+            {% endblock %}
+        </div>
+    </div>
 {% endblock %}
