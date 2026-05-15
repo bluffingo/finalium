@@ -17,13 +17,13 @@
 <head>
     {{ include('_html_head.twig') }}
     
-    <link rel="stylesheet" href="/assets/css/finalium_{{ current_theme }}.css?r={{ get_css_file_date() }}" type="text/css">
-    <script src="/assets/skin/finalium/common.js?r={{ get_css_file_date() }}"></script>
+    <link rel="stylesheet" href="/assets/css/finalium_{{ current_theme }}.css?r={{ get_css_file_timestamp() }}" type="text/css">
+    <script src="/assets/skin/finalium/common.js?r={{ get_css_file_timestamp() }}"></script>
     {% block script %}{% endblock %}
     <script>
         opensb_version = '{{ opensb_version.name }} {{ opensb_version.string }}';
     </script>
-    <script src="/assets/common.js?r={{ get_css_file_date() }}"></script>
+    <script src="/assets/common.js?r={{ get_css_file_timestamp() }}"></script>
     {% if page_name == "register" and captcha_public_token %}
         <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
     {% endif %}

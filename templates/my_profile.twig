@@ -1,54 +1,41 @@
 {% extends "_layout_account_settings.twig" %}
 
-{% set title = localize('account_settings') %}
+{% set title = localize('my_profile') %}
 
-	{% block accountcontent %}
-		{% if error %}
-			<div class="banner banner-error" role="alert">{{ error }}</div>
-		{% endif %}
+{% block accountcontent %}
+    {% if error %}
+        <div class="banner banner-error" role="alert">{{ error }}</div>
+    {% endif %}
         <div class="card card-has-padding">
-            <form action="settings" method="post" enctype="multipart/form-data">
-                <h1>{{ localize('profile') }}</h1>
-                <table class="styled">
-                    <tr class="table-header">
-                        <th>Option</th>
-                        <th>Value</th>
-                    </tr>
-                    <tr>
-                        <td class="a">Profile picture</td>
-                        <td class="b">
-                            <input class="form-control" type="file" name="profilePicture" id="profilePicture">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="a">Profile banner <a href="/assets/banner_template_finalium.png" target="_blank">Download template</a></td>
-                        <td class="b">
-                            <input class="form-control" type="file" name="profileBanner" id="profileBanner">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="a">Display name</td>
-                        <td class="b"><input type="text" name="title" size="45" maxlength="50" value="{{ user_data.title }}"></td>
-                    </tr>
-                    <tr>
-                        <td class="a">
-                            Description
-                            <br><em>Markdown is allowed.</em>
-                        </td>
-                        <td class="b"><textarea name="about" rows="5" cols="80" wrap="virtual">{{ user_data.about }}</textarea></td>
-                    </tr>
-                    {% if not current_theme == "hitchhiker" %}
-                    <tr>
-                        <td class="a">Username color</td>
-                        <td class="b"><input name="userlink_color" type="color"
-                                            value="{{ user_data.userlink_color | default('0069B4') }}"></td>
-                    </tr>
-                    {% endif %}
-                </table>
-
-                <div class="right">
-                    <input type="submit" id="upload" name="save" class="button button-primary" value="Save">
+        <form action="settings" method="post" enctype="multipart/form-data">
+        <h1>{{ localize('profile') }}</h1>
+        <div class="form-content">
+            <div class="input">
+                <label for="profilePicture">Profile picture</label>
+                <input class="form-control" type="file" name="profilePicture" id="profilePicture">
+            </div>
+            <div class="input">
+                <label for="profileBanner">Profile banner <a href="/assets/banner_template_finalium.png" target="_blank">Download template</a></label>
+                <input class="form-control" type="file" name="profileBanner" id="profileBanner">
+            </div>
+            <div class="input">
+                <label for="title">Display name</label>
+                <input type="text" id="title" name="title" size="45" maxlength="50" value="{{ user_data.title }}">
+            </div>
+            <div class="input">
+                <label for="about">Description<br><em>Markdown is allowed.</em></label>
+                <textarea id="about" name="about" rows="5" cols="80" wrap="virtual">{{ user_data.about }}</textarea>
+            </div>
+            {% if not current_theme == "hitchhiker" %}
+                <div class="input">
+                    <label for="userlink_color">Username color</label>
+                    <input id="userlink_color" name="userlink_color" type="color"
+                        value="{{ user_data.userlink_color | default('0069B4') }}">
                 </div>
-            </form>
+            {% endif %}
+            <br>
+            <input type="submit" id="upload" name="save" class="button button-primary" value="Save">
         </div>
-	{% endblock %}
+        </form>
+        </div>
+{% endblock %}

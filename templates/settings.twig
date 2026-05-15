@@ -2,76 +2,53 @@
 
 {% set title = localize('account_settings') %}
 
-	{% block accountcontent %}
-		{% if error %}
-			<div class="banner banner-error" role="alert">{{ error }}</div>
-		{% endif %}
-        <div class="card card-has-padding">
-            <form action="settings" method="post" enctype="multipart/form-data">
-                <h1>{{ localize('security') }}</h1>
-                <table class="styled">
-                    <tr class="table-header">
-                        <th>Option</th>
-                        <th>Value</th>
-                    </tr>
-                    <tr>
-                        <td class="a">Username</td>
-                        <td class="b">{{ user_data.name }}</td>
-                    </tr>
-                    <tr>
-                    <tr>
-                        <td class="a">Email address</td>
-                        <td class="b">{{ user_data.email }}</td>
-                    </tr>
-                    <tr>
-                        <td class="a">Password</td>
-                        <td class="b">
-                            <input type="password" name="current_pass" size="30" maxlength="256"
-                                placeholder="Current password"><br>
-                            <input type="password" name="pass" size="30" maxlength="256" placeholder="New password"><br>
-                            <input type="password" name="pass2" size="30" maxlength="256"
-                                placeholder="Confirm new password">
-                        </td>
-                    </tr>
-                </table>
-
-                <h1>{{ localize('filtering') }}</h1>
-                <table class="styled">
-                    <tr class="table-header">
-                        <th>Option</th>
-                        <th>Value</th>
-                    </tr>
-                    <tr>
-                    {% if mature_uploads_enabled %}
-                    <td class="a">{{ localize('filtering') }}</td>
-                        {% if isUserOver18 %}
-                            <td class="b">
-                                <input type="checkbox" name="rating" id="rating" value="true"
-                                    {% if user_data.comfortable_rating == "mature" %}checked{% endif %}>
-                                <label for="rating"> {{ localize('enable_mature_content') }}</label><br>
-
-                                {#<input type="checkbox" name="block_under_18" id="block_under_18" value="true"
-                                    {% if user_data.block_under_18 %}checked{% endif %}>
-                                <label for="block_under_18"> Block profile/upload access from people under 18</label>#}
-                            </td>
-                        {% else %}
-                            <td class="b">
-                                {{ localize('restricted_mature_content', website_branding.name) }}
-                            </td>
-                        {% endif %}
-                    </tr>
-                    {% endif %}
-                    <tr>
-                        <td class="a">Blacklisted tags</td>
-                        <td class="b">
-                            <textarea class="form-submit" name="blacklisted_tags" rows="5" cols="80" wrap="hard">{% for tag in user_data.blacklisted_tags %}{{ tag }},{% endfor %}</textarea>
-                        </td>
-                    </tr>
-                </table>
-
-                <div class="right">
-                    <input type="submit" id="upload" name="save" class="button button-primary" value="Save">
-                </div>
-            </form>
+{% block accountcontent %}
+    {% if error %}
+        <div class="banner banner-error" role="alert">{{ error }}</div>
+    {% endif %}
+    <div class="card card-has-padding">
+    <form action="settings" method="post" enctype="multipart/form-data">
+    <h1>{{ localize('security') }}</h1>
+    <div class="form-content">
+        <div class="input">
+            <label>Username</label>
+            <span>{{ user_data.name }}</span>
         </div>
-	{% endblock %}
+        <div class="input">
+            <label>Email address</label>
+            <span>{{ user_data.email }}</span>
+        </div>
+        <div class="input">
+            <label>Password</label>
+            <input type="password" name="current_pass" size="30" maxlength="256" placeholder="Current password">
+            <input type="password" name="pass" size="30" maxlength="256" placeholder="New password">
+            <input type="password" name="pass2" size="30" maxlength="256" placeholder="Confirm new password">
+        </div>
+    </div>
+    <h1>{{ localize('filtering') }}</h1>
+    <div class="form-content">
+        {% if mature_uploads_enabled %}
+        <div class="input">
+            {% if isUserOver18 %}
+            <input type="checkbox" name="rating" id="rating" value="true"
+                {% if user_data.comfortable_rating == "mature" %}checked{% endif %}>
+            <label for="rating">{{ localize('enable_mature_content') }}</label>
+            {#<input type="checkbox" name="block_under_18" id="block_under_18" value="true"
+                {% if user_data.block_under_18 %}checked{% endif %}>
+            <label for="block_under_18"> Block profile/upload access from people under 18</label>#}
+            {% else %}
+            <label>{{ localize('filtering') }}</label>
+            <span>{{ localize('restricted_mature_content', website_branding.name) }}</span>
+            {% endif %}
+        </div>
+        {% endif %}
+        <div class="input">
+            <label for="blacklisted_tags">Blacklisted tags</label>
+            <textarea class="form-submit" id="blacklisted_tags" name="blacklisted_tags" rows="5" cols="80" wrap="hard">{% for tag in user_data.blacklisted_tags %}{{ tag }},{% endfor %}</textarea>
+        </div>
+        <br>
+        <input type="submit" id="upload" name="save" class="button button-primary" value="Save">
+    </div>
+    </form>
+    </div>
+{% endblock %}
