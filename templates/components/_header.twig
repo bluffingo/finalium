@@ -54,12 +54,24 @@
                             <img class="profile-picture img-fluid" src="{{ profile_picture(user_data.id) }}" alt="{{ user_data.name }}">
                             <div class="info">
                                 <div class="name">{{ user_data.title }}</div>
-                                <div class="followers">{{ localize('followers', user_stat_data.followers) }}</div>
+                                <div class="followers">{% if user_stat_data.followers != 0 %}{{ localize('followers', user_stat_data.followers) }}{% endif %}</div>
                                 <div class="buttons">
                                     <a class="button button-default" href="/my_uploads">{{ localize('manager') }}</a>
                                     <a class="button button-default settings" href="/settings" title="{{ localize('account_settings') }}">{{ icon(fi.account_settings, account_settings_button_icon_size) }}</a>
                                 </div>
                             </div>
+                        </div>
+                        <div class="user-menu-multilogin">
+                            {#<div class="header">Other accounts</div>#}
+                            {% for link in header_user_switcher_links() %}
+                                <a class="user-option" href="/login/{{ link.name }}">
+                                    <img src="{{ profile_picture(link.id) }}" class="profile-picture" alt="{{ link.title }}">
+                                    <div class="info">
+                                        <div class="name">{{ link.title }}</div>
+                                        <div class="followers">{{ localize('followers', link.f_index) }}</div>
+                                    </div>
+                                </a>
+                            {% endfor %}
                         </div>
                         <div class="user-menu-footer">
                             {% if user_data.powerlevel > 2 %}<a href="/dashboard" class="button button-destructive">{{ localize('dashboard') }}</a>{% endif %}
