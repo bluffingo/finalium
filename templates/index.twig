@@ -10,8 +10,8 @@
 {% block precontent %}
     {% if current_theme != 'hitchhiker' %}
         <div class="jumbotron">
-            <div class="container {% if is_user_logged_in %}logged-in{% else %}logged-out{% endif %}">
-                {% if is_user_logged_in %}
+            <div class="container {% if logged_in %}logged-in{% else %}logged-out{% endif %}">
+                {% if logged_in %}
                     <div class="jumbotron-left">
                         <img class="profile-picture img-fluid" src="{{ profile_picture(user_data.id) }}" alt="{{ user_data.name }}">
                         <div>

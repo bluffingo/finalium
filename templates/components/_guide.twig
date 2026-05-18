@@ -22,7 +22,7 @@
             <hr>
 
             {# PLAYLISTS/COLLECTIONS #}
-            {% if is_user_logged_in and enable_incomplete_features %}
+            {% if logged_in and enable_incomplete_features %}
             <li class="header">{{ localize('library') }}</li>
                 {% for key, item in sidebar_library_links() %}
                     <li class="guide-channel">
@@ -37,7 +37,7 @@
             {% endif %}
 
             {# FOLLOWING/FEATURED #}
-            {% if is_user_logged_in %}
+            {% if logged_in %}
                 <div class="header">{{ localize('following') }}</div>
             {% else %}
                 <div class="header">{{ localize('best_of_site', website_branding.name )}}</div>
@@ -64,7 +64,7 @@
             {% endfor %}
             
             {# LOGIN THING (hitchhiker only) #}
-            {% if not is_user_logged_in and current_theme == "hitchhiker" %}
+            {% if not logged_in and current_theme == "hitchhiker" %}
                 <hr>
                 <p>Sign in now to see your channels and recommendations!</p>
                 <a href="/login" class="button button-primary">{{ localize('login') }}</a>

@@ -24,7 +24,7 @@
             <div class="comment-actions">
                 <a class="reply-button" data-comment-id="{{ comment.id }}">{{ localize("reply_action") }}</a>
             </div>
-            {% if comment.id and is_user_logged_in %}
+            {% if comment.id and logged_in %}
             <div class="reply-form" id="reply-form-{{ comment.id }}" style="display: none;">
                 <div class="comment">
                     <div class="comment-avatar">

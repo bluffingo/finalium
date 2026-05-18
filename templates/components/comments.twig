@@ -1,7 +1,7 @@
 {# TODO: if there was only one comment, the title would only say "COMMENT", rather than "COMMENTS" #}
 <div class="comments-header"><span class="title">{{ localize("comments") }}</span> • {{ count }}</div>
 
-{% if is_user_logged_in %}
+{% if logged_in %}
     <div class="comment" id="new-comment">
         <div class="comment-avatar">
             <a href="/user/{{ comment.author.info.username }}" class="spf-link">
